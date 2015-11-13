@@ -34,9 +34,6 @@ KliXor / HaXor
 Das (e)skaliert ...
 Steve >> @r0kit (im Chat)
 Nokia >> @r0kit (im Chat)
-<<mit http://www.bullshitbingo.net/ generierte 5x5 Doppelkarten hier: http://tinyurl.com/qx9jaj6
-
-<<Zu spät für die Final alpha, zum mergen mit der tollen PDF Karte von ePirat!>> http://epir.at/d/Freakshow_Bingo.pdf
 skip skip skip
 Windows
 IPv6
@@ -48,17 +45,20 @@ Womit wir das schon mal geklärt hätten
 Flash
 Google
 Vollbesetzung
+Jelly Splash
+Selbst schuld
+Was erlaube ...
+app dot net
 
 <<auch in der groben Überlegung, aber der Limitierung auf 36 Begriffe in "final alpha" geopfert>>
 Aach, egal!
-Was erlaube ...
-geh mal nach ..., da kannst Du
-Selbst schuld
-Jelly Splash
-app dot net
+in Scandinavien ist alles besser
 Eigentlich könnte Apple ...
 Arsch!
 soo in etwa
 
 
-PDF: https://t.co/FYX8pJjpIO Dynamisch: http://preview.tinyurl.com/qx9jaj6
+PDF: https://t.co/FYX8pJjpIO von ePirat
+Alpha1 Dynamisch bei bullshitbingo.net: http://preview.tinyurl.com/qx9jaj6
+Alpha2 in Javascript auf: http://mosushi.net/misc/bingo
+
