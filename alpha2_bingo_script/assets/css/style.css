@@ -1,0 +1,47 @@
+#page{
+width:600px;
+margin:0 auto;
+}
+
+table{
+padding:0px;
+}
+
+img { 
+  vertical-align: bottom;
+}
+
+td{
+font-family:arial;
+color:#333;
+padding:0px;
+width:75px;
+height:75px;
+text-align:center;
+vertical-align:bottom;
+border:0px;
+background-color:#eee;
+}
+
+.bingohead{
+border:10px solid #c2324c;
+}
+
+h1, h3, h3 a{
+	font-family:arial;
+	text-align:center;
+	padding:3px;
+	color:#211111;
+	background-color:#EEEEEE;
+	border:2px solid #DDDDCC;
+}
+
+td{
+cursor:pointer;
+}
+
+#free{
+	background-image: url(../assets/images/frei.svg);
+	color:#eee;
+	cursor:default;
+}
