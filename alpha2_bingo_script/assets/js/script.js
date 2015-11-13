@@ -15,7 +15,7 @@
 	  	 
 	 function fillCard(i){
 		 base = baseArray[i] * 1;
-		 number = base + Math.floor(Math.random()*46);	
+		 number = base + Math.floor(Math.random()*47);	
 		 
 		 if(usedArray[number] != true){
 			$('#cell'+i).html('<img src="assets/images/'+ number +'.svg" width="75" height="75" border="0">');
