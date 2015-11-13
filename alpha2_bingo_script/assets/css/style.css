@@ -21,7 +21,7 @@ height:75px;
 text-align:center;
 vertical-align:bottom;
 border:0px;
-background-color:#eee;
+background-color:#edd8a1;
 }
 
 .bingohead{
@@ -42,7 +42,7 @@ cursor:pointer;
 }
 
 #free{
-	background-image: url(../assets/images/frei.svg);
+	background-image: url(../images/frei.svg);
 	color:#eee;
 	cursor:default;
 }
