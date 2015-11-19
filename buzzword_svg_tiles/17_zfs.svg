@@ -15,7 +15,7 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.48.4 r9939"
-   sodipodi:docname="07_zfs.svg">
+   sodipodi:docname="17_zfs.svg">
   <defs
      id="defs4">
     <mask
@@ -64,20 +64,24 @@
      inkscape:guide-bbox="true">
     <sodipodi:guide
        orientation="1,0"
-       position="10,207"
+       position="20,116"
        id="guide3591" />
     <sodipodi:guide
        orientation="0,1"
-       position="141,291"
+       position="160,280"
        id="guide3593" />
     <sodipodi:guide
        orientation="1,0"
-       position="290,22"
+       position="280,115"
        id="guide3595" />
     <sodipodi:guide
        orientation="0,1"
-       position="118,10"
+       position="326,20"
        id="guide3597" />
+    <sodipodi:guide
+       orientation="0,1"
+       position="280,60"
+       id="guide3000" />
   </sodipodi:namedview>
   <metadata
      id="metadata7">
@@ -100,14 +104,14 @@
        xml:space="preserve"
        style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
        x="151.94199"
-       y="1026.3608"
+       y="1032.3608"
        id="text3500"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan3502"
          x="151.94199"
-         y="1026.3608"
-         style="font-size:75px;font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Myriad Pro;-inkscape-font-specification:Myriad Pro Semi-Bold">ZFS</tspan></text>
+         y="1032.3608"
+         style="font-size:36px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Courier New;-inkscape-font-specification:Courier New Bold">ZFS</tspan></text>
     <g
        id="g190"
        transform="matrix(8.8751517,0,0,-8.8751517,-380.03933,1995.4367)">
@@ -117,7 +121,7 @@
     </g>
     <g
        id="g5928"
-       transform="translate(-255,-177)">
+       transform="matrix(1.1519654,0,0,1.1519654,-318.24713,-311.02858)">
       <rect
          ry="27.565039"
          rx="8.9019165"

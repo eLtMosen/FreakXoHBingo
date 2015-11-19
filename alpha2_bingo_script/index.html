@@ -3,7 +3,7 @@
 <head>
 	<meta charset=utf-8 />
 	<title>Freakshow Bingo</title>
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+	<script tbype="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
 	<!--[if IE]>
 		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
@@ -12,9 +12,9 @@
 	<link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
 </head>
 <body>
-
+<div id="result1"></div>
+<div id="result2"></div>
 	<div id="page">
-	<h1>Freakshow Bingo</h1>
 	<table>
 		<tr>
 			<td id="cell0">&nbsp;</td>
@@ -47,7 +47,7 @@
 			<td id="cell3">&nbsp;</td>
 			<td id="cell10">&nbsp;</td>
 			<td id="cell17">&nbsp;</td>
-			<td id="free"><img src="assets/images/frei.svg" width="75" height="75" border="0"></td>
+			<td id="free"><img src="assets/images/frei.svg" width="100" height="100" border="0"></td>
 			<td id="cell30">&nbsp;</td>
                         <td id="cell37">&nbsp;</td>
                         <td id="cell44">&nbsp;</td>
@@ -82,6 +82,36 @@
 
 	</table>
 	<h3><a href="#" id="newCard" >Neue Karte mischen</a></h3>
+	</div>
+	<div>	
+Hallo wer auch immer sich hier schon blicken läßt :D<br>
+<br>
+Dies ist eine frische Implementierung eines rudimentären Bingo Algorithmus.<br>
+Als Vorbild dient bullshitbingo.net, dass ich für die Freakshow 165 mit 36 Buzzwords gefüttert <a href="https://twitter.com/eLtMosen/status/663836699840159744" target="_blank">und per Twitter geteilt hatte</a>.<br>
+Chat benutzer Knospe konnte mit dieser Bingo Karte erfolgreich als erster Gewinner gefeiert werden!<br>
+<br>
+Für den ersten Versuch war bullshitbingo ok, aber da <a href="epir.at" target="_blank">ePirat</a> schon mit <a href="https://t.co/FYX8pJjpIO" target="_blank">einer tollen PDF Bingo Karte am start war</a> und ich die limitierung auf 5x5 große klassische Karten nicht gut fand, war schon kurz vor der FS165 klar das eine Eigenentwicklung mit graphischen Buzzwords her musste.<br>
+Als dann auch noch Clemens und Tim eine 7x7 Karte forderten und selbst schon die "alpha 1" Version zustimmung fand, waren die ersten SVG-Buzzword tiles noch während der Sendung durch inkscape geflossen.<br>
+<br>
+Tadaa, hier also die "Alpha 2", mit handgeklöppelten svg tiles für 51 Buzzwords, randomiziert auf ein 7x7 Feld.
+Die schleichende Entwicklung passiert hier: <a href="https://github.com/eLtMosen/FreakXoHBingo" target="_blank">github.com/eLtMosen/FreakXoHBingo</a><br>
+Es gibt sogar schon Features!<br>
+<br>
+1. "Neue Karte" Button um sich schnell eine Karte aus den bisher 51 Buzzwords mischen zu lassen ohne die Seite neuzuladen.<br>
+2. Skalierbare vektor Buzzwords im svg Format.<br>
+<br>
+gebastelt wird an:<br>
+3. Gewinn erkennung<br>
+4. share funktion mit hash der gewinn matrix.<br>
+5. anzeige von gehashten matrizen<br>
+6. syncronisiertes multiplayern mit verifizierbarem Gewinner zur Preisvergabe :D<br> 
+<br>
+Warum mache ich das??<br>
+Als im letzten Jahrtausend abgebrochener Informatik Student hab ich mehr als ein Jahrzehnt aktiv keinen wirklichen "code" außer ein bisschen javascript und php für <a href="http://mosushi.com/" target="_blank">meine Firmen Webseite angefasst...</a><br>
+Das wollt ich schon immer mal wieder ändern und Tims aufruf zum Bingo hat da direkt mit der Idee für eine dynamische Bingo-Karte klick gemacht.<br>
+In den letzten 13 Jahren hab ich mich nach einer kompletten Umorientierung tief ins Thema Sushi gehackt und bin nun relativ erfolgreich als Freier Showkoch europaweit unterwegs, was die "Entwicklung" der Bingo-Karte in die späten Abendstunden schiebt.<br>
+<br>
+Jede Mithilfe bis zum komplett umwerfen des bisherigen spaghetti codes oder einfach lautes Gelächter sind herzlich Willkommen!
 	</div>
 	
 </body>

@@ -1,5 +1,5 @@
 #page{
-width:600px;
+width:712px;
 margin:0 auto;
 }
 
@@ -14,10 +14,10 @@ img {
 
 td{
 font-family:arial;
-color:#333;
+color:#edd8a1;
 padding:0px;
-width:75px;
-height:75px;
+width:100px;
+height:100px;
 text-align:center;
 vertical-align:bottom;
 border:0px;
@@ -34,7 +34,7 @@ h1, h3, h3 a{
 	padding:3px;
 	color:#211111;
 	background-color:#EEEEEE;
-	border:2px solid #DDDDCC;
+	border:0px;
 }
 
 td{
@@ -42,7 +42,6 @@ cursor:pointer;
 }
 
 #free{
-	background-image: url(../images/frei.svg);
 	color:#eee;
 	cursor:default;
 }
