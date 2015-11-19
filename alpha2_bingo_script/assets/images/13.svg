@@ -15,7 +15,7 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.48.4 r9939"
-   sodipodi:docname="12_podcast.svg">
+   sodipodi:docname="13_windows.svg">
   <defs
      id="defs4">
     <mask
@@ -134,28 +134,33 @@
      showgrid="false"
      inkscape:window-width="1313"
      inkscape:window-height="664"
-     inkscape:window-x="142"
-     inkscape:window-y="105"
+     inkscape:window-x="39"
+     inkscape:window-y="24"
      inkscape:window-maximized="0"
      units="px"
      showguides="true"
-     inkscape:guide-bbox="true">
+     inkscape:guide-bbox="true"
+     guidetolerance="6">
     <sodipodi:guide
        orientation="1,0"
-       position="10,207"
+       position="20,179"
        id="guide3591" />
     <sodipodi:guide
        orientation="0,1"
-       position="141,291"
+       position="-38,280"
        id="guide3593" />
     <sodipodi:guide
        orientation="1,0"
-       position="290,22"
+       position="280,341"
        id="guide3595" />
     <sodipodi:guide
        orientation="0,1"
-       position="118,10"
+       position="366,20"
        id="guide3597" />
+    <sodipodi:guide
+       orientation="0,1"
+       position="280,60"
+       id="guide3046" />
   </sodipodi:namedview>
   <metadata
      id="metadata7">
@@ -165,7 +170,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -177,15 +182,15 @@
     <text
        xml:space="preserve"
        style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-       x="149.94199"
-       y="1026.3608"
+       x="151.94199"
+       y="1032.3608"
        id="text3500"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan3502"
-         x="149.94199"
-         y="1026.3608"
-         style="font-size:75px;font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;text-align:center;text-anchor:middle;font-family:Myriad Pro;-inkscape-font-specification:Myriad Pro Semi-Bold;letter-spacing:-2.3px">Windows</tspan></text>
+         x="150.79198"
+         y="1032.3608"
+         style="font-size:36px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;letter-spacing:-2.29999995px;text-anchor:middle;font-family:Courier New;-inkscape-font-specification:Courier New Bold">WINDOWS</tspan></text>
     <g
        id="g190"
        transform="matrix(8.8751517,0,0,-8.8751517,-380.03933,1995.4367)">
@@ -193,16 +198,37 @@
          id="g192"
          clip-path="url(#clipPath194)" />
     </g>
-    <g
-       id="g216"
-       transform="matrix(194.00813,0,0,-194.8,52.25,956.1608)">
-      <image
-         width="1"
-         height="1"
-         transform="matrix(1,0,0,-1,0,1)"
-         xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPUAAAD2CAYAAAAOJcHLAAAABHNCSVQICAgIfAhkiAAABFJJREFUeJzt27Ft40gYgFFqoeAyN+IW3IELcba1XHaFbAdu4RrZzJkuuMMBu2tTkpcih5/eSyRABPEnn4YDDA/TNJ0mIOO49QDAZf58nf/969O/n6KGgZwL9xKihg0sEe9HRA03cstw54gafsNW4c4RNZwxYrhzRA3T/sKdI2ruRincOaIm5V7CnSNqdkm8HxM1wxLu54iaTQl3eaLm5oS7LlGzCOGOQ9RcTLj7IGp+INz9E/WdEm+XqMOEe59EvXPC5Wdfth6AzxM07xH1IN5eHqe3l8etxyDA4/eKRMsaRL0w4bI1UV9JtIxO1O8QLnt2t1ELl6ps1KLlXu06auHCr4aPWrhwnc2jFi0sa5WohQvrWSxq4cIYLo5atLAPP0QtXNi/o5ChxauXECNqiBE1xIgaYkQNMaKGGFFDjKghRtQQI2qIETXEiBpiRA0xooYYUUOMqCFG1BAjaogRNcSIGmJEDTGihhhRQ4yoIUbUECNqiBE1xIgaYkQNMaKGGFFDjKghRtQQI2qIETXEiBpiRA0xooYYUUOMqCFG1BAjaogRNcSIGmJEDTGihhhRQ4yoIUbUECNqiBE1xIgaYkQNMaKGGFFDjKghRtQQI2qIETXEiBpiRA0xooYYUUOMqCFG1BAjaogRNcSIGmJEDTGihhhRQ4yoIUbUECNqiBE1xIgaYkQNMaKGGFFDjKghRtQQc9x6APj6tPUELYe3l8fTrW7+x19/3+rWwAcO0zTdLGpgffbUECNqiBE1xIgaYkQNMaKGGFFDzHH69v38Vc8Pt58EWMRlx0QvCZ9l+APlNzn7vWOn160nYCSH/87Q21NDjKghRtQQI2qIETXEiBpiRA0xooYYUUOMqCFG1BAjaogRNcSIGmJEDTGihhhRQ4yoIUbUECNqiBE1xIgaYkQNMaKGGFFDjKghRtQQI2qIETXEiBpiRA0xooYYUUOMqCFG1BAjaogRNcSIGmJEDTGihhhRQ4yoIUbUECNqiBE1xIgaYkQNMaKGGFFDjKghRtQQI2qIETXEiBpiRA0xooYYUUOMqCFG1BAjaogRNcSIGmJEDTGihhhRQ4yoIUbUECNqiBE1xIgaYkQNMaKGGFFDjKghRtQQI2qIETXEiBpiRA0xooYYUUPMl+n5YZqeH7aeA1jI8f9vc2F/+77CKMASjucvmc6v5KKHYVwW9TlWeRjGMlHPETys6vZRzxE8LG7bqOfYx8OnjBv1OVZ5eNd+o54jeO5YM+o5HuuJu7+oz7HKs3Oivobg2QFRL0XwDELUa7CPZ0WiHoG35FiQ96l37PC09QSMyEq9c3Nhn17Xm4NxiDrs3Eou+iZR3zGrfJOoeZfg90vUXE3wYxM1ixL89kTNagS/DlEzBMEvR9QMT/DXETW7JvhfiZqsew1e1NylcvCihp/sPXhRwxX2cJ5e1LCgEVZ5UcNK1gpe1DCAJYMXNQzu2uAP0zSdbjYNsLp/AD/gg2aezPy5AAAAAElFTkSuQmCC"
-         mask="url(#mask218)"
-         id="image222" />
-    </g>
+    <rect
+       style="fill:#ffffff;fill-opacity:1"
+       id="rect3050"
+       width="220"
+       height="220"
+       x="40"
+       y="20"
+       transform="translate(0,752.3608)"
+       rx="3.0574524"
+       ry="0" />
+    <image
+       y="772.36078"
+       x="40"
+       id="image3027"
+       xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANwAAADcCAYAAAAbWs+BAAAABHNCSVQICAgIfAhkiAAAAu1JREFU
+eJzt2zFKnFEYhtH7iwgRCyN2KQQbW8HWRZgdZT1pgmuwtbO3sLDWLiRxriuIDIZ5JiHn1F/xwuUp
+7/L8+dMc/LXmaj4cXj+erHP75fb0coy9m01v4v12tj0A/ieCg5DgICQ4CAkOQoKDkOAgJDgICQ5C
+goOQ4CAkOAgJDkKCg5DgICQ4CAkOQoKDkOAgJDgICQ5CgoOQ4CAkOAgJDkKCg5DgICQ4CAkOQoKD
+kOAgJDgICQ5CgoOQ4CAkOAgJDkKCg5DgICQ4CAkOQoKDkOAgJDgICQ5CgoOQ4CAkOAgJDkKCg5Dg
+ICQ4CAkOQoKDkOAgJDgICQ5CgoOQ4CAkOAgJDkKCg5DgICQ4CAkOQoKDkOAgJDgICQ5CgoOQ4CAk
+OAgJDkKCg5DgICQ4CAkOQoKDkOAgJDgICQ5CgoOQ4CAkOAgJDkKCg5DgICQ4CAkOQoKDkOAgJDgI
+CQ5CgoOQ4CAkOAgJDkKCg5DgICQ4CAkOQoKDkOAgtDvHuN/2CH5vWcbj2sc74/t8md4TAAAAAAAA
+AAD+ecv49nSx7RG8YVn9GFdHd+uczq/j4Ofx/tmmJ/F+u2M1b7c9gjfM8TDGOFnn9NfHD+fLat5s
+eBF/wG8BCAkOQoKDkOAgJDgICQ5CgoOQ4CAkOAgJDkKCg5DgICQ4CAkOQoKDkOAgJDgICQ5CgoOQ
+4CAkOAgJDkKCg5DgICQ4CAkOQoKDkOAgJDgICQ5CgoOQ4CAkOAgJDkKCg5DgICQ4CAkOQoKDkOAg
+JDgICQ5CgoOQ4CAkOAgJDkKCg5DgICQ4CAkOQoKDkOAgJDgICQ5CgoOQ4CAkOAgJDkKCg5DgICQ4
+CAkOQoKDkOAgJDgICQ5CgoOQ4CAkOAgJDkKCg5DgICQ4CAkOQoKDkOAgJDgICQ5CgoOQ4CAkOAgJ
+DkKCg5DgICQ4CAkOQoKDkOAgJDgICQ5CgoOQ4CAkOAgJDkKCg5DgICQ4CAkOQoKDkOAgJDgICQ5C
+goPQKyU9JHdU6D+QAAAAAElFTkSuQmCC
+"
+       height="220"
+       width="220" />
   </g>
 </svg>
