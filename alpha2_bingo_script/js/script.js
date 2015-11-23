@@ -19,6 +19,14 @@ $(document).ready(function(){
 	      for(var i = 0; i<48; i++){
 		  karte_fuellen(i);
 	      }
+	      
+	      var l = 1;
+	      for(var k = 1; k<52; k++){
+		  if(benutzteKarten[k] != true){
+		  $('#fehlt'+l).html('<img src="images/'+ k +'.svg">');
+		  l++;
+		  }
+	      }
 	  }
 	  	 
 	  function karte_fuellen(i){
@@ -39,12 +47,53 @@ $(document).ready(function(){
 	  }
 	 
 	  $('#neueKarte').click(function(){
+	      $('div.resize img').css({'width' : '100px'});
+	      $('div.resize img').css({'height' : '100px'});
+	      $('div.resize td').css({'width' : '100px'});
+	      $('div.resize td').css({'height' : '100px'});
+	      $('div.resize').css({'width' : '750px'});
 	      benutzteKartenZuruecksetzen();
 	      init();
 	  });
+	  	
+	  $('#klein').click(function(){
+	      $('div.resize img').css({'width' : '75px'});
+	      $('div.resize img').css({'height' : '75px'});
+	      $('div.resize td').css({'width' : '75px'});
+	      $('div.resize td').css({'height' : '75px'});
+	      $('div.resize').css({'width' : '575px'});
+	  });
+	  $('#normal').click(function(){
+	      $('div.resize img').css({'width' : '100px'});
+	      $('div.resize img').css({'height' : '100px'});
+	      $('div.resize td').css({'width' : '100px'});
+	      $('div.resize td').css({'height' : '100px'});
+	      $('div.resize').css({'width' : '750px'});
+	  });
+	  $('#mittel').click(function(){
+	      $('div.resize img').css({'width' : '150px'});
+	      $('div.resize img').css({'height' : '150px'});
+	      $('div.resize td').css({'width' : '150px'});
+	      $('div.resize td').css({'height' : '150px'});
+	      $('div.resize').css({'width' : '1100px'});
+	  });
+	  $('#gross').click(function(){
+	      $('div.resize img').css({'width' : '200px'});
+	      $('div.resize img').css({'height' : '200px'});
+	      $('div.resize td').css({'width' : '200px'});
+	      $('div.resize td').css({'height' : '200px'});
+	      $('div.resize').css({'width' : '1450px'});
+	  });
+	  $('#riesig').click(function(){
+	      $('div.resize img').css({'width' : '300px'});
+	      $('div.resize img').css({'height' : '300px'});
+	      $('div.resize td').css({'width' : '300px'});
+	      $('div.resize td').css({'height' : '300px'});
+	      $('div.resize').css({'width' : '2150px'});
+	  });
 	 
-	  $('td').click(function(){
-	      this.style.backgroundColor = this.style.backgroundColor? "":"#00ff00";
+	  $("#BingoBody td").click(function(){
+	      $(this).toggleClass("gruene_zelle");
 	      gewinnArray[this.id.slice(5)] = true;
 	      console.log(gewinnArray);
 	      console.log(matrixArray2);

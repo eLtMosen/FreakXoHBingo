@@ -2,13 +2,16 @@
   width:750px;
   margin:0 auto;
   background-color:#F63D31;
+  -webkit-box-shadow: 7px 10px 20px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 7px 10px 20px 0px rgba(0,0,0,0.75);
+  box-shadow: 7px 10px 20px 0px rgba(0,0,0,0.75);
 }
 
 #textseite{
   width:750px;
   margin:0 auto;
   background-color:#F63D31;
-  font-size:14px
+  font-size:+1
   text-align:left;
   vertical-align:top;  
 }
@@ -50,7 +53,17 @@ h1 a{
   border:0px;
 }
 
-td{
+#BingoBody{
 cursor:pointer;
+}
+
+.gruene_zelle {
+   background: #00FF00; /* Or some other color */
+}
+.braune_zelle {
+   background: #dfc084; /* Or some other color */
+}
+.mouseover_zelle {
+   background: #F63D31; /* Or some other color */
 }
 

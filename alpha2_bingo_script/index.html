@@ -11,8 +11,10 @@
     <link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
 </head>
 <body>
-    <div id="karte">
+
+    <div class="resize" id="karte">
     <table>
+    <tbody id="BingoBody">
 	<tr>
 	  <td id="zelle0">&nbsp;</td>
 	  <td id="zelle7">&nbsp;</td>
@@ -76,11 +78,39 @@
 	  <td id="zelle40">&nbsp;</td>
 	  <td id="zelle47">&nbsp;</td>
 	</tr>
+	</tbody>
     </table>
     </div>
-    <div id="textseite">
-	<h1><a href="#" id="neueKarte"><img src="images/mischen.svg"></a></h1>
-		<div>	
+    &nbsp;
+    <div  class="resize" id="karte">
+    <table>
+	<tr>
+	  <td id="info"><img src="images/nichtenthalten.svg"></td>
+	  <td id="fehlt1">&nbsp;</td>
+	  <td id="fehlt2">&nbsp;</td>
+	  <td id="fehlt3">&nbsp;</td>
+	  <td id="fehlt4">&nbsp;</td>
+	  <td id="fehlt5">&nbsp;</td>
+	  <td id="fehlt6">&nbsp;</td>
+	</tr>
+    </table>
+    </div>
+    &nbsp;
+    <div  class="resize" id="karte">
+    <table>
+	<tr>
+ 	  <td id="mischen"><a href="#" id="neueKarte"><img src="images/mischen.svg"></a></td>
+	  <td id="groesse"><img src="images/groesse.svg"></td>
+	  <td id="klein"><a href="#" id="575"><img src="images/groesse575.svg"></a></td>
+	  <td id="normal"><a href="#" id="750"><img src="images/groesse750.svg"></a></td>
+	  <td id="mittel"><a href="#" id="1100"><img src="images/groesse1100.svg"></a></td>
+	  <td id="gross"><a href="#" id="1450"><img src="images/groesse1450.svg"></a></td>
+	  <td id="riesig"><a href="#" id="2150"><img src="images/groesse2150.svg"></a></td>
+	</tr>
+    </table>
+    </div>
+        &nbsp;
+		<div id="textseite">	
 		  <table>
 		      <tr>
 		      <td id="text">
@@ -90,21 +120,22 @@ Dies ist eine frische Implementierung eines rudimentären Bingo Algorithmus.<br>
 Als Vorbild dient bullshitbingo.net, dass ich für die Freakshow 165 mit 36 Buzzwords gefüttert <a href="https://twitter.com/eLtMosen/status/663836699840159744" target="_blank">und per Twitter geteilt hatte</a>.<br><br>
 Chat benutzer Knospe konnte mit dieser Bingo Karte erfolgreich als erster Gewinner gefeiert werden!<br>
 </td><td id="text">
-Für den ersten Versuch war bullshitbingo ok, aber da <a href="epir.at" target="_blank">ePirat</a> schon mit <a href="https://t.co/FYX8pJjpIO" target="_blank">einer tollen PDF Bingo Karte am start war</a> und ich die limitierung auf 5x5 große klassische Karten nicht gut fand, war schon kurz vor der FS165 klar das eine Eigenentwicklung mit graphischen Buzzwords her musste.<br>
+Für den ersten Versuch war bullshitbingo ok, aber da <a href="http://epir.at" target="_blank">ePirat</a> schon mit <a href="https://t.co/FYX8pJjpIO" target="_blank">einer tollen PDF Bingo Karte am start war</a> und ich die limitierung auf 5x5 große klassische Karten nicht gut fand, war schon kurz vor der FS165 klar das eine Eigenentwicklung mit graphischen Buzzwords her musste.<br>
 Als dann auch noch Clemens und Tim eine 7x7 Karte forderten und selbst schon die "alpha 1" Version zustimmung fand, waren die ersten SVG-Buzzword tiles noch während der Sendung durch inkscape geflossen.<br>
 </td><td id="text">
 Tadaa, <br>
-hier also die "Alpha 2", mit handgeklöppelten svg tiles für 51 Buzzwords, randomiziert auf ein 7x7 Feld.
+hier also die "Alpha 2", mit handgeklöppelten svg tiles für 52 Buzzwords, randomiziert auf ein 7x7 Feld.
 Die schleichende Entwicklung passiert hier: <a href="https://github.com/eLtMosen/FreakXoHBingo" target="_blank">github.com/eLtMosen/FreakXoHBingo.</a><br><br>
-Es fühlt Euch bitte Eingeladen jegliche Art von konstruktivem pull request zu tätigen.
+Fühlt Euch bitte eingeladen jegliche Art von konstruktivem pull request zu tätigen.
 </td>
 </tr>
 <tr>
 <td id="text">
 Es gibt sogar schon Features!<br>
 <br>
-1. "MISCHEN" Button um sich schnell eine Karte aus den bisher 51 Buzzwords mischen zu lassen ohne die Seite neuzuladen.<br><br>
-2. Skalierbare vektor Buzzwords im svg Format.<br>
+1. "MISCHEN" Button um sich schnell eine Karte aus den bisher 52 Buzzwords mischen zu lassen ohne die Seite neuzuladen.<br><br>
+2. Anzeige der nicht in die aktuelle Karte gemischten Buzzwords<br><br>
+3. Skalierbare vektor Buzzword-Tiles im svg Format.<br>
 <br>
 gebastelt wird an:<br><br>
 3. Gewinn erkennung (bräuchte speziell Hilfe beim simplen vergleich von Arrays ;)<br>
@@ -118,14 +149,47 @@ Das wollt ich schon immer mal wieder ändern und Tims aufruf zum Bingo hat da di
 In den letzten 13 Jahren hab ich mich nach einer kompletten Umorientierung tief ins Thema Sushi gehackt und bin nun relativ erfolgreich als Freier Showkoch europaweit unterwegs, was die "Entwicklung" der Bingo-Karte in die späten Abendstunden schiebt.<br>
 <br><br>
 Jede Mithilfe bis zum komplett umwerfen des bisherigen spaghetti codes oder einfach lautes Gelächter sind herzlich Willkommen!
+	      </td><td id="text">
+Gewinnmuster:<br>
+<table>
+  <tr>
+  <td id="text">
+Vertikale 7<br>
+<br>
+<img src="images/gewinn1.png">	  
+  </td><td id="text">
+Horizontale 7<br>
+<br>
+<img src="images/gewinn2.png">	  
+  </td></tr><tr><td id="text">  
+Diagonale 7<br>
+<br>
+<img src="images/gewinn3.png">	  
+  </td><td id="text">  
+Freakshow F<br>
+<br>
+<img src="images/gewinn4.png">	  
+  </td></tr><tr><td id="text">  
+Diamant<br>
+<br>
+<img src="images/gewinn5.png">	  
+  </td><td id="text">  
+Saphir<br>
+<br>
+<img src="images/gewinn6.png">	  
+  </td></tr><tr><td id="text">
+Bier Krug<br>
+<br>
+<img src="images/gewinn7.png">  
 	      </td>
 	    </tr>
 	    </table>
 	</div>
-    </div>
 	    <div id="result1"></div>
 	    <div id="result2"></div>
-
-	
+	    <div id="result3"></div>
+	    <div id="result4"></div>
+	    <div id="result5"></div>
+	    <div id="result6"></div>
 </body>
 </html>
