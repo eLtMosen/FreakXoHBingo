@@ -1,7 +1,7 @@
 [Dolphin]
 PreviewsShown=true
 SortOrder=1
-SortRole=date
-Timestamp=2015,11,24,0,28,15
+SortRole=size
+Timestamp=2015,11,25,0,10,24
 Version=3
 ViewMode=1

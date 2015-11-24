@@ -44,7 +44,8 @@ $(document).ready(function(){
 	      for(var j = 0; j < benutzteKarten.length; j++){
 	      benutzteKarten[j] = false;
 	      }	
-	  }	  
+	  }
+	  
 	  
 	  $('#neueKarte').click(function(){
 	      $('div.resize img').css({'width' : '100px'});

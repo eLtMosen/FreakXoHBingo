@@ -2,6 +2,8 @@
 <html>
 <head>
     <meta charset=utf-8 />
+    <link rel="icon" type="image/svg+xml" href="http://mosushi.net/bingo/images/favicon.svg">
+    <link rel="alternate icon" type="image/png" href="http://mosushi.net/bingo/images/favicon.png">
     <title>Freakshow Bingo</title>
     <script tbype="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
     <!--[if IE]>
@@ -116,33 +118,41 @@
 		      <td id="text">
 Dies ist eine frische Implementierung eines rudimentären Bingo Algorithmus als bescheidener Start auf dem Weg zur von Clemens geforderten Version mit "Soße und Scharf".<br>
 Als Vorbild dient bullshitbingo.net. Dort habe ich zur Freakshow (165) 36 Buzzwords eingespeist <a href="https://twitter.com/eLtMosen/status/663836699840159744" target="_blank">und per Twitter geteilt</a>.<br><br>
-Die Buzzwords zu finden war nach einem zufälligen "total recap" aller 164 MobilMacs und Freakshow folgen der mir das Jahr 2015 mit Bluetooth Headset versüßt hat nicht  ganz so schwierig.<br>
-Schon beim ersten Einsatz der schlichten 5x5 Karten konnte Chat benutzer Knospe erfolgreich als Gewinner gefeiert werden!<br>
+Die Buzzwords zu finden war nach einem zufälligen "total recap" aller 164 MobilMacs und Freakshow Folgen der mir das Jahr 2015 mit Bluetooth Headset versüßt hat nicht  ganz so schwierig.<br>
 <br>
-Für den ersten Versuch war bullshitbingo ok, aber da <a href="http://epir.at" target="_blank">ePirat</a> schon mit <a href="https://t.co/FYX8pJjpIO" target="_blank">einer tollen PDF Bingo Karte am Start war</a> und mir die Limitierung auf 5x5 große klassische Karten nicht gefiel, war schon kurz vor der FS165 klar das irgendiw eine Eigenentwicklung mit graphischen Buzzwords her musste.<br>
+Schon beim ersten Einsatz der schlichten 5x5 Karten konnte <a href="https://kkrzoya8imrm3jot.myfritz.net/bingo.png" target="_blank"> Chat benutzer Knospe </a>erfolgreich als Gewinner gefeiert werden!<br>
+<br>
+Für den ersten Versuch war bullshitbingo ok, aber da <a href="http://epir.at" target="_blank">ePirat</a> schon mit <a href="https://t.co/FYX8pJjpIO" target="_blank">einer tollen PDF Bingo Karte am Start war</a> und mir die Limitierung auf 5x5 große klassische Karten nicht gefiel, war schon kurz vor der FS165 klar das irgendwie eine Eigenentwicklung mit graphischen Buzzwords her musste.<br>
+<br>
 Als dann auch noch Clemens und Tim eine 7x7 Karte forderten und selbst schon der "Alpha 1" Version allgemeine Zustimmung zu Teil wurde, waren die ersten SVG-Buzzword-Tiles noch während der Sendung durch Inkscape gebruzelt.<br>
+<br>
+Entgegen Tims Vermutung war bullshitbing.net mit der ersten Version im Funktionsumfang schon vollständig ausgereizt. Also ein weiteres Argument für einen Neustart.<br>
+<br>
+Da diese Seite nun in Berlin bei Prosite gehostet wird, schicken wir unsere Bingo Daten nun im besten Fall auch nicht mehr um den halben Erdball ;)
 </td><td id="text">
 Tadaa, <br>
 hier also die "Alpha 2", mit handgeklöppelten SVG-Tiles für 52 Buzzwords, randomiziert auf ein 7x7 Feld.
-Die schleichende Entwicklung passiert auf Github unter: <a href="https://github.com/eLtMosen/FreakXoHBingo" target="_blank">eLtMosen/FreakXoHBingo</a><br>
+Die schleichende Entwicklung passiert <a href="https://github.com/eLtMosen/FreakXoHBingo" target="_blank">auf Github</a><br>
 Fühlt Euch bitte eingeladen jegliche Art von konstruktivem Commit zu tätigen.<br>
-Vorschläge und Löschwünsche für Buzzwords erreichen mich am besten über Twitter @eLtMosen oder per Kommentar im Git.<br> 
+Vorschläge und Löschwünsche für Buzzwords erreichen mich am besten über Twitter <a href="https://twitter.com/eLtMosen" target="_blank">@eLtMosen</a> oder per Kommentar im Git.<br> 
 <br>
 Es gibt sogar schon Features! (MH="Mann Stunden")<br>
-<br>
-1. Bingo Grundfunktion (Karte austeilen, Buzzwords markieren, ~5MH)<br>
-2. "MISCHEN" Button um sich schnell eine Karte aus den bisher 52 Buzzwords mischen zu lassen ohne die Seite neuzuladen. (0,5MH)<br>
-3. Anzeige der nicht in die aktuelle Karte gemischten Buzzwords. (1MH)<br>
-4. 52 Skalierbare vektor Buzzword-Tiles im svg Format.(~26MH)<br>
-5. Anpassung der Auflösung in 5 Schritten.(1MH)<br>
-<br>
-gebastelt wird an:<br><br>
-6. Druckoptimierte Anzeige der puren Karte.(2MH)<br>
-7. Gewinn-Erkennung (bräuchte speziell Hilfe beim simplen Vergleich von Arrays ;)(~5MH)<br>
-8. Share-Funktion mit Hash der gewinn Matrix.<br>
-9. Wieder-Anzeige von gehashten Matrizen<br>
-10. Syncronisiertes Multiplayern mit verifizierbarem Gewinner zur Preisvergabe :D<br>
-11. Komplexere Spielmodi mit multiplen addierten Bingos und einem monatlichen(?) Gewinner.<br>
+<ul>
+<li>Bingo Grundfunktion (Karte austeilen, Buzzwords markieren, ~5MH)</li>
+<li>"MISCHEN" Button um sich schnell eine Karte aus den bisher 52 Buzzwords mischen zu lassen ohne die Seite neuzuladen. (0,5MH)</li>
+<li>Anzeige der nicht in die aktuelle Karte gemischten Buzzwords. (1MH)</li>
+<li>52 Skalierbare vektor Buzzword-Tiles im svg Format.(~26MH)</li>
+<li>Anpassung der Auflösung in 5 Schritten.(1MH)</li>
+</ul>
+gebastelt wird an:
+<ul>
+<li>Druckoptimierte Anzeige der puren Karte.(2MH)</li>
+<li>Gewinn-Erkennung (bräuchte speziell Hilfe beim simplen Vergleich von Arrays ;)(~5MH)</li>
+<li>Share-Funktion mit Hash der gewinn Matrix.</li>
+<li>Wieder-Anzeige von gehashten Matrizen</li>
+<li>Syncronisiertes Multiplayern mit verifizierbarem Gewinner zur Preisvergabe :D</li>
+<li>Komplexere Spielmodi mit multiplen addierten Bingos und einem monatlichen(?) Gewinner.</li>
+</ul>
 </td><td id="text">
 Anleitung:<br>
 <br>
@@ -171,11 +181,14 @@ Gewinnmuster:<br>
       Diamant<br>
       <img src="images/gewinn5.png">	  
   </td><td>  
-      Saphir<br>
-      <img src="images/gewinn6.png">	  
+      @<br>
+      <img src="images/gewinn8.png">	  
   </td></tr><tr><td>
       Bier Krug<br>
       <img src="images/gewinn7.png">  
+      </td><td>
+      Apfel<br>
+      <img src="images/gewinn9.png">  
       </td>
     </tr>
 </table>

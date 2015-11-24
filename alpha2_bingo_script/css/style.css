@@ -2,16 +2,13 @@
   width:750px;
   margin:0 auto;
   background-color:#F63D31;
-  -webkit-box-shadow: 7px 10px 20px 0px rgba(0,0,0,0.75);
-  -moz-box-shadow: 7px 10px 20px 0px rgba(0,0,0,0.75);
-  box-shadow: 7px 10px 20px 0px rgba(0,0,0,0.75);
 }
 
 #textseite{
   width:750px;
   margin:0 auto;
   background-color:#F63D31;
-  font-size:+1
+  font-size:14px;
   text-align:left;
   vertical-align:top;  
 }
@@ -28,22 +25,27 @@ table{
   border:0px;
 }
 
+ul{
+  padding-left:15px;
+  border:0px;
+}
+
+li{
+  padding:5px;
+  border:0px;
+}
+
 img{ 
-  vertical-align: center;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 100px;
-  height: 100px;
-  margin-top: -50px; /* Half the height */
-  margin-left: -50px; /* Half the width */  
+  vertical-align: bottom;
+  width:100px;
+  height:100px;
 }
 
 td{
   padding:0px;
   width:100px;
   height:100px;
-  vertical-align:middle;
+  vertical-align:bottom;
   border:0px;
   background-color:#dfc084;
 }
