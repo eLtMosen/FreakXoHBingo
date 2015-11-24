@@ -29,16 +29,21 @@ table{
 }
 
 img{ 
-  vertical-align: bottom;
-  width:100px;
-  height:100px;
+  vertical-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100px;
+  height: 100px;
+  margin-top: -50px; /* Half the height */
+  margin-left: -50px; /* Half the width */  
 }
 
 td{
   padding:0px;
   width:100px;
   height:100px;
-  vertical-align:bottom;
+  vertical-align:middle;
   border:0px;
   background-color:#dfc084;
 }
