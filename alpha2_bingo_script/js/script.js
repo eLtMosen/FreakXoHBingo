@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-   var benutzteKarten = new Array(48);
+   var benutzteKarten = new Array(53);
    var gewinnArray = new Array(48);
    var matrixArray1 = ["0","1","2","3","4","5","6"];
    var matrixArray2 = [true,true,true,true,true,true,true];
@@ -21,7 +21,7 @@ $(document).ready(function(){
 	      }
 	      
 	      var l = 1;
-	      for(var k = 1; k<52; k++){
+	      for(var k = 1; k<57; k++){
 		  if(benutzteKarten[k] != true){
 		  $('#fehlt'+l).html('<img src="images/'+ k +'.svg">');
 		  l++;
@@ -30,7 +30,7 @@ $(document).ready(function(){
 	  }
 	  	 
 	  function karte_fuellen(i){
-	      nummer = (Math.floor(Math.random()*52)+1);	
+	      nummer = (Math.floor(Math.random()*57)+1);	
 		 
 	      if(benutzteKarten[nummer] != true){
 		  $('#zelle'+i).html('<img src="images/'+ nummer +'.svg">');
@@ -45,8 +45,8 @@ $(document).ready(function(){
 	      benutzteKarten[j] = false;
 	      }	
 	  }
-	  
-	  
+
+ 
 	  $('#neueKarte').click(function(){
 	      $('div.resize img').css({'width' : '100px'});
 	      $('div.resize img').css({'height' : '100px'});
