@@ -56,6 +56,11 @@ Fritzbox >> @johannesjom https://twitter.com/johannesjom/status/6694569433926942
 Android >> @johannesjom https://twitter.com/johannesjom/status/669456943392694277
 Otto Normal Facetuber>> @_derOliver https://twitter.com/_derOliver/status/669475639808888832
         <<^tiles für alpha2 bereits erstellt>>
+Haben wir noch Themen >> Mikrobe im hat    
+Die riechen nach lulu >> @roddi in der Sendung 166
+Shownotes >> @roddi in der Sendung 166
+        
+        
         <<<<auch in der groben Überlegung, aber der Limitierung auf 52 Begriffe in "final alpha2" geopfert>>'
 isp tarife
 Was erlaube ...
@@ -74,3 +79,9 @@ PDF: https://t.co/FYX8pJjpIO von ePirat
 Alpha1 Dynamisch bei bullshitbingo.net: http://preview.tinyurl.com/qx9jaj6
 Alpha2 in Javascript auf: http://mosushi.net/misc/bingo
 
+feature requests:
+
+nicht open zfs
+ja, werde die buzzwords an personen taggen und auschließen bei nicht teilnahme ;)
+
+ eLtMosen: fänd auch gut, wenn man die nicht-verwendeten trotzdem grün klicken könnte

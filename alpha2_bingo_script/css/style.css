@@ -2,6 +2,9 @@
   width:750px;
   margin:0 auto;
   background-color:#F63D31;
+  -webkit-box-shadow: 7px 10px 20px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 7px 10px 20px 0px rgba(0,0,0,0.75);
+  box-shadow: 7px 10px 20px 0px rgba(0,0,0,0.75);  
 }
 
 #textseite{
@@ -64,11 +67,11 @@ h1 a{
 cursor:pointer;
 }
 
+.gelbe_zelle {
+   background: #fcfd00; /* Or some other color */
+}
 .gruene_zelle {
    background: #00FF00; /* Or some other color */
-}
-.braune_zelle {
-   background: #dfc084; /* Or some other color */
 }
 .mouseover_zelle {
    background: #F63D31; /* Or some other color */
