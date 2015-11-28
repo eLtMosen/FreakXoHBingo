@@ -67,7 +67,7 @@ h1 a{
 cursor:pointer;
 }
 
-.gelbe_zelle {
+.clickedCell {
    background: #fcfd00; /* Or some other color */
 }
 .gruene_zelle {

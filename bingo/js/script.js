@@ -1,7 +1,14 @@
 $(document).ready(function() {
-
-  var AnzahlBuzzwords = 57;
-  var benutzteKarten = new Array(AnzahlBuzzwords);
+  var config = {
+    map : {
+      width : 7,
+      height : 7,
+      size : 49
+    },
+    buzzwordCount : 57
+  };
+  console.log(config.map.size)
+  var benutzteKarten = new Array(config.buzzwordCount);
   var geklicktArray = new Array(48);
   var gewinnArray = {
     "Vertikal1": [0, 1, 2, 3, 4, 5, 6],
@@ -26,9 +33,9 @@ $(document).ready(function() {
     "Bierkrug": [8, 9, 10, 11, 12, 20, 26, 28, 29, 30, 31, 32, 35, 38, 43, 44],
     "Apfel": [3, 4, 9, 10, 11, 12, 16, 17, 18, 19, 20, 22, 23, 24, 25, 27, 29, 30, 31, 32, 33, 36, 39, 48]
   }
-  var erreichteBingos = new Array(21);
   var nummer = 0;
 
+  createBingoBody();
   init();
 
   function enthaeltAlle(nadeln, heuhaufen) {
@@ -39,12 +46,12 @@ $(document).ready(function() {
   }
 
   function init() {
-    for (var i = 0; i < 48; i++) {
+    for (var i = 1; i <= config.map.size; i++) {
       karte_fuellen(i);
     }
 
     var l = 1;
-    for (var k = 1; k < AnzahlBuzzwords; k++) {
+    for (var k = 1; k < config.buzzwordCount; k++) {
       if (benutzteKarten[k] != true) {
         $('#fehlt' + l).html('<img src="images/' + k + '.svg">');
         l++;
@@ -52,11 +59,25 @@ $(document).ready(function() {
     }
   }
 
+  function createBingoBody() {
+    var $BingoBody = $('#BingoBody');
+    var $row = $('<tr>');
+    
+    for (var i = 1; i <= config.map.size; i++) {
+      $row.append($('<td>').attr('id' , 'cell' + i));
+
+      if(i % config.map.width == 0) {
+        $BingoBody.append($row);
+        var $row = $('<tr>');
+      }
+    }
+  }
+
   function karte_fuellen(i) {
-    nummer = (Math.floor(Math.random() * AnzahlBuzzwords) + 1); -
+    nummer = (Math.floor(Math.random() * config.buzzwordCount) + 1);
 
     if (benutzteKarten[nummer] != true) {
-      $('#zelle' + i).html('<img src="images/' + nummer + '.svg">');
+      $('#cell' + i).html('<img src="images/' + nummer + '.svg">');
       benutzteKarten[nummer] = true;
     } else {
       karte_fuellen(i);
@@ -96,24 +117,23 @@ $(document).ready(function() {
     resize(300, 2150);
   });
 
-  function resize(argument) {
+  function resize(tileSize, fullSize) {
     $('div.resize img').width(tileSize).height(tileSize);
     $('div.resize td').width(tileSize).height(tileSize);
     $('div.resize').width(fullSize);
   }
 
   $("#BingoBody td").click(function() {
-    $(this).toggleClass("gelbe_zelle");
+    $(this).toggleClass("clickedCell");
     geklicktArray[this.id.slice(5)] = parseInt(this.id.slice(5), 10);
     var i = 1;
     $.each(gewinnArray, function(key, value) {
       if (enthaeltAlle(value, geklicktArray)) {
-        erreichteBingos[i] = key;
         $('#result' + i).html(key);
         $.each(gewinnArray, function(key, value) {
           if (enthaeltAlle(value, geklicktArray)) {
             for (var j = 0; j < value.length;) {
-              $('#zelle' + value[j]).addClass("gruene_zelle");
+              $('#cell' + value[j]).addClass("gruene_zelle");
               j++;
             }
           }
