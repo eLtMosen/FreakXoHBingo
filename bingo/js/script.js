@@ -76,7 +76,7 @@ $(document).ready(function() {
     });
 
     $('.resizeTiles').click(function() {
-      resizeTiles($(this).attr('data-tile-size'));
+      resizeTiles(parseInt($(this).attr('data-tile-size')));
     });
 
     $("#BingoBody td").click(function() {
@@ -130,10 +130,6 @@ $(document).ready(function() {
 
   function and(a, b) {
     return a && b;
-  }
-
-  function checkVertical(bingoCard) {
-
   }
 
   function resizeTiles(tileSize) {
