@@ -1,22 +1,26 @@
 $(document).ready(function() {
   var config = {
-    bingoCard : {
-      width : 7,
-      height : 7,
-      size : 49
+    bingoCard: {
+      width: 7,
+      height: 7,
+      size: 49,
+
+      addWinnigBoards: {
+        "FreakshowF": [9, 10, 11, 12, 16, 23, 24, 25, 30, 37],
+        "Diamant": [3, 9, 11, 15, 19, 21, 27, 29, 33, 37, 19, 45],
+        "atzeichen": ["TODO"],
+        "Bierkrug": ["TODO"],
+        "Apfel": ["TODO"]
+      }
     },
-    buzzwordCount : 57
+    buzzwordCount: 57
   };
 
-  var gewinnArray = {
-    "Diagonal1": [0, 8, 16, 48, 31, 39, 47],
-    "Diagonal2": [6, 12, 18, 48, 29, 35, 41],
-    "FreakshowF": [15, 16, 17, 18, 19, 22, 28, 30, 35, 48],
-    "Diamant": [3, 9, 11, 15, 19, 21, 26, 28, 32, 36, 38, 44],
-    "atzeichen": [1, 2, 3, 4, 5, 6, 7, 13, 14, 17, 18, 20, 21, 23, 24, 26, 27, 30, 31, 33, 34, 38, 40, 42, 43, 44, 47],
-    "Bierkrug": [8, 9, 10, 11, 12, 20, 26, 28, 29, 30, 31, 32, 35, 38, 43, 44],
-    "Apfel": [3, 4, 9, 10, 11, 12, 16, 17, 18, 19, 20, 22, 23, 24, 25, 27, 29, 30, 31, 32, 33, 36, 39, 48]
-  }
+  var $bingoBody = $('#BingoBody');
+
+  var model = {
+    bingoCard: _.fill(new Array(config.bingoCard.size), false)
+  };
 
   init();
 
@@ -27,38 +31,42 @@ $(document).ready(function() {
   }
 
   function createBingoCard() {
-    var $BingoBody = $('#BingoBody');
     var $row = $('<tr>');
-    
+
     _.times(config.bingoCard.size, function(i) {
       $cell = $('<td>');
-      $cell.attr('id' , 'cell' + i);
+      $cell.attr('id', 'cell' + i);
+      $cell.attr('data-id', i);
+
       $cell.append($('<img>'));
 
       $row.append($cell);
 
       // Ueberpruefe ob Reihe voll
-      if(i % config.bingoCard.width == config.bingoCard.width - 1) {
-        $BingoBody.append($row);
+      if (i % config.bingoCard.width == config.bingoCard.width - 1) {
+        $bingoBody.append($row);
         $row = $('<tr>');
       }
     });
   }
 
   function initBingoCard() {
-    var allBingoCardIds = _.range(1, config.buzzwordCount);
+    var allBingoCards = _.range(1, config.buzzwordCount);
 
-    _.times(config.bingoCard.size, function(i) {
-      var randomNum = _.random(1, allBingoCardIds.length - 1);
-      var id = allBingoCardIds[randomNum];
-      $('#cell' + i).find('img').attr('src', 'images/' + id + '.svg');
+    // Mische alle Bingo-Karten und Teile alle Karten diese in Zwei-Teile auf
+    var tmp = _.chunk(_.shuffle(allBingoCards), config.bingoCard.size);
+    var usedBingoCards = tmp[0];
+    var missingBingoCards = tmp[1];
 
-      allBingoCardIds = _.without(allBingoCardIds, id);
-    });
+    setImgOn('#cell', usedBingoCards);
+    setImgOn('#missing', missingBingoCards);
+  }
 
-    _.times(allBingoCardIds.length, function(i) {
-      console.log(i);
-      $('#missing' + i).find('img').attr('src', 'images/' + allBingoCardIds[i] + '.svg');
+  function setImgOn(htmlId, imgIds) {
+    _.times(imgIds.length, function(id) {
+      var $elem = $(htmlId + id);
+      $elem.find('img').attr('src', 'images/' + imgIds[id] + '.svg');
+      $elem.attr('data-img-id', imgIds[id]);
     });
   }
 
@@ -67,31 +75,65 @@ $(document).ready(function() {
       initBingoCard();
     });
 
-    $('#klein').click(function() {
-      resizeTiles(75);
+    $('.resizeTiles').click(function() {
+      resizeTiles($(this).attr('data-tile-size'));
     });
 
-    $('#normal').click(function() {
-      resizeTiles(100);
-    });
+    $("#BingoBody td").click(function() {
+      $(this).toggleClass("clickedCell");
+      var idx = parseInt($(this).attr('data-id'));
+      model.bingoCard[idx] = !model.bingoCard[idx];
 
-    $('#mittel').click(function() {
-      resizeTiles(150);
+      if(checkWin(model.bingoCard)) {
+        alert("Gewonnen!")
+      }
     });
-    
-    $('#gross').click(function() {
-      resizeTiles(200);
-    });
-
-    $('#riesig').click(function() {
-      resizeTiles(300);
-    });
-
-    $("#BingoBody td").click(bingoCardClicked);
   }
 
-  function bingoCardClicked() {
-    $(this).toggleClass("clickedCell");
+  function checkWin(bingoCard) {
+    var bingoCardHorizontal = _.chunk(bingoCard, config.bingoCard.width);
+    var bingoCardVertikal = _.zip.apply(_, bingoCardHorizontal);
+
+    return checkLines(bingoCardHorizontal) || 
+           checkLines(bingoCardVertikal) || 
+           checkAddWinningBoards(bingoCard);
+  }
+
+  function checkAddWinningBoards(bingoCard) {
+    var convertedToNum = _.reduce(bingoCard, function(result, val, idx) {
+      if(val) {
+        result.push(idx);
+      }
+      return result;
+    }, []);
+
+    console.log(convertedToNum);
+
+    var addWinnigBoards = _.collect(config.bingoCard.addWinnigBoards);
+    for(var i = 0; i < addWinnigBoards.length; i++) {
+      if(_.eq(_.intersection(addWinnigBoards[i], convertedToNum), addWinnigBoards[i])){
+        return true;
+      }
+    }
+
+    return false;
+  }
+
+  function checkLines(array2d) {
+    for (var i = 0; i < array2d.length; i++) {
+      if(_.reduce(array2d[i], and, true)) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  function and(a, b) {
+    return a && b;
+  }
+
+  function checkVertical(bingoCard) {
+
   }
 
   function resizeTiles(tileSize) {
