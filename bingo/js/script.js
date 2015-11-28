@@ -71,112 +71,36 @@ $(document).ready(function() {
 
 
   $('#neueKarte').click(function() {
-    $('div.resize img').css({
-      'width': '100px'
-    });
-    $('div.resize img').css({
-      'height': '100px'
-    });
-    $('div.resize td').css({
-      'width': '100px'
-    });
-    $('div.resize td').css({
-      'height': '100px'
-    });
-    $('div.resize').css({
-      'width': '750px'
-    });
+    resize(100, 750);
     benutzteKartenZuruecksetzen();
     init();
   });
 
   $('#klein').click(function() {
-    $('div.resize img').css({
-      'width': '75px'
-    });
-    $('div.resize img').css({
-      'height': '75px'
-    });
-    $('div.resize td').css({
-      'width': '75px'
-    });
-    $('div.resize td').css({
-      'height': '75px'
-    });
-    $('div.resize').css({
-      'width': '575px'
-    });
+    resize(75, 575);
   });
 
   $('#normal').click(function() {
-    $('div.resize img').css({
-      'width': '100px'
-    });
-    $('div.resize img').css({
-      'height': '100px'
-    });
-    $('div.resize td').css({
-      'width': '100px'
-    });
-    $('div.resize td').css({
-      'height': '100px'
-    });
-    $('div.resize').css({
-      'width': '750px'
-    });
+    resize(100, 750);
   });
 
   $('#mittel').click(function() {
-    $('div.resize img').css({
-      'width': '150px'
-    });
-    $('div.resize img').css({
-      'height': '150px'
-    });
-    $('div.resize td').css({
-      'width': '150px'
-    });
-    $('div.resize td').css({
-      'height': '150px'
-    });
-    $('div.resize').css({
-      'width': '1100px'
-    });
+    resize(150, 1100);
   });
-  $('#gross').click(function() {
-    $('div.resize img').css({
-      'width': '200px'
-    });
-    $('div.resize img').css({
-      'height': '200px'
-    });
-    $('div.resize td').css({
-      'width': '200px'
-    });
-    $('div.resize td').css({
-      'height': '200px'
-    });
-    $('div.resize').css({
-      'width': '1450px'
-    });
+  
+  $('#gross').click(function(tileSize, fullSize) {
+    resize(200, 1450);
   });
+
   $('#riesig').click(function() {
-    $('div.resize img').css({
-      'width': '300px'
-    });
-    $('div.resize img').css({
-      'height': '300px'
-    });
-    $('div.resize td').css({
-      'width': '300px'
-    });
-    $('div.resize td').css({
-      'height': '300px'
-    });
-    $('div.resize').css({
-      'width': '2150px'
-    });
+    resize(300, 2150);
   });
+
+  function resize(argument) {
+    $('div.resize img').width(tileSize).height(tileSize);
+    $('div.resize td').width(tileSize).height(tileSize);
+    $('div.resize').width(fullSize);
+  }
 
   $("#BingoBody td").click(function() {
     $(this).toggleClass("gelbe_zelle");
