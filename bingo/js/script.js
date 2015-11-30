@@ -111,7 +111,7 @@ $(document).ready(function() {
     });
   }
   
-    function setImgOff(htmlId, imgIds) {
+    function setImgOff(htmlId, imgIds) {		// zum reseten der Buzzword Tabelle nach einem ausschluss
     _.times(imgIds.length, function(id) {
       var $elem = $(htmlId + id);
       $elem.find('img').attr('src', 'images/vorschlag.svg');
@@ -119,7 +119,7 @@ $(document).ready(function() {
     });
   }
   
-  function setImgOnFree(htmlId, imgId) {		// Freakshow Logo setzen
+  function setImgOnFree(htmlId, imgId) {		// Frei Feld Logo setzen
       var $elem = $(htmlId);
       $elem.find('img').attr('src', 'images/' + imgId + '.svg');
       $elem.attr('data-img-id', '0');
@@ -150,6 +150,13 @@ $(document).ready(function() {
     });
   }
 
+  $(document).keydown(function(evt){ // m Taste an mishen funktion binden
+   if (evt.keyCode==77){
+       evt.preventDefault();
+       initBingoCard();
+   }
+  });
+  
   function containsAll(needle, haystack){ 
     for(var i = 0 , len = needle.length; i < len; i++){
       if($.inArray(needle[i], haystack) == -1) return false;
