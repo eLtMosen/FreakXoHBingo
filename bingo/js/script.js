@@ -35,13 +35,16 @@ $(document).ready(function() {
 
   
   var wonBingos = new Array(21);
+  var UserRejected = new Array(21);
   var totalScore = 0;
   var $bingoBody = $('#BingoBody');
 
   var model = {
     bingoCard: _.fill(new Array(config.bingoCard.size), false)
   };
-
+  
+  
+  
   init();
 
   function init() {
@@ -74,14 +77,24 @@ $(document).ready(function() {
 
   function initBingoCard() {
     var allBingoCards = _.range(1, config.buzzwordCount);
+    diff = allBingoCards.filter(function(x) { return UserRejected.indexOf(x) < 0 }); // Benuztzer abgewaehlte buzzwords ausschließen	
 
-    // Mische alle Bingo-Karten und Teile alle Karten diese in Zwei-Teile auf
-    var tmp = _.chunk(_.shuffle(allBingoCards), config.bingoCard.size - 1);
+    // Mische alle Bingo-Karten außer die ausgeschlossenen und Teile alle Karten in Zwei-Teile auf
+    var tmp = _.chunk(_.shuffle(diff), config.bingoCard.size - 1);
     var usedBingoCards = tmp[0];
     var missingBingoCards = tmp[1];
+    console.log('used:' + usedBingoCards);
+    console.log('fehlt:' + missingBingoCards);
+    
     setImgOnFree('#free', 'frei');
     setImgOn('#cell', usedBingoCards);
+    setImgOff('#missing', usedBingoCards);
     setImgOn('#missing', missingBingoCards);
+    $("#BingoBody td").removeClass('gelbe_zelle');
+    $("#BingoBody td").removeClass('gruene_zelle');
+    $("#BuzzwordsBody td").removeClass('rote_zelle');
+    wonBingos = [];
+    model.bingoCard.length = 0;
   }
 
   function setImgOn(htmlId, imgIds) {
@@ -95,6 +108,14 @@ $(document).ready(function() {
       $elem.find('img').attr('src', 'images/' + imgIds[id] + '.svg');
       $elem.attr('data-img-id', imgIds[id]);
       }
+    });
+  }
+  
+    function setImgOff(htmlId, imgIds) {
+    _.times(imgIds.length, function(id) {
+      var $elem = $(htmlId + id);
+      $elem.find('img').attr('src', 'images/vorschlag.svg');
+      
     });
   }
   
@@ -114,12 +135,18 @@ $(document).ready(function() {
     });
 
     $("#BingoBody td").click(function() {
-      $(this).toggleClass("clickedCell");
+      $(this).addClass("gelbe_zelle");
       var idx = parseInt($(this).attr('data-id'));	// idx = integerwert der geklickten zelle
-//      console.log(idx)
-      model.bingoCard[idx] = !model.bingoCard[idx];  // geklickete Zelle in bingoCard true setzen
+      model.bingoCard[idx] = true;  // geklickete Zelle in bingoCard true setzen
       checkWin(model.bingoCard);
       
+    });
+    
+    $("#BuzzwordsBody td").click(function() {
+      $(this).addClass("rote_zelle");
+      var idx = parseInt($(this).attr('data-img-id'));	// idx = integerwert der geklickten zelle
+      UserRejected[idx] = idx;      
+      console.log('weg: ' + UserRejected);
     });
   }
 

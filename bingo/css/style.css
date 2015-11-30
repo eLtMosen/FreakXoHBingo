@@ -63,15 +63,21 @@ h1 a{
   border:0px;
 }
 
-#BingoBody{
+#BingoBody #BuzzwordsBody{
 cursor:pointer;
 }
 
-.clickedCell {
+.gelbe_zelle {
    background: #fcfd00; /* Or some other color */
 }
 .gruene_zelle {
    background: #00FF00; /* Or some other color */
+}
+.braune_zelle {
+   background: #dfc084; /* Or some other color */
+}
+.rote_zelle {
+   background: #F63D31; /* Or some other color */
 }
 .mouseover_zelle {
    background: #F63D31; /* Or some other color */
