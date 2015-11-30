@@ -13,7 +13,7 @@ $(document).ready(function() {
         "Apfel": [4, 10, 15, 16, 17, 18, 19, 21, 22, 23, 24, 25, 28, 29, 30, 31, 32, 36, 37, 38, 39, 40, 44, 46]
       }
     },
-    buzzwordCount: 61
+    buzzwordCount: 62 	// Anzahl der Buzzwords +1...
   };
 
   var $bingoBody = $('#BingoBody');
@@ -56,28 +56,34 @@ $(document).ready(function() {
     var allBingoCards = _.range(1, config.buzzwordCount);
 
     // Mische alle Bingo-Karten und Teile alle Karten diese in Zwei-Teile auf
-    var tmp = _.chunk(_.shuffle(allBingoCards), config.bingoCard.size);
+    var tmp = _.chunk(_.shuffle(allBingoCards), config.bingoCard.size -1);
     var usedBingoCards = tmp[0];
     var missingBingoCards = tmp[1];
-
+    console.log(usedBingoCards);
+    console.log(missingBingoCards);
     setImgOnFree('#free', 'frei');
     setImgOn('#cell', usedBingoCards);
     setImgOn('#missing', missingBingoCards);
-    console.log(missingBingoCards);
   }
 
   function setImgOn(htmlId, imgIds) {
     _.times(imgIds.length, function(id) {
+      if(id == 24) {					// wenn id 24 erreicht, in cell48 schreiben
+	var $elem = $(htmlId + 48);
+	$elem.find('img').attr('src', 'images/' + imgIds[id] + '.svg');
+	$elem.attr('data-img-id', imgIds[id]);
+      }else{
       var $elem = $(htmlId + id);
       $elem.find('img').attr('src', 'images/' + imgIds[id] + '.svg');
       $elem.attr('data-img-id', imgIds[id]);
+      }
     });
   }
   
   function setImgOnFree(htmlId, imgId) {		// Freakshow Logo setzen
       var $elem = $(htmlId);
       $elem.find('img').attr('src', 'images/' + imgId + '.svg');
-      $elem.attr('data-img-id', '24');
+      $elem.attr('data-img-id', '0');
   }
 
   function bindEventHandler() {
@@ -94,7 +100,8 @@ $(document).ready(function() {
       var idx = parseInt($(this).attr('data-id'));	// idx = integerwert der geklickten zelle
       model.bingoCard[idx] = !model.bingoCard[idx];  // geklickete Zelle in bingoCard true setzen
       if(checkWin(model.bingoCard)) {
-        console.log(model.bingoCard);
+	console.log("Gewinn!");
+
       }
     });
   }
@@ -106,6 +113,7 @@ $(document).ready(function() {
     return checkLines(bingoCardHorizontal) || 
            checkLines(bingoCardVertikal) || 
            checkAddWinningBoards(bingoCard);
+    
   }
 
   function checkAddWinningBoards(bingoCard) {
@@ -116,7 +124,7 @@ $(document).ready(function() {
       return result;
     }, []);
 
-    console.log(convertedToNum);
+    // console.log(convertedToNum);
 
     var addWinnigBoards = _.collect(config.bingoCard.addWinnigBoards);
     for(var i = 0; i < addWinnigBoards.length; i++) {
