@@ -42,6 +42,21 @@ img{
   vertical-align: bottom;
   width:100px;
   height:100px;
+  transition: all 1.5s;
+}
+
+.missing:before {
+  content: "";
+  position: absolute;
+  height: 100px;
+  width: 100px;
+/*  transition: all 0.1s; */
+  opacity: 0;
+  background: url(../images/kreuz.svg);
+  background-size: 100px 100px;
+}
+.missing:hover:before {
+  opacity: 0.75;
 }
 
 td{

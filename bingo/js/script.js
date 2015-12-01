@@ -30,11 +30,28 @@ $(document).ready(function() {
         "Diamant": [3, 9, 11, 15, 19, 21, 27, 29, 33, 37, 39, 45],
         "atzeichen": [1, 2, 3, 4, 5, 7, 13, 14, 17, 20, 21, 23, 25, 27, 28, 30, 31, 32, 33, 35, 43, 44, 45, 46, 47, 48],
         "Bierkrug": [8, 11, 12, 15, 18, 20, 22, 25, 27, 29, 32, 33, 36, 39, 44, 45],
+        "Ecken_aussen": [0, 6, 42, 48],
+	"Saphir": [10, 16, 18, 22, 26, 30, 32, 38],
+	"CCC": [1, 2, 7, 14, 18, 19, 21, 27, 29, 30, 33, 41, 46, 47],
+	"Knochen": [15, 19, 22, 23, 24, 25, 26, 29, 33],
+	"Schluessel": [8, 9, 15, 16, 24, 32, 39, 40],
+	"Sternhimmel":[1, 4, 7, 13, 17, 23, 24, 25, 28, 31, 40, 44, 48],
+	"Schachbrett": [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29, 31, 33, 35, 37, 39, 41, 43, 45, 47],
+	"Ecken_innen": [16, 18, 30, 32],
+	"Hangman": [9, 10, 11, 15, 18, 22, 24, 25, 26, 29, 32, 36, 38, 40, 43],
+	"Sinus": [7, 11, 15, 17, 19, 22, 24, 26, 29, 31, 33, 37, 41],
+	"Bloecke": [8, 9, 11, 12, 15, 16, 18, 19, 29, 30, 32, 33, 36, 37, 39, 40],
+	"Six_Pack": [17, 18, 24, 25, 31, 32],
+	"Satellit": [8, 12, 16, 17, 18, 23, 25, 30, 31, 32, 36, 40],
+	"Bulls_Eye": [9, 10, 11, 15, 19, 22, 24, 26, 29, 33, 37, 38, 39],
+	"Schmetterling": [8, 12, 15, 16, 18, 19, 22, 24, 26, 29, 30, 32, 33, 36, 40],
+	"Vogelscheuche": [10, 15, 16, 17, 18, 19, 24, 30, 32, 36, 40],
+	"Monster_Bingo": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48],
         "Apfel": [4, 10, 15, 16, 17, 18, 19, 21, 22, 23, 24, 25, 28, 29, 30, 31, 32, 36, 37, 38, 39, 40, 44, 46]
       }
 
   
-  var wonBingos = new Array(21);
+  var wonBingos = new Array(38);
   var UserRejected = new Array(21);
   var totalScore = 0;
   var $bingoBody = $('#BingoBody');
@@ -61,7 +78,7 @@ $(document).ready(function() {
       if(i != 24) {					// 24= Freifeld in der Mitte mit Freakshow Logo
 	$cell.attr('id', 'cell' + i);
       }else{
-        $cell.attr('id', 'free');
+        $cell.attr('id', 'cell24');
       }
       $cell.attr('data-id', i);
       $cell.append($('<img>'));
@@ -77,7 +94,7 @@ $(document).ready(function() {
 
   function initBingoCard() {
     var allBingoCards = _.range(1, config.buzzwordCount);
-    diff = allBingoCards.filter(function(x) { return UserRejected.indexOf(x) < 0 }); // Benuztzer abgewaehlte buzzwords ausschließen	
+    diff = allBingoCards.filter(function(x) { return UserRejected.indexOf(x) < 0 }); // Benuztzer abgewaehlte buzzwords vom array abziehen	
 
     // Mische alle Bingo-Karten außer die ausgeschlossenen und Teile alle Karten in Zwei-Teile auf
     var tmp = _.chunk(_.shuffle(diff), config.bingoCard.size - 1);
@@ -86,7 +103,7 @@ $(document).ready(function() {
     console.log('used:' + usedBingoCards);
     console.log('fehlt:' + missingBingoCards);
     
-    setImgOnFree('#free', 'frei');
+    setImgOnFree('#cell24', 'frei');
     setImgOn('#cell', usedBingoCards);
     setImgOff('#missing', usedBingoCards);
     setImgOn('#missing', missingBingoCards);
@@ -126,6 +143,14 @@ $(document).ready(function() {
   }
 
   function bindEventHandler() {
+    
+    $(document).keydown(function(evt){ // m Taste an mischen funktion binden
+      if (evt.keyCode==77){
+	  evt.preventDefault();
+	  initBingoCard();
+      }
+    });
+
     $('#neueKarte').click(function() {
       initBingoCard();
     });
@@ -139,7 +164,6 @@ $(document).ready(function() {
       var idx = parseInt($(this).attr('data-id'));	// idx = integerwert der geklickten zelle
       model.bingoCard[idx] = true;  // geklickete Zelle in bingoCard true setzen
       checkWin(model.bingoCard);
-      
     });
     
     $("#BuzzwordsBody td").click(function() {
@@ -150,12 +174,7 @@ $(document).ready(function() {
     });
   }
 
-  $(document).keydown(function(evt){ // m Taste an mishen funktion binden
-   if (evt.keyCode==77){
-       evt.preventDefault();
-       initBingoCard();
-   }
-  });
+
   
   function containsAll(needle, haystack){ 
     for(var i = 0 , len = needle.length; i < len; i++){
@@ -171,7 +190,7 @@ $(document).ready(function() {
       }
       return result;
     }, []);
-
+    console.log(convertedToNum);
     var i = 1;
     $.each(WinBoards, function( key, value ) {
       if(containsAll(value, convertedToNum)){

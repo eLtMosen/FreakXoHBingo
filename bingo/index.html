@@ -21,34 +21,33 @@
     <div class="resize">
       <table id="BuzzwordsBody">
         <tr>
-          
-          <td id="missing1"><img src="images/vorschlag.svg"></td>
-          <td id="missing2"><img src="images/vorschlag.svg"></td>
-          <td id="missing3"><img src="images/vorschlag.svg"></td>
-          <td id="missing4"><img src="images/vorschlag.svg"></td>
-          <td id="missing5"><img src="images/vorschlag.svg"></td>
-          <td id="missing6"><img src="images/vorschlag.svg"></td>
-          <td id="missing7"><img src="images/vorschlag.svg"></td>
+          <td class="missing" id="missing0"><img src="images/vorschlag.svg"></td>          
+          <td class="missing" id="missing1"><img src="images/vorschlag.svg"></td>
+          <td class="missing" id="missing2"><img src="images/vorschlag.svg"></td>
+          <td class="missing" id="missing3"><img src="images/vorschlag.svg"></td>
+          <td class="missing" id="missing4"><img src="images/vorschlag.svg"></td>
+          <td class="missing" id="missing5"><img src="images/vorschlag.svg"></td>
+          <td class="missing" id="missing6"><img src="images/vorschlag.svg"></td>
+ 
         </tr>
         <tr>
-          
-          <td id="missing8"><img src="images/vorschlag.svg"></td>
-          <td id="missing9"><img src="images/vorschlag.svg"></td>
-          <td id="missing10"><img src="images/vorschlag.svg"></td>
-          <td id="missing11"><img src="images/vorschlag.svg"></td>
-          <td id="missing12"><img src="images/vorschlag.svg"></td>
-          <td id="missing13"><img src="images/vorschlag.svg"></td>
-          <td id="missing14"><img src="images/vorschlag.svg"></td>
+	  <td  class="missing" id="missing7"><img src="images/vorschlag.svg"></td>          
+          <td  class="missing" id="missing8"><img src="images/vorschlag.svg"></td>
+          <td  class="missing" id="missing9"><img src="images/vorschlag.svg"></td>
+          <td  class="missing" id="missing10"><img src="images/vorschlag.svg"></td>
+          <td  class="missing" id="missing11"><img src="images/vorschlag.svg"></td>
+          <td  class="missing" id="missing12"><img src="images/vorschlag.svg"></td>
+          <td  class="missing" id="missing13"><img src="images/vorschlag.svg"></td>
         </tr>
         <tr>
-          
-          <td id="missing15"><img src="images/vorschlag.svg"></td>
-          <td id="missing16"><img src="images/vorschlag.svg"></td>
-          <td id="missing17"><img src="images/vorschlag.svg"></td>
-          <td id="missing18"><img src="images/vorschlag.svg"></td>
-          <td id="missing19"><img src="images/vorschlag.svg"></td>
-          <td id="missing20"><img src="images/vorschlag.svg"></td>
-          <td id="missing21"><img src="images/vorschlag.svg"></td>
+          <td class="missing" id="missing14"><img src="images/vorschlag.svg"></td>          
+          <td class="missing" id="missing15"><img src="images/vorschlag.svg"></td>
+          <td class="missing" id="missing16"><img src="images/vorschlag.svg"></td>
+          <td class="missing" id="missing17"><img src="images/vorschlag.svg"></td>
+          <td class="missing" id="missing18"><img src="images/vorschlag.svg"></td>
+          <td class="missing" id="missing19"><img src="images/vorschlag.svg"></td>
+          <td class="missing" id="missing20"><img src="images/vorschlag.svg"></td>
+
         </tr>
       </table>
     </div>
@@ -81,7 +80,7 @@
           </td>
           <td id="text">
             Gewinnmuster:<br>
-            <table border="0" padding="0">
+            <table border="0" padding="0" id="winpatterns">
               <tr>
                 <td>
                   Vertikal<br>
@@ -122,25 +121,93 @@
                   <img src="images/gewinn9.png">
                 </td>
               </tr>
+              <tr>
+                <td>
+                  Ecken aussen<br>
+                  <img src="images/gewinn10.png">
+                </td>
+                <td>
+                  Saphir<br>
+                  <img src="images/gewinn11.png">
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  CCC<br>
+                  <img src="images/gewinn23.png">
+                </td>
+                <td>
+                  Knochen<br>
+                  <img src="images/gewinn24.png">
+                </td>
+              </tr>           
+
             </table>
           </td>
           <td id="text">
-            Wir befinden uns seit der erfolgreichen implementierung der Gewinnerkennung bei Version "Beta 1".<br>
-            Die Entwicklung passiert <a href="https://github.com/eLtMosen/FreakXoHBingo" target="_blank">auf Github</a><br>
-            Fühlt Euch bitte eingeladen jegliche Art von konstruktivem Commit zu tätigen.<br>
-            Vorschläge und Löschwünsche für Buzzwords erreichen mich am besten über Twitter <a href="https://twitter.com/eLtMosen" target="_blank">@eLtMosen</a> oder per Kommentar im Git.<br>
-            <br>
-            Features: (MH="Mann Stunden")<br>
-            <ul>
-              <li>Bingo Grundfunktion (Karte austeilen, Buzzwords markieren, ~5MH)</li>
-              <li>"MISCHEN" Button um sich schnell eine Karte aus den bisher 52 Buzzwords mischen zu lassen ohne die Seite neuzuladen. (0,5MH)</li>
-              <li>Anzeige der nicht in die aktuelle Karte gemischten Buzzwords. (1MH)</li>
-              <li>52 Skalierbare vektor Buzzword-Tiles im svg Format.(~26MH)</li>
-              <li>Anpassung der Auflösung in 5 Schritten.(1MH)</li>
-              <li>Gewinn-Erkennung (21 Musterkombinationen!)</li>
-              <li>Mishen mit der m Taste</li>
-              <li>Ausschluss von Buzzwords durch klick in der unteren Tabelle und erneutem mischen.</li>
-            </ul>
+                      Gewinnmuster:<br>
+            <table border="0" padding="0" id="winpatterns">
+              <tr>
+                <td>
+                  Schlüssel<br>
+                  <img src="images/gewinn6.png">
+                </td>
+                <td>
+                  Sternenhimmel<br>
+                  <img src="images/gewinn12.png">
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Schach<br>
+                  <img src="images/gewinn13.png">
+                </td>
+                <td>
+                  Ecken innen<br>
+                  <img src="images/gewinn14.png">
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Hangman<br>
+                  <img src="images/gewinn15.png">
+                </td>
+                <td>
+                  Sinus<br>
+                  <img src="images/gewinn16.png">
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Blöcke<br>
+                  <img src="images/gewinn17.png">
+                </td>
+                <td>
+                  Six Pack<br>
+                  <img src="images/gewinn18.png">
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Satellit<br>
+                  <img src="images/gewinn19.png">
+                </td>
+                <td>
+                  Bulls Eye<br>
+                  <img src="images/gewinn20.png">
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Schmetterling<br>
+                  <img src="images/gewinn21.png">
+                </td>
+                <td>
+                  Vogelscheuche<br>
+                  <img src="images/gewinn22.png">
+                </td>
+              </tr>           
+            </table>
           </td>
         </tr>
         <tr>
@@ -164,7 +231,23 @@
           Das wollt ich schon immer mal wieder ändern. Tims aufruf zum Bingo hat da direkt mit einer kleinen und mit meinen beschränkten Mitteln umsetzbaren Idee für eine dynamische Bingo-Karte klick gemacht.<br><br>
           In den letzten 13 Jahren hab ich mich nach einer kompletten Umorientierung tief in das Thema Sushi gehackt und bin nun relativ erfolgreich als <a href="http://mosushi.com" target="_blank">freier Showkoch europaweit unterwegs</a>, was die "Entwicklung" der Bingo-Karte in die späten Abendstunden schiebt.<br>
           <br><br>
-          Jede Mithilfe bis zum komplett Umwerfen des bisherigen Spaghetti-Codes oder einfach lautes Gelächter sind Herzlich Willkommen!
+          Jede Mithilfe bis zum komplett Umwerfen des bisherigen Spaghetti-Codes oder einfach lautes Gelächter sind Herzlich Willkommen!<br>
+          Wir befinden uns seit der erfolgreichen implementierung der Gewinnerkennung bei Version "Beta 1".<br>
+          Die Entwicklung passiert <a href="https://github.com/eLtMosen/FreakXoHBingo" target="_blank">auf Github</a><br>
+          Fühlt Euch bitte eingeladen jegliche Art von konstruktivem Commit zu tätigen.<br>
+          Vorschläge und Löschwünsche für Buzzwords erreichen mich am besten über Twitter <a href="https://twitter.com/eLtMosen" target="_blank">@eLtMosen</a> oder per Kommentar im Git.<br>
+          <br>
+          Features: (MH="Mann Stunden")<br>
+          <ul>
+              <li>Bingo Grundfunktion (Karte austeilen, Buzzwords markieren, ~5MH)</li>
+              <li>"MISCHEN" Button um sich schnell eine Karte aus den bisher 52 Buzzwords mischen zu lassen ohne die Seite neuzuladen. (0,5MH)</li>
+              <li>Anzeige der nicht in die aktuelle Karte gemischten Buzzwords. (1MH)</li>
+              <li>52 Skalierbare vektor Buzzword-Tiles im svg Format.(~26MH)</li>
+              <li>Anpassung der Auflösung in 5 Schritten.(1MH)</li>
+              <li>Gewinn-Erkennung (21 Musterkombinationen!)</li>
+              <li>Mishen mit der m Taste</li>
+              <li>Ausschluss von Buzzwords durch klick in der unteren Tabelle und erneutem mischen.</li>
+            </ul>
         </td><td id="text">
         geplante Funktionen:
         <ul>
@@ -200,6 +283,21 @@
 	    <div id="result22"></div>
 	    <div id="result23"></div>
 	    <div id="result24"></div>
+	    <div id="result25"></div>
+	    <div id="result26"></div>
+	    <div id="result27"></div>
+	    <div id="result28"></div>
+	    <div id="result29"></div>
+	    <div id="result30"></div>
+	    <div id="result31"></div>
+	    <div id="result32"></div>
+	    <div id="result33"></div>
+	    <div id="result34"></div>
+	    <div id="result35"></div>
+	    <div id="result36"></div>
+	    <div id="result37"></div>
+	    <div id="result38"></div>
+	    <div id="result39"></div>	    
         
       </div>
     </body>
