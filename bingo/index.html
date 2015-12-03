@@ -14,7 +14,7 @@
     <link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
   </head>
   <body>
-  <div style="width: 100%; overflow: hidden;">
+  <div style="width: 1340px; overflow: hidden;">
     <div style="width: 125px; float: left;"> 
       <table id="logoverti">
 	<tr>
@@ -42,15 +42,17 @@
       </div>
     <div style="width: 750px; float: left; margin-right: 20px; margin-bottom: 25px" class="resize"><table id="BingoBody"></table></div>
    
-    <div style="width: 330px; float: left;  margin-top: 0px" overflow: hidden; class="resize" id="logohori">
+    <div style="width: 420px; float: left;  margin-top: 0px" overflow: hidden; class="resize" id="logohori">
       <div style="width: 100%; margin-left: 15px; overflow: visible;">
-        <div style="width: 105px; float: left;" id="mischen"><a href="#" id="neueKarte"><img src="images/mischen.svg"></a></div>
-	<div style="width: 105px; float: left;" id="mischen"><a href="#" id="reset"><img src="images/reset.svg"></a></div> 
-	<div style="width: 190px; margin-left: 205px; id="mischen"><b>Misch Modus</b><br>Buzzwords rechts abwählen, übrige mit 'm' Taste oder Mischen-Knopf neu verteilen</div>
+        <div style="width: 105px; float: left;" id="mischen"><img src="images/misch_modus.svg"></div>
+	<div style="width: 105px; float: left;" id="mischen"><a href="#" id="neueKarte"><img src="images/mischen.svg"></a></div>
+        <div style="width: 105px; float: left;" id="mischen"><a href="#" id="reset"><img src="images/reset.svg"></a></div> 
+	<div style="width: 105px; float: left;" id="mischen"><a href="#" id="spielstart"><img src="images/spiel_modus.svg"></a></div> 
+	
       </div>
     </div>
    
-    <div style="width: 330px; margin-left: 900px; margin-top: 105px" overflow: visible; class="resize">
+    <div style="width: 430px; margin-left: 900px; margin-top: 105px" overflow: visible; class="resize">
       <table id="BuzzwordsBody">
         <tr>
           <td class="missing" id="missing0"><img src="images/vorschlag.svg"></td>          
@@ -85,7 +87,7 @@
         </tr>
       </table>
     </div>
-    </div> 
+  </div> 
      <div style="width: 125px; float: left;"> 
       &nbsp
       </div>
@@ -96,14 +98,22 @@
 	  <td id="fattext">Ecken innen<br><img src="images/gewinn14.png"></td>
 	  <td id="fattext">Ecken aussen<br><img src="images/gewinn10.png"></td>
 	  <td id="fattext">Zen Garten<br><img src="images/gewinn31.png"></td>
+	  <td id="bignum"><img src="images/numbers/50.svg"></td>
+	  <td id="fattext">Jeder Pfeil<br><img src="images/gewinn34.png"></td>
+	  <td id="fattext">Jeder Winkel<br><img src="images/gewinn35.png"></td>
+	</tr><tr>
 	  <td id="bignum"><img src="images/numbers/60.svg"></td>
 	  <td id="fattext">Jede Ecke<br><img src="images/gewinn26.png"></td>
 	  <td id="fattext">Six Pack<br><img src="images/gewinn18.png"></td>
-	</tr><tr>
+	  <td id="fattext">Würfel 6<br><img src="images/gewinn36.png"></td>
+	  <td id="fattext">Twin Peaks<br><img src="images/gewinn37.png"></td>
+	  <td id="fattext">Slashes<br><img src="images/gewinn38.png"></td>
+	  <td id="fattext">Ungleich<br><img src="images/gewinn40.png"></td>
+	</tr><tr>  
 	  <td id="bignum"><img src="images/numbers/70.svg"></td>
-	  <td id="fattext">Vertikal<br><img src="images/gewinn1.png"></td>
-	  <td id="fattext">Horizontal<br><img src="images/gewinn2.png"></td>
-	  <td id="fattext">Diagonale<br><img src="images/gewinn3.png"></td>
+	  <td id="fattext">Jede Vertikale<br><img src="images/gewinn1.png"></td>
+	  <td id="fattext">Jede Horizontale<br><img src="images/gewinn2.png"></td>
+	  <td id="fattext">Jede Diagonale<br><img src="images/gewinn3.png"></td>
 	  
 	  <td id="bignum"><img src="images/numbers/80.svg"></td>
 	  <td id="fattext">Saphir<br><img src="images/gewinn11.png"></td>
@@ -125,6 +135,7 @@
 	  <td id="fattext">2x Six Pack<br><img src="images/gewinn27.png"></td>
 	  <td id="fattext">3er Ecken<br><img src="images/gewinn28.png"></td>
 	  <td id="fattext">Space Invaders<br><img src="images/gewinn32.png"></td>
+	  <td id="fattext">Snake<br><img src="images/gewinn39.png"></td>
 	</tr><tr>
 	  <td id="bignum"><img src="images/numbers/130.svg"></td>	  
 	  <td id="fattext">Sinus<br><img src="images/gewinn16.png"></td>
@@ -151,13 +162,26 @@
  
 	  <td id="bignum"><img src="images/numbers/260.svg"></td>
 	  <td id="fattext">@<br><img src="images/gewinn8.png"></td>
+	  <td id="fattext">Defender<br><img src="images/gewinn41.png"></td>
         </tr>
       </table>
       </div>
 
-        <div style="width: 300px; margin-top: 0px; float: left" overflow: visible; class="resize"> 
+        <div style="width: 440px; margin-top: -10px; float: left" overflow: visible; class="resize"> 
        
-	    <div id="result1"></div>
+	    <div id="result1">
+	      <table>
+		<tr>
+		  <td id="textseite">
+                        <h1>1. Ist die Bingokarte geladen, im rechten Feld unerwünschte Buzzwords für das Mischen ausschließen um strategisch umzuverteilen.</h1>
+			<h1>2. Der Misch-Modus wird beim ersten klick in die Karte beendet um die sie für den Spiel-Modus zu fixieren</h1>
+			<h1>3. Ein Buzzword fällt während der Live Sendung und wird dann gültig wenn er im Chat bestätigt wurde. (Hat letztes mal noch nicht soo gut funktioniert *wink wink*</h1>
+			<h1>4. Gültige Begriffe werden auf der Karte gelb markiert, erreichte Bingos werden grün und dann nach Punkten gezählt um am Ende der Sendung Gewinner ermitteln zu können. 
+			<a href="info.html">Infos zur Entstehung dieser Seite</a>
+                  </td>
+                </tr>
+              </table>
+            </div>
 	    <div id="result2"></div>
 	    <div id="result3"></div>
 	    <div id="result4"></div>
@@ -196,92 +220,7 @@
 	    <div id="result37"></div>
 	    <div id="result38"></div>
 	    <div id="result39"></div>	    
-        
+       
       </div>      
-  
-<!--    &nbsp;
-    <div style="margin-left: 105px;" class="resize">
-      <table id="ControlsBody">
-        <tr>
-          <td id="mischen"><a href="#" id="neueKarte"><img src="images/mischen.svg"></a></td>
-          <td id="groesse"><img src="images/groesse.svg"></td>
-          <td class="resizeTiles" data-tile-size="75"><img src="images/groesse575.svg"></td>
-          <td class="resizeTiles" data-tile-size="100"><img src="images/groesse750.svg"></td>
-          <td class="resizeTiles" data-tile-size="150"><img src="images/groesse1100.svg"></td>
-          <td class="resizeTiles" data-tile-size="200"><img src="images/groesse1450.svg"></td>
-          <td class="resizeTiles" data-tile-size="300"><img src="images/groesse2150.svg"></td>
-        </tr>
-      </table>
-    </div>
-    &nbsp; -->
-    <div style="margin-left: 105px;" id="textseite">
-      <table>
-        <tr>
-          <td id="text">
-            Anleitung:<br>
-            <br>
-            1. Ist die Bingokarte geladen, den "Mischen Knopf" benutzen um die Buzzwords strategisch umzuverteilen.<br><br>
-            2. Je Teilnehmer ist die Anzahl der Bingokarten / Browser / Ausdrucke zur Zeit nicht beschränkt. Macht nämlich wenig Sinn, solange hier kein Benutzer-Accounts existieren.<br><br>
-            2. Ein Buzzword fällt während der Live Sendung und wird dann gültig wenn er im Chat erwähnt wurde. (Hat letztes mal noch nicht soo gut funktioniert *wink wink*<br><br>
-            3. Gültige Begriffe werden auf der Karte markiert, bis eines der Gewinnmuster erreicht ist. BINGO!<br><br>
-            4. Bingos werden im Chat ausgerufen und per Twitter-Post mit Screenshot oder auch Photo von ausgedruckten Karten zur allgemeinen Bespaßung geteilt!<br>
-          </td>
-          <td id="text">
-            Gewinnmuster:<br>
-          </td>
-          <td id="text">
-            Gewinnmuster:<br>
-          </td>
-        </tr>
-        <tr>
-          <td id="text">
-            Dies ist eine frische Implementierung eines rudimentären Bingo Algorithmus als bescheidener Start auf dem Weg zur von Clemens geforderten Version mit "Soße und Scharf".<br>
-            Als Vorbild dient bullshitbingo.net. Dort habe ich zur Freakshow (165) 36 Buzzwords eingespeist <a href="https://twitter.com/eLtMosen/status/663836699840159744" target="_blank">und per Twitter geteilt</a>.<br><br>
-            Die Buzzwords zu finden war nach einem zufälligen "total recap" aller 164 MobilMacs und Freakshow Folgen der mir das Jahr 2015 mit Bluetooth Headset versüßt hat nicht  ganz so schwierig.<br>
-            <br>
-            Schon beim ersten Einsatz der schlichten 5x5 Karten konnte <a href="https://kkrzoya8imrm3jot.myfritz.net/bingo.png" target="_blank"> Chat benutzer Knospe </a>erfolgreich als Gewinner gefeiert werden!<br>
-            <br>
-            Für den ersten Versuch war bullshitbingo ok, aber da <a href="http://epir.at" target="_blank">ePirat</a> schon mit <a href="https://t.co/FYX8pJjpIO" target="_blank">einer tollen PDF Bingo Karte am Start war</a> und mir die Limitierung auf 5x5 große klassische Karten nicht gefiel, war schon kurz vor der FS165 klar das irgendwie eine Eigenentwicklung mit graphischen Buzzwords her musste.<br>
-            <br>
-            Als dann auch noch Clemens und Tim eine 7x7 Karte forderten und selbst schon der "Alpha 1" Version allgemeine Zustimmung zu Teil wurde, waren die ersten SVG-Buzzword-Tiles noch während der Sendung durch Inkscape gebruzelt.<br>
-            <br>
-            Entgegen Tims Vermutung war bullshitbing.net mit der ersten Version im Funktionsumfang schon vollständig ausgereizt. Also ein weiteres Argument für einen Neustart.<br>
-            <br>
-            Da diese Seite nun in Berlin bei Prosite gehostet wird, schicken wir unsere Bingo Daten nun im besten Fall auch nicht mehr um den halben Erdball ;)
-          </td><td id="text">
-          Warum mache ich das??<br><br>
-          Als im letzten Jahrtausend gefailter Informatik Student hab ich mehr als ein Jahrzehnt aktiv keinen wirklichen Code außer wenig javascript und php für meine Firmen Webseite angefasst...<br><br>
-          Das wollt ich schon immer mal wieder ändern. Tims aufruf zum Bingo hat da direkt mit einer kleinen und mit meinen beschränkten Mitteln umsetzbaren Idee für eine dynamische Bingo-Karte klick gemacht.<br><br>
-          In den letzten 13 Jahren hab ich mich nach einer kompletten Umorientierung tief in das Thema Sushi gehackt und bin nun relativ erfolgreich als <a href="http://mosushi.com" target="_blank">freier Showkoch europaweit unterwegs</a>, was die "Entwicklung" der Bingo-Karte in die späten Abendstunden schiebt.<br>
-          <br><br>
-          Jede Mithilfe bis zum komplett Umwerfen des bisherigen Spaghetti-Codes oder einfach lautes Gelächter sind Herzlich Willkommen!<br>
-          Wir befinden uns seit der erfolgreichen implementierung der Gewinnerkennung bei Version "Beta 1".<br>
-          Die Entwicklung passiert <a href="https://github.com/eLtMosen/FreakXoHBingo" target="_blank">auf Github</a><br>
-          Fühlt Euch bitte eingeladen jegliche Art von konstruktivem Commit zu tätigen.<br>
-          Vorschläge und Löschwünsche für Buzzwords erreichen mich am besten über Twitter <a href="https://twitter.com/eLtMosen" target="_blank">@eLtMosen</a> oder per Kommentar im Git.<br>
-          <br>
-          Features: (MH="Mann Stunden")<br>
-          <ul>
-              <li>Bingo Grundfunktion (Karte austeilen, Buzzwords markieren, ~5MH)</li>
-              <li>"MISCHEN" Button um sich schnell eine Karte aus den bisher 52 Buzzwords mischen zu lassen ohne die Seite neuzuladen. (0,5MH)</li>
-              <li>Anzeige der nicht in die aktuelle Karte gemischten Buzzwords. (1MH)</li>
-              <li>52 Skalierbare vektor Buzzword-Tiles im svg Format.(~26MH)</li>
-              <li>Anpassung der Auflösung in 5 Schritten.(1MH)</li>
-              <li>Gewinn-Erkennung (21 Musterkombinationen!)</li>
-              <li>Mishen mit der m Taste</li>
-              <li>Ausschluss von Buzzwords durch klick in der unteren Tabelle und erneutem mischen.</li>
-            </ul>
-        </td><td id="text">
-        geplante Funktionen:
-        <ul>
-          <li>Probabilistische bestimmung der gefallenen Buzzwords anhand der geklickten Felder</li>
-          <li>Druckoptimierte Anzeige der puren Karte.(2MH)</li>
-          <li>Share-Funktion mit Hash der gewinn Matrix.</li>
-          <li>Wieder-Anzeige von gehashten Matrizen</li>
-          <li>Syncronisiertes Multiplayern mit verifizierbarem Gewinner zur Preisvergabe :D</li>
-          <li>Komplexere Spielmodi mit multiplen addierten Bingos und einem monatlichen(?) Gewinner.</li>
-        </ul>
-      </div>  
-
     </body>
 </html>

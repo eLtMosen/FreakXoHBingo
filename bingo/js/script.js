@@ -50,11 +50,26 @@ $(document).ready(function() {
 	"Nethack": [9, 11, 12, 13, 18, 21, 22, 23, 25, 30, 32, 39, 44, 46],
 	"Bloecke": [8, 9, 11, 12, 15, 16, 18, 19, 29, 30, 32, 33, 36, 37, 39, 40],
 	"Six_Pack": [17, 18, 24, 25, 31, 32],
+	"Jeder Pfeil (unten)": [29, 33, 37, 39, 45],
+	"Jeder Pfeil (rechts)": [11, 19, 27, 33, 39],
+	"Jeder Pfeil (oben)": [3, 9, 11, 15, 19],
+	"Jeder Pfeil (links)": [9, 15, 21, 29, 37],
+	"Jeder Winkel (unten rechts)": [26, 33, 38, 39, 40],
+	"Jeder Winkel (oben rechts)": [10, 11, 12, 19, 26],
+	"Jeder Winkel (oben links)": [8, 9, 10, 15, 22],
+	"Jeder Winkel (unten links)": [22, 29, 36, 37, 38],
+	"W&uuml;rfel 6": [9, 11, 23, 25, 37, 39],
+	"Twin Peaks": [2, 8, 10, 39, 45, 47],
+	"Slashes": [16, 19, 22, 25, 28, 31],
+	"Ungleich": [16, 18, 22, 26, 30, 32],
+	"3er Ecken": [0, 1, 5, 6, 7, 13, 35, 41, 42, 43, 47, 48],
+	"Snake": [8, 9, 10, 15, 17, 22, 24, 25, 26, 33, 34, 36],
 	"Double Six_Pack": [11, 12, 18, 19, 22, 23, 25, 26, 29, 30, 36, 37],
 	"Satellit": [8, 12, 16, 17, 18, 23, 25, 30, 31, 32, 36, 40],
 	"Bulls_Eye": [9, 10, 11, 15, 19, 22, 24, 26, 29, 33, 37, 38, 39],
 	"Schmetterling": [8, 12, 15, 16, 18, 19, 22, 24, 26, 29, 30, 32, 33, 36, 40],
 	"Vogelscheuche": [10, 15, 16, 17, 18, 19, 24, 30, 32, 36, 40],
+	"Defender": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 14, 23, 35, 36, 38, 39, 40, 42, 43, 44, 45, 46, 47, 48],
 	"Jedes 1/4 Dreieck (unten)": [24, 30, 31, 32, 36, 37, 38, 39, 40, 42, 43, 44, 45, 46, 47, 48],
 	"Jedes 1/4 Dreieck (links)": [0, 7, 8, 14, 15, 16, 21, 22, 23, 24, 28, 29, 30, 35, 36, 42],
 	"Jedes 1/4 Dreieck (oben)": [0, 1, 2, 3, 4, 5, 6, 8, 9, 10, 11, 12, 16, 17, 18, 24],
@@ -65,7 +80,7 @@ $(document).ready(function() {
       }
 
   
-  var wonBingos = new Array(38);
+  var wonBingos = new Array(67);
   var UserRejected = new Array(21);
   var totalScore = 0;
   var $bingoBody = $('#BingoBody');
@@ -196,6 +211,14 @@ $(document).ready(function() {
       initBingoCard();
     }
     });    
+    $('#spielstart').click(function() {
+      PlayMode = true;
+      $('#logohori').html(' Punkte: ' + totalScore);
+      $("#BuzzwordsBody td").removeClass('missing');
+      $("#BuzzwordsBody td").removeClass('rote_zelle');
+    });    
+    
+
 
 //    $('.resizeTiles').click(function() {
 //      resizeTiles(parseInt($(this).attr('data-tile-size')));

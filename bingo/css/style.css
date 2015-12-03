@@ -4,12 +4,14 @@
 }
 
 #textseite{
-  width:750px;
+  width:440px;
   margin:0 auto;
 /*  background-color:#F63D31; */
   font-size:14px;
   text-align:left;
-  vertical-align:top;  
+  vertical-align:top;
+  background-color:#FFFFFF;
+  padding-left: 25px;
 }
 
 #text{
@@ -125,16 +127,6 @@ td{
   background-color:#FFFFFF;
 }
 
-
-h1 a{
-  width:750px;
-  font-family:arial;
-  text-align:center;
-  padding:5px;
-  color:#FFFFFF;
-  background-color:#F63D31;
-  border:0px;
-}
 
 #BingoBody{
 cursor:pointer;
