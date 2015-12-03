@@ -114,7 +114,7 @@ td{
 }
 
 #logoverti td{
-  padding:0px;
+  padding-left:10px;
   padding-top: 5px;
   padding-bottom: 0px;  
   width:100px;
@@ -148,6 +148,7 @@ cursor:pointer;
 #BuzzwordsBody{
 cursor:pointer;
   width:330px;
+  background-color:#DDDDDD;
 }
 
 .gelbe_zelle {

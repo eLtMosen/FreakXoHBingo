@@ -36,6 +36,7 @@ $(document).ready(function() {
         "atzeichen": [1, 2, 3, 4, 5, 7, 13, 14, 17, 20, 21, 23, 25, 27, 28, 30, 31, 32, 33, 35, 43, 44, 45, 46, 47, 48],
         "Bierkrug": [8, 11, 12, 15, 18, 20, 22, 25, 27, 29, 32, 33, 36, 39, 44, 45],
         "Ecken_aussen": [0, 6, 42, 48],
+	"Zen Garten": [11, 15, 33, 37],
 	"Saphir": [10, 16, 18, 22, 26, 30, 32, 38],
 	"CCC": [1, 2, 7, 14, 18, 19, 21, 27, 29, 30, 33, 41, 46, 47],
 	"Knochen": [15, 19, 22, 23, 24, 25, 26, 29, 33],
@@ -45,6 +46,8 @@ $(document).ready(function() {
 	"Ecken_innen": [16, 18, 30, 32],
 	"Hangman": [9, 10, 11, 15, 18, 22, 24, 25, 26, 29, 32, 36, 38, 40, 43],
 	"Sinus": [7, 11, 15, 17, 19, 22, 24, 26, 29, 31, 33, 37, 41],
+	"Space Invaders": [0, 2, 4, 6, 15, 17, 19, 30, 39, 45, 46, 47],
+	"Nethack": [9, 11, 12, 13, 18, 21, 22, 23, 25, 30, 32, 39, 44, 46],
 	"Bloecke": [8, 9, 11, 12, 15, 16, 18, 19, 29, 30, 32, 33, 36, 37, 39, 40],
 	"Six_Pack": [17, 18, 24, 25, 31, 32],
 	"Double Six_Pack": [11, 12, 18, 19, 22, 23, 25, 26, 29, 30, 36, 37],
@@ -66,6 +69,7 @@ $(document).ready(function() {
   var UserRejected = new Array(21);
   var totalScore = 0;
   var $bingoBody = $('#BingoBody');
+  var PlayMode = false;
 
   var model = {
     bingoCard: _.fill(new Array(config.bingoCard.size), false)
@@ -111,8 +115,6 @@ $(document).ready(function() {
     var tmp = _.chunk(_.shuffle(diff), config.bingoCard.size - 1);
     var usedBingoCards = tmp[0];
     var missingBingoCards = tmp[1];
-    console.log('used:' + usedBingoCards);
-    console.log('fehlt:' + missingBingoCards);
     
     setImgOnFree('#cell24', 'frei');
     setImgOn('#cell', usedBingoCards);
@@ -152,6 +154,7 @@ $(document).ready(function() {
       var $elem = $(htmlId + (23-id));
       $elem.find('img').attr('src', 'images/' + imgIds[id] + '.svg');
       $elem.attr('data-img-id', imgIds[id]);
+      $(this).addClass("rote_zelle");
       }
     });
   }
@@ -173,47 +176,57 @@ $(document).ready(function() {
   function bindEventHandler() {
     
     $(document).keydown(function(evt){ // m Taste an mischen funktion binden
+    if(!PlayMode) {  
       if (evt.keyCode==77){
 	  evt.preventDefault();
 	  initBingoCard();
       }
+    }
     });
 
     $('#neueKarte').click(function() {
+    if(!PlayMode) {  
       initBingoCard();
+    }  
     });
 
     $('#reset').click(function() {
+    if(!PlayMode) {  
       resetUserdata();
       initBingoCard();
+    }
     });    
 
-    $('.resizeTiles').click(function() {
-      resizeTiles(parseInt($(this).attr('data-tile-size')));
-    });
-
+//    $('.resizeTiles').click(function() {
+//      resizeTiles(parseInt($(this).attr('data-tile-size')));
+//    });
+      
     $("#BingoBody td").click(function() {
+      PlayMode = true;
       $(this).addClass("gelbe_zelle");
       var idx = parseInt($(this).attr('data-id'));	// idx = integerwert der geklickten zelle
       model.bingoCard[idx] = true;  // geklickete Zelle in bingoCard true setzen
       checkWin(model.bingoCard);
+
+      $('#logohori').html(' Punkte: ' + totalScore);
     });
+    
     var UserRejectedNum = 0;
     $("#BuzzwordsBody td").click(function() {
+    if(!PlayMode) {
       $(this).addClass("rote_zelle");
       var idx = parseInt($(this).attr('data-img-id'));	// idx = integerwert der geklickten zelle
       if(isNaN(idx) || $.inArray(idx, UserRejected) != -1) {
-	console.log($.inArray(idx, UserRejected) == 1);
       }else{
       UserRejected[UserRejectedNum] = idx;
       UserRejectedNum++;      
-      console.log('weg: ' + UserRejected);
       }
+    }else{
+      $(this).addClass("gelbe_zelle");
+    }  
     });
   }
 
-
-  
   function containsAll(needle, haystack){ 
     for(var i = 0 , len = needle.length; i < len; i++){
       if($.inArray(needle[i], haystack) == -1) return false;
@@ -230,13 +243,15 @@ $(document).ready(function() {
     }, []);
     console.log(convertedToNum);
     var i = 1;
+    totalScore = 0;
     $.each(WinBoards, function( key, value ) {
       if(containsAll(value, convertedToNum)){
 	wonBingos[i] = key;
 	$('#result'+i).html(key + ' Punkte: ' + value.length * 10);
-//	totalScore = (totalScore + value.length * 10);
-	console.log(totalScore);		    
+	totalScore = (totalScore + value.length * 10); 
+	
 	$.each(WinBoards, function( key, value ) {
+	   
 	  if(containsAll(value, convertedToNum)){
 	    for(var j = 0; j < value.length;){
 	      $('#cell'+value[j]).addClass("gruene_zelle");
