@@ -6,7 +6,7 @@ $(document).ready(function() {
       size: 49,
 
     },
-    buzzwordCount: 62 	// Anzahl der Buzzwords +1...
+    buzzwordCount: 63 	// Anzahl der Buzzwords +1...
   };
   
   var WinBoards = {
@@ -27,6 +27,11 @@ $(document).ready(function() {
 	"Diagonal1" : [0, 8, 16, 24, 32, 40, 48],
 	"Diagonal2" : [6, 12, 18, 24, 30, 36, 42],
         "FreakshowF": [9, 10, 11, 12, 16, 23, 24, 25, 30, 37],
+	"Jede Ecke (oben links)": [0, 1, 2, 7, 8, 14],
+	"Jede Ecke (oben rechts)": [4, 5, 6, 12, 13, 20],
+	"Jede Ecke (unten rechts)": [34, 40, 41, 46, 47, 48],
+	"Jede Ecke (unten links)": [28, 35, 36, 42, 43, 44],
+	"Echo Kammer": [23, 24, 25, 29, 33, 35, 41, 42, 48],
         "Diamant": [3, 9, 11, 15, 19, 21, 27, 29, 33, 37, 39, 45],
         "atzeichen": [1, 2, 3, 4, 5, 7, 13, 14, 17, 20, 21, 23, 25, 27, 28, 30, 31, 32, 33, 35, 43, 44, 45, 46, 47, 48],
         "Bierkrug": [8, 11, 12, 15, 18, 20, 22, 25, 27, 29, 32, 33, 36, 39, 44, 45],
@@ -42,10 +47,16 @@ $(document).ready(function() {
 	"Sinus": [7, 11, 15, 17, 19, 22, 24, 26, 29, 31, 33, 37, 41],
 	"Bloecke": [8, 9, 11, 12, 15, 16, 18, 19, 29, 30, 32, 33, 36, 37, 39, 40],
 	"Six_Pack": [17, 18, 24, 25, 31, 32],
+	"Double Six_Pack": [11, 12, 18, 19, 22, 23, 25, 26, 29, 30, 36, 37],
 	"Satellit": [8, 12, 16, 17, 18, 23, 25, 30, 31, 32, 36, 40],
 	"Bulls_Eye": [9, 10, 11, 15, 19, 22, 24, 26, 29, 33, 37, 38, 39],
 	"Schmetterling": [8, 12, 15, 16, 18, 19, 22, 24, 26, 29, 30, 32, 33, 36, 40],
 	"Vogelscheuche": [10, 15, 16, 17, 18, 19, 24, 30, 32, 36, 40],
+	"Jedes 1/4 Dreieck (unten)": [24, 30, 31, 32, 36, 37, 38, 39, 40, 42, 43, 44, 45, 46, 47, 48],
+	"Jedes 1/4 Dreieck (links)": [0, 7, 8, 14, 15, 16, 21, 22, 23, 24, 28, 29, 30, 35, 36, 42],
+	"Jedes 1/4 Dreieck (oben)": [0, 1, 2, 3, 4, 5, 6, 8, 9, 10, 11, 12, 16, 17, 18, 24],
+	"Jedes 1/4 Dreieck (rechts)": [6, 12, 13, 18, 19, 20, 24, 25, 26, 27, 32, 33, 34, 40, 41, 48],
+	"Tannenbaum": [3, 9, 10, 11, 15, 16, 17, 18, 19, 21, 22, 23, 24, 25, 26, 27, 29, 31, 33, 38, 44, 45, 46],
 	"Monster_Bingo": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48],
         "Apfel": [4, 10, 15, 16, 17, 18, 19, 21, 22, 23, 24, 25, 28, 29, 30, 31, 32, 36, 37, 38, 39, 40, 44, 46]
       }
@@ -110,10 +121,15 @@ $(document).ready(function() {
     $("#BingoBody td").removeClass('gelbe_zelle');
     $("#BingoBody td").removeClass('gruene_zelle');
     $("#BuzzwordsBody td").removeClass('rote_zelle');
+    setImgOnRejected('#missing', UserRejected);
     wonBingos = [];
     model.bingoCard.length = 0;
   }
 
+  function resetUserdata() {
+    UserRejected = [];
+  }
+  
   function setImgOn(htmlId, imgIds) {
     _.times(imgIds.length, function(id) {
       if(id == 24) {					// wenn id 24 erreicht, in cell48 schreiben
@@ -121,7 +137,19 @@ $(document).ready(function() {
 	$elem.find('img').attr('src', 'images/' + imgIds[id] + '.svg');
 	$elem.attr('data-img-id', imgIds[id]);
       }else{
+      
       var $elem = $(htmlId + id);
+      $elem.find('img').attr('src', 'images/' + imgIds[id] + '.svg');
+      $elem.attr('data-img-id', imgIds[id]);
+      }
+    });
+  }
+  
+    function setImgOnRejected(htmlId, imgIds) {
+    _.times(imgIds.length+1, function(id) {
+      if(isNaN(imgIds[id])) {
+      }else{
+      var $elem = $(htmlId + (23-id));
       $elem.find('img').attr('src', 'images/' + imgIds[id] + '.svg');
       $elem.attr('data-img-id', imgIds[id]);
       }
@@ -155,6 +183,11 @@ $(document).ready(function() {
       initBingoCard();
     });
 
+    $('#reset').click(function() {
+      resetUserdata();
+      initBingoCard();
+    });    
+
     $('.resizeTiles').click(function() {
       resizeTiles(parseInt($(this).attr('data-tile-size')));
     });
@@ -165,12 +198,17 @@ $(document).ready(function() {
       model.bingoCard[idx] = true;  // geklickete Zelle in bingoCard true setzen
       checkWin(model.bingoCard);
     });
-    
+    var UserRejectedNum = 0;
     $("#BuzzwordsBody td").click(function() {
       $(this).addClass("rote_zelle");
       var idx = parseInt($(this).attr('data-img-id'));	// idx = integerwert der geklickten zelle
-      UserRejected[idx] = idx;      
+      if(isNaN(idx) || $.inArray(idx, UserRejected) != -1) {
+	console.log($.inArray(idx, UserRejected) == 1);
+      }else{
+      UserRejected[UserRejectedNum] = idx;
+      UserRejectedNum++;      
       console.log('weg: ' + UserRejected);
+      }
     });
   }
 
@@ -211,9 +249,9 @@ $(document).ready(function() {
     });
   }
 
-  function resizeTiles(tileSize) {
-    $('div.resize img').width(tileSize).height(tileSize);
-    $('div.resize td').width(tileSize).height(tileSize);
-    $('div.resize').width(tileSize * config.bingoCard.width + 50)
-  }
+//  function resizeTiles(tileSize) {
+//    $('div.resize img').width(tileSize).height(tileSize);
+//    $('div.resize td').width(tileSize).height(tileSize);
+//    $('div.resize').width(tileSize * config.bingoCard.width + 50)
+//  }
 });

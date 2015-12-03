@@ -4,7 +4,7 @@
     <meta charset=utf-8 />
     <link rel="icon" type="image/svg+xml" href="http://mosushi.net/bingo/images/favicon.svg">
     <link rel="alternate icon" type="image/png" href="http://mosushi.net/bingo/images/favicon.png">
-    <title>Freak Show Bingo (Beta 2, 20151130)</title>
+    <title>Freak Show Bingo (Beta 3, 20151201)</title>
     <script tbype="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
     <!--[if IE]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -14,45 +14,183 @@
     <link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
   </head>
   <body>
-    <div class="resize">
-      <table id="BingoBody"></table>
+  <div style="width: 100%; overflow: hidden;">
+    <div style="width: 105px; float: left;"> 
+      <table id="logoverti">
+	<tr>
+	  <td><img src="images/bingo_b.svg"></td>
+	</tr>
+	<tr>
+	  <td><img src="images/bingo_i.svg"></td>
+	</tr>
+	<tr>
+	  <td><img src="images/bingo_n.svg"></td>
+	</tr>
+	<tr>
+	  <td><img src="images/bingo_g.svg"></td>
+	</tr>
+	<tr>
+	  <td><img src="images/bingo_o.svg"></td>
+	</tr>
+      </table>
+      </div>
+    <div style="width: 750px; float: left; margin-right: 20px; margin-bottom: 20px" class="resize"><table id="BingoBody"></table></div>
+   
+    <div style="width: 330px; float: left;  margin-top: 0px" overflow: hidden; class="resize" id="logohori">
+      <div style="width: 100%; overflow: visible;">
+        <div style="width: 105px; float: left;" id="mischen"><a href="#" id="neueKarte"><img src="images/mischen.svg"></a></div>
+	<div style="width: 105px; float: left;" id="mischen"><a href="#" id="reset"><img src="images/reset.svg"></a></div> 
+	<div style="width: 190px; margin-left: 205px; id="mischen"><b>Misch Modus</b><br>Buzzwords rechts abwählen, übrige mit 'm' Taste oder Mischen-Knopf neu verteilen</div>
+      </div>
     </div>
-    &nbsp;    
-    <div class="resize">
+   
+    <div style="width: 330px; margin-left: 880px; margin-top: 105px" overflow: hidden; class="resize">
       <table id="BuzzwordsBody">
         <tr>
           <td class="missing" id="missing0"><img src="images/vorschlag.svg"></td>          
           <td class="missing" id="missing1"><img src="images/vorschlag.svg"></td>
           <td class="missing" id="missing2"><img src="images/vorschlag.svg"></td>
-          <td class="missing" id="missing3"><img src="images/vorschlag.svg"></td>
+          <td class="missing" id="missing3"><img src="images/vorschlag.svg"></td>          
+        </tr><tr>
           <td class="missing" id="missing4"><img src="images/vorschlag.svg"></td>
           <td class="missing" id="missing5"><img src="images/vorschlag.svg"></td>
           <td class="missing" id="missing6"><img src="images/vorschlag.svg"></td>
- 
-        </tr>
-        <tr>
-	  <td  class="missing" id="missing7"><img src="images/vorschlag.svg"></td>          
-          <td  class="missing" id="missing8"><img src="images/vorschlag.svg"></td>
-          <td  class="missing" id="missing9"><img src="images/vorschlag.svg"></td>
-          <td  class="missing" id="missing10"><img src="images/vorschlag.svg"></td>
-          <td  class="missing" id="missing11"><img src="images/vorschlag.svg"></td>
-          <td  class="missing" id="missing12"><img src="images/vorschlag.svg"></td>
-          <td  class="missing" id="missing13"><img src="images/vorschlag.svg"></td>
-        </tr>
-        <tr>
-          <td class="missing" id="missing14"><img src="images/vorschlag.svg"></td>          
+ 	  <td class="missing" id="missing7"><img src="images/vorschlag.svg"></td>
+ 	</tr><tr>         
+          <td class="missing" id="missing8"><img src="images/vorschlag.svg"></td>
+	  <td class="missing" id="missing9"><img src="images/vorschlag.svg"></td>
+          <td class="missing" id="missing10"><img src="images/vorschlag.svg"></td>
+          <td class="missing" id="missing11"><img src="images/vorschlag.svg"></td>
+        </tr><tr>  
+          <td class="missing" id="missing12"><img src="images/vorschlag.svg"></td>
+          <td class="missing" id="missing13"><img src="images/vorschlag.svg"></td>
+          <td class="missing" id="missing14"><img src="images/vorschlag.svg"></td> 
           <td class="missing" id="missing15"><img src="images/vorschlag.svg"></td>
+        </tr><tr>  
           <td class="missing" id="missing16"><img src="images/vorschlag.svg"></td>
           <td class="missing" id="missing17"><img src="images/vorschlag.svg"></td>
           <td class="missing" id="missing18"><img src="images/vorschlag.svg"></td>
           <td class="missing" id="missing19"><img src="images/vorschlag.svg"></td>
+        </tr><tr>  
           <td class="missing" id="missing20"><img src="images/vorschlag.svg"></td>
-
+          <td class="missing" id="missing21"><img src="images/vorschlag.svg"></td>
+          <td class="missing" id="missing22"><img src="images/vorschlag.svg"></td>
+          <td class="missing" id="missing23"><img src="images/vorschlag.svg"></td>
         </tr>
       </table>
     </div>
-    &nbsp;
-    <div  class="resize">
+    </div> 
+ 
+    <div style="float: left"; margin-left: 105px;> 
+      <table id="bignum">
+	<tr>
+	  <td id="bignum">40</td>
+	  <td id="fattext">Ecken innen<br><img src="images/gewinn14.png"></td>
+	  <td id="fattext">Ecken aussen<br><img src="images/gewinn10.png"></td>
+
+	  <td id="bignum">60</td>
+	  <td id="fattext">Jede Ecke<br><img src="images/gewinn26.png"></td>
+	  <td id="fattext">Six Pack<br><img src="images/gewinn18.png"></td>
+
+	  <td id="bignum">70</td>
+	  <td id="fattext">Vertikal<br><img src="images/gewinn1.png"></td>
+	  <td id="fattext">Horizontal<br><img src="images/gewinn2.png"></td>
+	  <td id="fattext">Diagonale<br><img src="images/gewinn3.png"></td>
+	</tr><tr>  
+	  <td id="bignum">80</td>
+	  <td id="fattext">Saphir<br><img src="images/gewinn11.png"></td>
+	  <td id="fattext">Schlüssel<br><img src="images/gewinn6.png"></td>
+	
+	  <td id="bignum">90</td>
+	  <td id="fattext">Echo Kammer<br><img src="images/gewinn25.png"></td>
+	  <td id="fattext">Knochen<br><img src="images/gewinn24.png"></td>
+	
+	  <td id="bignum">100</td>
+	  <td id="fattext">Freakshow<br><img src="images/gewinn4.png"></td>
+	
+	  <td id="bignum">110</td>	  
+	  <td id="fattext">Vogelscheuche<br><img src="images/gewinn22.png"></td>
+	</tr><tr>
+	  <td id="bignum">120</td>  
+	  <td id="fattext">Diamant<br><img src="images/gewinn5.png"></td>
+	  <td id="fattext">Satellit<br><img src="images/gewinn19.png"></td>
+	  <td id="fattext">2x Six Pack<br><img src="images/gewinn27.png"></td>
+	  <td id="fattext">3er Ecken<br><img src="images/gewinn28.png"></td>
+
+	  <td id="bignum">130</td>	  
+	  <td id="fattext">Sinus<br><img src="images/gewinn16.png"></td>
+	  <td id="fattext">Sternenhimmel<br><img src="images/gewinn12.png"></td>
+	  <td id="fattext">Bulls Eye<br><img src="images/gewinn20.png"></td>
+	</tr><tr>
+	  <td id="bignum">140</td>
+	  <td id="fattext">CCC<br><img src="images/gewinn23.png"></td>
+
+	  <td id="bignum">150</td>  
+	  <td id="fattext">Hangman<br><img src="images/gewinn15.png"></td>
+	  <td id="fattext">Schmetterling<br><img src="images/gewinn21.png"></td>
+
+	  <td id="bignum">160</td>
+	  <td id="fattext">Bier Krug<br><img src="images/gewinn7.png"></td>
+	  <td id="fattext">Blöcke<br><img src="images/gewinn17.png"></td>
+	  <td id="fattext">Jedes 1/4 Dreieck<br><img src="images/gewinn29.png"></td>
+	</tr><tr>  
+	  <td id="bignum">240</td>
+	  <td id="fattext">Apfel<br><img src="images/gewinn9.png"></td>
+	  <td id="fattext">Schach<br><img src="images/gewinn13.png"></td>
+	  <td id="fattext">Tannenbaum<br><img src="images/gewinn30.png"></td>
+ 
+	  <td id="bignum">260</td>
+	  <td id="fattext">@<br><img src="images/gewinn8.png"></td>
+        </tr>
+      </table>
+      </div>
+
+        <div style="width: 300px; margin-top: 0px; float: left" overflow: hidden; class="resize"> 
+       
+	    <div id="result1"></div>
+	    <div id="result2"></div>
+	    <div id="result3"></div>
+	    <div id="result4"></div>
+	    <div id="result5"></div>
+	    <div id="result6"></div>
+	    <div id="result7"></div>
+	    <div id="result8"></div>
+	    <div id="result9"></div>
+	    <div id="result10"></div>
+	    <div id="result11"></div>
+	    <div id="result12"></div>
+	    <div id="result13"></div>
+	    <div id="result14"></div>
+	    <div id="result15"></div>
+	    <div id="result16"></div>
+	    <div id="result17"></div>
+	    <div id="result18"></div>
+	    <div id="result19"></div>
+	    <div id="result20"></div>
+	    <div id="result21"></div>
+	    <div id="result22"></div>
+	    <div id="result23"></div>
+	    <div id="result24"></div>
+	    <div id="result25"></div>
+	    <div id="result26"></div>
+	    <div id="result27"></div>
+	    <div id="result28"></div>
+	    <div id="result29"></div>
+	    <div id="result30"></div>
+	    <div id="result31"></div>
+	    <div id="result32"></div>
+	    <div id="result33"></div>
+	    <div id="result34"></div>
+	    <div id="result35"></div>
+	    <div id="result36"></div>
+	    <div id="result37"></div>
+	    <div id="result38"></div>
+	    <div id="result39"></div>	    
+        
+      </div>      
+  
+<!--    &nbsp;
+    <div style="margin-left: 105px;" class="resize">
       <table id="ControlsBody">
         <tr>
           <td id="mischen"><a href="#" id="neueKarte"><img src="images/mischen.svg"></a></td>
@@ -65,8 +203,8 @@
         </tr>
       </table>
     </div>
-    &nbsp;
-    <div id="textseite">
+    &nbsp; -->
+    <div style="margin-left: 105px;" id="textseite">
       <table>
         <tr>
           <td id="text">
@@ -80,134 +218,9 @@
           </td>
           <td id="text">
             Gewinnmuster:<br>
-            <table border="0" padding="0" id="winpatterns">
-              <tr>
-                <td>
-                  Vertikal<br>
-                  <img src="images/gewinn1.png">
-                </td>
-                <td>
-                  Horizontal<br>
-                  <img src="images/gewinn2.png">
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  Diagonale<br>
-                  <img src="images/gewinn3.png">
-                </td>
-                <td>
-                  Freakshow<br>
-                  <img src="images/gewinn4.png">
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  Diamant<br>
-                  <img src="images/gewinn5.png">
-                </td>
-                <td>
-                  @<br>
-                  <img src="images/gewinn8.png">
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  Bier Krug<br>
-                  <img src="images/gewinn7.png">
-                </td>
-                <td>
-                  Apfel<br>
-                  <img src="images/gewinn9.png">
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  Ecken aussen<br>
-                  <img src="images/gewinn10.png">
-                </td>
-                <td>
-                  Saphir<br>
-                  <img src="images/gewinn11.png">
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  CCC<br>
-                  <img src="images/gewinn23.png">
-                </td>
-                <td>
-                  Knochen<br>
-                  <img src="images/gewinn24.png">
-                </td>
-              </tr>           
-
-            </table>
           </td>
           <td id="text">
-                      Gewinnmuster:<br>
-            <table border="0" padding="0" id="winpatterns">
-              <tr>
-                <td>
-                  Schlüssel<br>
-                  <img src="images/gewinn6.png">
-                </td>
-                <td>
-                  Sternenhimmel<br>
-                  <img src="images/gewinn12.png">
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  Schach<br>
-                  <img src="images/gewinn13.png">
-                </td>
-                <td>
-                  Ecken innen<br>
-                  <img src="images/gewinn14.png">
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  Hangman<br>
-                  <img src="images/gewinn15.png">
-                </td>
-                <td>
-                  Sinus<br>
-                  <img src="images/gewinn16.png">
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  Blöcke<br>
-                  <img src="images/gewinn17.png">
-                </td>
-                <td>
-                  Six Pack<br>
-                  <img src="images/gewinn18.png">
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  Satellit<br>
-                  <img src="images/gewinn19.png">
-                </td>
-                <td>
-                  Bulls Eye<br>
-                  <img src="images/gewinn20.png">
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  Schmetterling<br>
-                  <img src="images/gewinn21.png">
-                </td>
-                <td>
-                  Vogelscheuche<br>
-                  <img src="images/gewinn22.png">
-                </td>
-              </tr>           
-            </table>
+            Gewinnmuster:<br>
           </td>
         </tr>
         <tr>
@@ -258,47 +271,7 @@
           <li>Syncronisiertes Multiplayern mit verifizierbarem Gewinner zur Preisvergabe :D</li>
           <li>Komplexere Spielmodi mit multiplen addierten Bingos und einem monatlichen(?) Gewinner.</li>
         </ul>
-        
-	    <div id="result1"></div>
-	    <div id="result2"></div>
-	    <div id="result3"></div>
-	    <div id="result4"></div>
-	    <div id="result5"></div>
-	    <div id="result6"></div>
-	    <div id="result7"></div>
-	    <div id="result8"></div>
-	    <div id="result9"></div>
-	    <div id="result10"></div>
-	    <div id="result11"></div>
-	    <div id="result12"></div>
-	    <div id="result13"></div>
-	    <div id="result14"></div>
-	    <div id="result15"></div>
-	    <div id="result16"></div>
-	    <div id="result17"></div>
-	    <div id="result18"></div>
-	    <div id="result19"></div>
-	    <div id="result20"></div>
-	    <div id="result21"></div>
-	    <div id="result22"></div>
-	    <div id="result23"></div>
-	    <div id="result24"></div>
-	    <div id="result25"></div>
-	    <div id="result26"></div>
-	    <div id="result27"></div>
-	    <div id="result28"></div>
-	    <div id="result29"></div>
-	    <div id="result30"></div>
-	    <div id="result31"></div>
-	    <div id="result32"></div>
-	    <div id="result33"></div>
-	    <div id="result34"></div>
-	    <div id="result35"></div>
-	    <div id="result36"></div>
-	    <div id="result37"></div>
-	    <div id="result38"></div>
-	    <div id="result39"></div>	    
-        
-      </div>
+      </div>  
+
     </body>
 </html>

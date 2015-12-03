@@ -1,30 +1,62 @@
 .resize{
-  width:750px;
+
   margin:0 auto;
-  background-color:#F63D31;
-  -webkit-box-shadow: 7px 10px 20px 0px rgba(0,0,0,0.75);
-  -moz-box-shadow: 7px 10px 20px 0px rgba(0,0,0,0.75);
-  box-shadow: 7px 10px 20px 0px rgba(0,0,0,0.75);  
 }
 
 #textseite{
   width:750px;
   margin:0 auto;
-  background-color:#F63D31;
+/*  background-color:#F63D31; */
   font-size:14px;
   text-align:left;
   vertical-align:top;  
 }
+
 #text{
   width:230px;
   padding:10px;
   vertical-align:top;
 }
 
+#bignum{
+  vertical-align:top;
+  font-family:Times New Roman;
+  font-size:65px;
+  width:100px;
+  height:100px;
+  border:0px;
+  text-align: right;
+  background-color:#FFFFFF;
+}
+
+#fattext{
+  vertical-align:top;
+  font-family:Times New Roman;
+  font-size:12px;
+  width:100px;
+  height:100px;
+  border:0px;
+  text-align: center;
+  background-color:#FFFFFF;
+}
 
 table{
   padding:5px;
   border-spacing: 5px;
+  border:0px;
+}
+
+#logohori{
+  padding:0px;
+
+  border-spacing: 0px;
+  border:0px;
+}
+
+#logoverti{
+  padding:0px;
+  padding-top: 5px;
+  border-spacing: 0px;
   border:0px;
 }
 
@@ -65,8 +97,34 @@ td{
   height:100px;
   vertical-align:bottom;
   border:0px;
+/*  background: url(../images/bingo_background.svg); */
   background-color:#dfc084;
 }
+
+#logohori td{
+  padding:0px;
+  padding-bottom: 5px;
+  padding-right: 5px;  
+  width:100px;
+  height:100px;
+  vertical-align:bottom;
+  border:0px;
+/*  background: url(../images/bingo_background.svg); */
+  background-color:#FFFFFF;
+}
+
+#logoverti td{
+  padding:0px;
+  padding-top: 5px;
+  padding-bottom: 0px;  
+  width:100px;
+  height:100px;
+  vertical-align:bottom;
+  border:0px;
+/*  background: url(../images/bingo_background.svg); */
+  background-color:#FFFFFF;
+}
+
 
 h1 a{
   width:750px;
@@ -78,8 +136,18 @@ h1 a{
   border:0px;
 }
 
-#BingoBody #BuzzwordsBody{
+#BingoBody{
 cursor:pointer;
+  width:750px;
+    background-color:#d40000;
+  -webkit-box-shadow: 7px 10px 20px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 7px 10px 20px 0px rgba(0,0,0,0.75);
+  box-shadow: 7px 10px 20px 0px rgba(0,0,0,0.75);    
+}
+
+#BuzzwordsBody{
+cursor:pointer;
+  width:330px;
 }
 
 .gelbe_zelle {
