@@ -331,6 +331,14 @@
        y1="527.3"
        x2="418.2"
        y2="446.3" />
+    <filter
+       inkscape:collect="always"
+       id="filter3829">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="4.2124757"
+         id="feGaussianBlur3831" />
+    </filter>
   </defs>
   <sodipodi:namedview
      id="base"
@@ -340,7 +348,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1"
-     inkscape:cx="390.7743"
+     inkscape:cx="192.7743"
      inkscape:cy="168.63313"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
@@ -431,8 +439,8 @@
          clip-path="url(#clipPath194)" />
     </g>
     <path
-       style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
-       d="m 147.78138,772.62149 c -42.85248,-0.18244 -83.85596,27.5535 -99.332274,67.4233 -20.130803,48.91339 1.146041,111.4141 47.579562,136.69189 33.114602,19.2672 76.705182,18.90591 109.225262,-1.54415 33.88645,-19.82814 57.13081,-58.63738 54.1598,-98.55329 -2.20952,-45.02063 -33.73769,-88.58495 -78.07683,-99.81622 -10.89832,-3.03229 -22.23144,-4.48515 -33.55552,-4.20153 z"
+       style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;filter:url(#filter3829)"
+       d="M 147.84375,776.625 C 98.889383,775.91984 52.517972,814.99896 46,863.84375 c -7.299176,46.81684 19.047474,97.90444 63.92359,115.32088 36.63452,15.36022 81.42745,7.15714 110.45141,-19.88338 27.9736,-24.51677 41.95935,-64.70652 32.4375,-101.03125 -9.03954,-39.94608 -42.39142,-74.48061 -83.73594,-80.07336 -6.95946,-1.21649 -14.11938,-1.7105 -21.23281,-1.55164 z"
        id="path3075"
        inkscape:connector-curvature="0" />
     <path

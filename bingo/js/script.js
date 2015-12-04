@@ -6,7 +6,7 @@ $(document).ready(function() {
       size: 49,
 
     },
-    buzzwordCount: 63 	// Anzahl der Buzzwords +1...
+    buzzwordCount: 66 	// Anzahl der Buzzwords +1...
   };
   
   var WinBoards = {
