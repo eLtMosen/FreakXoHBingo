@@ -19,6 +19,13 @@
 /app/config/parameters.yml
 /app/config/parameters.ini
 
+# Propel 2.0
+/app/propel/generated-schemas
+/app/propel/sql
+/app/propel/fixtures
+/src/*/Propel/Base
+/src/*/Propel/Map
+
 # Managed by Composer
 /app/bootstrap.php.cache
 /var/bootstrap.php.cache

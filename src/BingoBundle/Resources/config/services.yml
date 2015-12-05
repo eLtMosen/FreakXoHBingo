@@ -1,0 +1,4 @@
+services:
+#    bingo.example:
+#        class: BingoBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

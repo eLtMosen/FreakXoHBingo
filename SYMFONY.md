@@ -23,3 +23,13 @@ Unsere Variante, Projekt mit Composer erstellen:
 
 Nach dem das Projekt erstellt wurde kann es konfiguriert werden.
 
+## Neues Bundle erstellen
+
+Es gibt mehrere Bundles, die bnötigt werden und die ersteinmal angelegt werden müssen:
+
+* **BaseBundle** 
+    app/console generate:bundle --namespace=BaseBundle
+* **BingoBundle**
+    app/console generate:bundle --namespace=BingoBundle
+
+Anschließend stehen die Bundles zur Verfügung.

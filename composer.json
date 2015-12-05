@@ -1,5 +1,5 @@
 {
-    "name": "ai/freak-xo-h-bingo",
+    "name": "FreakXoHBingo",
     "license": "proprietary",
     "type": "project",
     "autoload": {
@@ -10,14 +10,19 @@
     "require": {
         "php": ">=5.3.9",
         "symfony/symfony": "2.7.*",
+
         "doctrine/orm": "^2.4.8",
         "doctrine/doctrine-bundle": "~1.4",
+
         "symfony/assetic-bundle": "~2.3",
         "symfony/swiftmailer-bundle": "~2.3",
         "symfony/monolog-bundle": "~2.4",
         "sensio/distribution-bundle": "~4.0",
         "sensio/framework-extra-bundle": "^3.0.2",
-        "incenteev/composer-parameter-handler": "~2.0"
+        "incenteev/composer-parameter-handler": "~2.0",
+
+        "propel/propel": "dev-master",
+        "propel/propel-bundle": "2.0.x-dev"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3",
