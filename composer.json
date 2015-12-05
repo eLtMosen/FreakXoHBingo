@@ -22,7 +22,9 @@
         "incenteev/composer-parameter-handler": "~2.0",
 
         "propel/propel": "dev-master",
-        "propel/propel-bundle": "2.0.x-dev"
+        "propel/propel-bundle": "2.0.x-dev",
+
+        "friendsofsymfony/rest-bundle": "dev-master"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3",
