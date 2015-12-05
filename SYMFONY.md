@@ -33,3 +33,14 @@ Es gibt mehrere Bundles, die bnötigt werden und die ersteinmal angelegt werden 
     app/console generate:bundle --namespace=BingoBundle
 
 Anschließend stehen die Bundles zur Verfügung.
+
+## Propel
+
+[Propel](http://propelorm.org/) ist eine Datenbank Abstractions Schicht (ORM) zum Beschleunigen der Entwicklung von Lese und Schreibzugriffen auf die Datenbank.
+
+* Konfiguriert wird Propel über die ```app/config/propel.yml```
+* Im Bundle liegt eine Schema-Beschreibung der Tabellen: ```src/BingoBundle/Resources/config/propel/schema.xml```
+* Mit Propel werden Basis Models und Klassen mit Methoden zum Handhaben von Daten mit ```app/console propel:build```
+* Der Generierte Code wird abgelegt in: ```src/BingoBundle/Propel```
+
+
