@@ -27,7 +27,6 @@ class AppKernel extends Kernel
             new Propel\PropelBundle\PropelBundle(),
 
             // Bingo Application...
-            new AppBundle\AppBundle(),
             new BaseBundle\BaseBundle(),
             new BingoBundle\BingoBundle(),
         );

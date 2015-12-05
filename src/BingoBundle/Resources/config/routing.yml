@@ -1,3 +1,5 @@
 bingo_homepage:
-    path:     /hello/{name}
-    defaults: { _controller: BingoBundle:Default:index }
+    type: annotation
+    prefix: /
+    resource: "@BingoBundle/Controller/"
+    defaults: { _controller: BingoBundle:Index:index }

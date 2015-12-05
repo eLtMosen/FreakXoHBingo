@@ -1,6 +1,46 @@
 # Symfony 2
 
-## Erstinstallation
+Das Frontend (die Spiele), der Adminbereich werden von Symfony erzeugt. Das Backend des Spiele wird über eine REST API angesprochen.
+
+## Installation
+
+Im ersten Schritt der Projekt klonen:
+
+Anschliessend die Konfiguration erstellen. Hier zu die ```app/config/parameters.yml.dist``` in  ```app/config/parameters.yml``` kopieren.
+
+    cp app/config/parameters.yml.dist app/config/parameters.yml
+
+Die Datenbank und der Mail Server sollten entsprechend konfiguriert werden.
+
+Ist die Konfiguration abgeschlossen, dass die Composer Pakete installieren:
+
+    ./composer.sh i
+
+Die wichtisten Pakete:
+
+* **PHPUnit** in der 5er Version zum Ausführen von Tests.
+* **[Symfony 2.7](https://symfony.com/)** als Framework zum erzeugen von Seiten.
+* **[Propel 2](http://propelorm.org/)** als Datenbankabstraktionsschicht und für die Schema Versionierung.
+* **FOS Rest** ein Bundle, das eine Rest Full API erzeugt.
+
+*Unter **[Erstinstallation](#erstinstallation)** ist beschrieben wie das Projekt aufgesetzt wurde,
+
+## Propel
+
+[Propel](http://propelorm.org/) ist eine Datenbank Abstractions Schicht (ORM) zum Beschleunigen der Entwicklung von Lese und Schreibzugriffen auf die Datenbank.
+
+* Konfiguriert wird Propel über die ```app/config/propel.yml```
+* Im Bundle liegt eine Schema-Beschreibung der Tabellen: ```src/BingoBundle/Resources/config/propel/schema.xml```
+* Mit Propel werden Basis Models und Klassen mit Methoden zum Handhaben von Daten mit ```app/console propel:build```
+* Der Generierte Code wird abgelegt in: ```src/BingoBundle/Propel```
+
+___
+
+# Dokumentation
+
+Einige Befehle werden nur einmal beim ersten Aufsetzen eines Projekts ausgeführt. Hier also nur zu Dokummentationszwecken ;) 
+
+## <a name="erstinstallation"></a>Erstinstallation
 
 Open your command console and execute the following commands:
 
@@ -33,14 +73,3 @@ Es gibt mehrere Bundles, die bnötigt werden und die ersteinmal angelegt werden 
     app/console generate:bundle --namespace=BingoBundle
 
 Anschließend stehen die Bundles zur Verfügung.
-
-## Propel
-
-[Propel](http://propelorm.org/) ist eine Datenbank Abstractions Schicht (ORM) zum Beschleunigen der Entwicklung von Lese und Schreibzugriffen auf die Datenbank.
-
-* Konfiguriert wird Propel über die ```app/config/propel.yml```
-* Im Bundle liegt eine Schema-Beschreibung der Tabellen: ```src/BingoBundle/Resources/config/propel/schema.xml```
-* Mit Propel werden Basis Models und Klassen mit Methoden zum Handhaben von Daten mit ```app/console propel:build```
-* Der Generierte Code wird abgelegt in: ```src/BingoBundle/Propel```
-
-
