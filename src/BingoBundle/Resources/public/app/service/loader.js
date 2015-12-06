@@ -1,6 +1,5 @@
 /**
  * Shows a loader inside a container
- *
  */
 BingoApp.factory('LoaderService', ['$timeout', '$sce', '$log',
     function ($timeout, $sce, $log) {
@@ -9,6 +8,11 @@ BingoApp.factory('LoaderService', ['$timeout', '$sce', '$log',
         var buttonLoaderTemplate = '<div class="button-loader"><i class="fa fa-circle-o-notch fa-spin"></i></div>';
 
         return {
+            /**
+             * buttonLoaderAdd
+             *
+             * @param container
+             */
             buttonLoaderAdd: function (container) {
                 var jContainer = angular.element(container);
 
@@ -19,6 +23,11 @@ BingoApp.factory('LoaderService', ['$timeout', '$sce', '$log',
                 jContainer.html(buttonLoaderTemplate);
             },
 
+            /**
+             * buttonLoaderRemove
+             *
+             * @param container
+             */
             buttonLoaderRemove: function (container) {
                 var jContainer = angular.element(container);
 
@@ -28,6 +37,11 @@ BingoApp.factory('LoaderService', ['$timeout', '$sce', '$log',
                 jContainer.removeAttr('disabled');
             },
 
+            /**
+             * loadingShieldAdd
+             *
+             * @param container
+             */
             loadingShieldAdd: function (container) {
                 var jContainer = angular.element(container);
 
@@ -39,15 +53,25 @@ BingoApp.factory('LoaderService', ['$timeout', '$sce', '$log',
                 //jContainer.find(loaderRoot).css('height', jContainer.offsetHeight());
             },
 
+            /**
+             * loadingShieldRemove
+             *
+             * @param container
+             */
             loadingShieldRemove: function (container) {
                 var jContainer = angular.element(container);
 
                 jContainer.css('overflow', jContainer.data('overflow-backup-loader'));
                 jContainer.data('overflow-backup-loader', '');
-
                 jContainer.find(loaderRoot).remove();
             },
 
+            /**
+             * toTrusted
+             *
+             * @param htmlCode
+             * @returns {*}
+             */
             toTrusted: function (htmlCode) {
                 return $sce.trustAsHtml(htmlCode);
             }

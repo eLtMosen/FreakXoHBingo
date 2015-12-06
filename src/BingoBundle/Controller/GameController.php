@@ -21,7 +21,7 @@ use Symfony\Component\HttpKernel\Kernel;
  *
  * @package BingoRestBundle\Controller
  */
-class GamesController extends AbstractRestController
+class GameController extends AbstractRestController
 {
     /**
      * Methode zum Auslesen aller verfügbaren Bingo Spiele.
@@ -30,6 +30,7 @@ class GamesController extends AbstractRestController
      * @Route("/rest/games", name="bingo_games_rest", defaults={ "_format" = "json" })
      * @Method("GET")
      * @Rest\View()
+     * @return array
      */
     public function listAction()
     {
@@ -45,7 +46,10 @@ class GamesController extends AbstractRestController
         foreach ($games as $game) {
             $gamesData[] = array(
                 'id' => $game->getId(),
-                'name' => $game->getName()
+                'slug' => $game->getSlug(),
+                'name' => $game->getName(),
+                'slogan' => $game->getSlogan(),
+                'description' => $game->getDescription()
             );
         }
 
@@ -53,6 +57,31 @@ class GamesController extends AbstractRestController
             'name' => 'FreakXoHBingo',
             'version' => Kernel::VERSION,
             'games' => $gamesData
+        );
+    }
+
+    /**
+     * Methode zum Auslesen eines Spiels.
+     *
+     * @Route("/game/{slug}", name="bingo_game")
+     * @Route("/rest/game/{slug}", name="bingo_game_rest", defaults={ "_format" = "json" })
+     * @Method("GET")
+     * @Rest\View()
+     * @param string $slug
+     * @return array
+     */
+    public function getAction($slug)
+    {
+        $locale = 'de_DE';
+
+        $gamesQuery = new GameQuery();
+        $gamesQuery->joinWithI18n($locale);
+        $game = $gamesQuery->findOneBySlug($slug);
+
+        return array(
+            'name' => 'FreakXoHBingo',
+            'version' => Kernel::VERSION,
+            'game' => $game
         );
     }
 }

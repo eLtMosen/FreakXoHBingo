@@ -1,5 +1,10 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="/bundles/bingo/css/style.css">
+{% endblock %}
+
 {% block javascripts %}
     {{ parent() }}
     {#

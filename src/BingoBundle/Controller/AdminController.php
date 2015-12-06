@@ -22,6 +22,7 @@ class AdminController extends AbstractAdminController
      * The Admin Index Action.
      *
      * @Route("/admin", name="bingo_admin_index")
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function indexAction()
     {

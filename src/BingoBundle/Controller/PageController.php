@@ -22,6 +22,7 @@ class PageController extends AbstractBaseController
      * The Index Action.
      *
      * @Route("/", name="bingo_index")
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function indexAction()
     {
