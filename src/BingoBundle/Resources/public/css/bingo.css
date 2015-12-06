@@ -87,7 +87,7 @@
     width: 100px;
     /*  transition: all 0.1s; */
     opacity: 0;
-    background: url(../images/kreuz.svg);
+    background: url("/bundles/bingo/img/kreuz.svg");
     background-size: 100px 100px;
 }
 
@@ -101,7 +101,7 @@
     height: 100px;
     vertical-align: bottom;
     border: 0px;
-    /*  background: url(../images/bingo_background.svg); */
+    /*  background: url(/bundles/bingo/img/bingo_background.svg); */
     background-color: #dfc084;
 }
 
@@ -113,7 +113,7 @@
     height: 100px;
     vertical-align: bottom;
     border: 0px;
-    /*  background: url(../images/bingo_background.svg); */
+    /*  background: url(/bundles/bingo/img/bingo_background.svg); */
     background-color: #FFFFFF;
 }
 
@@ -125,7 +125,7 @@
     height: 100px;
     vertical-align: bottom;
     border: 0px;
-    /*  background: url(../images/bingo_background.svg); */
+    /*  background: url(/bundles/bingo/img/bingo_background.svg); */
     background-color: #FFFFFF;
 }
 
