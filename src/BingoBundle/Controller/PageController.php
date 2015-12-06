@@ -2,32 +2,31 @@
 
 namespace BingoBundle\Controller;
 
-use BaseBundle\Controller\AbstractBaseController;
-
-// these import the "@Route", "@Method" and "@Template" annotations
+// these import the "@Route", "@Method", "@ParamConverter" and "@Template" annotations
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 //use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
+use BaseBundle\Controller\AbstractBaseController;
 use Symfony\Component\HttpKernel\Kernel;
-
 
 /**
  * Class IndexController
  *
- * @package BingoBundle\Controller
+ * @package BingoRestBundle\Controller
  */
-class IndexController extends AbstractBaseController
+class PageController extends AbstractBaseController
 {
     /**
-     * The index action.
+     * The Index Action.
      *
      * @Route("/", name="bingo_index")
      */
     public function indexAction()
     {
         return $this->render(
-            'BingoBundle::index.html.twig',
+            'BingoBundle:Page:index.html.twig',
             array(
                 'name' => 'FreakXoHBingo',
                 'version' => Kernel::VERSION

@@ -1,0 +1,52 @@
+{% extends 'BingoBundle::base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="jumbotron">
+            <h1>{{ name }}!</h1>
+
+            <p>This page is runing with Symfony {{ version }}</p>
+        </div>
+    </div>
+    <div class="container" ng-init="getGames()" ng-controller="BingoGamesController">
+        <div class="clearfix"></div>
+        <pre>gamesData: {[ games|json ]}</pre>
+        <div class="clearfix"></div>
+
+        <table class="table table-striped table-hover" ng-show="games">
+            <thead>
+            <tr>
+                <td>#</td>
+                <td>Name</td>
+                <td>Action</td>
+            </tr>
+            </thead>
+            <tfoot>
+            <tr>
+                <td>#</td>
+                <td>Name</td>
+                <td>Action</td>
+            </tr>
+            </tfoot>
+            <tbody>
+            <tr ng-repeat="(row, game) in games">
+                <td>{[ game.id ]}</td>
+                <td>{[ game.name ]}</td>
+                <td><a href="">open</a></td>
+            </tr>
+            </tbody>
+        </table>
+        <p class="bg-info" ng-hide="games">No <strong>Games</strong> found!</p>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {#
+    {% javascripts
+        '@BingoBundle/Resources/public/app/controller/games.js' %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    #}
+    <script src="/bundles/bingo/app/controller/games.js"></script>
+{% endblock %}

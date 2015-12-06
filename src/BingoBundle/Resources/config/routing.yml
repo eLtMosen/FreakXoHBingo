@@ -1,5 +1,4 @@
-bingo_homepage:
+bingo_views:
     type: annotation
     prefix: /
     resource: "@BingoBundle/Controller/"
-    defaults: { _controller: BingoBundle:Index:index }

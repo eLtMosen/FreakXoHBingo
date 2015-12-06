@@ -3,9 +3,12 @@
 # include bash base
 . _base.sh
 
-cp /var/www/supr-reports/apache/supr-reports.conf /etc/apache2/sites-available/supr-reports.conf
+# Create all needed directories!
+./directories.sh
+
+sudo cp /var/www/FreakXoHBingo/server/freakxohbingo.conf /etc/apache2/sites-available/freakxohbingo.conf
 echo "${underline}${green}The Web-Server configuration copied to target location${reset}"
-a2ensite supr-reports.conf
+sudo a2ensite freakxohbingo.conf
 echo "${underline}${green}The Web-Server configuration enabled${reset}"
 sudo /etc/init.d/apache2 restart
 echo "${underline}${green}The Web-Server restarted${reset}"

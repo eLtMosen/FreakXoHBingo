@@ -6,7 +6,7 @@ parameters:
     database_port:     ~
     database_name:     bingo
     database_user:     root
-    database_password: geheim
+    database_password: qwer1234
     database_charset:  ';charset=UTF8'
     # You should uncomment this if you want use pdo_sqlite
     # database_path: "%kernel.root_dir%/data.db3"

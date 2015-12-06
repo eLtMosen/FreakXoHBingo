@@ -1,0 +1,15 @@
+{% extends 'BingoBundle::base.html.twig' %}
+
+{% block body %}
+<div class="container">
+    <div class="jumbotron">
+        <h1>{{ name }} Admin!</h1>
+
+        <p>This page is runing with Symfony {{ version }}</p>
+    </div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}

@@ -25,7 +25,8 @@
         "propel/propel": "dev-master",
         "propel/propel-bundle": "2.0.x-dev",
 
-        "friendsofsymfony/rest-bundle": "dev-master"
+        "friendsofsymfony/rest-bundle": "dev-master",
+        "jms/serializer-bundle": "dev-master"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3",

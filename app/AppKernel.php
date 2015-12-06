@@ -26,9 +26,13 @@ class AppKernel extends Kernel
             // Propel Bundle for Database ORM...
             new Propel\PropelBundle\PropelBundle(),
 
+            // FOS Rest Bundle for Restfull API...
+            new JMS\SerializerBundle\JMSSerializerBundle($this),
+            new FOS\RestBundle\FOSRestBundle(),
+
             // Bingo Application...
             new BaseBundle\BaseBundle(),
-            new BingoBundle\BingoBundle(),
+            new BingoBundle\BingoBundle()
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {

@@ -1,3 +1,2 @@
 bingo:
     resource: "@BingoBundle/Resources/config/routing.yml"
-    prefix:   /
