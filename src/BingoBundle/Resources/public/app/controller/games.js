@@ -71,4 +71,22 @@ BingoApp.controller('BingoGamesController', function ($scope, $locale, $window, 
             $scope.messageService.addMessage('danger', 'There was an error getting games data from request!');
         });
     };
+
+    /**
+     * Open the game modal to create or update a game.
+     * @param game
+     */
+    $scope.openGameModal= function (game) {
+        var modalInstance = $modal.open({
+            windowClass: 'modal fade in',
+            templateUrl: 'GameModalContent.html',
+            keyboard: true,
+            controller: GameModalInstanceCtrl,
+            resolve: {
+                game: function() {
+                    return $scope.game;
+                }
+            }
+        });
+    };
 });

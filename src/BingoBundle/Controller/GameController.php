@@ -3,6 +3,7 @@
 namespace BingoBundle\Controller;
 
 // these import the "@Route", "@Method", "@ParamConverter" and "@Template" annotations...
+use BingoBundle\Propel\Game;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
@@ -14,6 +15,7 @@ use FOS\RestBundle\Controller\Annotations as Rest;
 use BaseBundle\Controller\AbstractRestController;
 use BingoBundle\Propel\GameQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Kernel;
 
 /**
@@ -64,7 +66,7 @@ class GameController extends AbstractRestController
      * Methode zum Auslesen eines Spiels.
      *
      * @Route("/game/{slug}", name="bingo_game")
-     * @Route("/rest/game/{slug}", name="bingo_game_rest", defaults={ "_format" = "json" })
+     * @Route("/rest/game/{slug}", name="bingo_game_rest_get", defaults={ "_format" = "json" })
      * @Method("GET")
      * @Rest\View()
      * @param string $slug
@@ -81,6 +83,48 @@ class GameController extends AbstractRestController
         return array(
             'name' => 'FreakXoHBingo',
             'version' => Kernel::VERSION,
+            'game' => $game
+        );
+    }
+
+    /**
+     * Methode zum Auslesen eines Spiels.
+     *
+     * @Route("/game", name="bingo_game")
+     * @Route("/rest/game", name="bingo_game_rest_post", defaults={ "_format" = "json" })
+     * @Method("POST")
+     * @Rest\View()
+     * @param Request $request
+     * @return array
+     */
+    public function postAction(Request $request)
+    {
+        $locale = 'de_DE';
+
+        if ($request->request->has('locale')) {
+            $locale = $request->request->get('locale');
+        }
+
+        $slug = $request->request->get('slug');
+        $name = $request->request->get('name');
+
+        $gamesQuery = new GameQuery();
+        $gamesQuery->joinWithI18n($locale);
+        $game = $gamesQuery->findOneBySlug($slug);
+
+        if (!$game) {
+            $game = new Game();
+            $game->setSlug($slug);
+        }
+
+        $game->setName($name);
+        $game->setLocale($locale);
+        $game->save();
+
+        return array(
+            'name' => 'FreakXoHBingo',
+            'version' => Kernel::VERSION,
+            'status' => true,
             'game' => $game
         );
     }
