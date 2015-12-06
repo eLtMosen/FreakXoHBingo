@@ -22,7 +22,7 @@ class IndexController extends AbstractBaseController
     /**
      * The index action.
      *
-     * @Route("/", name="frontend_theme_index_index")
+     * @Route("/", name="bingo_index")
      */
     public function indexAction()
     {
