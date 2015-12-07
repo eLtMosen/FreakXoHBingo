@@ -1,4 +1,4 @@
-BingoApp.controller('BingoGamesController', function ($scope, $locale, $window, $modal, $log, Restangular, LoaderService, MessageService, MessageBoxService) {
+BingoApp.controller('BingoGamesController', function ($scope, $locale, $window, $uibModal, $log, Restangular, LoaderService, MessageService, MessageBoxService) {
     /**
      * Get the global logger to the local scope.
      *
@@ -78,7 +78,7 @@ BingoApp.controller('BingoGamesController', function ($scope, $locale, $window, 
      * @param game
      */
     $scope.openGameModal= function (game) {
-        var modalInstance = $modal.open({
+        var modalInstance = $uibModal.open({
             windowClass: 'modal fade in',
             templateUrl: 'GameModalContent.html',
             keyboard: true,
