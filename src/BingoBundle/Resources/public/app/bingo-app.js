@@ -14,7 +14,7 @@ BingoApp.filter("unsafe", function ($scope) {
  * Restangular erweitern...
  */
 BingoApp.config(function (RestangularProvider) {
-    RestangularProvider.setBaseUrl("https://freakxohbingo.de/app_dev.php/rest/");
+    RestangularProvider.setBaseUrl("https://freakxohbingo.de/app_dev.php/");
     RestangularProvider.setDefaultHeaders({
         "Content-Type": "application/json; charset=UTF-8",
         "X-Requested-With": "XMLHttpRequest"

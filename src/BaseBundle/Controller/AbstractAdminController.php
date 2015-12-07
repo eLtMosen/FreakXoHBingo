@@ -7,7 +7,7 @@ namespace BaseBundle\Controller;
  *
  * @package BaseBundle\Controller
  */
-class AbstractAdminController extends AbstractBaseController
+class AbstractAdminController extends AbstractController
 {
 
 }

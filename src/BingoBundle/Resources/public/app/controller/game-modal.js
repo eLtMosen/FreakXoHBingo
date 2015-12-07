@@ -10,7 +10,7 @@
  * @param LoaderService
  * @constructor
  */
-var GameModalInstanceCtrl = function ($scope, $sce, $window, $modalInstance, $log, Restangular, MessageService, game, LoaderService) {
+var GameModalInstanceCtrl = function ($scope, $rootScope, $sce, $window, $modalInstance, $log, Restangular, MessageService, game, LoaderService) {
     /**
      * Get the global logger to the local scope.
      *
@@ -35,7 +35,7 @@ var GameModalInstanceCtrl = function ($scope, $sce, $window, $modalInstance, $lo
      *
      * @param loading
      */
-    $scope.setLoading = function(loading) {
+    $scope.setLoading = function (loading) {
         if (loading == true) {
             LoaderService.loadingShieldAdd('body');
         } else {
@@ -60,14 +60,14 @@ var GameModalInstanceCtrl = function ($scope, $sce, $window, $modalInstance, $lo
     /**
      * Request Address Data
      */
-    $scope.gameAjax = Restangular.all('game');
+    $scope.gameAjax = Restangular.all('/admin/rest/game');
 
     /**
      * The Game Object.
      *
      * @type {{}}
      */
-    $scope.game = {};
+    $scope.game = game;
 
     /**
      * Submit the modal form.
@@ -81,10 +81,10 @@ var GameModalInstanceCtrl = function ($scope, $sce, $window, $modalInstance, $lo
             $scope.setLoading(false);
 
             if (result.status == true) {
-                // @todo Refresh orders list
+                // @todo Refresh games list
+                $rootScope.$broadcast('updateList');
             } else {
-                // @todo define global error container
-                alert('Es ist ein Fehler aufgetreten!');
+                $scope.messageService.addMessage('danger', 'There was an error saving game data from request!');
                 MessageService.flushToContainer('');
             }
 
@@ -95,7 +95,7 @@ var GameModalInstanceCtrl = function ($scope, $sce, $window, $modalInstance, $lo
     /**
      * Method to send the modal data.
      */
-    $scope.modalOk = function() {
+    $scope.modalOk = function () {
         $scope.messageService.clearMessages();
         $scope.modalFormSubmit($scope.game);
         $modalInstance.close($scope.game);
@@ -104,10 +104,10 @@ var GameModalInstanceCtrl = function ($scope, $sce, $window, $modalInstance, $lo
     /**
      * Method to cancel the modal.
      */
-    $scope.modalCancel = function() {
+    $scope.modalCancel = function () {
         $scope.messageService.clearMessages();
         //$scope.game = {};
-        //$modalInstance.dismiss('cancel');
+        $modalInstance.dismiss('cancel');
     };
 
     /**
@@ -115,7 +115,7 @@ var GameModalInstanceCtrl = function ($scope, $sce, $window, $modalInstance, $lo
      *
      * @todo This is the same like modalCancel!
      */
-    $scope.modalClose = function() {
+    $scope.modalClose = function () {
         $scope.messageService.clearMessages();
         //$modalInstance.close($scope.game);
     };

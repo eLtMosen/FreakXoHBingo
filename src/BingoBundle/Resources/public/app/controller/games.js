@@ -45,7 +45,7 @@ BingoApp.controller('BingoGamesController', function ($scope, $locale, $window, 
     /**
      * Restangular Games AJAX target.
      */
-    var gamesAjax = Restangular.all('games');
+    var gamesAjax = Restangular.all('/rest/games');
 
     /**
      * List of Bingo Games Data.
@@ -74,6 +74,7 @@ BingoApp.controller('BingoGamesController', function ($scope, $locale, $window, 
 
     /**
      * Open the game modal to create or update a game.
+     *
      * @param game
      */
     $scope.openGameModal= function (game) {
@@ -84,9 +85,27 @@ BingoApp.controller('BingoGamesController', function ($scope, $locale, $window, 
             controller: GameModalInstanceCtrl,
             resolve: {
                 game: function() {
-                    return $scope.game;
+                    return typeof game != 'undefined' ? game : {};
                 }
             }
         });
     };
+
+    $scope.$on("updateList",function(){
+        $scope.getGames();
+    });
+
+    /*
+    var myModal = $modal.open({
+        animation: true,
+        templateUrl: 'editForm.html',
+        backdrop: 'static',
+        keyboard: false,
+        scope: $scope
+    });
+
+    myModal.result.then(function(){
+        //Call function to reload the list
+    });
+    */
 });

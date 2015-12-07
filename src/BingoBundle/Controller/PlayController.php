@@ -3,6 +3,7 @@
 namespace BingoBundle\Controller;
 
 // these import the "@Route", "@Method", "@ParamConverter" and "@Template" annotations
+use BingoBundle\Propel\GameQuery;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
@@ -12,25 +13,33 @@ use BaseBundle\Controller\AbstractController;
 use Symfony\Component\HttpKernel\Kernel;
 
 /**
- * Class IndexController
+ * Class PlayController
  *
- * @package BingoRestBundle\Controller
+ * @package BingoBundle\Controller
  */
-class PageController extends AbstractController
+class PlayController extends AbstractController
 {
     /**
-     * The Index Action.
+     * Play the Game Action.
      *
-     * @Route("/", name="bingo_index")
+     * @Route("/play/{slug}", name="bingo_play")
+     * @param string $slug
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function indexAction()
+    public function indexAction($slug)
     {
+        $locale = 'de_DE';
+
+        $gamesQuery = new GameQuery();
+        $gamesQuery->joinWithI18n($locale);
+        $game = $gamesQuery->findOneBySlug($slug);
+
         return $this->render(
-            'BingoBundle:Page:index.html.twig',
+            'BingoBundle:Play:play.html.twig',
             array(
                 'name' => 'FreakXoHBingo',
-                'version' => Kernel::VERSION
+                'version' => Kernel::VERSION,
+                'game' => $game
             )
         );
     }

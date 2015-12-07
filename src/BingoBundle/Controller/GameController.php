@@ -86,46 +86,4 @@ class GameController extends AbstractRestController
             'game' => $game
         );
     }
-
-    /**
-     * Methode zum Auslesen eines Spiels.
-     *
-     * @Route("/game", name="bingo_game")
-     * @Route("/rest/game", name="bingo_game_rest_post", defaults={ "_format" = "json" })
-     * @Method("POST")
-     * @Rest\View()
-     * @param Request $request
-     * @return array
-     */
-    public function postAction(Request $request)
-    {
-        $locale = 'de_DE';
-
-        if ($request->request->has('locale')) {
-            $locale = $request->request->get('locale');
-        }
-
-        $slug = $request->request->get('slug');
-        $name = $request->request->get('name');
-
-        $gamesQuery = new GameQuery();
-        $gamesQuery->joinWithI18n($locale);
-        $game = $gamesQuery->findOneBySlug($slug);
-
-        if (!$game) {
-            $game = new Game();
-            $game->setSlug($slug);
-        }
-
-        $game->setName($name);
-        $game->setLocale($locale);
-        $game->save();
-
-        return array(
-            'name' => 'FreakXoHBingo',
-            'version' => Kernel::VERSION,
-            'status' => true,
-            'game' => $game
-        );
-    }
 }

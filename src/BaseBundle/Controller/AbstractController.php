@@ -9,7 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
  *
  * @package BaseBundle\Controller
  */
-abstract class AbstractBaseController extends Controller
+abstract class AbstractController extends Controller
 {
 
 }

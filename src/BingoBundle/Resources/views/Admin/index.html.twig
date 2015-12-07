@@ -1,15 +1,112 @@
 {% extends 'BingoBundle::base.html.twig' %}
 
 {% block body %}
-<div class="container">
-    <div class="jumbotron">
-        <h1>{{ name }} Admin!</h1>
+    <div class="container">
+        <div class="jumbotron">
+            <h1>{{ name }} Admin!</h1>
 
-        <p>This page is runing with Symfony {{ version }}</p>
+            <p>This page is runing with Symfony {{ version }}</p>
+        </div>
     </div>
-</div>
+    <div class="container" ng-init="getGames()" ng-controller="BingoGamesController" ng-cloak>
+        <!--
+        <div class="clearfix"></div>
+        <pre>games: {[ games|json ]}</pre>
+        <div class="clearfix"></div>
+        -->
+        <p class="bg-info" ng-hide="games.length > 0">No <strong>Games</strong> found!</p>
+        <table class="table table-striped table-hover" ng-show="games.length > 0">
+            <thead>
+            <tr>
+                <td>#</td>
+                <td>Slug</td>
+                <td>Name</td>
+                <td>Action</td>
+            </tr>
+            </thead>
+            <tfoot>
+            <tr>
+                <td>#</td>
+                <td>Slug</td>
+                <td>Name</td>
+                <td>Action</td>
+            </tr>
+            </tfoot>
+            <tbody>
+            <tr ng-repeat="(row, game) in games">
+                <td>{[ game.id ]}</td>
+                <td>{[ game.slug ]}</td>
+                <td>{[ game.name ]}</td>
+                <td>
+                    <button class="btn" ng-click="openGameModal(game)">edit <i class="fa fa-pencil-square-o"></i></button>
+                    <a href="{{ path(app.request.attributes.get('_route')) }}play/{[ game.slug ]}" class="btn btn-primary">play <i class="fa fa-play"></i></a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <script type="text/ng-template" id="GameModalContent.html">
+            <div class="modal-header">
+                <h3>Neues Bingo Spiel erstellen!</h3>
+            </div>
+            <div class="modal-body">
+                <!--
+                <div class="clearfix"></div>
+                <pre>game: {[ game|json ]}</pre>
+                <div class="clearfix"></div>
+                -->
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label for="inputId" class="col-sm-2 control-label">Id</label>
+
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="inputId" placeholder="ID" readonly="readonly" ng-model="game.id" ng-value="game.id">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputLocale" class="col-sm-2 control-label">Locale</label>
+
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="inputLocale" placeholder="Locale" name="locale" value="de_DE" readonly="readonly" ng-init="game.locale='de_DE'" ng-model="game.locale" ng-value="game.locale">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputSlug" class="col-sm-2 control-label">Slug</label>
+
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="inputSlug" placeholder="slug" ng-model="game.slug" ng-value="game.slug">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputName" class="col-sm-2 control-label">Name</label>
+
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="inputName" placeholder="Name" ng-model="game.name" ng-value="game.name">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" ng-click="modalOk()">OK</button>
+                <button class="btn btn-warning" ng-click="modalCancel()">Cancel</button>
+            </div>
+        </script>
+        <p class="text-right">
+            <button class="btn" ng-click="openGameModal()">Neues Bingo Spiel erstellen!</button>
+        </p>
+        {#
+        {% include 'BingoBundle::_loader.html.twig' %}
+        #}
+    </div>
 {% endblock %}
 
 {% block javascripts %}
     {{ parent() }}
+    {#
+    {% javascripts
+        '@BingoBundle/Resources/public/app/controller/games.js' %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    #}
+    <script src="/bundles/bingo/app/controller/game-modal.js"></script>
+    <script src="/bundles/bingo/app/controller/games.js"></script>
 {% endblock %}
