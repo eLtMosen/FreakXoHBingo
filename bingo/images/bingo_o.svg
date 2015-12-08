@@ -15,7 +15,7 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.48.4 r9939"
-   sodipodi:docname="bingo_g.svg">
+   sodipodi:docname="bingo_o.svg">
   <defs
      id="defs4">
     <pattern
@@ -115,8 +115,8 @@
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="1366"
-     inkscape:window-height="705"
+     inkscape:window-width="1680"
+     inkscape:window-height="1030"
      inkscape:window-x="-7"
      inkscape:window-y="-10"
      inkscape:window-maximized="1"
@@ -148,7 +148,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -165,7 +165,7 @@
          clip-path="url(#clipPath194)" />
     </g>
     <path
-       style="fill:#d40000"
+       style="fill:#ffffff"
        d="m 71.417905,1037.3736 c -6.340892,-2.7602 -15.534334,-10.6346 -20.429833,-17.4986 -8.893038,-12.4688 -8.900962,-12.5744 -8.900962,-118.67963 0,-116.17093 0.466271,-119.00999 21.649557,-131.8291 10.742352,-6.50072 18.123315,-7.02507 83.710983,-5.94703 74.4013,1.22295 82.18693,2.40073 96.00956,14.52391 14.44066,12.66521 15.92917,23.90951 15.92917,120.3279 0,108.34085 -2.20187,122.01965 -21.78343,135.32555 -13.04817,8.8665 -15.08129,9.0828 -84.01395,8.9409 -50.89112,-0.1047 -73.86558,-1.5485 -82.171095,-5.1639 z M 186.98406,973.40303 c 5.3393,-5.33935 5.96074,-14.46457 4.80095,-70.49762 -0.83606,-40.39254 -2.86487,-65.89707 -5.44739,-68.47961 -6.11176,-6.11183 -61.33502,-9.08028 -71.15472,-3.82501 -7.8629,4.20818 -8.09173,6.26484 -8.09173,72.73386 0,80.2133 -2.44872,75.91815 43.38024,76.08856 23.39642,0.087 31.78922,-1.29675 36.51265,-6.02018 z"
        id="path3917"
        inkscape:connector-curvature="0"

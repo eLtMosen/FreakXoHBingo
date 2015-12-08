@@ -68,6 +68,7 @@ table{
   border:0px;
 }
 
+
 ul{
   padding-left:15px;
   border:0px;
@@ -147,6 +148,8 @@ td{
   background-color:#FFFFFF;
 }
 
+
+
 #logoverti td{
   padding-left:10px;
   padding-top: 5px;
@@ -156,37 +159,52 @@ td{
   vertical-align:bottom;
   border:0px;
 /*  background: url(../images/bingo_background.svg); */
-  background-color:#FFFFFF;
+background-color:#d40000;  
+}
+#logoverti {
+background-color:#d40000;
+padding-bottom: 10px;
+width:120px;
 }
 
 #bingolist td{
   padding:0px;
   padding-left: 25px;
   padding-right: 0px;  
-  width: 100%;
+  width: 435px;
   height:100px;
   vertical-align:middle;
   border:0px;
 /*  background: url(../images/bingo_background.svg); */
   background-color:#FFFFFF;
-  font-family: Freakshow; font-size: 14pt;
+  font-family: Freakshow; font-size: 22pt;
 }
 
 #BingoBody{
-cursor:pointer;
   width:750px;
     background-color:#d40000;
+}
+#BingoBody td{
+cursor:pointer;
+}
+#card{
+  background-color:#d40000;
+
+  padding:0px;
+  border:0px;
+  border-spacing:0px;
   -webkit-box-shadow: 7px 10px 20px 0px rgba(0,0,0,0.75);
   -moz-box-shadow: 7px 10px 20px 0px rgba(0,0,0,0.75);
   box-shadow: 7px 10px 20px 0px rgba(0,0,0,0.75);    
 }
 
 #BuzzwordsBody{
-cursor:pointer;
   width:330px;
 /*  background-color:#DDDDDD; */
 }
-
+#BuzzwordsBody td{
+cursor:pointer;
+}
 .gelbe_zelle {
    background: #fcfd00; /* Or some other color */
 }
