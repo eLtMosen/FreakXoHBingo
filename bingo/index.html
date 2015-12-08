@@ -4,7 +4,7 @@
     <meta charset=utf-8 />
     <link rel="icon" type="image/svg+xml" href="http://mosushi.net/bingo/images/favicon.svg">
     <link rel="alternate icon" type="image/png" href="http://mosushi.net/bingo/images/favicon.png">
-    <title>Freak Show Bingo (Beta 3, 20151201)</title>
+    <title>Freak Show Bingo (Beta 4, 20151208)</title>
     <script tbype="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
     <!--[if IE]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -42,13 +42,19 @@
       </div>
     <div style="width: 750px; float: left; margin-right: 20px; margin-bottom: 25px" class="resize"><table id="BingoBody"></table></div>
    
-    <div style="width: 420px; float: left;  margin-top: 0px" overflow: hidden; class="resize" id="logohori">
+    <div style="width: 430px; float: left;  margin-top: 0px" overflow: hidden; class="resize" id="logohori">
       <div style="width: 100%; margin-left: 15px; overflow: visible;">
+      <table id="logohori">
+      <tr>
+      <td id="score" class="logohori">
         <div style="width: 105px; float: left;" id="mischen"><img src="images/misch_modus.svg"></div>
 	<div style="width: 105px; float: left;" id="mischen"><a href="#" id="neueKarte"><img src="images/mischen.svg"></a></div>
-        <div style="width: 105px; float: left;" id="mischen"><a href="#" id="reset"><img src="images/reset.svg"></a></div> 
-	<div style="width: 105px; float: left;" id="mischen"><a href="#" id="spielstart"><img src="images/spiel_modus.svg"></a></div> 
-	
+        <div style="width: 100px; float: left;" id="mischen"><a href="#" id="reset"><img src="images/reset.svg"></a></div> 
+      </td><td id="modeindicator" style="width: 100px;">
+	<div style="width: 100px; float: left;" id="mischen"><a href="#" id="spielstart"><img src="images/spiel_modus.svg"></a></div>
+      </td>
+      </tr>
+      </table>
       </div>
     </div>
    
@@ -167,20 +173,18 @@
       </table>
       </div>
 
-        <div style="width: 440px; margin-top: -10px; float: left" overflow: visible; class="resize"> 
-       
-	    <div id="result1">
-	      <table>
+        <div style="width: 425px; margin-top: -10px; float: left" overflow: visible; class="resize"> 
+          <table id="bingolist">
 		<tr>
 		  <td id="textseite">
-                        <h1>1. Im rechten Feld Buzzwords ausschließen, dann mit der 'm' Taste Mischen um strategisch umzuverteilen.</h1>
-			<h1>2. Der Misch-Modus beendet beim ersten klick in die Karte um sie für den Spiel-Modus zu fixieren</h1>
-			<h1>3. Ein Buzzword fällt während der Live Sendung und wird gültig wenn es im Chat bestätigt wurde. (Hat letztes mal noch nicht soo gut funktioniert *wink wink*</h1>
-			<h1>4. Gültige Begriffe werden auf der Karte gelb markiert, erreichte Bingos werden grün und dann nach Punkten gezählt um am Ende der Sendung Gewinner ermitteln zu können. </h1>
+	    <div id="result1">
+	   
+                        <h1>1. Bis zu 23 Buzzwords ausschliessen, mit der 'm' Taste Mischen und strategisch umverteilen.</h1>
+			<h1>2. Der Misch Modus wird mit dem Button Spiel Start oder beim 23ten Ausschluss beendet um die Karte zu fixieren</h1>
+			<h1>3. Ein Buzzword fällt in der Live Sendung und wird gültig wenn es im Chat wiederholt wurde. (Hat letztes mal noch nicht soo gut funktioniert *wink wink*</h1>
+			<h1>4. Geltende Begriffe werden auf der Karte gelb markiert, erreichte Bingos werden nach Punkten addiert um am Ende der Sendung Gewinner zu ermitteln. </h1>
 			<a href="info.html">Infos zur Entstehung dieser Seite</a>
-                  </td>
-                </tr>
-              </table>
+
             </div>
 	    <div id="result2"></div>
 	    <div id="result3"></div>
@@ -220,7 +224,9 @@
 	    <div id="result37"></div>
 	    <div id="result38"></div>
 	    <div id="result39"></div>	    
-       
+                   </td>
+                </tr>
+              </table>      
       </div>      
     </body>
 </html>

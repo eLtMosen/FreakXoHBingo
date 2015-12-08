@@ -6,7 +6,7 @@ $(document).ready(function() {
       size: 49,
 
     },
-    buzzwordCount: 66 	// Anzahl der Buzzwords +1...
+    buzzwordCount: 73 	// Anzahl der Buzzwords +1...
   };
   
   var WinBoards = {
@@ -80,8 +80,8 @@ $(document).ready(function() {
       }
 
   
-  var wonBingos = new Array(67);
-  var UserRejected = new Array(21);
+  var wonBingos = new Array(77);
+  var UserRejected = new Array(23);
   var totalScore = 0;
   var $bingoBody = $('#BingoBody');
   var PlayMode = false;
@@ -112,6 +112,7 @@ $(document).ready(function() {
       }
       $cell.attr('data-id', i);
       $cell.append($('<img>'));
+      $cell.attr('class', 'missing');
       $row.append($cell);
 
       // Ueberpruefe ob Reihe voll
@@ -137,6 +138,7 @@ $(document).ready(function() {
     setImgOn('#missing', missingBingoCards);
     $("#BingoBody td").removeClass('gelbe_zelle');
     $("#BingoBody td").removeClass('gruene_zelle');
+    $("#BingoBody td").removeClass('rote_zelle');
     $("#BuzzwordsBody td").removeClass('rote_zelle');
     setImgOnRejected('#missing', UserRejected);
     wonBingos = [];
@@ -145,6 +147,7 @@ $(document).ready(function() {
 
   function resetUserdata() {
     UserRejected = [];
+    UserRejectedNum = 0;
   }
   
   function setImgOn(htmlId, imgIds) {
@@ -169,7 +172,7 @@ $(document).ready(function() {
       var $elem = $(htmlId + (23-id));
       $elem.find('img').attr('src', 'images/' + imgIds[id] + '.svg');
       $elem.attr('data-img-id', imgIds[id]);
-      $(this).addClass("rote_zelle");
+      $elem.addClass("rote_zelle");
       }
     });
   }
@@ -206,16 +209,22 @@ $(document).ready(function() {
     });
 
     $('#reset').click(function() {
-    if(!PlayMode) {  
+    if(!PlayMode) {
+      UserRejectedNum = 0;
       resetUserdata();
-      initBingoCard();
+      $("#BuzzwordsBody td").removeClass('rote_zelle');
+      $("#BingoBody td").removeClass('rote_zelle');
     }
     });    
     $('#spielstart').click(function() {
       PlayMode = true;
-      $('#logohori').html(' Punkte: ' + totalScore);
+      UserRejectedNum = 0;
+      $('#score').html(pad(totalScore, 5));
+      $('#modeindicator').html('<img src="images/spiel_laeuft.svg">');
       $("#BuzzwordsBody td").removeClass('missing');
       $("#BuzzwordsBody td").removeClass('rote_zelle');
+      $("#BingoBody td").removeClass('missing');
+      $("#BingoBody td").removeClass('rote_zelle');
     });    
     
 
@@ -223,33 +232,81 @@ $(document).ready(function() {
 //    $('.resizeTiles').click(function() {
 //      resizeTiles(parseInt($(this).attr('data-tile-size')));
 //    });
-      
+    var UserRejectedNum = 0;      
     $("#BingoBody td").click(function() {
+    if (UserRejectedNum >= 23) {  
+      alert('Es können nur 23 Buzzwords ausgeschlossen werden!  Es wird nun unter ausschluss der bisher abgewählten neu gemischt und das Spiel gestartet.');
+      $('#modeindicator').html('<img src="images/spiel_laeuft.svg">');
+      UserRejectedNum = 0;   
+      initBingoCard();
+      UserRejected = [];
       PlayMode = true;
+      $('#score').html(pad(totalScore, 4));
+      $("#BuzzwordsBody td").removeClass('missing');
+      $("#BuzzwordsBody td").removeClass('rote_zelle');
+      $("#BingoBody td").removeClass('missing');
+      $("#BingoBody td").removeClass('rote_zelle');
+      
+    }else{
+      if (!PlayMode) {
+	var idx = parseInt($(this).attr('data-img-id'));	// idx = integerwert der geklickten zelle
+	if (idx != 0) {				// Frei Logo nicht ausschliessbar machen
+	$(this).addClass("rote_zelle");
+	if(isNaN(idx) || $.inArray(idx, UserRejected) != -1) {
+	  }else{
+	  UserRejected[UserRejectedNum] = idx;
+	  UserRejectedNum++;
+	  console.log(UserRejectedNum);  
+	  }  
+	}
+      }else{
       $(this).addClass("gelbe_zelle");
       var idx = parseInt($(this).attr('data-id'));	// idx = integerwert der geklickten zelle
       model.bingoCard[idx] = true;  // geklickete Zelle in bingoCard true setzen
       checkWin(model.bingoCard);
 
-      $('#logohori').html(' Punkte: ' + totalScore);
+      $('#score').html(pad(totalScore, 5));
+      }
+
+      
+    }  
     });
     
-    var UserRejectedNum = 0;
+
     $("#BuzzwordsBody td").click(function() {
+    if (UserRejectedNum >= 23) {  
+      alert('Es können nur 23 Buzzwords ausgeschlossen werden! Es wird nun unter ausschluss der bisher abgewählten neu gemischt und das Spiel gestartet.');
+      $('#modeindicator').html('<img src="images/spiel_laeuft.svg">');
+      UserRejectedNum = 0;
+      initBingoCard();
+      UserRejected = [];
+      PlayMode = true;
+      $('#score').html(pad(totalScore, 5));
+      $("#BuzzwordsBody td").removeClass('missing');
+      $("#BuzzwordsBody td").removeClass('rote_zelle');
+      $("#BingoBody td").removeClass('missing');
+      $("#BingoBody td").removeClass('rote_zelle');
+    }else{
     if(!PlayMode) {
       $(this).addClass("rote_zelle");
       var idx = parseInt($(this).attr('data-img-id'));	// idx = integerwert der geklickten zelle
       if(isNaN(idx) || $.inArray(idx, UserRejected) != -1) {
       }else{
       UserRejected[UserRejectedNum] = idx;
-      UserRejectedNum++;      
+      UserRejectedNum++;
+      console.log(UserRejectedNum);
       }
     }else{
       $(this).addClass("gelbe_zelle");
     }  
+    }
     });
   }
-
+function pad(n, width, z) {
+  z = z || '0';
+  n = n + '';
+  return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
+}
   function containsAll(needle, haystack){ 
     for(var i = 0 , len = needle.length; i < len; i++){
       if($.inArray(needle[i], haystack) == -1) return false;

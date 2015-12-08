@@ -1,3 +1,9 @@
+
+@font-face {
+  font-family: Freakshow; 
+  src: url(../fonts/Freakshow.woff);
+}
+
 .resize{
 
   margin:0 auto;
@@ -89,6 +95,20 @@ img{
   background: url(../images/kreuz.svg);
   background-size: 100px 100px;
 }
+.cell:hover:before {
+  opacity: 0.75;
+}
+
+.cell:before {
+  content: "";
+  position: absolute;
+  height: 100px;
+  width: 100px;
+/*  transition: all 0.1s; */
+  opacity: 0;
+  background: url(../images/kreuz.svg);
+  background-size: 100px 100px;
+}
 .missing:hover:before {
   opacity: 0.75;
 }
@@ -106,8 +126,20 @@ td{
 #logohori td{
   padding:0px;
   padding-bottom: 5px;
-  padding-right: 5px;  
-  width:100px;
+  padding-right: 0px;  
+  width: 310px;
+  height:100px;
+  vertical-align:middle;
+  border:0px;
+/*  background: url(../images/bingo_background.svg); */
+  background-color:#FFFFFF;
+  font-family: Freakshow; font-size: 65pt;
+}
+
+#logohori table{
+  padding:0px;
+  border-spacing:0px;
+  width: 420px;
   height:100px;
   vertical-align:bottom;
   border:0px;
@@ -127,6 +159,18 @@ td{
   background-color:#FFFFFF;
 }
 
+#bingolist td{
+  padding:0px;
+  padding-left: 25px;
+  padding-right: 0px;  
+  width: 100%;
+  height:100px;
+  vertical-align:middle;
+  border:0px;
+/*  background: url(../images/bingo_background.svg); */
+  background-color:#FFFFFF;
+  font-family: Freakshow; font-size: 14pt;
+}
 
 #BingoBody{
 cursor:pointer;
