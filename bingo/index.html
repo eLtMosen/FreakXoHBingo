@@ -4,7 +4,7 @@
     <meta charset=utf-8 />
     <link rel="icon" type="image/svg+xml" href="http://mosushi.net/bingo/images/favicon.svg">
     <link rel="alternate icon" type="image/png" href="http://mosushi.net/bingo/images/favicon.png">
-    <title>Freak Show Bingo (Beta 2, 20151130)</title>
+    <title>Freak Show Bingo (Beta 4, 20151208)</title>
     <script tbype="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
     <!--[if IE]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -14,162 +14,257 @@
     <link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
   </head>
   <body>
-    <div class="resize">
-      <table id="BingoBody"></table>
-    </div>
-    &nbsp;    
-    <div class="resize">
-      <table>
-        <tr>
-          <td id="mischen"><a href="#" id="neueKarte"><img src="images/mischen.svg"></a></td>
-          <td id="missing1"><img src="images/vorschlag.svg"></td>
-          <td id="missing2"><img src="images/vorschlag.svg"></td>
-          <td id="missing3"><img src="images/vorschlag.svg"></td>
-          <td id="missing4"><img src="images/vorschlag.svg"></td>
-          <td id="missing5"><img src="images/vorschlag.svg"></td>
-          <td id="missing6"><img src="images/vorschlag.svg"></td>
-        </tr>
-        <tr>
-          <td id="missing7"><img src="images/vorschlag.svg"></td>
-          <td id="missing8"><img src="images/vorschlag.svg"></td>
-          <td id="missing9"><img src="images/vorschlag.svg"></td>
-          <td id="missing10"><img src="images/vorschlag.svg"></td>
-          <td id="missing11"><img src="images/vorschlag.svg"></td>
-          <td id="missing12"><img src="images/vorschlag.svg"></td>
-          <td id="missing13"><img src="images/vorschlag.svg"></td>
-        </tr>
-        <tr>
-          <td id="missing14"><img src="images/vorschlag.svg"></td>
-          <td id="missing15"><img src="images/vorschlag.svg"></td>
-          <td id="missing16"><img src="images/vorschlag.svg"></td>
-          <td id="missing17"><img src="images/vorschlag.svg"></td>
-          <td id="missing18"><img src="images/vorschlag.svg"></td>
-          <td id="missing19"><img src="images/vorschlag.svg"></td>
-          <td id="missing20"><img src="images/vorschlag.svg"></td>
-        </tr>
+  <div style="width: 1340px; overflow: hidden;">
+  <div style="float: left; overflow: hidden; margin-bottom: 20px" id="card">
+    <div style="width: 120px;  float: left"> 
+      <table id="logoverti">
+	<tr>
+	  <td><img src="images/bingo_b.svg"></td>
+	</tr>
+	<tr>
+	  <td><img src="images/bingo_i.svg"></td>
+	</tr>
+	<tr>
+	  <td><img src="images/bingo_n.svg"></td>
+	</tr>
+	<tr>
+	  <td><img src="images/bingo_g.svg"></td>
+	</tr>
+	<tr>
+	  <td><img src="images/bingo_o.svg"></td>
+	</tr>
+	<tr>
+	  <td><img src="images/dollar_o.svg"></td>
+	</tr>
+	<tr>
+	  <td><img src="images/dollar.svg"></td>
+	</tr>
       </table>
     </div>
-    &nbsp;
-    <div  class="resize" id="karte">
-      <table>
-        <tr>
-          <td>&nbsp</td>
-          <td id="groesse"><img src="images/groesse.svg"></td>
-          <td class="resizeTiles" data-tile-size="75"><img src="images/groesse575.svg"></td>
-          <td class="resizeTiles" data-tile-size="100"><img src="images/groesse750.svg"></td>
-          <td class="resizeTiles" data-tile-size="150"><img src="images/groesse1100.svg"></td>
-          <td class="resizeTiles" data-tile-size="200"><img src="images/groesse1450.svg"></td>
-          <td class="resizeTiles" data-tile-size="300"><img src="images/groesse2150.svg"></td>
-        </tr>
+    <div style="width: 750px; float: left; margin-right: 0px; margin-bottom: 0px" class="resize"><table id="BingoBody"></table></div>
+  </div> 
+  
+    <div style="width: 430px; float: left;  margin-top: 0px" overflow: hidden; class="resize" id="logohori">
+      <div style="width: 100%; margin-left: 40px; overflow: visible;">
+      <table id="logohori">
+      <tr>
+      <td id="score" class="logohori">
+        <div style="width: 105px; float: left;" id="mischen"><img src="images/misch_modus.svg"></div>
+	<div style="width: 105px; float: left;" id="mischen"><a href="#" id="neueKarte"><img src="images/mischen.svg"></a></div>
+        <div style="width: 100px; float: left;" id="mischen"><a href="#" id="reset"><img src="images/reset.svg"></a></div> 
+      </td><td id="modeindicator" style="width: 100px;">
+	<div style="width: 100px; float: left;" id="mischen"><a href="#" id="spielstart"><img src="images/spiel_modus.svg"></a></div>
+      </td>
+      </tr>
       </table>
-    </div>
-    &nbsp;
-    <div id="textseite">
-      <table>
-        <tr>
-          <td id="text">
-            Anleitung:<br>
-            <br>
-            1. Ist die Bingokarte geladen, den "Mischen Knopf" benutzen um die Buzzwords strategisch umzuverteilen.<br><br>
-            2. Je Teilnehmer ist die Anzahl der Bingokarten / Browser / Ausdrucke zur Zeit nicht beschränkt. Macht nämlich wenig Sinn, solange hier kein Benutzer-Accounts existieren.<br><br>
-            2. Ein Buzzword fällt während der Live Sendung und wird dann gültig wenn er im Chat erwähnt wurde. (Hat letztes mal noch nicht soo gut funktioniert *wink wink*<br><br>
-            3. Gültige Begriffe werden auf der Karte markiert, bis eines der Gewinnmuster erreicht ist. BINGO!<br><br>
-            4. Bingos werden im Chat ausgerufen und per Twitter-Post mit Screenshot oder auch Photo von ausgedruckten Karten zur allgemeinen Bespaßung geteilt!<br>
-          </td>
-          <td id="text">
-            Gewinnmuster:<br>
-            <table border="0" padding="0">
-              <tr>
-                <td>
-                  Vertikal<br>
-                  <img src="images/gewinn1.png">
-                </td>
-                <td>
-                  Horizontal<br>
-                  <img src="images/gewinn2.png">
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  Diagonale<br>
-                  <img src="images/gewinn3.png">
-                </td>
-                <td>
-                  Freakshow<br>
-                  <img src="images/gewinn4.png">
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  Diamant<br>
-                  <img src="images/gewinn5.png">
-                </td>
-                <td>
-                  @<br>
-                  <img src="images/gewinn8.png">
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  Bier Krug<br>
-                  <img src="images/gewinn7.png">
-                </td>
-                <td>
-                  Apfel<br>
-                  <img src="images/gewinn9.png">
-                </td>
-              </tr>
-            </table>
-          </td>
-          <td id="text">
-            Wir befinden uns seit der erfolgreichen implementierung der Gewinnerkennung bei Version "Beta 1".<br>
-            Die Entwicklung passiert <a href="https://github.com/eLtMosen/FreakXoHBingo" target="_blank">auf Github</a><br>
-            Fühlt Euch bitte eingeladen jegliche Art von konstruktivem Commit zu tätigen.<br>
-            Vorschläge und Löschwünsche für Buzzwords erreichen mich am besten über Twitter <a href="https://twitter.com/eLtMosen" target="_blank">@eLtMosen</a> oder per Kommentar im Git.<br>
-            <br>
-            Features: (MH="Mann Stunden")<br>
-            <ul>
-              <li>Bingo Grundfunktion (Karte austeilen, Buzzwords markieren, ~5MH)</li>
-              <li>"MISCHEN" Button um sich schnell eine Karte aus den bisher 52 Buzzwords mischen zu lassen ohne die Seite neuzuladen. (0,5MH)</li>
-              <li>Anzeige der nicht in die aktuelle Karte gemischten Buzzwords. (1MH)</li>
-              <li>52 Skalierbare vektor Buzzword-Tiles im svg Format.(~26MH)</li>
-              <li>Anpassung der Auflösung in 5 Schritten.(1MH)</li>
-              <li>Gewinn-Erkennung (21 Musterkombinationen!)</li>
-            </ul>
-          </td>
-        </tr>
-        <tr>
-          <td id="text">
-            Dies ist eine frische Implementierung eines rudimentären Bingo Algorithmus als bescheidener Start auf dem Weg zur von Clemens geforderten Version mit "Soße und Scharf".<br>
-            Als Vorbild dient bullshitbingo.net. Dort habe ich zur Freakshow (165) 36 Buzzwords eingespeist <a href="https://twitter.com/eLtMosen/status/663836699840159744" target="_blank">und per Twitter geteilt</a>.<br><br>
-            Die Buzzwords zu finden war nach einem zufälligen "total recap" aller 164 MobilMacs und Freakshow Folgen der mir das Jahr 2015 mit Bluetooth Headset versüßt hat nicht  ganz so schwierig.<br>
-            <br>
-            Schon beim ersten Einsatz der schlichten 5x5 Karten konnte <a href="https://kkrzoya8imrm3jot.myfritz.net/bingo.png" target="_blank"> Chat benutzer Knospe </a>erfolgreich als Gewinner gefeiert werden!<br>
-            <br>
-            Für den ersten Versuch war bullshitbingo ok, aber da <a href="http://epir.at" target="_blank">ePirat</a> schon mit <a href="https://t.co/FYX8pJjpIO" target="_blank">einer tollen PDF Bingo Karte am Start war</a> und mir die Limitierung auf 5x5 große klassische Karten nicht gefiel, war schon kurz vor der FS165 klar das irgendwie eine Eigenentwicklung mit graphischen Buzzwords her musste.<br>
-            <br>
-            Als dann auch noch Clemens und Tim eine 7x7 Karte forderten und selbst schon der "Alpha 1" Version allgemeine Zustimmung zu Teil wurde, waren die ersten SVG-Buzzword-Tiles noch während der Sendung durch Inkscape gebruzelt.<br>
-            <br>
-            Entgegen Tims Vermutung war bullshitbing.net mit der ersten Version im Funktionsumfang schon vollständig ausgereizt. Also ein weiteres Argument für einen Neustart.<br>
-            <br>
-            Da diese Seite nun in Berlin bei Prosite gehostet wird, schicken wir unsere Bingo Daten nun im besten Fall auch nicht mehr um den halben Erdball ;)
-          </td><td id="text">
-          Warum mache ich das??<br><br>
-          Als im letzten Jahrtausend gefailter Informatik Student hab ich mehr als ein Jahrzehnt aktiv keinen wirklichen Code außer wenig javascript und php für meine Firmen Webseite angefasst...<br><br>
-          Das wollt ich schon immer mal wieder ändern. Tims aufruf zum Bingo hat da direkt mit einer kleinen und mit meinen beschränkten Mitteln umsetzbaren Idee für eine dynamische Bingo-Karte klick gemacht.<br><br>
-          In den letzten 13 Jahren hab ich mich nach einer kompletten Umorientierung tief in das Thema Sushi gehackt und bin nun relativ erfolgreich als <a href="http://mosushi.com" target="_blank">freier Showkoch europaweit unterwegs</a>, was die "Entwicklung" der Bingo-Karte in die späten Abendstunden schiebt.<br>
-          <br><br>
-          Jede Mithilfe bis zum komplett Umwerfen des bisherigen Spaghetti-Codes oder einfach lautes Gelächter sind Herzlich Willkommen!
-        </td><td id="text">
-        geplante Funktionen:
-        <ul>
-          <li>Probabilistische bestimmung der gefallenen Buzzwords anhand der geklickten Felder</li>
-          <li>Druckoptimierte Anzeige der puren Karte.(2MH)</li>
-          <li>Share-Funktion mit Hash der gewinn Matrix.</li>
-          <li>Wieder-Anzeige von gehashten Matrizen</li>
-          <li>Syncronisiertes Multiplayern mit verifizierbarem Gewinner zur Preisvergabe :D</li>
-          <li>Komplexere Spielmodi mit multiplen addierten Bingos und einem monatlichen(?) Gewinner.</li>
-        </ul>
       </div>
+    </div>
+   
+    <div style="width: 430px; margin-left: 900px; margin-top: 105px" overflow: visible; class="resize">
+      <table id="BuzzwordsBody">
+        <tr>
+          <td class="missing" id="missing0"><img src="images/vorschlag.svg"></td>          
+          <td class="missing" id="missing1"><img src="images/vorschlag.svg"></td>
+          <td class="missing" id="missing2"><img src="images/vorschlag.svg"></td>
+          <td class="missing" id="missing3"><img src="images/vorschlag.svg"></td>          
+        </tr><tr>
+          <td class="missing" id="missing4"><img src="images/vorschlag.svg"></td>
+          <td class="missing" id="missing5"><img src="images/vorschlag.svg"></td>
+          <td class="missing" id="missing6"><img src="images/vorschlag.svg"></td>
+ 	  <td class="missing" id="missing7"><img src="images/vorschlag.svg"></td>
+ 	</tr><tr>         
+          <td class="missing" id="missing8"><img src="images/vorschlag.svg"></td>
+	  <td class="missing" id="missing9"><img src="images/vorschlag.svg"></td>
+          <td class="missing" id="missing10"><img src="images/vorschlag.svg"></td>
+          <td class="missing" id="missing11"><img src="images/vorschlag.svg"></td>
+        </tr><tr>  
+          <td class="missing" id="missing12"><img src="images/vorschlag.svg"></td>
+          <td class="missing" id="missing13"><img src="images/vorschlag.svg"></td>
+          <td class="missing" id="missing14"><img src="images/vorschlag.svg"></td> 
+          <td class="missing" id="missing15"><img src="images/vorschlag.svg"></td>
+        </tr><tr>  
+          <td class="missing" id="missing16"><img src="images/vorschlag.svg"></td>
+          <td class="missing" id="missing17"><img src="images/vorschlag.svg"></td>
+          <td class="missing" id="missing18"><img src="images/vorschlag.svg"></td>
+          <td class="missing" id="missing19"><img src="images/vorschlag.svg"></td>
+        </tr><tr>  
+          <td class="missing" id="missing20"><img src="images/vorschlag.svg"></td>
+          <td class="missing" id="missing21"><img src="images/vorschlag.svg"></td>
+          <td class="missing" id="missing22"><img src="images/vorschlag.svg"></td>
+          <td class="missing" id="missing23"><img src="images/vorschlag.svg"></td>
+        </tr>
+      </table>
+    </div>
+  </div> 
+     <div style="width: 125px; float: left;"> 
+      &nbsp
+      </div>
+    <div style="float: left;"> 
+      <table id="bignum">
+	<tr>
+	  <td id="bignum"><img src="images/numbers/40.svg"></td>
+	  <td id="fattext">Ecken innen<br><img src="images/gewinn14.png"></td>
+	  <td id="fattext">Ecken aussen<br><img src="images/gewinn10.png"></td>
+	  <td id="fattext">Zen Garten<br><img src="images/gewinn31.png"></td>
+	  <td id="bignum"><img src="images/numbers/50.svg"></td>
+	  <td id="fattext">Jeder Pfeil<br><img src="images/gewinn34.png"></td>
+	  <td id="fattext">Jeder Winkel<br><img src="images/gewinn35.png"></td>
+	</tr><tr>
+	  <td id="bignum"><img src="images/numbers/60.svg"></td>
+	  <td id="fattext">Jede Ecke<br><img src="images/gewinn26.png"></td>
+	  <td id="fattext">Six Pack<br><img src="images/gewinn18.png"></td>
+	  <td id="fattext">Würfel 6<br><img src="images/gewinn36.png"></td>
+	  <td id="fattext">Twin Peaks<br><img src="images/gewinn37.png"></td>
+	  <td id="fattext">Slashes<br><img src="images/gewinn38.png"></td>
+	  <td id="fattext">Ungleich<br><img src="images/gewinn40.png"></td>
+	</tr><tr>  
+	  <td id="bignum"><img src="images/numbers/70.svg"></td>
+	  <td id="fattext">Jede Vertikale<br><img src="images/gewinn1.png"></td>
+	  <td id="fattext">Jede Horizontale<br><img src="images/gewinn2.png"></td>
+	  <td id="fattext">Jede Diagonale<br><img src="images/gewinn3.png"></td>
+	  
+	  <td id="bignum"><img src="images/numbers/80.svg"></td>
+	  <td id="fattext">Saphir<br><img src="images/gewinn11.png"></td>
+	  <td id="fattext">Schlüssel<br><img src="images/gewinn6.png"></td>
+	</tr><tr>
+	  <td id="bignum"><img src="images/numbers/90.svg"></td>
+	  <td id="fattext">Echo Kammer<br><img src="images/gewinn25.png"></td>
+	  <td id="fattext">Knochen<br><img src="images/gewinn24.png"></td>
+	
+	  <td id="bignum"><img src="images/numbers/100.svg"></td>
+	  <td id="fattext">Freakshow<br><img src="images/gewinn4.png"></td>
+	
+	  <td id="bignum"><img src="images/numbers/110.svg"></td>	  
+	  <td id="fattext">Vogelscheuche<br><img src="images/gewinn22.png"></td>
+	</tr><tr>
+	  <td id="bignum"><img src="images/numbers/120.svg"></td>  
+	  <td id="fattext">Diamant<br><img src="images/gewinn5.png"></td>
+	  <td id="fattext">Satellit<br><img src="images/gewinn19.png"></td>
+	  <td id="fattext">2x Six Pack<br><img src="images/gewinn27.png"></td>
+	  <td id="fattext">3er Ecken<br><img src="images/gewinn28.png"></td>
+	  <td id="fattext">Space Invaders<br><img src="images/gewinn32.png"></td>
+	  <td id="fattext">Snake<br><img src="images/gewinn39.png"></td>
+	</tr><tr>
+	  <td id="bignum"><img src="images/numbers/130.svg"></td>	  
+	  <td id="fattext">Sinus<br><img src="images/gewinn16.png"></td>
+	  <td id="fattext">Sternenhimmel<br><img src="images/gewinn12.png"></td>
+	  <td id="fattext">Bulls Eye<br><img src="images/gewinn20.png"></td>
+	
+	  <td id="bignum"><img src="images/numbers/140.svg"></td>
+	  <td id="fattext">CCC<br><img src="images/gewinn23.png"></td>
+	  <td id="fattext">Nethack<br><img src="images/gewinn33.png"></td>
+	</tr><tr>
+	  <td id="bignum"><img src="images/numbers/150.svg"></td>  
+	  <td id="fattext">Hangman<br><img src="images/gewinn15.png"></td>
+	  <td id="fattext">Schmetterling<br><img src="images/gewinn21.png"></td>
+	
+	  <td id="bignum"><img src="images/numbers/160.svg"></td>
+	  <td id="fattext">Bier Krug<br><img src="images/gewinn7.png"></td>
+	  <td id="fattext">Blöcke<br><img src="images/gewinn17.png"></td>
+	  <td id="fattext">Jedes 1/4 Dreieck<br><img src="images/gewinn29.png"></td>
+	</tr><tr>  
+	  <td id="bignum"><img src="images/numbers/240.svg"></td>
+	  <td id="fattext">Apfel<br><img src="images/gewinn9.png"></td>
+	  <td id="fattext">Schach<br><img src="images/gewinn13.png"></td>
+	  <td id="fattext">Tannenbaum<br><img src="images/gewinn30.png"></td>
+ 
+	  <td id="bignum"><img src="images/numbers/260.svg"></td>
+	  <td id="fattext">@<br><img src="images/gewinn8.png"></td>
+	  <td id="fattext">Defender<br><img src="images/gewinn41.png"></td>
+        </tr>
+      </table>
+      </div>
+
+        <div style="width: 460px; margin-top: -10px; float: left" overflow: visible; class="resize"> 
+          <table id="bingolist" style="width: 460px;">
+		<tr>
+		  <td id="textseite">
+	    <div id="result1">
+	      <ul>
+		<li>Bis zu 23 buzzwords ausschliessen, mit der 'm' taste wiederholt mischen und strategisch verteilen.</li>
+		<li>Der misch modus wird mit dem button spiel start oder beim 23ten ausschluss beendet und die Karte fixiert.</li>
+		<li>Ein buzzword fällt in der live sendung und gilt vorerst nur wenn es im CHAT wiederholt wurde. (hat letztes mal noch nicht soo gut funktioniert *wink wink*</li>
+		<li>Geltende buzzwords werden auf der karte gelb markiert, erreichte bingos werden nach punkten addiert um am ende der sendung gewinner zu ermitteln. </li>
+	      </ul>
+			<a href="info.html">Infos zur Entstehung dieser Seite</a>
+
+            </div>
+	    <div id="result2"></div>
+	    <div id="result3"></div>
+	    <div id="result4"></div>
+	    <div id="result5"></div>
+	    <div id="result6"></div>
+	    <div id="result7"></div>
+	    <div id="result8"></div>
+	    <div id="result9"></div>
+	    <div id="result10"></div>
+	    <div id="result11"></div>
+	    <div id="result12"></div>
+	    <div id="result13"></div>
+	    <div id="result14"></div>
+	    <div id="result15"></div>
+	    <div id="result16"></div>
+	    <div id="result17"></div>
+	    <div id="result18"></div>
+	    <div id="result19"></div>
+	    <div id="result20"></div>
+	    <div id="result21"></div>
+	    <div id="result22"></div>
+	    <div id="result23"></div>
+	    <div id="result24"></div>
+	    <div id="result25"></div>
+	    <div id="result26"></div>
+	    <div id="result27"></div>
+	    <div id="result28"></div>
+	    <div id="result29"></div>
+	    <div id="result30"></div>
+	    <div id="result31"></div>
+	    <div id="result32"></div>
+	    <div id="result33"></div>
+	    <div id="result34"></div>
+	    <div id="result35"></div>
+	    <div id="result36"></div>
+	    <div id="result37"></div>
+	    <div id="result38"></div>
+	    <div id="result39"></div>	  
+	    <div id="result40"></div>
+	    <div id="result41"></div>
+	    <div id="result42"></div>
+	    <div id="result43"></div>
+	    <div id="result44"></div>
+	    <div id="result45"></div>
+	    <div id="result46"></div>
+	    <div id="result47"></div>
+	    <div id="result48"></div>
+	    <div id="result49"></div>
+	    <div id="result50"></div>
+	    <div id="result51"></div>
+	    <div id="result52"></div>
+	    <div id="result53"></div>
+	    <div id="result54"></div>
+	    <div id="result55"></div>
+	    <div id="result56"></div>
+	    <div id="result57"></div>
+	    <div id="result58"></div>
+	    <div id="result59"></div>
+	    <div id="result60"></div>
+	    <div id="result61"></div>
+	    <div id="result62"></div>
+	    <div id="result63"></div>
+	    <div id="result64"></div>
+	    <div id="result65"></div>
+	    <div id="result66"></div>
+	    <div id="result67"></div>
+	    <div id="result68"></div>
+	    <div id="result69"></div>
+	    <div id="result70"></div>
+	    <div id="result71"></div>
+	    <div id="result72"></div>
+	    <div id="result73"></div>
+	    
+                   </td>
+                </tr>
+              </table>      
+      </div>      
     </body>
 </html>

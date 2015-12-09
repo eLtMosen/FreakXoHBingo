@@ -1,32 +1,73 @@
+
+@font-face {
+  font-family: Freakshow; 
+  src: url(../fonts/Freakshow.woff);
+}
+
 .resize{
-  width:750px;
+
   margin:0 auto;
-  background-color:#F63D31;
-  -webkit-box-shadow: 7px 10px 20px 0px rgba(0,0,0,0.75);
-  -moz-box-shadow: 7px 10px 20px 0px rgba(0,0,0,0.75);
-  box-shadow: 7px 10px 20px 0px rgba(0,0,0,0.75);  
 }
 
 #textseite{
-  width:750px;
+  width:440px;
   margin:0 auto;
-  background-color:#F63D31;
+/*  background-color:#F63D31; */
   font-size:14px;
   text-align:left;
-  vertical-align:top;  
+  vertical-align:top;
+  background-color:#FFFFFF;
+  padding-left: 25px;
 }
+
 #text{
   width:230px;
   padding:10px;
   vertical-align:top;
 }
 
+#bignum{
+  vertical-align:top;
+  font-family:Times New Roman;
+  font-size:65px;
+  width:100px;
+  height:100px;
+  border:0px;
+  text-align: right;
+  background-color:#FFFFFF;
+}
+
+#fattext{
+  vertical-align:top;
+  font-family:Times New Roman;
+  font-size:12px;
+  width:100px;
+  height:100px;
+  border:0px;
+  text-align: center;
+  background-color:#FFFFFF;
+}
 
 table{
   padding:5px;
   border-spacing: 5px;
   border:0px;
 }
+
+#logohori{
+  padding:0px;
+
+  border-spacing: 0px;
+  border:0px;
+}
+
+#logoverti{
+  padding:0px;
+  padding-top: 5px;
+  border-spacing: 0px;
+  border:0px;
+}
+
 
 ul{
   padding-left:15px;
@@ -42,6 +83,35 @@ img{
   vertical-align: bottom;
   width:100px;
   height:100px;
+  transition: all 1.5s;
+}
+
+.missing:before {
+  content: "";
+  position: absolute;
+  height: 100px;
+  width: 100px;
+/*  transition: all 0.1s; */
+  opacity: 0;
+  background: url(../images/kreuz.svg);
+  background-size: 100px 100px;
+}
+.cell:hover:before {
+  opacity: 0.75;
+}
+
+.cell:before {
+  content: "";
+  position: absolute;
+  height: 100px;
+  width: 100px;
+/*  transition: all 0.1s; */
+  opacity: 0;
+  background: url(../images/kreuz.svg);
+  background-size: 100px 100px;
+}
+.missing:hover:before {
+  opacity: 0.75;
 }
 
 td{
@@ -50,28 +120,102 @@ td{
   height:100px;
   vertical-align:bottom;
   border:0px;
+/*  background: url(../images/bingo_background.svg); */
   background-color:#dfc084;
 }
 
-h1 a{
-  width:750px;
-  font-family:arial;
-  text-align:center;
-  padding:5px;
-  color:#FFFFFF;
-  background-color:#F63D31;
+#logohori td{
+  padding:0px;
+  padding-bottom: 5px;
+  padding-right: 0px;  
+  width: 310px;
+  height:100px;
+  vertical-align:middle;
   border:0px;
+/*  background: url(../images/bingo_background.svg); */
+  background-color:#FFFFFF;
+  font-family: Freakshow; font-size: 65pt;
+}
+
+#logohori table{
+  padding:0px;
+  border-spacing:0px;
+  width: 420px;
+  height:100px;
+  vertical-align:bottom;
+  border:0px;
+/*  background: url(../images/bingo_background.svg); */
+  background-color:#FFFFFF;
+}
+
+
+
+#logoverti td{
+  padding-left:10px;
+  padding-top: 5px;
+  padding-bottom: 0px;  
+  width:100px;
+  height:100px;
+  vertical-align:bottom;
+  border:0px;
+/*  background: url(../images/bingo_background.svg); */
+background-color:#d40000;  
+}
+#logoverti {
+background-color:#d40000;
+padding-bottom: 10px;
+width:120px;
+}
+
+#bingolist td{
+  padding:0px;
+  padding-left: 25px;
+  padding-right: 0px;  
+  width: 435px;
+  height:100px;
+  vertical-align:middle;
+  border:0px;
+/*  background: url(../images/bingo_background.svg); */
+  background-color:#FFFFFF;
+  font-family: Freakshow; font-size: 22pt;
 }
 
 #BingoBody{
+  width:750px;
+    background-color:#d40000;
+}
+#BingoBody td{
 cursor:pointer;
 }
+#card{
+  background-color:#d40000;
 
-.clickedCell {
+  padding:0px;
+  border:0px;
+  border-spacing:0px;
+  -webkit-box-shadow: 7px 10px 20px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 7px 10px 20px 0px rgba(0,0,0,0.75);
+  box-shadow: 7px 10px 20px 0px rgba(0,0,0,0.75);    
+}
+
+#BuzzwordsBody{
+  width:330px;
+/*  background-color:#DDDDDD; */
+}
+#BuzzwordsBody td{
+cursor:pointer;
+}
+.gelbe_zelle {
    background: #fcfd00; /* Or some other color */
 }
 .gruene_zelle {
    background: #00FF00; /* Or some other color */
+}
+.braune_zelle {
+   background: #dfc084; /* Or some other color */
+}
+.rote_zelle {
+   background: #F63D31; /* Or some other color */
 }
 .mouseover_zelle {
    background: #F63D31; /* Or some other color */

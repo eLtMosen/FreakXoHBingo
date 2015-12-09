@@ -59,20 +59,27 @@ Shownotes >> @roddi in der Sendung 166
 Haben wir noch Themen >> Mikrobe im Chat    
 Schlumpfbeeren 
 Linux 
+flacher Witz
 cloud
-        <<^tiles für beta2 bereits erstellt>>
-Die riechen nach lulu >> @roddi in der Sendung 166
-Stimme der Jugend
-cloud
+Essen
+NerdvsHipster
 Drogen erwähnung
-  
+Die riechen nach lulu >> @roddi in der Sendung 166
+Wikipedia
+Stimme der Jugend
+apple euphemismus
+        <<^tiles für beta2 bereits erstellt>>
+
+und überhaupt
 Das skaliert
-Bingo
-Fanboys  
- 
 
         
         <<<<auch in der groben Überlegung>>'
+Opensource        
+o2
+vodafon
+Bingo rekursion
+Fanboys         
 isp tarife
 Was erlaube ...
 So wenig Themen…
@@ -84,13 +91,8 @@ Arsch!
 soo in etwa
 Selbst schuld
 
-PDF: https://t.co/FYX8pJjpIO von ePirat
-Alpha1 Dynamisch bei bullshitbingo.net: http://preview.tinyurl.com/qx9jaj6
-Alpha2 in Javascript auf: http://mosushi.net/misc/bingo
+
 
 feature requests:
 
-nicht open zfs
-ja, werde die buzzwords an personen taggen und auschließen bei nicht teilnahme ;)
-
- eLtMosen: fänd auch gut, wenn man die nicht-verwendeten trotzdem grün klicken könnte
+fänd auch gut, wenn man die nicht-verwendeten trotzdem grün klicken könnte
