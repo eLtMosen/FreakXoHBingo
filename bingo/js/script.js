@@ -167,8 +167,7 @@ $(document).ready(function() {
   
     function setImgOnRejected(htmlId, imgIds) {
     _.times(imgIds.length+1, function(id) {
-      if(isNaN(imgIds[id])) {
-      }else{
+      if(!isNaN(imgIds[id])) {
       var $elem = $(htmlId + (23-id));
       $elem.find('img').attr('src', 'images/' + imgIds[id] + '.svg');
       $elem.attr('data-img-id', imgIds[id]);
