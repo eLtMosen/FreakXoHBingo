@@ -105,13 +105,13 @@ img{
   position: absolute;
   height: 100px;
   width: 100px;
-/*  transition: all 0.1s; */
+  transition: all 0.3s;
   opacity: 0;
   background: url(../images/kreuz.svg);
   background-size: 100px 100px;
 }
 .missing:hover:before {
-  opacity: 0.75;
+  opacity: 0.85;
 }
 
 td{
@@ -128,7 +128,7 @@ td{
   padding:0px;
   padding-bottom: 5px;
   padding-right: 0px;  
-  width: 310px;
+  width: 210px;
   height:100px;
   vertical-align:middle;
   border:0px;
@@ -136,7 +136,17 @@ td{
   background-color:#FFFFFF;
   font-family: Freakshow; font-size: 65pt;
 }
-
+#counter td{
+  padding:0px;
+  padding-bottom: 5px;
+  padding-right: 0px;  
+  height:100px;
+  vertical-align:middle;
+  border:0px;
+/*  background: url(../images/bingo_background.svg); */
+  background-color:#FFFFFF;
+  font-family: Freakshow; font-size: 35pt;
+}
 #logohori table{
   padding:0px;
   border-spacing:0px;
@@ -217,7 +227,17 @@ cursor:pointer;
 .rote_zelle {
    background: #F63D31; /* Or some other color */
 }
-.mouseover_zelle {
-   background: #F63D31; /* Or some other color */
+.mouseover:hover:before {
+  opacity: 0.95;
 }
 
+.mouseover:before {
+  content: "";
+  position: absolute;
+  height: 100px;
+  width: 100px;
+  transition: all 0.3s;
+  opacity: 0;
+  background: url(../images/bulletholes.svg);
+  background-size: 100px 100px;
+}
