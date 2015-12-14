@@ -25,12 +25,12 @@
      inkscape:pageshadow="2"
      inkscape:zoom="3"
      inkscape:cx="214.72954"
-     inkscape:cy="100.69515"
+     inkscape:cy="154.02848"
      inkscape:document-units="px"
-     inkscape:current-layer="g4290"
+     inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="1680"
-     inkscape:window-height="1030"
+     inkscape:window-width="1366"
+     inkscape:window-height="705"
      inkscape:window-x="-7"
      inkscape:window-y="-10"
      inkscape:window-maximized="1"
@@ -264,11 +264,11 @@
          sodipodi:cy="269.16666"
          sodipodi:rx="87"
          sodipodi:ry="19.166666"
-         d="m 245,269.16666 a 87,19.166666 0 1 1 -174,0 87,19.166666 0 1 1 174,0 z"
+         d="m 245,269.16666 c 0,10.58545 -38.95123,19.16666 -87,19.16666 -48.04877,0 -87,-8.58121 -87,-19.16666 0,-10.58546 38.95123,-19.16667 87,-19.16667 48.04877,0 87,8.58121 87,19.16667 z"
          transform="matrix(1,0,0,1.0504541,-24,739.44691)" />
     </g>
     <g
-       style="fill:#ffaaee;opacity:0.4"
+       style="fill:#ffaaee;opacity:0.2"
        transform="translate(101,22.666667)"
        id="g4240">
       <g
@@ -293,7 +293,7 @@
     <g
        id="g4224"
        transform="translate(81,16.666667)"
-       style="fill:#ff55dd;opacity:0.5">
+       style="fill:#ff55dd;opacity:0.2">
       <g
          id="g4226"
          transform="translate(-91.595204,51.080907)"
@@ -314,7 +314,7 @@
       </g>
     </g>
     <g
-       style="fill:#ff00cc;opacity:0.6"
+       style="fill:#ff00cc;opacity:0.3"
        transform="translate(63,10.666667)"
        id="g4214">
       <g
@@ -339,7 +339,7 @@
     <g
        id="g4204"
        transform="translate(45,4.666667)"
-       style="fill:#aa0088;opacity:0.7">
+       style="fill:#aa0088;opacity:0.4">
       <g
          id="g4206"
          transform="translate(-91.595204,51.080907)"
@@ -360,7 +360,7 @@
       </g>
     </g>
     <g
-       style="fill:#800066;opacity:0.8"
+       style="fill:#800066;opacity:0.4"
        transform="translate(27,-1.333333)"
        id="g4194">
       <g
@@ -385,7 +385,7 @@
     <g
        id="g4162"
        transform="translate(9,-7.333333)"
-       style="fill:#550044;opacity:0.90000000000000002">
+       style="fill:#550044;opacity:0.5">
       <g
          id="g4104"
          transform="translate(-91.595204,51.080907)"
