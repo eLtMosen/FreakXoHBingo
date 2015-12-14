@@ -28,8 +28,6 @@
 
 #bignum{
   vertical-align:top;
-  font-family:Times New Roman;
-  font-size:65px;
   width:100px;
   height:100px;
   border:0px;
@@ -39,18 +37,25 @@
 
 #fattext{
   vertical-align:top;
-  font-family:Times New Roman;
-  font-size:12px;
+  font-family:Freakshow;
+  font-size:18px;
   width:100px;
-  height:100px;
+  height:130px;
   border:0px;
   text-align: center;
   background-color:#FFFFFF;
+  vertical-align: bottom;
 }
 
 table{
   padding:5px;
   border-spacing: 5px;
+  border:0px;
+}
+
+#BuzzwordsBody {
+  padding:0px;
+  border-spacing: 2px;
   border:0px;
 }
 
@@ -68,51 +73,52 @@ table{
   border:0px;
 }
 
-
-ul{
-  padding-left:15px;
-  border:0px;
-}
-
-li{
-  padding:5px;
-  border:0px;
-}
-
-img{ 
+#logoverti  img{ 
   vertical-align: bottom;
   width:100px;
   height:100px;
   transition: all 1.5s;
 }
 
-.missing:before {
-  content: "";
-  position: absolute;
-  height: 100px;
-  width: 100px;
-/*  transition: all 0.1s; */
-  opacity: 0;
-  background: url(../images/kreuz.svg);
-  background-size: 100px 100px;
-}
-.cell:hover:before {
-  opacity: 0.75;
+#logohori  img{ 
+  vertical-align: bottom;
+  width:120px;
+  height:120px;
+  transition: all 1.5s;
 }
 
-.cell:before {
-  content: "";
-  position: absolute;
-  height: 100px;
-  width: 100px;
-  transition: all 0.3s;
-  opacity: 0;
-  background: url(../images/kreuz.svg);
-  background-size: 100px 100px;
+#bignum  img{ 
+  vertical-align: bottom;
+  width:100px;
+  height:100px;
+  transition: all 1.5s;
 }
-.missing:hover:before {
-  opacity: 0.85;
+
+ul{
+  padding-left:5px;
+  border:0px;
 }
+
+li{
+  padding:5px;
+  padding-bottom:0px;
+  border:0px;
+}
+
+#BingoBody img{ 
+  vertical-align: bottom;
+  width:100px;
+  height:100px;
+  transition: all 1.5s;
+}
+
+#BuzzwordsBody img{ 
+  vertical-align: bottom;
+  width:75px;
+  height:75px;
+  transition: all 1.5s;
+}
+
 
 td{
   padding:0px;
@@ -127,8 +133,8 @@ td{
 #logohori td{
   padding:0px;
   padding-bottom: 5px;
-  padding-right: 0px;  
-  width: 210px;
+  padding-left: 20px; 
+  width: 120px;
   height:100px;
   vertical-align:middle;
   border:0px;
@@ -136,16 +142,43 @@ td{
   background-color:#FFFFFF;
   font-family: Freakshow; font-size: 65pt;
 }
-#counter td{
+
+#scoreback{
+    background-image: url(../images/gold.svg);
+background-repeat: no-repeat;
+background-size: 198px 100px;
+}
+
+#start div{
+background-image: url(../images/stern.svg);
+background-repeat: no-repeat;
+background-size: 120px;
+width: 120px; padding-left: 0px;
+}
+
+
+#reset div{
+  width: 57px;
   padding:0px;
-  padding-bottom: 5px;
-  padding-right: 0px;  
-  height:100px;
+  padding-bottom: 0px;
+  padding-right: 15px;  
+  height:120px;
   vertical-align:middle;
   border:0px;
 /*  background: url(../images/bingo_background.svg); */
-  background-color:#FFFFFF;
-  font-family: Freakshow; font-size: 35pt;
+}
+
+#counter{
+  width: 120px; padding-left: 30px;
+  padding:0px;
+  padding-bottom: 0px;
+  padding-right: 0px;  
+  height:120px;
+  vertical-align:middle;
+  border:0px;
+/*  background: url(../images/bingo_background.svg); */
+  text-align:left;
+  font-family: Freakshow; font-size: 30pt;
 }
 #logohori table{
   padding:0px;
@@ -174,7 +207,7 @@ background-color:#d40000;
 #logoverti {
 background-color:#d40000;
 padding-bottom: 10px;
-width:120px;
+width:115px;
 }
 
 #bingolist td{
@@ -203,9 +236,9 @@ cursor:pointer;
   padding:0px;
   border:0px;
   border-spacing:0px;
-  -webkit-box-shadow: 7px 10px 20px 0px rgba(0,0,0,0.75);
-  -moz-box-shadow: 7px 10px 20px 0px rgba(0,0,0,0.75);
-  box-shadow: 7px 10px 20px 0px rgba(0,0,0,0.75);    
+  -webkit-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.45);
+  -moz-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.45);
+  box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.45);    
 }
 
 #BuzzwordsBody{
@@ -214,6 +247,7 @@ cursor:pointer;
 }
 #BuzzwordsBody td{
 cursor:pointer;
+  height:75px;
 }
 .gelbe_zelle {
    background: #fcfd00; /* Or some other color */
@@ -227,17 +261,62 @@ cursor:pointer;
 .rote_zelle {
    background: #F63D31; /* Or some other color */
 }
-.mouseover:hover:before {
-  opacity: 0.95;
+
+.cell:hover:before {
+  opacity: 0.85;
 }
 
-.mouseover:before {
+.cell:before {
   content: "";
   position: absolute;
   height: 100px;
   width: 100px;
-  transition: all 0.3s;
+  transition: all 0.1s;
+  opacity: 0;
+  background: url(../images/kreuz.svg);
+  background-size: 100px 100px;
+}
+.missing:hover:before {
+  opacity: 0.85;
+}
+
+.missing:before {
+  content: "";
+  position: absolute;
+  height: 75px;
+  width: 75px;
+  transition: all 0.1s;
+  opacity: 0;
+  background: url(../images/kreuz.svg);
+  background-size: 75px 75px;
+}
+.mouseoverbingo:hover:before {
+  opacity: 0.85;
+}
+
+.mouseoverbingo:before {
+  content: "";
+  position: absolute;
+  height: 100px;
+  width: 100px;
+  transition: all 0.1s;
   opacity: 0;
   background: url(../images/bulletholes.svg);
   background-size: 100px 100px;
 }
+
+.mouseoverbuzz:hover:before {
+  opacity: 0.85;
+}
+
+.mouseoverbuzz:before {
+  content: "";
+  position: absolute;
+  height: 75px;
+  width: 75px;
+  transition: all 0.1s;
+  opacity: 0;
+  background: url(../images/bulletholes.svg);
+  background-size: 75px 75px;
+}
+

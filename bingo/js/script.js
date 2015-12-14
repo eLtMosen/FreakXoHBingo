@@ -6,7 +6,7 @@ $(document).ready(function() {
       size: 49,
 
     },
-    buzzwordCount: 73 	// Anzahl der Buzzwords +1...
+    buzzwordCount: 77 	// Anzahl der Buzzwords +1...
   };
   
   var WinBoards = {
@@ -88,7 +88,7 @@ $(document).ready(function() {
 
   
   var wonBingos = new Array(77);
-  var UserRejected = new Array(23);
+  var UserRejected = new Array(49);
   var totalScore = 0;
   var $bingoBody = $('#BingoBody');
   var PlayMode = false;
@@ -119,7 +119,7 @@ $(document).ready(function() {
       }
       $cell.attr('data-id', i);
       $cell.append($('<img>'));
-      $cell.attr('class', 'missing');
+      $cell.attr('class', 'cell');
       $row.append($cell);
 
       // Ueberpruefe ob Reihe voll
@@ -142,7 +142,7 @@ $(document).ready(function() {
     setImgOnFree('#cell24', 'frei');
     setImgOn('#cell', usedBingoCards);
     setImgOff('#missing', usedBingoCards);
-    setImgOn('#missing', missingBingoCards);
+    setImgOnSpare('#missing', missingBingoCards);
     $("#BingoBody td").removeClass('gelbe_zelle');
     $("#BingoBody td").removeClass('gruene_zelle');
     $("#BingoBody td").removeClass('rote_zelle');
@@ -172,10 +172,18 @@ $(document).ready(function() {
     });
   }
   
+  function setImgOnSpare(htmlId, imgIds) {
+    _.times(imgIds.length, function(id) {
+      var $elem = $(htmlId + id);
+      $elem.find('img').attr('src', 'images/' + imgIds[id] + '.svg');
+      $elem.attr('data-img-id', imgIds[id]);
+    });
+  }  
+  
     function setImgOnRejected(htmlId, imgIds) {
     _.times(imgIds.length+1, function(id) {
       if(!isNaN(imgIds[id])) {
-      var $elem = $(htmlId + (23-id));
+      var $elem = $(htmlId + (47-id));
       $elem.find('img').attr('src', 'images/' + imgIds[id] + '.svg');
       $elem.attr('data-img-id', imgIds[id]);
       $elem.addClass("rote_zelle");
@@ -225,16 +233,17 @@ $(document).ready(function() {
     $('#spielstart').click(function() {
       PlayMode = true;
       UserRejectedNum = 0;
-      $('#score').html(pad(totalScore, 5));
-      $('#counter2').html('&nbsp');
-      //new CountUp(((new Date()).getTime()+10000), 'counter');
-       $('#modeindicator').html('<img src="images/spiel_laeuft.svg">');
+      $('#score').html('<div style="width: 198px" id="scoreback">' + pad(totalScore, 6) + '</div>');
+      //$('#counter2').html('&nbsp');
+      new CountUp(((new Date()).getTime()), 'counter');
+       $('#counter').html('<div id="start">&nbsp</div>');
+       $('#reset').html('<div id="reset">&nbsp</div>');
       $("#BuzzwordsBody td").removeClass('missing');
       $("#BuzzwordsBody td").removeClass('rote_zelle');
       $("#BingoBody td").removeClass('missing');
       $("#BingoBody td").removeClass('rote_zelle');
-      $("#BuzzwordsBody td").addClass('mouseover');
-      $("#BingoBody td").addClass('mouseover');
+      $("#BuzzwordsBody td").addClass('mouseoverbuzz');
+      $("#BingoBody td").addClass('mouseoverbingo');
     });    
     
 
@@ -244,22 +253,24 @@ $(document).ready(function() {
 //    });
     var UserRejectedNum = 0;      
     $("#BingoBody td").click(function() {
-    if (UserRejectedNum >= 23) {  
-      alert('Es können nur 23 Buzzwords ausgeschlossen werden!  Es wird nun unter ausschluss der bisher abgewählten neu gemischt und das Spiel gestartet.');
-      $('#modeindicator').html('<img src="images/spiel_laeuft.svg">');
+    if (UserRejectedNum >= 27) {  
+      alert('Es können nur 27 Buzzwords ausgeschlossen werden!  Es wird nun unter ausschluss der bisher abgewählten neu gemischt und das Spiel gestartet.');
+      //$('#modeindicator').html('<img src="images/spiel_laeuft.svg">');
       UserRejectedNum = 0;   
       initBingoCard();
       UserRejected = [];
       PlayMode = true;
-      $('#score').html(pad(totalScore, 4));
-      $('#counter2').html('&nbsp');
-      //new CountUp(((new Date()).getTime()+10000), 'counter');
+      $('#score').html('<div style="width: 198px" class="scoreback">' + pad(totalScore, 6) + '</div>');
+      //$('#counter2').html('&nbsp');
+      new CountUp(((new Date()).getTime()), 'counter');
+      $('#counter').html('<div id="start">&nbsp</div>');
+      $('#reset').html('<div id="reset">&nbsp</div>');
       $("#BuzzwordsBody td").removeClass('missing');
       $("#BuzzwordsBody td").removeClass('rote_zelle');
-      $("#BingoBody td").removeClass('missing');
+      $("#BingoBody td").removeClass('cell');
       $("#BingoBody td").removeClass('rote_zelle');
-      $("#BuzzwordsBody td").addClass('mouseover');
-      $("#BingoBody td").addClass('mouseover');
+      $("#BuzzwordsBody td").addClass('mouseoverbuzz');
+      $("#BingoBody td").addClass('mouseoverbingo');
       
     }else{
       if (!PlayMode) {
@@ -279,7 +290,7 @@ $(document).ready(function() {
       model.bingoCard[idx] = true;  // geklickete Zelle in bingoCard true setzen
       checkWin(model.bingoCard);
 
-      $('#score').html(pad(totalScore, 5));
+      $('#score').html(pad(totalScore, 6));
       }
 
       
@@ -288,18 +299,23 @@ $(document).ready(function() {
     
 
     $("#BuzzwordsBody td").click(function() {
-    if (UserRejectedNum >= 23) {  
-      alert('Es können nur 23 Buzzwords ausgeschlossen werden! Es wird nun unter ausschluss der bisher abgewählten neu gemischt und das Spiel gestartet.');
-      $('#modeindicator').html('<img src="images/spiel_laeuft.svg">');
+    if (UserRejectedNum >= 27) {  
+      alert('Es können nur 27 Buzzwords ausgeschlossen werden! Es wird nun unter ausschluss der bisher abgewählten neu gemischt und das Spiel gestartet.');
+      //$('#modeindicator').html('<img src="images/spiel_laeuft.svg">');
       UserRejectedNum = 0;
       initBingoCard();
       UserRejected = [];
       PlayMode = true;
-      $('#score').html(pad(totalScore, 5));
+      $('#score').html('<div style="width: 198px" class="scoreback">' + pad(totalScore, 6) + '</div>');
+      new CountUp(((new Date()).getTime()), 'counter');
+      $('#counter').html('<div id="start">&nbsp</div>');
+      $('#reset').html('<div id="reset">&nbsp</div>');
       $("#BuzzwordsBody td").removeClass('missing');
       $("#BuzzwordsBody td").removeClass('rote_zelle');
       $("#BingoBody td").removeClass('missing');
       $("#BingoBody td").removeClass('rote_zelle');
+      $("#BuzzwordsBody td").addClass('mouseoverbuzz');
+      $("#BingoBody td").addClass('mouseoverbingo');      
     }else{
     if(!PlayMode) {
       $(this).addClass("rote_zelle");
@@ -423,9 +439,11 @@ CountUp.prototype.updateCounter=function(){
     this.calculate();
     this.formatTime();
     this.countainer.innerHTML =
-        this.hours + '<br>' +
-        this.minutes + '<br>' +
-        this.seconds;
+	'<div style="padding-left: 5px; padding-top: 34px; overflow: visible;">' +
+        this.hours + ':' +
+        this.minutes + ':' +
+        this.seconds +
+        '</div>';
     var self = this;
     setTimeout(function(){self.updateCounter();}, 1000);
 }
