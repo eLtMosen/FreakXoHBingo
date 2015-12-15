@@ -6,7 +6,7 @@ $(document).ready(function() {
       size: 49,
 
     },
-    buzzwordCount: 77 	// Anzahl der Buzzwords +1...
+    buzzwordCount: 78 	// Anzahl der Buzzwords +1...
   };
   
   var WinBoards = {
@@ -292,13 +292,9 @@ $(document).ready(function() {
       $("#BingoBody td").addClass('mouseoverbingo');
     });    
 
-//    $('.resizeTiles').click(function() {
-//      resizeTiles(parseInt($(this).attr('data-tile-size')));
-//    });
-    
     var UserRejectedNum = 0;      
     $("#BingoBody td").click(function() {
-    if (UserRejectedNum >= 28) {  
+    if (UserRejectedNum >= 29) {  
       alert('Es können nur 28 Buzzwords ausgeschlossen werden!');
     
     }else{
@@ -314,19 +310,26 @@ $(document).ready(function() {
 	  }  
 	}
       }else{
-      $(this).addClass("gelbe_zelle");
-      var idx = parseInt($(this).attr('data-id'));	// idx = integerwert der geklickten zelle
-      model.bingoCard[idx] = true;  // geklickete Zelle in bingoCard true setzen
-      checkWin(model.bingoCard);
-
-      $('#score').html(pad(totalScore, 6));
+	$(this).addClass("gelbe_zelle");
+	//MPOG -> Zelle für propibilistische überprüfung in intervall vormerken (vorbereitungen)
+	//(function doStuff() {
+	//console.log('works');
+	//setTimeout(doStuff, 10000);}());
+	
+	//$(this).addClass("question");
+	//$(this).addClass("pulse-button");
+	
+	var idx = parseInt($(this).attr('data-id'));	// idx = integerwert der geklickten zelle
+	model.bingoCard[idx] = true;  // geklickete Zelle in bingoCard true setzen
+	checkWin(model.bingoCard);
+	$('#score').html('<div style="width: 198px" id="scoreback">' + pad(totalScore, 6) + '</div>');
       }
     }  
     });
     
 
     $("#BuzzwordsBody td").click(function() {
-    if (UserRejectedNum >= 28) {  
+    if (UserRejectedNum >= 29) {  
       alert('Es können nur 28 Buzzwords ausgeschlossen werden!');
       
     }else{
@@ -386,13 +389,6 @@ function pad(n, width, z) {
       }
     });
   }
-
-//  function resizeTiles(tileSize) {
-//    $('div.resize img').width(tileSize).height(tileSize);
-//    $('div.resize td').width(tileSize).height(tileSize);
-//    $('div.resize').width(tileSize * config.bingoCard.width + 50)
-//  }
-
 
 /**********************************************************************************************
 * CountUp script by Praveen Lobo (http://PraveenLobo.com/techblog/javascript-countup-timer/)
