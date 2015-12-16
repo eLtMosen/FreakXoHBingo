@@ -6,7 +6,7 @@ $(document).ready(function() {
       size: 49,
 
     },
-    buzzwordCount: 78 	// Anzahl der Buzzwords +1...
+    buzzwordCount: 80 	// Anzahl der Buzzwords +1...
   };
   
   var WinBoards = {
@@ -127,6 +127,7 @@ $(document).ready(function() {
   };
   
   function goodbye(e) {
+    if(PlayMode) {
 	if(!e) e = window.event;
 	//IE
 	e.cancelBubble = true; 
@@ -137,6 +138,7 @@ $(document).ready(function() {
 		e.stopPropagation();
 		e.preventDefault();
 	}
+    }
   }
   window.onbeforeunload=goodbye;
   
@@ -294,8 +296,8 @@ $(document).ready(function() {
 
     var UserRejectedNum = 0;      
     $("#BingoBody td").click(function() {
-    if (UserRejectedNum >= 29) {  
-      alert('Es können nur 28 Buzzwords ausgeschlossen werden!');
+    if (UserRejectedNum >= 30) {  
+      alert('Es können nur 30 Buzzwords ausgeschlossen werden!');
     
     }else{
       if (!PlayMode) {
@@ -329,8 +331,8 @@ $(document).ready(function() {
     
 
     $("#BuzzwordsBody td").click(function() {
-    if (UserRejectedNum >= 29) {  
-      alert('Es können nur 28 Buzzwords ausgeschlossen werden!');
+    if (UserRejectedNum >= 30) {  
+      alert('Es können nur 30 Buzzwords ausgeschlossen werden!');
       
     }else{
     if(!PlayMode) {
