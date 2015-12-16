@@ -77,6 +77,8 @@ freebsd
 wir prangern das an
 "glasfaser", >> Mokkel im Chat
 kleinkuhkackerode >> Roddi in der Sendung
+Future
+fnord
         <<^tiles für beta2 bereits erstellt>>
 
 Das skaliert
@@ -85,7 +87,7 @@ el cheepo
 "Ich will endlich Zukunft"
 "kaputt / funktional kaputt" 
 raaaiiinnn zufällig
-Future
+
 
 
         
@@ -109,8 +111,7 @@ Selbst schuld
 
 feature requests:
 
-werds demnächst by default grün machen, guter hinweis ;)
 
 
 Nächster Commit:
-"Page reload alert" im PlayMode
+Freifeld immer ausgewählt

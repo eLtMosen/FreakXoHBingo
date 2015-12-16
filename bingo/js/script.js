@@ -80,7 +80,7 @@ $(document).ready(function() {
     } else {
       missingBingoCards = 1;
     }
-    setImgOnFree('#cell24', 'frei');
+  
     setImgOn('#cell', usedBingoCards);
     setImgOff('#missing', usedBingoCards);
     setImgOnSpare('#missing', missingBingoCards);
@@ -89,6 +89,7 @@ $(document).ready(function() {
     $("#BingoBody td").removeClass('rote_zelle');
     $("#BuzzwordsBody td").removeClass('rote_zelle');
     setImgOnRejected('#missing', UserRejected);
+    setImgOnFree('#cell24', 'frei');
     wonBingos = [];
     model.bingoCard.length = 0;
   }
@@ -110,6 +111,7 @@ $(document).ready(function() {
       var $elem = $(htmlId + id);
       $elem.find('img').attr('src', 'images/' + imgIds[id] + '.svg');
       $elem.attr('data-img-id', imgIds[id]);
+      
       }
     });
   }
@@ -145,6 +147,9 @@ $(document).ready(function() {
       var $elem = $(htmlId);
       $elem.find('img').attr('src', 'images/' + imgId + '.svg');
       $elem.attr('data-img-id', '0');
+      if (PlayMode) {
+	$elem.addClass("gelbe_zelle");
+      }
   }
 
   function bindEventHandler() {
@@ -186,6 +191,7 @@ $(document).ready(function() {
       $("#BingoBody td").removeClass('rote_zelle');
       $("#BuzzwordsBody td").addClass('mouseoverbuzz');
       $("#BingoBody td").addClass('mouseoverbingo');
+      setImgOnFree('#cell24', 'frei');
     });    
 
     var UserRejectedNum = 0;      
@@ -202,7 +208,7 @@ $(document).ready(function() {
 	  }else{
 	  UserRejected[UserRejectedNum] = idx;
 	  UserRejectedNum++;
-	  console.log(idx);  
+	    
 	  }  
 	}
       }else{
@@ -216,7 +222,9 @@ $(document).ready(function() {
 	//$(this).addClass("pulse-button");
 	
 	var idx = parseInt($(this).attr('data-id'));	// idx = integerwert der geklickten zelle
+	model.bingoCard[24] = true;
 	model.bingoCard[idx] = true;  // geklickete Zelle in bingoCard true setzen
+	//console.log(idx);
 	checkWin(model.bingoCard);
 	$('#score').html('<div style="width: 198px" id="scoreback">' + pad(totalScore, 6) + '</div>');
 	}  
@@ -236,7 +244,6 @@ $(document).ready(function() {
       }else{
       UserRejected[UserRejectedNum] = idx;
       UserRejectedNum++;
-      console.log(UserRejectedNum);
       }
     }else{
       $(this).addClass("gelbe_zelle");
@@ -244,11 +251,13 @@ $(document).ready(function() {
     }
     });
   }
-function pad(n, width, z) {
-  z = z || '0';
-  n = n + '';
-  return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
-}
+  
+  function pad(n, width, z) {
+    z = z || '0';
+    n = n + '';
+    return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
+  }
+  
   function containsAll(needle, haystack){ 
     for(var i = 0 , len = needle.length; i < len; i++){
       if($.inArray(needle[i], haystack) == -1) return false;
@@ -263,7 +272,7 @@ function pad(n, width, z) {
       }
       return result;
     }, []);
-    console.log(convertedToNum);
+    console.log(bingoCard);
     var i = 1;
     totalScore = 0;
     $.each(WinBoards, function( key, value ) {
