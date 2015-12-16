@@ -6,7 +6,7 @@ $(document).ready(function() {
       size: 49,
 
     },
-    buzzwordCount: 80 	// Anzahl der Buzzwords +1...
+    buzzwordCount: 81 	// Anzahl der Buzzwords +1...
   };
   
   var WinBoards = {
@@ -121,6 +121,7 @@ $(document).ready(function() {
   var totalScore = 0;
   var $bingoBody = $('#BingoBody');
   var PlayMode = false;
+  var missingBingoCardsCount = config.buzzwordCount - config.bingoCard.size;
 
   var model = {
     bingoCard: _.fill(new Array(config.bingoCard.size), false)
@@ -180,12 +181,14 @@ $(document).ready(function() {
     // Mische alle Bingo-Karten außer die ausgeschlossenen und Teile alle Karten in Zwei-Teile auf
     var tmp = _.chunk(_.shuffle(diff), config.bingoCard.size - 1);
     var usedBingoCards = tmp[0];
-    console.log(tmp[1]);
+    //console.log(tmp[1]);
     if(typeof tmp[1] != 'undefined') {
-      var missingBingoCards = tmp[1];
+      missingBingoCards = tmp[1];
     } else {
-      var missingBingoCards = 1;
+      missingBingoCards = 1;
     }
+    console.log(missingBingoCardsCount);
+    console.log(config.buzzwordCount);
     setImgOnFree('#cell24', 'frei');
     setImgOn('#cell', usedBingoCards);
     setImgOff('#missing', usedBingoCards);
@@ -296,8 +299,8 @@ $(document).ready(function() {
 
     var UserRejectedNum = 0;      
     $("#BingoBody td").click(function() {
-    if (UserRejectedNum >= 30) {  
-      alert('Es können nur 30 Buzzwords ausgeschlossen werden!');
+    if (UserRejectedNum >= missingBingoCardsCount) {  
+      alert('Es können nur ' + missingBingoCardsCount + ' Buzzwords ausgeschlossen werden!');
     
     }else{
       if (!PlayMode) {
@@ -331,8 +334,8 @@ $(document).ready(function() {
     
 
     $("#BuzzwordsBody td").click(function() {
-    if (UserRejectedNum >= 30) {  
-      alert('Es können nur 30 Buzzwords ausgeschlossen werden!');
+    if (UserRejectedNum >= missingBingoCardsCount) {  
+      alert('Es können nur ' + missingBingoCardsCount + ' Buzzwords ausgeschlossen werden!');
       
     }else{
     if(!PlayMode) {

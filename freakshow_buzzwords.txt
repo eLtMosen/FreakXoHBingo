@@ -76,17 +76,15 @@ wir prangern das an
 freebsd
 wir prangern das an
 "glasfaser", >> Mokkel im Chat
+kleinkuhkackerode >> Roddi in der Sendung
         <<^tiles für beta2 bereits erstellt>>
 
 Das skaliert
 el cheepo
-kleinkuhkackerode >> Roddi in der Sendung
-
 "country oder western" und 
 "Ich will endlich Zukunft"
 "kaputt / funktional kaputt" 
 raaaiiinnn zufällig
-
 Future
 
 
@@ -112,3 +110,7 @@ Selbst schuld
 feature requests:
 
 werds demnächst by default grün machen, guter hinweis ;)
+
+
+Nächster Commit:
+"Page reload alert" im PlayMode
