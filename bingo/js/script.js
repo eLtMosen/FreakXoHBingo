@@ -4,9 +4,10 @@ $(document).ready(function() {
       width: 7,
       height: 7,
       size: 49,
-
     },
-    buzzwordCount: 81 	// Anzahl der Buzzwords +1 wegen Freifeld
+    
+    // Anzahl der Buzzwords +1 wegen Freifeld
+    buzzwordCount: 81
   };
   
   var wonBingos = new Array(103);
@@ -25,7 +26,7 @@ $(document).ready(function() {
 	if(!e) e = window.event;
 	//IE
 	e.cancelBubble = true; 
-	e.returnValue = 'WIRKLICH SICHER? Die aktuelle Karte geht dann verloren!'; //This is displayed on the dialog
+	e.returnValue = 'WIRKLICH SICHER? Die aktuelle Karte und der Punktestand gehen dann verloren!';
 
 	//Firefox
 	if (e.stopPropagation) {
@@ -49,7 +50,8 @@ $(document).ready(function() {
 
     _.times(config.bingoCard.size, function(i) {
       $cell = $('<td>');
-      if(i != 24) {					// 24= Freifeld in der Mitte mit Freakshow Logo
+      // 24= Freifeld in der Mitte mit Show-Logo definieren
+      if(i != 24) {		
 	$cell.attr('id', 'cell' + i);
       }else{
         $cell.attr('id', 'cell24');
@@ -69,12 +71,13 @@ $(document).ready(function() {
 
   function initBingoCard() {
     var allBingoCards = _.range(1, config.buzzwordCount);
-    diff = allBingoCards.filter(function(x) { return UserRejected.indexOf(x) < 0 }); // Benuztzer abgewaehlte buzzwords vom array abziehen	
+    
+    // Benuztzer abgewaehlte buzzwords vom array abziehen	
+    diff = allBingoCards.filter(function(x) { return UserRejected.indexOf(x) < 0 });
 
     // Mische alle Bingo-Karten außer die ausgeschlossenen und Teile alle Karten in Zwei-Teile auf
     var tmp = _.chunk(_.shuffle(diff), config.bingoCard.size - 1);
     var usedBingoCards = tmp[0];
-    //console.log(tmp[1]);
     if(typeof tmp[1] != 'undefined') {
       missingBingoCards = tmp[1];
     } else {
@@ -192,15 +195,14 @@ $(document).ready(function() {
       $("#BuzzwordsBody td").addClass('mouseoverbuzz');
       $("#BingoBody td").addClass('mouseoverbingo');
       setImgOnFree('#cell24', 'frei');
-      // mittleres Freifeld immer aktivieren
+      // mittleres Show-Freifeld immer aktivieren
       model.bingoCard[24] = true;
     });    
 
     var UserRejectedNum = 0;      
     $("#BingoBody td").click(function() {
-    if (UserRejectedNum >= missingBingoCardsCount) {  
-      alert('Es können nur ' + missingBingoCardsCount + ' Buzzwords ausgeschlossen werden!');
-    
+    if (UserRejectedNum >= missingBingoCardsCount && !$(this).hasClass("rote_zelle")) {  
+      // nothing!!    
     }else{
       if (!PlayMode) {
 	// idx = integerwert der geklickten zelle
@@ -245,9 +247,8 @@ $(document).ready(function() {
     
 
     $("#BuzzwordsBody td").click(function() {
-    if (UserRejectedNum >= missingBingoCardsCount) {  
-      alert('Es können nur ' + missingBingoCardsCount + ' Buzzwords ausgeschlossen werden!');
-      
+    if (UserRejectedNum >= missingBingoCardsCount && !$(this).hasClass("rote_zelle")) {  
+      // nothing!!      
     }else{
     if(!PlayMode) {
 	var idx = parseInt($(this).attr('data-img-id'));	// idx = integerwert der geklickten zelle

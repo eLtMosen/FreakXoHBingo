@@ -252,19 +252,19 @@ cursor:pointer;
   height:75px;
 }
 .gelbe_zelle {
-   transition: all 0.8s;
+   transition: background-color 0.8s;
    background: #fcfd00; /* Or some other color */
 }
 .gruene_zelle {
-  transition: all 0.8s;
+  transition: background-color 0.8s;
    background: #00FF00; /* Or some other color */
 }
 .braune_zelle {
-  transition: all 0.8s;
+  transition: background-color 0.8s;
    background: #dfc084; /* Or some other color */
 }
 .rote_zelle {
-  transition: all 0.8s;
+  transition: background-color 0.8s;
    background: #F63D31; /* Or some other color */
 }
 
@@ -331,7 +331,7 @@ cursor:pointer;
   position: absolute;
   height: 100px;
   width: 100px;
-  transition: all 0.01s;
+  transition: background-color 0.01s;
   opacity: 0.95;
   background: url(../images/fragezeichen.svg);
   background-size: 100px 100px;
