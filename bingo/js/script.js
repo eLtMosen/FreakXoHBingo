@@ -192,6 +192,8 @@ $(document).ready(function() {
       $("#BuzzwordsBody td").addClass('mouseoverbuzz');
       $("#BingoBody td").addClass('mouseoverbingo');
       setImgOnFree('#cell24', 'frei');
+      // mittleres Freifeld immer aktivieren
+      model.bingoCard[24] = true;
     });    
 
     var UserRejectedNum = 0;      
@@ -201,15 +203,23 @@ $(document).ready(function() {
     
     }else{
       if (!PlayMode) {
-	var idx = parseInt($(this).attr('data-img-id'));	// idx = integerwert der geklickten zelle
-	if (idx != 0) {				// Frei Logo nicht ausschliessbar machen
-	$(this).toggleClass("rote_zelle");
-	if(isNaN(idx) || $.inArray(idx, UserRejected) != -1) {
-	  }else{
-	  UserRejected[UserRejectedNum] = idx;
-	  UserRejectedNum++;
-	    
-	  }  
+	// idx = integerwert der geklickten zelle
+	var idx = parseInt($(this).attr('data-img-id'));
+	// Frei Logo nicht ausschliessbar machen
+	if (idx != 0 && !isNaN(idx)) {				
+	  if ($(this).hasClass("rote_zelle")) {
+	    $(this).removeClass("rote_zelle");
+	    UserRejected = jQuery.grep(UserRejected, function(value) {
+			      return value != idx;
+	    });
+	    UserRejectedNum = UserRejectedNum-1;
+	  } else {  
+	    $(this).addClass("rote_zelle", UserRejected[UserRejectedNum++] = idx);
+	  }
+		 
+	console.log(idx);
+	console.log(UserRejectedNum);
+	console.log(UserRejected);  
 	}
       }else{
 	$(this).addClass("gelbe_zelle");
@@ -220,10 +230,12 @@ $(document).ready(function() {
 	
 	//$(this).addClass("question");
 	//$(this).addClass("pulse-button");
+	  
+	// idx = integerwert der geklickten zelle
+	var idx = parseInt($(this).attr('data-id'));
 	
-	var idx = parseInt($(this).attr('data-id'));	// idx = integerwert der geklickten zelle
-	model.bingoCard[24] = true;
-	model.bingoCard[idx] = true;  // geklickete Zelle in bingoCard true setzen
+	// geklickete Zelle in bingoCard true setzen
+	model.bingoCard[idx] = true;
 	//console.log(idx);
 	checkWin(model.bingoCard);
 	$('#score').html('<div style="width: 198px" id="scoreback">' + pad(totalScore, 6) + '</div>');
@@ -238,15 +250,24 @@ $(document).ready(function() {
       
     }else{
     if(!PlayMode) {
-      $(this).addClass("rote_zelle");
-      var idx = parseInt($(this).attr('data-img-id'));	// idx = integerwert der geklickten zelle
-      if(isNaN(idx) || $.inArray(idx, UserRejected) != -1) {
-      }else{
-      UserRejected[UserRejectedNum] = idx;
-      UserRejectedNum++;
-      }
+	var idx = parseInt($(this).attr('data-img-id'));	// idx = integerwert der geklickten zelle
+	if (idx != 0 && !isNaN(idx)) {				// Frei Logo nicht ausschliessbar machen
+	  if ($(this).hasClass("rote_zelle")) {
+	    $(this).removeClass("rote_zelle");
+	    UserRejected = jQuery.grep(UserRejected, function(value) {
+			      return value != idx;
+	    });
+	    UserRejectedNum = UserRejectedNum-1;
+	  } else {  
+	    $(this).addClass("rote_zelle", UserRejected[UserRejectedNum++] = idx);
+	  }
+		 
+	console.log(idx);
+	console.log(UserRejectedNum);
+	console.log(UserRejected);  
+	}
     }else{
-      $(this).addClass("gelbe_zelle");
+      $(this).toggleClass("gelbe_zelle");
     }  
     }
     });
