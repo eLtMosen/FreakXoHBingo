@@ -6,6 +6,12 @@ $(document).ready(function() {
       size: 49,
     },
     
+    buzzwordCard: {
+      width: 6,
+      height: 8,
+      size: 48,
+    },    
+    
     // Anzahl der Buzzwords +1 wegen Freifeld
     buzzwordCount: 81
   };
@@ -14,6 +20,7 @@ $(document).ready(function() {
   var UserRejected = new Array(49);
   var totalScore = 0;
   var $bingoBody = $('#BingoBody');
+  var $BuzzwordsBody = $('#BuzzwordsBody');
   var PlayMode = false;
   var missingBingoCardsCount = config.buzzwordCount - config.bingoCard.size;
 
@@ -41,6 +48,7 @@ $(document).ready(function() {
 
   function init() {
     createBingoCard();
+    createBuzzwordCard();
     bindEventHandler();
     initBingoCard();
   }
@@ -60,7 +68,6 @@ $(document).ready(function() {
       $cell.append($('<img>'));
       $cell.attr('class', 'cell');
       $row.append($cell);
-
       // Ueberpruefe ob Reihe voll
       if (i % config.bingoCard.width == config.bingoCard.width - 1) {
         $bingoBody.append($row);
@@ -68,6 +75,24 @@ $(document).ready(function() {
       }
     });
   }
+  
+  function createBuzzwordCard() {
+    var $row = $('<tr>');
+
+    _.times(config.buzzwordCard.size, function(i) {
+      $cell = $('<td>');
+      $cell.attr('id', 'missing' + i);
+      $cell.attr('data-id', i);
+      $cell.append($('<img>'));
+      $cell.attr('class', 'missing');
+      $row.append($cell);
+      // Ueberpruefe ob Reihe voll
+      if (i % config.buzzwordCard.width == config.buzzwordCard.width - 1) {
+        $BuzzwordsBody.append($row);
+        $row = $('<tr>');
+      }
+    });
+  }  
 
   function initBingoCard() {
     var allBingoCards = _.range(1, config.buzzwordCount);

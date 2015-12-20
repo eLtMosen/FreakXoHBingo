@@ -244,12 +244,13 @@ cursor:pointer;
 }
 
 #BuzzwordsBody{
-  width:330px;
+  width: 430px;
 /*  background-color:#DDDDDD; */
 }
 #BuzzwordsBody td{
 cursor:pointer;
   height:75px;
+  width:75px;
 }
 .gelbe_zelle {
    transition: background-color 0.8s;

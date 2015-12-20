@@ -4,7 +4,7 @@
     <meta charset=utf-8 />
     <link rel="icon" type="image/svg+xml" href="http://mosushi.net/bingo/images/favicon.svg">
     <link rel="alternate icon" type="image/png" href="http://mosushi.net/bingo/images/favicon.png">
-    <title>Freak Show Bingo (Beta 4, 20151214)</title>
+    <title>Freak Show Bingo (Beta 4, 20151220)</title>
     <script tbype="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
     <!--[if IE]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -12,6 +12,7 @@
     <script type="text/javascript" src="js/lib/lodash.min.js"></script>
     <script type="text/javascript" src="js/script.js"></script>
     <script type="text/javascript" src="js/winboards.js"></script>
+
     <link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
   </head>
   <body>
@@ -61,65 +62,8 @@
       </div>
     </div>
    
-    <div style="width: 430px; margin-left: 870px; margin-bottom: 15px; margin-top: 134px" overflow: visible; class="resize">
+    <div style="margin-left: 870px; margin-bottom: 15px; margin-top: 134px" overflow: visible; class="resize">
       <table id="BuzzwordsBody">
-        <tr>
-          <td class="missing" id="missing0"><img src="images/vorschlag.svg"></td>          
-          <td class="missing" id="missing1"><img src="images/vorschlag.svg"></td>
-          <td class="missing" id="missing2"><img src="images/vorschlag.svg"></td>
-          <td class="missing" id="missing3"><img src="images/vorschlag.svg"></td>
-          <td class="missing" id="missing4"><img src="images/vorschlag.svg"></td>
-          <td class="missing" id="missing5"><img src="images/vorschlag.svg"></td>
-        </tr><tr>                   
-          <td class="missing" id="missing6"><img src="images/vorschlag.svg"></td>
- 	  <td class="missing" id="missing7"><img src="images/vorschlag.svg"></td>
-          <td class="missing" id="missing8"><img src="images/vorschlag.svg"></td>
-	  <td class="missing" id="missing9"><img src="images/vorschlag.svg"></td>
-          <td class="missing" id="missing10"><img src="images/vorschlag.svg"></td>
-          <td class="missing" id="missing11"><img src="images/vorschlag.svg"></td>	  
- 	</tr><tr>         
-          <td class="missing" id="missing12"><img src="images/vorschlag.svg"></td>
-          <td class="missing" id="missing13"><img src="images/vorschlag.svg"></td>
-          <td class="missing" id="missing14"><img src="images/vorschlag.svg"></td>          
-          <td class="missing" id="missing15"><img src="images/vorschlag.svg"></td>
-          <td class="missing" id="missing16"><img src="images/vorschlag.svg"></td>
-          <td class="missing" id="missing17"><img src="images/vorschlag.svg"></td>          
-        </tr><tr>  
-          <td class="missing" id="missing18"><img src="images/vorschlag.svg"></td>
-          <td class="missing" id="missing19"><img src="images/vorschlag.svg"></td>
-          <td class="missing" id="missing20"><img src="images/vorschlag.svg"></td>
-          <td class="missing" id="missing21"><img src="images/vorschlag.svg"></td>
-          <td class="missing" id="missing22"><img src="images/vorschlag.svg"></td>
-          <td class="missing" id="missing23"><img src="images/vorschlag.svg"></td>         
-        </tr><tr>  
-          <td class="missing" id="missing24"><img src="images/vorschlag.svg"></td>
-          <td class="missing" id="missing25"><img src="images/vorschlag.svg"></td>
-          <td class="missing" id="missing26"><img src="images/vorschlag.svg"></td>
-          <td class="missing" id="missing27"><img src="images/vorschlag.svg"></td>  
-          <td class="missing" id="missing28"><img src="images/vorschlag.svg"></td>
-          <td class="missing" id="missing29"><img src="images/vorschlag.svg"></td>
-        </tr><tr>  
-          <td class="missing" id="missing30"><img src="images/vorschlag.svg"></td>
-          <td class="missing" id="missing31"><img src="images/vorschlag.svg"></td>
-          <td class="missing" id="missing32"><img src="images/vorschlag.svg"></td>  
-          <td class="missing" id="missing33"><img src="images/vorschlag.svg"></td>
-          <td class="missing" id="missing34"><img src="images/vorschlag.svg"></td>    
-          <td class="missing" id="missing35"><img src="images/vorschlag.svg"></td>
-        </tr><tr>  
-          <td class="missing" id="missing36"><img src="images/vorschlag.svg"></td>
-          <td class="missing" id="missing37"><img src="images/vorschlag.svg"></td>
-          <td class="missing" id="missing38"><img src="images/vorschlag.svg"></td>  
-          <td class="missing" id="missing39"><img src="images/vorschlag.svg"></td>
-          <td class="missing" id="missing40"><img src="images/vorschlag.svg"></td>    
-          <td class="missing" id="missing41"><img src="images/vorschlag.svg"></td>    
-        </tr><tr>  
-          <td class="missing" id="missing42"><img src="images/vorschlag.svg"></td>
-          <td class="missing" id="missing43"><img src="images/vorschlag.svg"></td>
-          <td class="missing" id="missing44"><img src="images/vorschlag.svg"></td>  
-          <td class="missing" id="missing45"><img src="images/vorschlag.svg"></td>
-          <td class="missing" id="missing46"><img src="images/vorschlag.svg"></td>    
-          <td class="missing" id="missing47"><img src="images/vorschlag.svg"></td>          
-        </tr>
       </table>
     </div>
   </div> 
@@ -214,7 +158,7 @@
 		  <td id="textseite">
 	    <div id="result1">
 	      <ul>
-		<li>Im mischmodus bis zu 23 buzzwords ausschliessen und mit der 'm' taste wiederholt strategisch verteilen.</li>
+		<li>Im mischmodus buzzwords ausschliessen und mit der 'm' taste wiederholt strategisch verteilen.</li>
 		<li>Spiel start beendet den mischmodus und fixiert die karte.</li>
 		<li>Geltende buzzwords werden auf der karte gelb markiert, erreichte bingos werden nach punkten addiert um am ende der sendung gewinner zu ermitteln. </li>
 		<li>Ein buzzword fällt in der live sendung und gilt vorerst nur wenn es im CHAT wiederholt wurde. (hat letztes mal noch nicht soo gut funktioniert *wink wink*</li>
@@ -297,7 +241,7 @@
 	    <div id="result74"></div>
 	    <div id="result75"></div>
 	    <div id="result76"></div>
-	    <div id="result77"></div>
+	    <div id="result77"></div>    
 	    
                    </td>
                 </tr>
