@@ -16,6 +16,9 @@ $(document).ready(function() {
     buzzwordCount: 81
   };
   
+  var timeoutArray = new Array(49);
+  var buzzwordConfirmed = new Array(config.buzzwordCount);
+  var buzzwordBusy = new Array(config.buzzwordCount);
   var wonBingos = new Array(103);
   var UserRejected = new Array(49);
   var totalScore = 0;
@@ -33,7 +36,7 @@ $(document).ready(function() {
 	if(!e) e = window.event;
 	//IE
 	e.cancelBubble = true; 
-	e.returnValue = 'WIRKLICH SICHER? Die aktuelle Karte und der Punktestand gehen dann verloren!';
+	e.returnValue = 'SICHER?!? -> Die aktuelle Karte und der Punktestand gehen dann verloren!';
 
 	//Firefox
 	if (e.stopPropagation) {
@@ -229,6 +232,7 @@ $(document).ready(function() {
     if (UserRejectedNum >= missingBingoCardsCount && !$(this).hasClass("rote_zelle")) {  
       // nothing!!    
     }else{
+      
       if (!PlayMode) {
 	// idx = integerwert der geklickten zelle
 	var idx = parseInt($(this).attr('data-img-id'));
@@ -244,29 +248,65 @@ $(document).ready(function() {
 	    $(this).addClass("rote_zelle", UserRejected[UserRejectedNum++] = idx);
 	  }
 		 
-	console.log(idx);
-	console.log(UserRejectedNum);
-	console.log(UserRejected);  
 	}
       }else{
-	$(this).addClass("gelbe_zelle");
-	//MPOG -> Zelle für propibilistische überprüfung in intervall vormerken (vorbereitungen)
-	//(function doStuff() {
-	//console.log('works');
-	//setTimeout(doStuff, 10000);}());
-	
-	//$(this).addClass("question");
-	//$(this).addClass("pulse-button");
-	  
-	// idx = integerwert der geklickten zelle
-	var idx = parseInt($(this).attr('data-id'));
-	
-	// geklickete Zelle in bingoCard true setzen
-	model.bingoCard[idx] = true;
-	//console.log(idx);
-	checkWin(model.bingoCard);
-	$('#score').html('<div style="width: 198px" id="scoreback">' + pad(totalScore, 6) + '</div>');
+	var id_img = parseInt($(this).attr('data-img-id'));
+	var buzzwordBusyToNum = _.reduce(buzzwordBusy, function(result, val, idx) {
+      if(val) {
+        result.push(idx);
+      }
+      return result;
+    }, []);
+	console.log(buzzwordBusyToNum.length);
+	if (!buzzwordBusy[id_img] && buzzwordBusyToNum.length < 6) {
+	  buzzwordBusy[id_img] = true;
+	  $(this).addClass("orange_zelle");
+	  $(this).addClass("question");
+	  $(this).addClass("pulse-button");
+	  var timeoutExit = 1;
+	  // Buzzword id_img in DB schreiben
+	  //this in das timeout intervall überführen
+	  var that = this;
+	  // rekursives Timeout für 40 mal 3 sekunden, unterbrochen von buzzwordbestätigung per DB
+	  (function checkBuzzword() {
+	    console.log(id_img);
+	    console.log(timeoutExit);
+	    // simulierter probabilistik erfolg -> ENTER DB ABFRAGE HERE!
+	    if (timeoutExit >= 5){
+	      buzzwordConfirmed[id_img] = true;      
+	    }
+	    // simulation nde
+	    timeoutExit++;  
+	    if (!buzzwordConfirmed[id_img] && timeoutExit < 40) { 
+	      setTimeout(checkBuzzword, 3000);
+	      console.log(buzzwordConfirmed[id_img]);
+	    }
+	    if (buzzwordConfirmed[id_img]) {
+	      $(that).removeClass("orange_zelle");
+	      $(that).removeClass("question");
+	      $(that).removeClass("pulse-button");
+	      $(that).addClass("gelbe_zelle");
+	      // idx = integerwert der geklickten zelle
+	      var idx = parseInt($(that).attr('data-id'));
+	      // geklickete Zelle in bingoCard true setzen
+	      model.bingoCard[idx] = true;
+	      checkWin(model.bingoCard);
+	      $('#score').html('<div style="width: 198px" id="scoreback">' + pad(totalScore, 6) + '</div>');
+	      buzzwordConfirmed[id_img] =true;
+	      buzzwordBusy[id_img] = false;	    
+	    } else {
+	      if (!buzzwordConfirmed[id_img] && timeoutExit >= 40) {
+		$(that).removeClass("orange_zelle");
+		$(that).removeClass("question");
+		$(that).removeClass("pulse-button");
+		timeoutExit = 1;
+		clearTimeout(checkBuzzword);
+		buzzwordBusy[id_img] = false;
+	      } 
+	    }    
+	  }());	  
 	}  
+      }
     }  
     });
     
@@ -288,9 +328,9 @@ $(document).ready(function() {
 	    $(this).addClass("rote_zelle", UserRejected[UserRejectedNum++] = idx);
 	  }
 		 
-	console.log(idx);
-	console.log(UserRejectedNum);
-	console.log(UserRejected);  
+//	console.log(idx);
+//	console.log(UserRejectedNum);
+//	console.log(UserRejected);  
 	}
     }else{
       $(this).toggleClass("gelbe_zelle");
@@ -319,7 +359,6 @@ $(document).ready(function() {
       }
       return result;
     }, []);
-    console.log(bingoCard);
     var i = 1;
     totalScore = 0;
     $.each(WinBoards, function( key, value ) {
