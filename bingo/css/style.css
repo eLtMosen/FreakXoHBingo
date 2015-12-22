@@ -347,7 +347,7 @@ li{
 	padding-bottom: 10px;
 	background-color:#FFFFFF;
 	border-radius: 2%;
-	opacity: 1;
+	opacity: 0.96;
 	transition: opacity 0.3s;
 	font-family: Freakshow; font-size: 20pt;
 	max-width:350px;
@@ -368,7 +368,7 @@ li{
 	border-radius: 2%;
 	opacity: 0;
 	background-color:#FFFFFF;
-	transition: opacity 0.3s;
+	transition: opacity 0.2s;
 	font-family: Freakshow; font-size: 20pt;
 	max-width:350px;
 }

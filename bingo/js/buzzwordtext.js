@@ -82,5 +82,5 @@
 	"80": "das wort fnord fällt oder ein fnord wird besprochen",
 	"81": "",
 	"82": ""	
-      }
+      };
   

@@ -20,11 +20,11 @@ $(document).ready(function() {
   var buzzwordConfirmed = new Array(config.buzzwordCount);
   var buzzwordBusy = new Array(config.buzzwordCount);
   var wonBingos = new Array(103);
-  var UserRejected = new Array(49);
+  var userRejected = new Array(49);
   var totalScore = 0;
   var $bingoBody = $('#BingoBody');
   var $BuzzwordsBody = $('#BuzzwordsBody');
-  var PlayMode = false;
+  var playMode = false;
   var missingBingoCardsCount = config.buzzwordCount - config.bingoCard.size;
   var captionOff = true;
   var placeCaptionLeftOfMousecourser = false;
@@ -34,7 +34,7 @@ $(document).ready(function() {
   };
   
   function goodbye(e) {
-	if(PlayMode) {
+	if(playMode) {
 	  if(!e) e = window.event;
 	    //IE
 	    e.cancelBubble = true; 
@@ -51,16 +51,17 @@ $(document).ready(function() {
   window.onload = function(){
                 var bsDiv = document.getElementById("buzzwordText");
                 var x, y;
+		
     // On mousemove use event.clientX and event.clientY to set the location of the div to the location of the cursor:
                 window.addEventListener('mousemove', function(event){
                     x = event.clientX;
                     y = event.clientY;                    
                     if ( typeof x !== 'undefined' ){
 		      if (!placeCaptionLeftOfMousecourser) {
-                        bsDiv.style.left = (x+20) + "px";
+                        bsDiv.style.left = (x+35) + "px";
                         bsDiv.style.top = (y-35) + "px";
 		      } else {
-			bsDiv.style.left = (x-390) + "px";
+			bsDiv.style.left = (x-405) + "px";
                         bsDiv.style.top = (y-35) + "px";
 		      }
                     }
@@ -74,16 +75,16 @@ $(document).ready(function() {
     createBuzzwordCard();
     bindEventHandler();
     initBingoCard();
-    changeCaptionOnOff();
+    //toggleCaptionOnOff();
   }
 
   function createBingoCard() {
     var $row = $('<tr>');
 
     _.times(config.bingoCard.size, function(i) {
-      $cell = $('<td>');
+      var $cell = $('<td>');
       // 24= Freifeld in der Mitte mit Show-Logo definieren
-      if(i != 24) {		
+      if(i !== 24) {		
 	$cell.attr('id', 'cell' + i);
       }else{
         $cell.attr('id', 'cell24');
@@ -121,7 +122,9 @@ $(document).ready(function() {
   function initBingoCard() {
     var allBingoCards = _.range(1, config.buzzwordCount);    
     // Benutzer abgewaehlte buzzwords vom array abziehen	
-    diff = allBingoCards.filter(function(x) { return UserRejected.indexOf(x) < 0 });
+    var diff = allBingoCards.filter(function(card) { 
+      return userRejected.indexOf(card) < 0;    
+    });
     // Mische alle Bingo-Karten außer die ausgeschlossenen und Teile alle Karten in Zwei-Teile auf
     var tmp = _.chunk(_.shuffle(diff), config.bingoCard.size - 1);
     var usedBingoCards = tmp[0];
@@ -137,18 +140,18 @@ $(document).ready(function() {
     $("#BingoBody td").removeClass('gruene_zelle');
     $("#BingoBody td").removeClass('rote_zelle');
     $("#BuzzwordsBody td").removeClass('rote_zelle');
-    setImgOnRejected('#missing', UserRejected);
+    setImgOnRejected('#missing', userRejected);
     setImgOnFree('#cell24', 'frei');
     wonBingos = [];
     model.bingoCard.length = 0;
   }
 
   function resetUserdata() {
-    UserRejected = [];
-    UserRejectedNum = 0;
+    userRejected = [];
+    userRejectedNum = 0;
   }
   
-  function changeCaptionOnOff() {  
+  function toggleCaptionOnOff() {  
 	  if (captionOff) {
 	    captionOff = false;
 	    for(var i = 0; i < config.bingoCard.size; i++){
@@ -217,7 +220,7 @@ $(document).ready(function() {
       var $elem = $(htmlId);
       $elem.find('img').attr('src', 'images/' + imgId + '.svg');
       $elem.attr('data-img-id', '0');
-      if (PlayMode) {
+      if (playMode) {
 	$elem.addClass("gelbe_zelle");
       }
   }
@@ -225,7 +228,7 @@ $(document).ready(function() {
   function bindEventHandler() {
     
     $(document).keydown(function(evt){ // m Taste an mischen funktion binden
-    if(!PlayMode) {  
+    if(!playMode) {  
       if (evt.keyCode==77){
 	evt.preventDefault();
 	initBingoCard();
@@ -234,46 +237,48 @@ $(document).ready(function() {
     });
     
     $(document).keydown(function(evt){ // c Taste an captionOff binden
-    if(!PlayMode) {  
+    if(!playMode) {  
       if (evt.keyCode==67){
 	evt.preventDefault();
-	changeCaptionOnOff();
+	toggleCaptionOnOff();
       }
     }
     });  
     
     $('#BingoBody td').mouseover(function() {
-      if (!captionOff && !PlayMode) {
+      if (!captionOff && !playMode) {
 	var idx = parseInt($(this).attr('data-img-id'));
+	if (idx != '0') {
 	placeCaptionLeftOfMousecourser = false;
 	$('#buzzwordText').html('<img src="images/' + idx + '.svg" height="150px" width="150px" align="left">'+ BuzzwordText[idx]);
 	$('#buzzwordText').removeClass('buzzwordTextEmpty');
 	$('#buzzwordText').addClass('buzzwordTextFilled');
-    }}); 
+    }}}); 
     
     $('#BingoBody td').mouseleave(function() {
-      if (!captionOff && !PlayMode) {
+      if (!captionOff && !playMode) {
 	$('#buzzwordText').removeClass('buzzwordTextFilled');
 	$('#buzzwordText').addClass('buzzwordTextEmpty');
     }});
     
     $('#BuzzwordsBody td').mouseover(function() {
-      if (!captionOff && !PlayMode) {
+      if (!captionOff && !playMode) {
 	var idx = parseInt($(this).attr('data-img-id'));
+	if (!isNaN(idx)) {
 	placeCaptionLeftOfMousecourser = true;
 	$('#buzzwordText').html('<img src="images/' + idx + '.svg" height="150px" width="150px" align="right">'+ BuzzwordText[idx]);
 	$('#buzzwordText').removeClass('buzzwordTextEmpty');
 	$('#buzzwordText').addClass('buzzwordTextFilled');
-    }}); 
+    }}}); 
     
     $('#BuzzwordsBody td').mouseleave(function() {
-      if (!captionOff && !PlayMode) {
+      if (!captionOff && !playMode) {
 	$('#buzzwordText').removeClass('buzzwordTextFilled');
 	$('#buzzwordText').addClass('buzzwordTextEmpty');
     }});
  
     $('#mischen').mouseover(function() {
-      if (!PlayMode) {
+      if (!playMode) {
 	var idx = parseInt($(this).attr('data-img-id'));
 	placeCaptionLeftOfMousecourser = true;
 	$('#buzzwordText').html('Dieser Button mischt alle nicht per klick abgewählten buzzwords. auch die "m" taste mischt!');
@@ -282,13 +287,13 @@ $(document).ready(function() {
     }}); 
     
     $('#mischen').mouseleave(function() {
-      if (!PlayMode) {
+      if (!playMode) {
 	$('#buzzwordText').removeClass('buzzwordTextFilled');
 	$('#buzzwordText').addClass('buzzwordTextEmpty');
     }});  
     
     $('#reset').mouseover(function() {
-      if (!PlayMode) {
+      if (!playMode) {
 	  var idx = parseInt($(this).attr('data-img-id'));
 	  placeCaptionLeftOfMousecourser = true;
 	  $('#buzzwordText').html('reset loest alle abgewählten karten wieder und entfernt die mit der "c" taste schaltbaren erklär captionsb');
@@ -297,13 +302,13 @@ $(document).ready(function() {
     }}); 
     
     $('#reset').mouseleave(function() {
-      if (!PlayMode) {
+      if (!playMode) {
 	$('#buzzwordText').removeClass('buzzwordTextFilled');
 	$('#buzzwordText').addClass('buzzwordTextEmpty');
     }}); 
 
     $('#start').mouseover(function() {
-      if (!PlayMode) {
+      if (!playMode) {
 	var idx = parseInt($(this).attr('data-img-id'));
 	placeCaptionLeftOfMousecourser = true;
 	$('#buzzwordText').html('mit dem spielstart wird die karte fixiert und die spielzeit an dieser stelle angezeigt');
@@ -317,24 +322,24 @@ $(document).ready(function() {
     }); 
 
     $('#neueKarte').click(function() {
-      if(!PlayMode) {  
+      if(!playMode) {  
 	initBingoCard();
     }  
     });
 
     $('#reset').click(function() {
-    if(!PlayMode) {
-      UserRejectedNum = 0;
+    if(!playMode) {
+      userRejectedNum = 0;
       resetUserdata();
       $("#BuzzwordsBody td").removeClass('rote_zelle');
       $("#BingoBody td").removeClass('rote_zelle');
-      changeCaptionOnOff();
+      toggleCaptionOnOff();
     }
     });  
     
     $('#spielstart').click(function() {
-      PlayMode = true;
-      UserRejectedNum = 0;
+      playMode = true;
+      userRejectedNum = 0;
       $('#score').html('<div style="width: 198px" id="scoreback">' + pad(totalScore, 6) + '</div>');
       new CountUp(((new Date()).getTime()), 'counter');
       $('#counter').html('<div id="start">&nbsp</div>');
@@ -350,27 +355,26 @@ $(document).ready(function() {
       model.bingoCard[24] = true;
     });    
 
-    var UserRejectedNum = 0;      
+    var userRejectedNum = 0;      
     $("#BingoBody td").click(function() {
-    if (UserRejectedNum >= missingBingoCardsCount && !$(this).hasClass("rote_zelle")) {  
+    if (userRejectedNum >= missingBingoCardsCount && !$(this).hasClass("rote_zelle")) {  
       // nothing!!    
     }else{
       
-      if (!PlayMode) {
+      if (!playMode) {
 	// idx = integerwert der geklickten zelle
 	var idx = parseInt($(this).attr('data-img-id'));
 	// Frei Logo nicht ausschliessbar machen
 	if (idx != 0 && !isNaN(idx)) {				
 	  if ($(this).hasClass("rote_zelle")) {
 	    $(this).removeClass("rote_zelle");
-	    UserRejected = jQuery.grep(UserRejected, function(value) {
+	    userRejected = jQuery.grep(userRejected, function(value) {
 			      return value != idx;
 	    });
-	    UserRejectedNum = UserRejectedNum-1;
+	    userRejectedNum = userRejectedNum-1;
 	  } else {  
-	    $(this).addClass("rote_zelle", UserRejected[UserRejectedNum++] = idx);
-	  }
-		 
+	    $(this).addClass("rote_zelle", userRejected[userRejectedNum++] = idx);
+	  }		 
 	}
       }else{
 	var id_img = parseInt($(this).attr('data-img-id'));
@@ -428,32 +432,33 @@ $(document).ready(function() {
 	      } 
 	    }    
 	  }());	  
-	}  
+	}
+
       }
     }  
     });
     
 
     $("#BuzzwordsBody td").click(function() {
-    if (UserRejectedNum >= missingBingoCardsCount && !$(this).hasClass("rote_zelle")) {  
+    if (userRejectedNum >= missingBingoCardsCount && !$(this).hasClass("rote_zelle")) {  
       // nothing!!      
     }else{
-    if(!PlayMode) {
+    if(!playMode) {
 	var idx = parseInt($(this).attr('data-img-id'));	// idx = integerwert der geklickten zelle
 	if (idx != 0 && !isNaN(idx)) {				// Frei Logo nicht ausschliessbar machen
 	  if ($(this).hasClass("rote_zelle")) {
 	    $(this).removeClass("rote_zelle");
-	    UserRejected = jQuery.grep(UserRejected, function(value) {
+	    userRejected = jQuery.grep(userRejected, function(value) {
 			      return value != idx;
 	    });
-	    UserRejectedNum = UserRejectedNum-1;
+	    userRejectedNum = userRejectedNum-1;
 	  } else {  
-	    $(this).addClass("rote_zelle", UserRejected[UserRejectedNum++] = idx);
+	    $(this).addClass("rote_zelle", userRejected[userRejectedNum++] = idx);
 	  }
 		 
 //	console.log(idx);
-//	console.log(UserRejectedNum);
-//	console.log(UserRejected);  
+//	console.log(userRejectedNum);
+//	console.log(userRejected);  
 	}
     }else{
       $(this).toggleClass("gelbe_zelle");
@@ -484,13 +489,13 @@ $(document).ready(function() {
     }, []);
     var i = 1;
     totalScore = 0;
-    $.each(WinBoards, function( key, value ) {
+    $.each(winBoards, function( key, value ) {
       if(containsAll(value, convertedToNum)){
 	wonBingos[i] = key;
 	$('#result'+i).html(key + ' ' + value.length * 10 + ' punkte');
 	totalScore = (totalScore + value.length * 10); 
 	
-	$.each(WinBoards, function( key, value ) {
+	$.each(winBoards, function( key, value ) {
 	   
 	  if(containsAll(value, convertedToNum)){
 	    for(var j = 0; j < value.length;){
