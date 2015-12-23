@@ -2,10 +2,10 @@
 
 namespace BingoBundle\Propel;
 
-use BingoBundle\Propel\Base\Klick as BaseKlick;
+use BingoBundle\Propel\Base\click as Baseclick;
 
 /**
- * Skeleton subclass for representing a row from the 'bingo_klick' table.
+ * Skeleton subclass for representing a row from the 'bingo_click' table.
  *
  *
  *
@@ -14,7 +14,7 @@ use BingoBundle\Propel\Base\Klick as BaseKlick;
  * long as it does not already exist in the output directory.
  *
  */
-class Klick extends BaseKlick
+class click extends Baseclick
 {
 
 }

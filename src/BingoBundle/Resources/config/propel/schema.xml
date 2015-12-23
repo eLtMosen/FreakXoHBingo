@@ -179,7 +179,7 @@
         <!-- TIME STAMP :: END -->
     </table>
 
-    <table name="bingo_klick" phpName="Klick">
+    <table name="bingo_click" phpName="click">
         <vendor type="mysql">
             <parameter name="Charset" value="utf8"/>
             <parameter name="Collate" value="utf8_unicode_ci"/>
