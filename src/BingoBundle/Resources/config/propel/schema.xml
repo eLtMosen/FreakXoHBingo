@@ -98,11 +98,14 @@
             <parameter name="Charset" value="utf8"/>
             <parameter name="Collate" value="utf8_unicode_ci"/>
         </vendor>
+
         <column name="id" phpName="Id" type="BIGINT" size="20" sqlType="BIGINT(20) UNSIGNED" required="true" primaryKey="true"/>
+
         <column name="locale" type="VARCHAR" size="5" required="true" primaryKey="true" />
         <column name="name" type="VARCHAR" size="64" required="false" defaultValue="" />
         <column name="slogan" type="VARCHAR" size="255" required="false" defaultValue="" />
         <column name="description" type="LONGVARCHAR" />
+
         <foreign-key foreignTable="bingo_game" name="FK_Bingo_GameI18nToGame" onUpdate="cascade" onDelete="cascade">
             <reference local="id" foreign="id" />
         </foreign-key>
@@ -113,7 +116,10 @@
             <parameter name="Charset" value="utf8"/>
             <parameter name="Collate" value="utf8_unicode_ci"/>
         </vendor>
+
         <column name="id" phpName="Id" type="BIGINT" size="20" sqlType="BIGINT(20) UNSIGNED" required="true" primaryKey="true" autoIncrement="true"/>
+
+        <column name="uid" type="varchar" size="32"/>
         <column name="name" type="varchar" size="32"/>
 
         <!-- TIME STAMP :: BEGIN -->
@@ -136,7 +142,7 @@
         <!-- TIME STAMP :: END -->
     </table>
 
-    <table name="bingo_game_player" isCrossRef="true">
+    <table name="bingo_game_player" phpName="GamePlayer" isCrossRef="true">
         <vendor type="mysql">
             <parameter name="Charset" value="utf8"/>
             <parameter name="Collate" value="utf8_unicode_ci"/>
@@ -152,6 +158,60 @@
         <foreign-key foreignTable="bingo_player" name="FK_Bingo_GameToPlayer">
             <reference local="player_id" foreign="id"/>
         </foreign-key>
+
+        <!-- TIME STAMP :: BEGIN -->
+        <column name="time_create" phpName="TimeCreate" type="TIMESTAMP"/>
+        <column name="time_stamp" type="TIMESTAMP" defaultExpr="CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"/>
+
+        <behavior name="timestampable">
+            <parameter name="create_column" value="time_create"/>
+            <parameter name="update_column" value="time_stamp"/>
+        </behavior>
+
+        <!--
+        Auskommentiert, wegen einem Fehler beim Umgang mit DateTime und time()!
+        *::setTimeCreate() must be an instance of DateTime, integer given
+        <behavior name="typehintable">
+            <parameter name="time_create" value="DateTime"/>
+            <parameter name="time_stamp" value="DateTime"/>
+        </behavior>
+        -->
+        <!-- TIME STAMP :: END -->
+    </table>
+
+    <table name="bingo_klick" phpName="Klick">
+        <vendor type="mysql">
+            <parameter name="Charset" value="utf8"/>
+            <parameter name="Collate" value="utf8_unicode_ci"/>
+        </vendor>
+
+        <column name="id" phpName="Id" type="BIGINT" size="20" sqlType="BIGINT(20) UNSIGNED" required="true" primaryKey="true" autoIncrement="true"/>
+
+        <!-- GAME -->
+        <column name="game_id" type="BIGINT" size="20" sqlType="BIGINT(20) UNSIGNED" required="false"/>
+
+        <index name="I_Bingo_GameId">
+            <index-column name="game_id" />
+        </index>
+
+        <foreign-key foreignTable="bingo_game" name="FK_Bingo_KlickToGame">
+            <reference local="game_id" foreign="id"/>
+        </foreign-key>
+
+        <!-- PLAYER -->
+        <column name="player_id" type="BIGINT" size="20" sqlType="BIGINT(20) UNSIGNED" required="false"/>
+
+        <index name="I_Bingo_PlayerId">
+            <index-column name="player_id" />
+        </index>
+
+        <foreign-key foreignTable="bingo_player" name="FK_Bingo_KlickToPlayer">
+            <reference local="player_id" foreign="id"/>
+        </foreign-key>
+
+        <column name="card" type="VARCHAR" size="16" required="false" defaultValue="" />
+        <column name="x" type="VARCHAR" size="16" required="false" defaultValue="" />
+        <column name="y" type="VARCHAR" size="16" required="false" defaultValue="" />
 
         <!-- TIME STAMP :: BEGIN -->
         <column name="time_create" phpName="TimeCreate" type="TIMESTAMP"/>
