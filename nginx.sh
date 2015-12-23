@@ -9,10 +9,9 @@
 # Create SSL certs
 ./ssl.sh
 
-sudo cp /var/www/FreakXoHBingo/server/apache.conf /etc/apache2/sites-available/freakxohbingo.conf
-sudo cp /var/www/FreakXoHBingo/server/apache-include.conf /etc/apache2/sites-available/freakxohbingo-include.conf
+sudo cp /var/www/FreakXoHBingo/server/nginx.conf /etc/nginx/sites-available/freakxohbingo.conf
 echo "${underline}${green}The Web-Server configuration copied to target location${reset}"
-sudo a2ensite freakxohbingo.conf
+sudo ln -s /etc/nginx/sites-available/freakxohbingo.conf /etc/nginx/sites-enabled/freakxohbingo.conf
 echo "${underline}${green}The Web-Server configuration enabled${reset}"
-sudo /etc/init.d/apache2 restart
+sudo /etc/init.d/nginx restart
 echo "${underline}${green}The Web-Server restarted${reset}"

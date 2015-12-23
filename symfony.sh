@@ -7,7 +7,8 @@
 ./symfony_directories.sh
 
 # Check the needed config files and directories
-./symfony_check.sh
+# @note With Symfony 2.7 we don't need to check the config!
+#./symfony_check.sh
 
 # Install or update composer
 ./composer.sh
