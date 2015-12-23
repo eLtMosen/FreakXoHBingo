@@ -1,0 +1,234 @@
+{% extends 'BingoBundle::base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="/bundles/bingo/css/bingo.css">
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>{{ game.name }} Game</h1>
+    </div>
+
+    <div id="BingoContainer" class="container">
+        <div style="width: 1340px; overflow: hidden;">
+            <div style="width: 125px; float: left;">
+                <table id="logoverti">
+                    <tr>
+                        <td><img src="/bundles/bingo/img/bingo_b.svg"></td>
+                    </tr>
+                    <tr>
+                        <td><img src="/bundles/bingo/img/bingo_i.svg"></td>
+                    </tr>
+                    <tr>
+                        <td><img src="/bundles/bingo/img/bingo_n.svg"></td>
+                    </tr>
+                    <tr>
+                        <td><img src="/bundles/bingo/img/bingo_g.svg"></td>
+                    </tr>
+                    <tr>
+                        <td><img src="/bundles/bingo/img/bingo_o.svg"></td>
+                    </tr>
+                    <tr>
+                        <td><img src="/bundles/bingo/img/dollar_o.svg"></td>
+                    </tr>
+                    <tr>
+                        <td><img src="/bundles/bingo/img/dollar.svg"></td>
+                    </tr>
+                </table>
+            </div>
+            <div style="width: 750px; float: left; margin-right: 20px; margin-bottom: 25px" class="resize">
+                <table id="BingoBody"></table>
+            </div>
+
+            <div style="width: 420px; float: left;  margin-top: 0px; overflow: hidden;" class="resize" id="logohori">
+                <div style="width: 100%; margin-left: 15px; overflow: visible;">
+                    <div style="width: 105px; float: left;" id="mischen">
+                        <img src="/bundles/bingo/img/misch_modus.svg">
+                    </div>
+                    <div style="width: 105px; float: left;" id="mischen">
+                        <a href="#" id="neueKarte"><img src="/bundles/bingo/img/mischen.svg"></a>
+                    </div>
+                    <div style="width: 105px; float: left;" id="mischen">
+                        <a href="#" id="reset"><img src="/bundles/bingo/img/reset.svg"></a>
+                    </div>
+                    <div style="width: 105px; float: left;" id="mischen">
+                        <a href="#" id="spielstart"><img src="/bundles/bingo/img/spiel_modus.svg"></a>
+                    </div>
+                </div>
+            </div>
+
+            <div style="width: 430px; margin-left: 900px; margin-top: 105px; overflow: visible;" class="resize">
+                <table id="BuzzwordsBody">
+                    <tr>
+                        <td class="missing" id="missing0"><img src="/bundles/bingo/img/vorschlag.svg"></td>
+                        <td class="missing" id="missing1"><img src="/bundles/bingo/img/vorschlag.svg"></td>
+                        <td class="missing" id="missing2"><img src="/bundles/bingo/img/vorschlag.svg"></td>
+                        <td class="missing" id="missing3"><img src="/bundles/bingo/img/vorschlag.svg"></td>
+                    </tr>
+                    <tr>
+                        <td class="missing" id="missing4"><img src="/bundles/bingo/img/vorschlag.svg"></td>
+                        <td class="missing" id="missing5"><img src="/bundles/bingo/img/vorschlag.svg"></td>
+                        <td class="missing" id="missing6"><img src="/bundles/bingo/img/vorschlag.svg"></td>
+                        <td class="missing" id="missing7"><img src="/bundles/bingo/img/vorschlag.svg"></td>
+                    </tr>
+                    <tr>
+                        <td class="missing" id="missing8"><img src="/bundles/bingo/img/vorschlag.svg"></td>
+                        <td class="missing" id="missing9"><img src="/bundles/bingo/img/vorschlag.svg"></td>
+                        <td class="missing" id="missing10"><img src="/bundles/bingo/img/vorschlag.svg"></td>
+                        <td class="missing" id="missing11"><img src="/bundles/bingo/img/vorschlag.svg"></td>
+                    </tr>
+                    <tr>
+                        <td class="missing" id="missing12"><img src="/bundles/bingo/img/vorschlag.svg"></td>
+                        <td class="missing" id="missing13"><img src="/bundles/bingo/img/vorschlag.svg"></td>
+                        <td class="missing" id="missing14"><img src="/bundles/bingo/img/vorschlag.svg"></td>
+                        <td class="missing" id="missing15"><img src="/bundles/bingo/img/vorschlag.svg"></td>
+                    </tr>
+                    <tr>
+                        <td class="missing" id="missing16"><img src="/bundles/bingo/img/vorschlag.svg"></td>
+                        <td class="missing" id="missing17"><img src="/bundles/bingo/img/vorschlag.svg"></td>
+                        <td class="missing" id="missing18"><img src="/bundles/bingo/img/vorschlag.svg"></td>
+                        <td class="missing" id="missing19"><img src="/bundles/bingo/img/vorschlag.svg"></td>
+                    </tr>
+                    <tr>
+                        <td class="missing" id="missing20"><img src="/bundles/bingo/img/vorschlag.svg"></td>
+                        <td class="missing" id="missing21"><img src="/bundles/bingo/img/vorschlag.svg"></td>
+                        <td class="missing" id="missing22"><img src="/bundles/bingo/img/vorschlag.svg"></td>
+                        <td class="missing" id="missing23"><img src="/bundles/bingo/img/vorschlag.svg"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div style="width: 125px; float: left;">&nbsp</div>
+        <div style="float: left">
+            <table id="bignum">
+                <tr>
+                    <td id="bignum"><img src="/bundles/bingo/img/numbers/40.svg"></td>
+                    <td id="fattext">Ecken innen<br><img src="/bundles/bingo/img/gewinn14.png"></td>
+                    <td id="fattext">Ecken aussen<br><img src="/bundles/bingo/img/gewinn10.png"></td>
+                    <td id="fattext">Zen Garten<br><img src="/bundles/bingo/img/gewinn31.png"></td>
+                    <td id="bignum"><img src="/bundles/bingo/img/numbers/50.svg"></td>
+                    <td id="fattext">Jeder Pfeil<br><img src="/bundles/bingo/img/gewinn34.png"></td>
+                    <td id="fattext">Jeder Winkel<br><img src="/bundles/bingo/img/gewinn35.png"></td>
+                </tr>
+                <tr>
+                    <td id="bignum"><img src="/bundles/bingo/img/numbers/60.svg"></td>
+                    <td id="fattext">Jede Ecke<br><img src="/bundles/bingo/img/gewinn26.png"></td>
+                    <td id="fattext">Six Pack<br><img src="/bundles/bingo/img/gewinn18.png"></td>
+                    <td id="fattext">Würfel 6<br><img src="/bundles/bingo/img/gewinn36.png"></td>
+                    <td id="fattext">Twin Peaks<br><img src="/bundles/bingo/img/gewinn37.png"></td>
+                    <td id="fattext">Slashes<br><img src="/bundles/bingo/img/gewinn38.png"></td>
+                    <td id="fattext">Ungleich<br><img src="/bundles/bingo/img/gewinn40.png"></td>
+                </tr>
+                <tr>
+                    <td id="bignum"><img src="/bundles/bingo/img/numbers/70.svg"></td>
+                    <td id="fattext">Jede Vertikale<br><img src="/bundles/bingo/img/gewinn1.png"></td>
+                    <td id="fattext">Jede Horizontale<br><img src="/bundles/bingo/img/gewinn2.png"></td>
+                    <td id="fattext">Jede Diagonale<br><img src="/bundles/bingo/img/gewinn3.png"></td>
+                    <td id="bignum"><img src="/bundles/bingo/img/numbers/80.svg"></td>
+                    <td id="fattext">Saphir<br><img src="/bundles/bingo/img/gewinn11.png"></td>
+                    <td id="fattext">Schlüssel<br><img src="/bundles/bingo/img/gewinn6.png"></td>
+                </tr>
+                <tr>
+                    <td id="bignum"><img src="/bundles/bingo/img/numbers/90.svg"></td>
+                    <td id="fattext">Echo Kammer<br><img src="/bundles/bingo/img/gewinn25.png"></td>
+                    <td id="fattext">Knochen<br><img src="/bundles/bingo/img/gewinn24.png"></td>
+                    <td id="bignum"><img src="/bundles/bingo/img/numbers/100.svg"></td>
+                    <td id="fattext">Freakshow<br><img src="/bundles/bingo/img/gewinn4.png"></td>
+                    <td id="bignum"><img src="/bundles/bingo/img/numbers/110.svg"></td>
+                    <td id="fattext">Vogelscheuche<br><img src="/bundles/bingo/img/gewinn22.png"></td>
+                </tr>
+                <tr>
+                    <td id="bignum"><img src="/bundles/bingo/img/numbers/120.svg"></td>
+                    <td id="fattext">Diamant<br><img src="/bundles/bingo/img/gewinn5.png"></td>
+                    <td id="fattext">Satellit<br><img src="/bundles/bingo/img/gewinn19.png"></td>
+                    <td id="fattext">2x Six Pack<br><img src="/bundles/bingo/img/gewinn27.png"></td>
+                    <td id="fattext">3er Ecken<br><img src="/bundles/bingo/img/gewinn28.png"></td>
+                    <td id="fattext">Space Invaders<br><img src="/bundles/bingo/img/gewinn32.png"></td>
+                    <td id="fattext">Snake<br><img src="/bundles/bingo/img/gewinn39.png"></td>
+                </tr>
+                <tr>
+                    <td id="bignum"><img src="/bundles/bingo/img/numbers/130.svg"></td>
+                    <td id="fattext">Sinus<br><img src="/bundles/bingo/img/gewinn16.png"></td>
+                    <td id="fattext">Sternenhimmel<br><img src="/bundles/bingo/img/gewinn12.png"></td>
+                    <td id="fattext">Bulls Eye<br><img src="/bundles/bingo/img/gewinn20.png"></td>
+                    <td id="bignum"><img src="/bundles/bingo/img/numbers/140.svg"></td>
+                    <td id="fattext">CCC<br><img src="/bundles/bingo/img/gewinn23.png"></td>
+                    <td id="fattext">Nethack<br><img src="/bundles/bingo/img/gewinn33.png"></td>
+                </tr>
+                <tr>
+                    <td id="bignum"><img src="/bundles/bingo/img/numbers/150.svg"></td>
+                    <td id="fattext">Hangman<br><img src="/bundles/bingo/img/gewinn15.png"></td>
+                    <td id="fattext">Schmetterling<br><img src="/bundles/bingo/img/gewinn21.png"></td>
+                    <td id="bignum"><img src="/bundles/bingo/img/numbers/160.svg"></td>
+                    <td id="fattext">Bier Krug<br><img src="/bundles/bingo/img/gewinn7.png"></td>
+                    <td id="fattext">Blöcke<br><img src="/bundles/bingo/img/gewinn17.png"></td>
+                    <td id="fattext">Jedes 1/4 Dreieck<br><img src="/bundles/bingo/img/gewinn29.png"></td>
+                </tr>
+                <tr>
+                    <td id="bignum"><img src="/bundles/bingo/img/numbers/240.svg"></td>
+                    <td id="fattext">Apfel<br><img src="/bundles/bingo/img/gewinn9.png"></td>
+                    <td id="fattext">Schach<br><img src="/bundles/bingo/img/gewinn13.png"></td>
+                    <td id="fattext">Tannenbaum<br><img src="/bundles/bingo/img/gewinn30.png"></td>
+                    <td id="bignum"><img src="/bundles/bingo/img/numbers/260.svg"></td>
+                    <td id="fattext">@<br><img src="/bundles/bingo/img/gewinn8.png"></td>
+                    <td id="fattext">Defender<br><img src="/bundles/bingo/img/gewinn41.png"></td>
+                </tr>
+            </table>
+        </div>
+        <div style="width: 440px; margin-top: -10px; float: left; overflow: visible;" class="resize">
+            <div id="result1">
+                <ol>
+                    <li>Im rechten Feld Buzzwords ausschließen, dann mit der 'm' Taste Mischen um strategisch umzuverteilen.</li>
+                    <li>Der Misch-Modus beendet beim ersten klick in die Karte um sie für den Spiel-Modus zu fixieren</li>
+                    <li>Ein Buzzword fällt während der Live Sendung und wird gültig wenn es im Chat bestätigt wurde. (Hat letztes mal noch nicht soo gut funktioniert *wink wink*</li>
+                    <li>Gültige Begriffe werden auf der Karte gelb markiert, erreichte Bingos werden grün und dann nach Punkten gezählt um am Ende der Sendung Gewinner ermitteln zu können.</li>
+                </ol>
+                <p><a href="info.html">Infos zur Entstehung dieser Seite</a></p>
+            </div>
+            <div id="result2"></div>
+            <div id="result3"></div>
+            <div id="result4"></div>
+            <div id="result5"></div>
+            <div id="result6"></div>
+            <div id="result7"></div>
+            <div id="result8"></div>
+            <div id="result9"></div>
+            <div id="result10"></div>
+            <div id="result11"></div>
+            <div id="result12"></div>
+            <div id="result13"></div>
+            <div id="result14"></div>
+            <div id="result15"></div>
+            <div id="result16"></div>
+            <div id="result17"></div>
+            <div id="result18"></div>
+            <div id="result19"></div>
+            <div id="result20"></div>
+            <div id="result21"></div>
+            <div id="result22"></div>
+            <div id="result23"></div>
+            <div id="result24"></div>
+            <div id="result25"></div>
+            <div id="result26"></div>
+            <div id="result27"></div>
+            <div id="result28"></div>
+            <div id="result29"></div>
+            <div id="result30"></div>
+            <div id="result31"></div>
+            <div id="result32"></div>
+            <div id="result33"></div>
+            <div id="result34"></div>
+            <div id="result35"></div>
+            <div id="result36"></div>
+            <div id="result37"></div>
+            <div id="result38"></div>
+            <div id="result39"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="/bundles/bingo/js/bingo.js"></script>
+{% endblock %}
