@@ -248,12 +248,38 @@ $(document).ready(function () {
          });
          */
 
+        /**
+         * Initiate the Wirecard payment request data.
+         */
+        var bingoRequestData = {};
+
         $("#BingoBody td").click(function () {
             PlayMode = true;
-            $(this).addClass("gelbe_zelle");
 
             // idx = integerwert der geklickten zelle
             var idx = parseInt($(this).attr('data-id'));
+            var idimg = parseInt($(this).attr('data-img-id'));
+
+            bingoRequestData.idx = idx;
+            bingoRequestData.idimg = idimg;
+
+            $.ajax({
+                type: 'POST',
+                url: "https://freakxohbingo.de/app_dev.php/admin/rest/game",
+                crossDomain: true,
+                data: JSON.stringify(bingoRequestData),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                async: false,
+                success: function (bingoResponseData, textStatus, jqXHR) {
+                    console.log(bingoResponseData);
+                },
+                error: function (bingoResponseData, textStatus, errorThrown) {
+                    alert("Ajax failed to fetch data")
+                }
+            });
+
+            $(this).addClass("gelbe_zelle");
 
             // geklickete Zelle in bingoCard true setzen
             model.bingoCard[idx] = true;
