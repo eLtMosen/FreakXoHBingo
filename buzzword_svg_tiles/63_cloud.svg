@@ -226,7 +226,7 @@
        x2="280.66666"
        y2="130"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(0.8427261,0,0,1.1772907,-1008.5506,-3.2144541)" />
+       gradientTransform="matrix(0.83505623,0,0,1.1863848,-1008.3976,-3.3966981)" />
     <linearGradient
        inkscape:collect="always"
        xlink:href="#linearGradient4046"
@@ -236,7 +236,7 @@
        x2="281.16666"
        y2="130"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(0.8427261,0,0,1.1772907,-1008.5506,-3.2144541)" />
+       gradientTransform="matrix(0.83505623,0,0,1.1863848,-1008.3976,-3.3966981)" />
   </defs>
   <sodipodi:namedview
      id="base"
@@ -249,7 +249,7 @@
      inkscape:cx="299.20553"
      inkscape:cy="152.44557"
      inkscape:document-units="px"
-     inkscape:current-layer="text6128"
+     inkscape:current-layer="layer1"
      showgrid="false"
      inkscape:window-width="1366"
      inkscape:window-height="705"
@@ -309,12 +309,12 @@
          clip-path="url(#clipPath194)" />
     </g>
     <rect
-       style="fill:url(#linearGradient4064);fill-opacity:1;fill-rule:nonzero;stroke:url(#linearGradient4052);stroke-width:0.99605906"
+       style="fill:url(#linearGradient4064);fill-opacity:1;fill-rule:nonzero;stroke:url(#linearGradient4052);stroke-width:0.9953382"
        id="rect4044"
-       width="219.67059"
-       height="259.00394"
-       x="-991.69611"
-       y="20.331358"
+       width="217.67133"
+       height="261.00467"
+       x="-991.69647"
+       y="20.330997"
        transform="matrix(0,-1,1,0,0,0)" />
     <g
        style="font-size:77.86865997px;font-style:normal;font-weight:normal;line-height:104.99999523%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
@@ -325,18 +325,30 @@
          d=""
          id="path4209"
          inkscape:connector-curvature="0" />
-      <text
-         xml:space="preserve"
-         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Edmunds;-inkscape-font-specification:Edmunds"
-         x="104"
-         y="1028.3608"
-         id="text3864"
-         sodipodi:linespacing="125%"><tspan
-           sodipodi:role="line"
-           id="tspan3866"
-           x="104"
-           y="1028.3608"
-           style="font-size:32px;font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-family:Myriad Pro;-inkscape-font-specification:Myriad Pro Semi-Bold">CLOUD</tspan></text>
+      <g
+         style="font-size:40px;font-variant:normal;font-stretch:normal;line-height:125%;fill:#000000;font-family:Edmunds;-inkscape-font-specification:Edmunds"
+         id="text3864">
+        <path
+           d="m 121.088,1024.6488 c -1.056,0.448 -2.72,0.768 -4.288,0.768 -4.768,0 -7.52,-3.008 -7.52,-7.776 0,-5.184 3.168,-7.936 7.552,-7.936 1.76,0 3.2,0.384 4.224,0.832 l 0.832,-3.136 c -0.8,-0.416 -2.624,-0.96 -5.216,-0.96 -6.59199,0 -11.552,4.288 -11.552,11.392 0,6.592 4.16001,10.88 11.008,10.88 2.624,0 4.672,-0.512 5.6,-0.96 l -0.64,-3.104"
+           style="font-size:32px;font-weight:600;font-family:Myriad Pro;-inkscape-font-specification:Myriad Pro Semi-Bold"
+           id="path4067" />
+        <path
+           d="m 125.0845,1028.3608 12.8,0 0,-3.296 -8.864,0 0,-18.272 -3.936,0 0,21.568"
+           style="font-size:32px;font-weight:600;font-family:Myriad Pro;-inkscape-font-specification:Myriad Pro Semi-Bold"
+           id="path4069" />
+        <path
+           d="m 148.7365,1006.4088 c -6.07999,0 -10.272,4.672 -10.272,11.328 0,6.304 3.84001,10.976 9.952,10.976 5.91999,0 10.304,-4.128 10.304,-11.36 0,-6.176 -3.71201,-10.944 -9.984,-10.944 m -0.128,3.168 c 3.936,0 5.952,3.84 5.952,7.904 0,4.512 -2.144,8.064 -5.952,8.064 -3.776,0 -5.984,-3.488 -5.984,-7.904 0,-4.448 2.08,-8.064 5.984,-8.064"
+           style="font-size:32px;font-weight:600;font-family:Myriad Pro;-inkscape-font-specification:Myriad Pro Semi-Bold"
+           id="path4071" />
+        <path
+           d="m 162.0525,1006.7928 0,12.352 c 0,6.784 3.232,9.568 8.224,9.568 5.18399,0 8.608,-2.944 8.608,-9.6 l 0,-12.32 -3.936,0 0,12.576 c 0,4.224 -1.696,6.176 -4.544,6.176 -2.656,0 -4.416,-1.952 -4.416,-6.176 l 0,-12.576 -3.936,0"
+           style="font-size:32px;font-weight:600;font-family:Myriad Pro;-inkscape-font-specification:Myriad Pro Semi-Bold"
+           id="path4073" />
+        <path
+           d="m 183.397,1028.2968 c 1.312,0.16 3.04,0.288 5.312,0.288 4.192,0 7.616,-0.992 9.76,-2.944 2.048,-1.856 3.36,-4.704 3.36,-8.576 0,-3.648 -1.28,-6.24 -3.392,-7.936 -1.984,-1.664 -4.736,-2.496 -8.768,-2.496 -2.336,0 -4.512,0.192 -6.272,0.448 l 0,21.216 m 3.936,-18.368 c 0.576,-0.128 1.44,-0.224 2.688,-0.224 4.928,0 7.68,2.752 7.648,7.488 0,5.472 -3.04001,8.32 -8.16,8.288 -0.8,0 -1.632,0 -2.176,-0.096 l 0,-15.456"
+           style="font-size:32px;font-weight:600;font-family:Myriad Pro;-inkscape-font-specification:Myriad Pro Semi-Bold"
+           id="path4075" />
+      </g>
       <g
          id="g3985"
          transform="matrix(0.66272364,-9.1840993e-4,8.7441513e-4,0.69606752,173.79274,270.13556)">

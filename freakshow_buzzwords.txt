@@ -59,21 +59,43 @@ Shownotes >> @roddi in der Sendung 166
 Haben wir noch Themen >> Mikrobe im Chat    
 Schlumpfbeeren 
 Linux 
-
-        <<^tiles für beta2 bereits erstellt>>
+flacher Witz
 cloud
-Die riechen nach lulu >> @roddi in der Sendung 166
-Stimme der Jugend
-o2
-vodafon
-cloud
+Essen
+NerdvsHipster
 Drogen erwähnung
+Die riechen nach lulu >> @roddi in der Sendung 166
+Wikipedia
+Stimme der Jugend
+apple euphemismus
+und überhaupt >> roddi per twitter
+opensource
+(S)Chinesen
+fefe
+wir prangern das an
+freebsd
+wir prangern das an
+"glasfaser", >> Mokkel im Chat
+kleinkuhkackerode >> Roddi in der Sendung
+Future
+fnord
+        <<^tiles für beta2 bereits erstellt>>
+
 Das skaliert
-Bingo
-Fanboys  
+el cheepo
+"country oder western" und 
+"Ich will endlich Zukunft"
+"kaputt / funktional kaputt" 
+raaaiiinnn zufällig
+
+
 
         
-        <<<<auch in der groben Überlegung>>'
+        <<<<auch in der groben Überlegung>>'      
+o2
+vodafon
+Bingo rekursion
+Fanboys         
 isp tarife
 Was erlaube ...
 So wenig Themen…
@@ -89,4 +111,7 @@ Selbst schuld
 
 feature requests:
 
-fänd auch gut, wenn man die nicht-verwendeten trotzdem grün klicken könnte
+
+
+Nächster Commit:
+Freifeld immer ausgewählt
