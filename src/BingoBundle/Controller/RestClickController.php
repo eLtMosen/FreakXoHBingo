@@ -12,11 +12,14 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use FOS\RestBundle\Controller\Annotations as Rest;
 
 use BaseBundle\Controller\AbstractRestController;
+use BingoBundle\Propel\Click;
+use BingoBundle\Propel\ClickQuery;
+use Propel\Runtime\Propel;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Kernel;
 
 /**
- * Class RestKlickController
+ * Class RestclickController
  *
  * @package BingoBundle\Controller
  */
@@ -25,26 +28,24 @@ class RestClickController extends AbstractRestController
     /**
      * Methode zum Festhalten eines Klicks eines Spielers innerhalb eines Spiels.
      *
-     * @Route("/rest/klick", name="bingo_rest_click_post", defaults={ "_format" = "json" })
-     * @Method("POST")
+     * @Route("/rest/click", name="bingo_rest_click", defaults={ "_format" = "json" })
+     * @Method("GET")
      * @Rest\View()
      * @return array
      */
     public function getClickAction()
     {
-        $clicksData = array();
-
         return array(
             'name' => 'FreakXoHBingo',
             'version' => Kernel::VERSION,
-            'games' => $clicksData
+            'clicks' => $this->getCardClicks()
         );
     }
 
     /**
      * Methode zum Festhalten eines Klicks eines Spielers innerhalb eines Spiels.
      *
-     * @Route("/rest/klick", name="bingo_rest_click_post", defaults={ "_format" = "json" })
+     * @Route("/rest/click", name="bingo_rest_click_post", defaults={ "_format" = "json" })
      * @Method("POST")
      * @Rest\View()
      * @param Request $request
@@ -52,12 +53,50 @@ class RestClickController extends AbstractRestController
      */
     public function createClickAction(Request $request)
     {
-        $clicksData = array();
+
+        if ($request->getMethod() == 'POST') {
+            $clickRequestData = array();
+
+            if (0 === strpos($request->headers->get('Content-Type'), 'application/json')) {
+                $clickRequestData = json_decode($request->getContent(), true);
+                //$request->replace(is_array($data) ? $data : array());
+            }
+
+            $click = new Click();
+            $click->setCard($clickRequestData['card']);
+            $click->save();
+        }
 
         return array(
             'name' => 'FreakXoHBingo',
             'version' => Kernel::VERSION,
-            'games' => $clicksData
+            'clicks' => $this->getCardClicks()
         );
+    }
+
+    // -- PROTECTED ----------------------------------------------------------------------------------------------------
+
+    /**
+     * Get Card Clicks.
+     *
+     * @param int $seconds
+     * @return array
+     */
+    protected function getCardClicks($seconds = 45)
+    {
+        $query = "
+            SELECT game_id,card,count(card) as clicks
+            FROM `bingo_click`
+            WHERE time_create > (NOW() - INTERVAL {$seconds} SECOND)
+            GROUP BY card
+            ORDER BY clicks DESC
+        ";
+
+        $con = Propel::getConnection();
+        $stmt = $con->prepare($query);
+        $stmt->execute();
+        $clickResult = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+
+        return $clickResult;
     }
 }

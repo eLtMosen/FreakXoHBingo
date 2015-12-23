@@ -405,30 +405,86 @@ $(document).ready(function () {
                         }
                         return result;
                     }, []);
+
                     //console.log(buzzwordBusyToNum.length);
+
                     if (!buzzwordBusy[id_img] && buzzwordBusyToNum.length < 6) {
                         buzzwordBusy[id_img] = true;
                         $(this).addClass("orange_zelle");
                         $(this).addClass("question");
                         $(this).addClass("pulse-button");
+
                         var timeoutExit = 1;
+
+                        // -- AJAX POST REQUEST :: BEGIN ---------------------------------------------------------------
+
                         // Buzzword id_img in DB schreiben
-                        //this in das timeout intervall überführen
+                        var bingoRequestData = {
+                            card: id_img
+                        };
+
+                        $.ajax({
+                            type: 'POST',
+                            url: host + '/rest/click',
+                            crossDomain: true,
+                            data: JSON.stringify(bingoRequestData),
+                            contentType: 'application/json; charset=utf-8',
+                            dataType: 'json',
+                            async: true,
+                            success: function (bingoResponseData, textStatus, jqXHR) {
+                                bingoResponseData.clicks.forEach(function(entry) {
+                                    if (entry.clicks >= 5) {
+                                        buzzwordConfirmed[entry.card] = true;
+                                    }
+                                });
+                            },
+                            error: function (bingoResponseData, textStatus, errorThrown) {
+                                alert("Ajax failed to fetch data")
+                            }
+                        });
+
+                        // -- AJAX POST REQUEST :: END -----------------------------------------------------------------
+
+                        // this in das timeout intervall überführen
                         var that = this;
+
                         // rekursives Timeout für 40 mal 3 sekunden, unterbrochen von buzzwordbestätigung per DB
                         (function checkBuzzword() {
                             //console.log(id_img);
                             //console.log(timeoutExit);
+
                             // simulierter probabilistik erfolg -> ENTER DB ABFRAGE HERE!
                             if (timeoutExit >= 5) {
-                                buzzwordConfirmed[id_img] = true;
+                                // -- AJAX GET REQUEST :: BEGIN --------------------------------------------------------
+
+                                $.ajax({
+                                    type: 'GET',
+                                    url: host + '/rest/click',
+                                    crossDomain: true,
+                                    cache: false,
+                                    contentType: 'application/json; charset=utf-8',
+                                    dataType: 'json',
+                                    async: true,
+                                    success: function(bingoResponseData){
+                                        bingoResponseData.clicks.forEach(function(entry) {
+                                            if (entry.clicks >= 5) {
+                                                buzzwordConfirmed[entry.card] = true;
+                                            }
+                                        });
+                                    }
+                                });
+
+                                // -- AJAX POST REQUEST :: END ---------------------------------------------------------
                             }
+
                             // simulation nde
                             timeoutExit++;
+
                             if (!buzzwordConfirmed[id_img] && timeoutExit < 40) {
                                 setTimeout(checkBuzzword, 3000);
                                 //console.log(buzzwordConfirmed[id_img]);
                             }
+
                             if (buzzwordConfirmed[id_img]) {
                                 $(that).removeClass("orange_zelle");
                                 $(that).removeClass("question");

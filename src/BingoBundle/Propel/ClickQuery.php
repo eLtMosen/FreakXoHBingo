@@ -2,7 +2,7 @@
 
 namespace BingoBundle\Propel;
 
-use BingoBundle\Propel\Base\clickQuery as BaseclickQuery;
+use BingoBundle\Propel\Base\ClickQuery as BaseClickQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'bingo_click' table.
@@ -14,7 +14,7 @@ use BingoBundle\Propel\Base\clickQuery as BaseclickQuery;
  * long as it does not already exist in the output directory.
  *
  */
-class clickQuery extends BaseclickQuery
+class ClickQuery extends BaseClickQuery
 {
 
 }
