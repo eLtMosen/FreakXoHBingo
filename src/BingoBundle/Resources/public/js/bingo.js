@@ -1,4 +1,10 @@
 $(document).ready(function () {
+    var host = location.protocol.concat('//').concat(window.location.hostname);
+
+    if (window.location.href.indexOf('app_dev.php') > -1) {
+        host = host.concat('/app_dev.php');
+    }
+
     var config = {
         bingoCard: {
             width: 7,
@@ -249,7 +255,7 @@ $(document).ready(function () {
          */
 
         /**
-         * Initiate the Wirecard payment request data.
+         * Initiate the Bingo Klick request data.
          */
         var bingoRequestData = {};
 
@@ -265,12 +271,12 @@ $(document).ready(function () {
 
             $.ajax({
                 type: 'POST',
-                url: "https://freakxohbingo.de/app_dev.php/admin/rest/game",
+                url: host + 'admin/rest/game',
                 crossDomain: true,
                 data: JSON.stringify(bingoRequestData),
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                async: false,
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                async: true,
                 success: function (bingoResponseData, textStatus, jqXHR) {
                     console.log(bingoResponseData);
                 },
