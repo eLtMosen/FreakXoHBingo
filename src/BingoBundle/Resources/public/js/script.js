@@ -385,6 +385,7 @@ $(document).ready(function () {
                 if (!playMode) {
                     // idx = integerwert der geklickten zelle
                     var idx = parseInt($(this).attr('data-img-id'));
+
                     // Frei Logo nicht ausschliessbar machen
                     if (idx != 0 && !isNaN(idx)) {
                         if ($(this).hasClass("rote_zelle")) {
@@ -419,20 +420,16 @@ $(document).ready(function () {
                         // -- AJAX POST REQUEST :: BEGIN ---------------------------------------------------------------
 
                         // Buzzword id_img in DB schreiben
-                        var bingoRequestData = {
-                            card: id_img
-                        };
-
                         $.ajax({
                             type: 'POST',
                             url: host + '/rest/click',
-                            crossDomain: true,
-                            data: JSON.stringify(bingoRequestData),
+                            crossDomain: false,
+                            data: JSON.stringify({card: id_img}),
                             contentType: 'application/json; charset=utf-8',
                             dataType: 'json',
                             async: true,
-                            success: function (bingoResponseData, textStatus, jqXHR) {
-                                bingoResponseData.clicks.forEach(function(entry) {
+                            success: function (bingoResponseData) {
+                                bingoResponseData.clicks.forEach(function (entry) {
                                     if (entry.clicks >= 5) {
                                         buzzwordConfirmed[entry.card] = true;
                                     }
@@ -454,13 +451,13 @@ $(document).ready(function () {
                             //console.log(timeoutExit);
 
                             // simulierter probabilistik erfolg -> ENTER DB ABFRAGE HERE!
-                            if (timeoutExit >= 5) {
+                            if (timeoutExit >= 7) {
                                 // -- AJAX GET REQUEST :: BEGIN --------------------------------------------------------
 
                                 $.ajax({
                                     type: 'GET',
                                     url: host + '/rest/click',
-                                    crossDomain: true,
+                                    crossDomain: false,
                                     cache: false,
                                     contentType: 'application/json; charset=utf-8',
                                     dataType: 'json',
@@ -480,7 +477,7 @@ $(document).ready(function () {
                             // simulation nde
                             timeoutExit++;
 
-                            if (!buzzwordConfirmed[id_img] && timeoutExit < 40) {
+                            if (!buzzwordConfirmed[id_img] && timeoutExit < 42) {
                                 setTimeout(checkBuzzword, 3000);
                                 //console.log(buzzwordConfirmed[id_img]);
                             }
@@ -499,7 +496,7 @@ $(document).ready(function () {
                                 buzzwordConfirmed[id_img] = true;
                                 buzzwordBusy[id_img] = false;
                             } else {
-                                if (!buzzwordConfirmed[id_img] && timeoutExit >= 40) {
+                                if (!buzzwordConfirmed[id_img] && timeoutExit >= 42) {
                                     $(that).removeClass("orange_zelle");
                                     $(that).removeClass("question");
                                     $(that).removeClass("pulse-button");
@@ -510,7 +507,6 @@ $(document).ready(function () {
                             }
                         }());
                     }
-
                 }
             }
         });
