@@ -2,7 +2,7 @@
 
 Bevor das Projekt installiert werden kann sollte der Server vorbereit werden. Siehe hierzu: [Server Installation](SERVER.md)
 
-_**Hinweis:** In dieser Anleitung gehen wir davon aus, dass das Projekt unter ```/var/www``` installiert wird. Zu diesem Zweck vorher zum www-data User werden:
+_**Hinweis:** In dieser Anleitung gehen wir davon aus, dass das Projekt unter ```/var/www``` installiert wird. Zu diesem Zweck vorher zum www-data User werden:_
 
     su - www-data
 
