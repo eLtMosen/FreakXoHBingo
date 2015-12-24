@@ -218,7 +218,12 @@ $(document).ready(function () {
         });
     }
 
-    // Zum Reseten der Buzzword Tabelle nach einem ausschluss
+    /**
+     * Zum Reseten der Buzzword Tabelle nach einem Ausschluss.
+     *
+     * @param htmlId
+     * @param imgIds
+     */
     function setImgOff(htmlId, imgIds) {
         _.times(imgIds.length, function (id) {
             var $elem = $(htmlId + id);
@@ -378,6 +383,7 @@ $(document).ready(function () {
         });
 
         var userRejectedNum = 0;
+
         $("#BingoBody td").click(function () {
             if (userRejectedNum >= missingBingoCardsCount && !$(this).hasClass("rote_zelle")) {
                 // nothing!!
@@ -450,36 +456,41 @@ $(document).ready(function () {
                             //console.log(id_img);
                             //console.log(timeoutExit);
 
-                            // simulierter probabilistik erfolg -> ENTER DB ABFRAGE HERE!
-                            if (timeoutExit >= 7) {
-                                // -- AJAX GET REQUEST :: BEGIN --------------------------------------------------------
-
-                                $.ajax({
-                                    type: 'GET',
-                                    url: host + '/rest/click',
-                                    crossDomain: false,
-                                    cache: false,
-                                    contentType: 'application/json; charset=utf-8',
-                                    dataType: 'json',
-                                    async: true,
-                                    success: function(bingoResponseData){
-                                        bingoResponseData.clicks.forEach(function(entry) {
-                                            if (entry.clicks >= 5) {
-                                                buzzwordConfirmed[entry.card] = true;
-                                            }
-                                        });
-                                    }
-                                });
-
-                                // -- AJAX POST REQUEST :: END ---------------------------------------------------------
-                            }
-
                             // simulation nde
-                            timeoutExit++;
+                            // needed to wait for next ajax request
+                            //timeoutExit++;
+
+                            // simulierter probabilistik erfolg -> ENTER DB ABFRAGE HERE!
+                            /*
+                            if (timeoutExit >= 5) {
+                                buzzwordConfirmed[id_img] = true;
+                            }
+                            */
+
+                            // -- AJAX GET REQUEST :: BEGIN --------------------------------------------------------
+
+                            $.ajax({
+                                type: 'GET',
+                                url: host + '/rest/click',
+                                crossDomain: false,
+                                cache: false,
+                                contentType: 'application/json; charset=utf-8',
+                                dataType: 'json',
+                                async: true,
+                                success: function(bingoResponseData){
+                                    bingoResponseData.clicks.forEach(function(entry) {
+                                        if (entry.clicks >= 5) {
+                                            buzzwordConfirmed[entry.card] = true;
+                                        }
+                                    });
+                                }
+                            });
+
+                            // -- AJAX POST REQUEST :: END ---------------------------------------------------------
 
                             if (!buzzwordConfirmed[id_img] && timeoutExit < 42) {
-                                setTimeout(checkBuzzword, 3000);
                                 //console.log(buzzwordConfirmed[id_img]);
+                                setTimeout(checkBuzzword, 3000);
                             }
 
                             if (buzzwordConfirmed[id_img]) {
@@ -531,9 +542,9 @@ $(document).ready(function () {
                             $(this).addClass("rote_zelle", userRejected[userRejectedNum++] = idx);
                         }
 
-                        //    console.log(idx);
-                        //    console.log(userRejectedNum);
-                        //    console.log(userRejected);
+                        //console.log(idx);
+                        //console.log(userRejectedNum);
+                        //console.log(userRejected);
                     }
                 } else {
                     $(this).toggleClass("gelbe_zelle");
@@ -545,6 +556,7 @@ $(document).ready(function () {
     function pad(n, width, z) {
         z = z || '0';
         n = n + '';
+
         return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
     }
 
@@ -552,6 +564,7 @@ $(document).ready(function () {
         for (var i = 0, len = needle.length; i < len; i++) {
             if ($.inArray(needle[i], haystack) == -1) return false;
         }
+
         return true;
     }
 
@@ -609,7 +622,7 @@ $(document).ready(function () {
         setTimeout(function () {
             self.updateNumOfDays();
         }, (new Date((currYear + 1), 1, 2) - dateNow));
-    }
+    };
 
     CountUp.prototype.datePartDiff = function (then, now, MAX) {
         var diff = now - then - this.borrowed;
@@ -617,7 +630,7 @@ $(document).ready(function () {
         if (diff > -1) return diff;
         this.borrowed = 1;
         return (MAX + diff);
-    }
+    };
 
     CountUp.prototype.calculate = function () {
         var currDate = new Date();
@@ -628,17 +641,17 @@ $(document).ready(function () {
         this.days = this.datePartDiff(prevDate.getDate(), currDate.getDate(), this.numOfDays[currDate.getMonth()]);
         this.months = this.datePartDiff(prevDate.getMonth(), currDate.getMonth(), 12);
         this.years = this.datePartDiff(prevDate.getFullYear(), currDate.getFullYear(), 0);
-    }
+    };
 
     CountUp.prototype.addLeadingZero = function (value) {
         return value < 10 ? ("0" + value) : value;
-    }
+    };
 
     CountUp.prototype.formatTime = function () {
         this.seconds = this.addLeadingZero(this.seconds);
         this.minutes = this.addLeadingZero(this.minutes);
         this.hours = this.addLeadingZero(this.hours);
-    }
+    };
 
     CountUp.prototype.updateCounter = function () {
         this.calculate();
@@ -653,5 +666,5 @@ $(document).ready(function () {
         setTimeout(function () {
             self.updateCounter();
         }, 1000);
-    }
+    };
 });
