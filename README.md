@@ -1,3 +1,5 @@
+# FreakXoHBingo
+
 Dieses Bingo wird während Livesendungen der freakshow.fm gespielt.
 
 1. Ist die Bingokarte geladen, die "m" Taste oder den "Mischen Knopf" benutzen um die Buzzwords strategisch umzuverteilen.
@@ -18,9 +20,16 @@ geplante Features:
 6. Komplexere Spielmodi mit multiplen addierten Bingos und einem monatlichen(?) Gewinner.
 
 Äußerster Dank gilt Lukas Havemann für seinen umfangreichen Commit folgender features
+
 1. Resize der Karte nun unabhängig vom Mischen
 2. Code neustrukturierung
 3. Teilweise generierung des HTML durch JS
 4. Neue Mischen Funktion
 
 Die Grafiken basieren teilweise auf der PDF Karte von ePirat http://epir.at/d/Freakshow_Bingo.pdf
+
+## Installation
+
+[Anleitung für die Installation des Projekts](INSTALL.md)
+
+[Anleitung für die Installation eines Servers](SERVER.md)

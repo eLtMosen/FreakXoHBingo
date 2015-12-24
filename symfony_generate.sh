@@ -19,14 +19,15 @@ if [ "$REPLY" == "y" ]
 then
     # Delete all Propel generated data
     # @todo find and remove all third party bundle propel generated files
-    rm -rf src/*Bundle/Propel/map
-    rm -rf src/*Bundle/Propel/om
+    rm -rf **/Propel/Base/**
+    rm -rf **/Propel/Map/**
     echo "${underline}${green}All Propel generated data deleted!${reset}"
 fi
 
 read -p "${orange}Build all Propel generated data (y/n)? ${reset}"
 if [ "$REPLY" == "y" ]
 then
+    rm app/propel/sql/sqldb.map
     app/console propel:build
     echo "${underline}${green}All Propel generated data created!${reset}"
 fi

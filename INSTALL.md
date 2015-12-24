@@ -13,7 +13,7 @@ Wenn kein Login als www-data erlaubt ist, dann:
 Projekt auschecken und installieren:
 
     cd /var/www
-    git clone git@github.com:adamibrom/FreakXoHBingo.git
+    git clone git@github.com:bassix/FreakXoHBingo.git
     cd FreakXoHBingo
     ./composer.sh i
 

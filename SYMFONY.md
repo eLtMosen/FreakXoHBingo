@@ -7,7 +7,7 @@ Das Frontend (die Spiele), der Adminbereich werden von Symfony erzeugt. Das Back
 Im ersten Schritt der Projekt klonen:
 
     cd /var/www
-    git clone git@github.com:adamibrom/FreakXoHBingo.git
+    git clone git@github.com:bassix/FreakXoHBingo.git
     cd FreakXoHBingo
 
 Ist der Code von Github lokal verfügbar, das Installationsscript Ausführen um die Composer Pakete zu installieren:
