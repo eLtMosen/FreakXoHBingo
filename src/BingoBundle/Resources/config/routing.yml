@@ -1,0 +1,4 @@
+bingo_views:
+    type: annotation
+    prefix: /
+    resource: "@BingoBundle/Controller/"

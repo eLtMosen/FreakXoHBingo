@@ -1,0 +1,12 @@
+propel:
+    database:
+        # All database sources
+        connections:
+            default:
+                adapter: mysql
+                dsn: mysql:host=%database_host%;dbname=%database_name%%database_charset%
+                user: %database_user%
+                password: %database_password%
+        adapters:
+            mysql:
+                tableType: InnoDB

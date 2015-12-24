@@ -1,0 +1,44 @@
+{% extends 'BingoBundle::base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <h1>List with all Games</h1>
+
+        {% if games is not empty %}
+            <table class="table table-striped table-hover">
+                <thead>
+                <tr>
+                    <td>#</td>
+                    <td>Slug</td>
+                    <td>Name</td>
+                    <td>Action</td>
+                </tr>
+                </thead>
+                <tfoot>
+                <tr>
+                    <td>#</td>
+                    <td>Slug</td>
+                    <td>Name</td>
+                    <td>Action</td>
+                </tr>
+                </tfoot>
+                <tbody>
+                {% for game in games %}
+                    <tr>
+                        <td>{{ game.id }}</td>
+                        <td>{{ game.slug }}</td>
+                        <td>{{ game.name }}</td>
+                        <td><a href="{{ path('bingo_game', { 'slug': game.slug }) }}">open</a></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p class="bg-info">No <strong>Games</strong> found!</p>
+        {% endif %}
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}

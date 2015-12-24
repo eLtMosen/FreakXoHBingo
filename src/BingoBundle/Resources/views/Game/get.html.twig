@@ -1,0 +1,42 @@
+{% extends 'BingoBundle::base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <h1>{{ game.name }} Game</h1>
+        <table class="table table-striped table-hover">
+            <thead>
+            <tr>
+                <td>Label</td>
+                <td>Value</td>
+            </tr>
+            </thead>
+            <tfoot>
+            <tr>
+                <td>Label</td>
+                <td>Value</td>
+            </tr>
+            </tfoot>
+            <tbody>
+            <tr>
+                <td>ID</td>
+                <td>{{ game.id }}</td>
+            </tr>
+            <tr>
+                <td>locale</td>
+                <td>{{ game.locale }}</td>
+            </tr>
+            <tr>
+                <td>slug</td>
+                <td>{{ game.slug }}</td>
+            </tr>
+            <tr>
+                <td>Name</td>
+                <td>{{ game.name }}</td>
+            </tr>
+            <tr>
+                <td colspan="2" class="text-right"><a href="{{ path('bingo_play', { 'slug': game.slug }) }}">play</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
