@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database name="default" namespace="BingoBundle\Propel" defaultIdMethod="native">
+    <table name="bingo_game" phpName="Game" idMethod="native" allowPkInsert="true">
+        <vendor type="mysql">
+            <parameter name="Charset" value="utf8"/>
+            <parameter name="Collate" value="utf8_unicode_ci"/>
+        </vendor>
+
+        <column name="id" phpName="Id" type="BIGINT" size="20" sqlType="BIGINT(20) UNSIGNED" required="true" primaryKey="true" autoIncrement="true"/>
+
+        <!-- USER :: BEGIN -->
+        <!--
+        <column name="user_id" phpName="userId" type="BIGINT" size="20" sqlType="BIGINT(20) UNSIGNED"/>
+
+        <index name="I_Bingo_UserId">
+            <index-column name="user_id" />
+        </index>
+
+        <foreign-key foreignTable="bingo_user" name="BingoGameToUserConstraint">
+            <reference local="user_id" foreign="id"/>
+        </foreign-key>
+
+        <behavior name="typehintable">
+            <parameter name="user" value="BingoBundle\Propel\User"/>
+        </behavior>
+        -->
+        <!-- USER :: END -->
+
+        <!-- OWNER :: BEGIN -->
+        <!--
+        <column name="owner_id" phpName="ownerId" type="BIGINT" size="20" sqlType="BIGINT(20) UNSIGNED"/>
+
+        <index name="I_Bingo_ContactPersonId">
+            <index-column name="owner_id" />
+        </index>
+
+        <foreign-key foreignTable="bingo_owner" name="FK_Bingo_GameToOwner">
+            <reference local="owner_id" foreign="id"/>
+        </foreign-key>
+
+        <behavior name="typehintable">
+            <parameter name="owner" value="BingoBundle\Propel\Person"/>
+        </behavior>
+        -->
+        <!-- OWNER :: END -->
+
+        <column name="slug" phpName="Slug" type="VARCHAR" size="64" required="false"/>
+
+        <!-- @todo Es kommt leider auf der Live-DB zu abbrüchen, weil ein NULL-slugg nicht überschrieben werden kann! -->
+        <!--
+        <unique>
+            <unique-column name="slug"/>
+        </unique>
+        -->
+
+        <!-- @todo Das "sluggable" Behavior funktioniert nicht, da es auf eine i18n Tabelle verweist! -->
+        <!--
+        <behavior name="sluggable">
+            <parameter name="slug_column" value="slug"/>
+            <parameter name="slug_pattern" value="{Title}"/>
+        </behavior>
+        -->
+
+        <column name="name" phpName="Name" type="VARCHAR" size="64" required="false"/>
+        <column name="slogan" phpName="Slogan" type="VARCHAR" size="255" required="false"/>
+        <column name="description" phpName="Description" type="LONGVARCHAR" required="false"/>
+
+        <behavior name="i18n">
+            <parameter name="i18n_columns" value="name,slogan,description"/>
+            <parameter name="default_locale" value="en_US"/>
+        </behavior>
+
+        <column name="timezone" phpName="Timezone" type="VARCHAR" size="64" required="true" defaultValue="Europe/Berlin"/>
+        <column name="language" phpName="Language" type="VARCHAR" size="5" required="true" defaultValue="en_US"/>
+
+        <!-- TIME STAMP :: BEGIN -->
+        <column name="time_create" phpName="TimeCreate" type="TIMESTAMP"/>
+        <column name="time_stamp" type="TIMESTAMP" defaultExpr="CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"/>
+
+        <behavior name="timestampable">
+            <parameter name="create_column" value="time_create"/>
+            <parameter name="update_column" value="time_stamp"/>
+        </behavior>
+
+        <!--
+        Auskommentiert, wegen einem Fehler beim Umgang mit DateTime und time()!
+        *::setTimeCreate() must be an instance of DateTime, integer given
+        <behavior name="typehintable">
+            <parameter name="time_create" value="DateTime"/>
+            <parameter name="time_stamp" value="DateTime"/>
+        </behavior>
+        -->
+        <!-- TIME STAMP :: END -->
+    </table>
+
+    <table name="bingo_game_i18n" phpName="GameI18n">
+        <vendor type="mysql">
+            <parameter name="Charset" value="utf8"/>
+            <parameter name="Collate" value="utf8_unicode_ci"/>
+        </vendor>
+
+        <column name="id" phpName="Id" type="BIGINT" size="20" sqlType="BIGINT(20) UNSIGNED" required="true" primaryKey="true"/>
+
+        <column name="locale" type="VARCHAR" size="5" required="true" primaryKey="true" />
+        <column name="name" type="VARCHAR" size="64" required="false" defaultValue="" />
+        <column name="slogan" type="VARCHAR" size="255" required="false" defaultValue="" />
+        <column name="description" type="LONGVARCHAR" />
+
+        <foreign-key foreignTable="bingo_game" name="FK_Bingo_GameI18nToGame" onUpdate="cascade" onDelete="cascade">
+            <reference local="id" foreign="id" />
+        </foreign-key>
+    </table>
+
+    <table name="bingo_player" phpName="Player">
+        <vendor type="mysql">
+            <parameter name="Charset" value="utf8"/>
+            <parameter name="Collate" value="utf8_unicode_ci"/>
+        </vendor>
+
+        <column name="id" phpName="Id" type="BIGINT" size="20" sqlType="BIGINT(20) UNSIGNED" required="true" primaryKey="true" autoIncrement="true"/>
+
+        <column name="uid" type="varchar" size="32"/>
+        <column name="name" type="varchar" size="32"/>
+
+        <!-- TIME STAMP :: BEGIN -->
+        <column name="time_create" phpName="TimeCreate" type="TIMESTAMP"/>
+        <column name="time_stamp" type="TIMESTAMP" defaultExpr="CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"/>
+
+        <behavior name="timestampable">
+            <parameter name="create_column" value="time_create"/>
+            <parameter name="update_column" value="time_stamp"/>
+        </behavior>
+
+        <!--
+        Auskommentiert, wegen einem Fehler beim Umgang mit DateTime und time()!
+        *::setTimeCreate() must be an instance of DateTime, integer given
+        <behavior name="typehintable">
+            <parameter name="time_create" value="DateTime"/>
+            <parameter name="time_stamp" value="DateTime"/>
+        </behavior>
+        -->
+        <!-- TIME STAMP :: END -->
+    </table>
+
+    <table name="bingo_game_player" phpName="GamePlayer" isCrossRef="true">
+        <vendor type="mysql">
+            <parameter name="Charset" value="utf8"/>
+            <parameter name="Collate" value="utf8_unicode_ci"/>
+        </vendor>
+
+        <column name="game_id" type="BIGINT" size="20" sqlType="BIGINT(20) UNSIGNED" required="true" primaryKey="true"/>
+        <column name="player_id" type="BIGINT" size="20" sqlType="BIGINT(20) UNSIGNED" required="true" primaryKey="true"/>
+
+        <foreign-key foreignTable="bingo_game" name="FK_Bingo_PlayerToGame">
+            <reference local="game_id" foreign="id"/>
+        </foreign-key>
+
+        <foreign-key foreignTable="bingo_player" name="FK_Bingo_GameToPlayer">
+            <reference local="player_id" foreign="id"/>
+        </foreign-key>
+
+        <!-- TIME STAMP :: BEGIN -->
+        <column name="time_create" phpName="TimeCreate" type="TIMESTAMP"/>
+        <column name="time_stamp" type="TIMESTAMP" defaultExpr="CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"/>
+
+        <behavior name="timestampable">
+            <parameter name="create_column" value="time_create"/>
+            <parameter name="update_column" value="time_stamp"/>
+        </behavior>
+
+        <!--
+        Auskommentiert, wegen einem Fehler beim Umgang mit DateTime und time()!
+        *::setTimeCreate() must be an instance of DateTime, integer given
+        <behavior name="typehintable">
+            <parameter name="time_create" value="DateTime"/>
+            <parameter name="time_stamp" value="DateTime"/>
+        </behavior>
+        -->
+        <!-- TIME STAMP :: END -->
+    </table>
+
+    <table name="bingo_click" phpName="Click">
+        <vendor type="mysql">
+            <parameter name="Charset" value="utf8"/>
+            <parameter name="Collate" value="utf8_unicode_ci"/>
+        </vendor>
+
+        <column name="id" phpName="Id" type="BIGINT" size="20" sqlType="BIGINT(20) UNSIGNED" required="true" primaryKey="true" autoIncrement="true"/>
+
+        <!-- GAME -->
+        <column name="game_id" type="BIGINT" size="20" sqlType="BIGINT(20) UNSIGNED" required="false"/>
+
+        <index name="I_Bingo_GameId">
+            <index-column name="game_id" />
+        </index>
+
+        <foreign-key foreignTable="bingo_game" name="FK_Bingo_KlickToGame">
+            <reference local="game_id" foreign="id"/>
+        </foreign-key>
+
+        <!-- PLAYER -->
+        <column name="player_id" type="BIGINT" size="20" sqlType="BIGINT(20) UNSIGNED" required="false"/>
+
+        <index name="I_Bingo_PlayerId">
+            <index-column name="player_id" />
+        </index>
+
+        <foreign-key foreignTable="bingo_player" name="FK_Bingo_KlickToPlayer">
+            <reference local="player_id" foreign="id"/>
+        </foreign-key>
+
+        <column name="card" type="VARCHAR" size="16" required="false" defaultValue="" />
+        <column name="x" type="VARCHAR" size="16" required="false" defaultValue="" />
+        <column name="y" type="VARCHAR" size="16" required="false" defaultValue="" />
+
+        <!-- TIME STAMP :: BEGIN -->
+        <column name="time_create" phpName="TimeCreate" type="TIMESTAMP"/>
+        <column name="time_stamp" type="TIMESTAMP" defaultExpr="CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"/>
+
+        <behavior name="timestampable">
+            <parameter name="create_column" value="time_create"/>
+            <parameter name="update_column" value="time_stamp"/>
+        </behavior>
+
+        <!--
+        Auskommentiert, wegen einem Fehler beim Umgang mit DateTime und time()!
+        *::setTimeCreate() must be an instance of DateTime, integer given
+        <behavior name="typehintable">
+            <parameter name="time_create" value="DateTime"/>
+            <parameter name="time_stamp" value="DateTime"/>
+        </behavior>
+        -->
+        <!-- TIME STAMP :: END -->
+    </table>
+</database>

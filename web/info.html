@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset=utf-8 />
+    <link rel="icon" type="image/svg+xml" href="http://mosushi.net/bingo/images/favicon.svg">
+    <link rel="alternate icon" type="image/png" href="http://mosushi.net/bingo/images/favicon.png">
+    <title>Freak Show Bingo (Beta 3, 20151201)</title>
+    <script tbype="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+    <!--[if IE]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <script type="text/javascript" src="js/lib/lodash.min.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
+</head>
+<body>
+
+<div style="margin-left: 105px;" id="textseite">
+    <table>
+        <tr>
+            <td id="text">
+                <h1>Einige Infos zur Enstehung, nicht mehr aktuell! - <a href="index.html">zurück zum Bingo</a><br><br>
+                    Dies ist eine frische Implementierung eines rudimentären Bingo Algorithmus als bescheidener Start auf dem Weg zur von Clemens geforderten Version mit "Soße und Scharf".<br>
+                    Als Vorbild dient bullshitbingo.net. Dort habe ich zur Freakshow (165) 36 Buzzwords eingespeist <a href="https://twitter.com/eLtMosen/status/663836699840159744" target="_blank">und per Twitter geteilt</a>.<br><br>
+                    Die Buzzwords zu finden war nach einem zufälligen "total recap" aller 164 MobilMacs und Freakshow Folgen der mir das Jahr 2015 mit Bluetooth Headset versüßt hat nicht  ganz so schwierig.<br>
+                    <br>
+                    Schon beim ersten Einsatz der schlichten 5x5 Karten konnte <a href="https://kkrzoya8imrm3jot.myfritz.net/bingo.png" target="_blank"> Chat benutzer Knospe </a>erfolgreich als Gewinner gefeiert werden!<br>
+                    <br>
+                    Für den ersten Versuch war bullshitbingo ok, aber da <a href="http://epir.at" target="_blank">ePirat</a> schon mit <a href="https://t.co/FYX8pJjpIO" target="_blank">einer tollen PDF Bingo Karte am Start war</a> und mir die Limitierung auf 5x5 große klassische Karten nicht gefiel, war schon kurz vor der FS165 klar das irgendwie eine Eigenentwicklung mit graphischen Buzzwords her musste.<br>
+                    <br>
+                    Als dann auch noch Clemens und Tim eine 7x7 Karte forderten und selbst schon der "Alpha 1" Version allgemeine Zustimmung zu Teil wurde, waren die ersten SVG-Buzzword-Tiles noch während der Sendung durch Inkscape gebruzelt.<br>
+                    <br>
+                    Entgegen Tims Vermutung war bullshitbing.net mit der ersten Version im Funktionsumfang schon vollständig ausgereizt. Also ein weiteres Argument für einen Neustart.<br>
+                    <br>
+                    Da diese Seite nun in Berlin bei Prosite gehostet wird, schicken wir unsere Bingo Daten nun im besten Fall auch nicht mehr um den halben Erdball ;)
+            </td><td id="text">
+            Warum mache ich das??<br><br>
+            Als im letzten Jahrtausend gefailter Informatik Student hab ich mehr als ein Jahrzehnt aktiv keinen wirklichen Code außer wenig javascript und php für meine Firmen Webseite angefasst...<br><br>
+            Das wollt ich schon immer mal wieder ändern. Tims aufruf zum Bingo hat da direkt mit einer kleinen und mit meinen beschränkten Mitteln umsetzbaren Idee für eine dynamische Bingo-Karte klick gemacht.<br><br>
+            In den letzten 13 Jahren hab ich mich nach einer kompletten Umorientierung tief in das Thema Sushi gehackt und bin nun relativ erfolgreich als <a href="http://mosushi.com" target="_blank">freier Showkoch europaweit unterwegs</a>, was die "Entwicklung" der Bingo-Karte in die späten Abendstunden schiebt.<br>
+            <br><br>
+            Jede Mithilfe bis zum komplett Umwerfen des bisherigen Spaghetti-Codes oder einfach lautes Gelächter sind Herzlich Willkommen!<br>
+            Wir befinden uns seit der erfolgreichen implementierung der Gewinnerkennung bei Version "Beta 1".<br>
+            Die Entwicklung passiert <a href="https://github.com/eLtMosen/FreakXoHBingo" target="_blank">auf Github</a><br>
+            Fühlt Euch bitte eingeladen jegliche Art von konstruktivem Commit zu tätigen.<br>
+            Vorschläge und Löschwünsche für Buzzwords erreichen mich am besten über Twitter <a href="https://twitter.com/eLtMosen" target="_blank">@eLtMosen</a> oder per Kommentar im Git.<br>
+            <br>
+            Features: (MH="Mann Stunden")<br>
+            <ul>
+                <li>Bingo Grundfunktion (Karte austeilen, Buzzwords markieren, ~5MH)</li>
+                <li>"MISCHEN" Button um sich schnell eine Karte aus den bisher 52 Buzzwords mischen zu lassen ohne die Seite neuzuladen. (0,5MH)</li>
+                <li>Anzeige der nicht in die aktuelle Karte gemischten Buzzwords. (1MH)</li>
+                <li>52 Skalierbare vektor Buzzword-Tiles im svg Format.(~26MH)</li>
+                <li>Anpassung der Auflösung in 5 Schritten.(1MH)</li>
+                <li>Gewinn-Erkennung (21 Musterkombinationen!)</li>
+                <li>Mishen mit der m Taste</li>
+                <li>Ausschluss von Buzzwords durch klick in der unteren Tabelle und erneutem mischen.</li>
+            </ul>
+        </td><td id="text">
+            geplante Funktionen:
+            <ul>
+                <li>Probabilistische bestimmung der gefallenen Buzzwords anhand der geklickten Felder</li>
+                <li>Druckoptimierte Anzeige der puren Karte.(2MH)</li>
+                <li>Share-Funktion mit Hash der gewinn Matrix.</li>
+                <li>Wieder-Anzeige von gehashten Matrizen</li>
+                <li>Syncronisiertes Multiplayern mit verifizierbarem Gewinner zur Preisvergabe :D</li>
+                <li>Komplexere Spielmodi mit multiplen addierten Bingos und einem monatlichen(?) Gewinner.</li>
+            </ul>
+</div>
+
+</body>
+</html>

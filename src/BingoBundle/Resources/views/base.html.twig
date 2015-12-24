@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="/bundles/bingo/css/style.css">
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {#
+    {% javascripts
+        '@BingoBundle/Resources/public/app/bingo-app.js'
+        '@BingoBundle/Resources/public/app/service/loader.js'
+        '@BingoBundle/Resources/public/app/service/message.js'
+        '@BingoBundle/Resources/public/app/service/message-box.js' %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    #}
+    <script src="/bundles/bingo/app/bingo-app.js"></script>
+    <script src="/bundles/bingo/app/service/loader.js"></script>
+    <script src="/bundles/bingo/app/service/message.js"></script>
+    <script src="/bundles/bingo/app/service/message-box.js"></script>
+{% endblock %}

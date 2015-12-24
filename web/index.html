@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset=utf-8 />
+    <link rel="icon" type="image/svg+xml" href="http://mosushi.net/bingo/images/favicon.svg">
+    <link rel="alternate icon" type="image/png" href="http://mosushi.net/bingo/images/favicon.png">
+    <title>Freak Show Bingo (Beta 4, 20151220)</title>
+    <script tbype="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+    <!--[if IE]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <script type="text/javascript" src="js/lib/lodash.min.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
+    <script type="text/javascript" src="js/winboards.js"></script>
+    <script type="text/javascript" src="js/buzzwordtext.js"></script>
+
+    <link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
+</head>
+<body>
+<div id="buzzwordText" class="buzzwordTextEmpty"></div>
+<div style="width: 1340px; overflow: hidden; margin-bottom: 0px">
+    <div style="float: left; overflow: hidden; margin-bottom: 0px" id="card">
+        <div style="width: 110px;  float: left">
+            <table id="logoverti">
+                <tr>
+                    <td><img src="images/bingo_b.svg"></td>
+                </tr>
+                <tr>
+                    <td><img src="images/bingo_i.svg"></td>
+                </tr>
+                <tr>
+                    <td><img src="images/bingo_n.svg"></td>
+                </tr>
+                <tr>
+                    <td><img src="images/bingo_g.svg"></td>
+                </tr>
+                <tr>
+                    <td><img src="images/bingo_o.svg"></td>
+                </tr>
+                <tr>
+                    <td><img src="images/dollar_o.svg"></td>
+                </tr>
+                <tr>
+                    <td><img src="images/dollar.svg"></td>
+                </tr>
+            </table>
+        </div>
+        <div style="width: 750px; float: left; margin-right: 0px; margin-bottom: 0px" class="resize"><table id="BingoBody"></table></div>
+    </div>
+
+    <div style="width: 470px; float: left; margin-left: 8px; margin-bottom: 0px" overflow: hidden; class="resize" id="logohori">
+        <div style="width: 100%; margin-left: 0px; overflow: visible;">
+            <table>
+                <tr>
+                    <td id="score">
+                        <div style="width: 120px;" id="mischen"><a href="#" id="neueKarte"><img src="images/mischen.svg"></a></div>
+                    </td><td id= "reset" class="reset" style="width: 120px;">
+                    <div class="reset" style="width: 120px; margin-left: 35px; margin-left: 15px"><a href="#" id="reset"><img src="images/reset.svg"></a></div>
+                </td><td id="start" style="width: 120px;">
+                    <div id="counter"><a href="#" id="spielstart"><img src="images/spiel_modus.svg"></a></div>
+                </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div style="margin-left: 870px; margin-bottom: 15px; margin-top: 134px" overflow: visible; class="resize">
+        <table id="BuzzwordsBody">
+        </table>
+    </div>
+</div>
+<div style="width: 110px; float: left;">
+    &nbsp
+</div>
+<div style="float: left; margin-top: 0px">
+    <table id="bignum">
+        <tr>
+            <td id="bignum"><img src="images/numbers/40.svg"></td>
+            <td id="fattext">4er Ecken<br><img src="images/gewinn_4ecken.gif"></td>
+            <td id="fattext">Zen Garten<br><img src="images/gewinn31.png"></td>
+            <td id="fattext">Kreuz<br><img src="images/gewinn43.png"></td>
+            <td id="fattext">Briefmarke<br><img src="images/gewinn44.png"></td>
+        </tr><tr>
+        <td id="bignum"><img src="images/numbers/50.svg"></td>
+        <td id="fattext">Pong<br><img src="images/gewinn_pong.gif"></td>
+        <td id="fattext">Ameisen<br><img src="images/gewinn_ameisen.gif"></td>
+        <td id="fattext">Speed Racer<br><img src="images/gewinn_speedracer.gif"></td>
+        <td id="fattext">BreakOut<br><img src="images/gewinn_breakout.gif"></td>
+        <td id="fattext">Pfeil<br><img src="images/gewinn_pfeil.gif"></td>
+        <td id="fattext">Winkel<br><img src="images/gewinn_winkel.gif"></td>
+    </tr><tr>
+        <td id="bignum"><img src="images/numbers/60.svg"></td>
+        <td id="fattext">6er Ecke<br><img src="images/gewinn_6erecken.gif"></td>
+        <td id="fattext">Six Pack<br><img src="images/gewinn18.png"></td>
+        <td id="fattext">Wuerfel 6<br><img src="images/gewinn36.png"></td>
+        <td id="fattext">Twin Peaks<br><img src="images/gewinn37.png"></td>
+        <td id="fattext">Slashes<br><img src="images/gewinn38.png"></td>
+        <td id="fattext">Ungleich<br><img src="images/gewinn40.png"></td>
+    </tr><tr>
+        <td id="bignum"><img src="images/numbers/70.svg"></td>
+        <td id="fattext">Vertikale<br><img src="images/gewinn_vertikale.gif"></td>
+        <td id="fattext">Horizontale<br><img src="images/gewinn_horizontal.gif"></td>
+        <td id="fattext">Diagonale<br><img src="images/gewinn_diagonal.gif"></td>
+
+        <td id="bignum"><img src="images/numbers/80.svg"></td>
+        <td id="fattext">Saphir<br><img src="images/gewinn11.png"></td>
+        <td id="fattext">Schluessel<br><img src="images/gewinn_schluessel.gif"></td>
+    </tr><tr>
+        <td id="bignum"><img src="images/numbers/90.svg"></td>
+        <td id="fattext">Echo Kammer<br><img src="images/gewinn25.png"></td>
+        <td id="fattext">Knochen<br><img src="images/gewinn24.png"></td>
+
+        <td id="bignum"><img src="images/numbers/100.svg"></td>
+        <td id="fattext">Freakshow<br><img src="images/gewinn4.png"></td>
+
+        <td id="bignum"><img src="images/numbers/110.svg"></td>
+        <td id="fattext">Vogelscheuche<br><img src="images/gewinn22.png"></td>
+    </tr><tr>
+        <td id="bignum"><img src="images/numbers/120.svg"></td>
+        <td id="fattext">Diamant<br><img src="images/gewinn5.png"></td>
+        <td id="fattext">Satellit<br><img src="images/gewinn19.png"></td>
+        <td id="fattext">2x Six Pack<br><img src="images/gewinn27.png"></td>
+        <td id="fattext">3er Ecken<br><img src="images/gewinn_dreierecken.gif"></td>
+        <td id="fattext">Space Invaders<br><img src="images/gewinn32.png"></td>
+        <td id="fattext">Snake<br><img src="images/gewinn39.png"></td>
+    </tr><tr>
+        <td id="bignum"><img src="images/numbers/130.svg"></td>
+        <td id="fattext">Sinus<br><img src="images/gewinn_sinus.gif"></td>
+        <td id="fattext">Sternenhimmel<br><img src="images/gewinn12.png"></td>
+        <td id="fattext">Bulls Eye<br><img src="images/gewinn20.png"></td>
+
+        <td id="bignum"><img src="images/numbers/140.svg"></td>
+        <td id="fattext">CCC<br><img src="images/gewinn23.png"></td>
+        <td id="fattext">Nethack<br><img src="images/gewinn33.png"></td>
+    </tr><tr>
+        <td id="bignum"><img src="images/numbers/150.svg"></td>
+        <td id="fattext">Hangman<br><img src="images/gewinn15.png"></td>
+        <td id="fattext">Schmetterling<br><img src="images/gewinn_schmetterling.gif"></td>
+
+        <td id="bignum"><img src="images/numbers/160.svg"></td>
+        <td id="fattext">Bier Krug<br><img src="images/gewinn7.png"></td>
+        <td id="fattext">Bloecke<br><img src="images/gewinn17.png"></td>
+        <td id="fattext">1/4 Dreieck<br><img src="images/gewinn_viertel.gif"></td>
+    </tr><tr>
+        <td id="bignum"><img src="images/numbers/240.svg"></td>
+        <td id="fattext">Apfel<br><img src="images/gewinn9.png"></td>
+        <td id="fattext">Schach<br><img src="images/gewinn_schach.gif"></td>
+        <td id="fattext">Tannenbaum<br><img src="images/gewinn30.png"></td>
+
+        <td id="bignum"><img src="images/numbers/260.svg"></td>
+        <td id="fattext">@<br><img src="images/gewinn8.png"></td>
+        <td id="fattext">Defender<br><img src="images/gewinn41.png"></td>
+    </tr>
+    </table>
+</div>
+
+<div style="width: 430px; margin-top: 0px; float: left" overflow: visible; class="resize">
+    <table id="bingolist" style="width: 430px;">
+        <tr>
+            <td id="textseite">
+
+                <div id="result1">
+                    <ul>
+                        <li>Die 'c' Taste und der reset button toggeln den erklärbär modus mit details zu den buzzwords.</li>
+                        <li>Ist das spiel gestartet, geltende buzzwords auf der karte markieren!</li>
+                        <li>Die buzzwords werden bald automatisch im probabilistischen multiplayer modus bestätigt. Zur zeit wird dies durch drei fragezeiche n signalisiert die für 15sec. pulsieren.</li>
+                        <li>Erreichte bingos werden angezeigt und nach punkten addiert um am ende der sendung gewinner zu ermitteln. </li>
+                        <li>Ein buzzword fällt in der live sendung und gilt vorerst nur wenn es im CHAT wiederholt wurde.</li>
+                    </ul>
+                    <a href="info.html">Infos zur Entstehung dieser Seite</a>
+
+                </div>
+                <div id="result2"></div>
+                <div id="result3"></div>
+                <div id="result4"></div>
+                <div id="result5"></div>
+                <div id="result6"></div>
+                <div id="result7"></div>
+                <div id="result8"></div>
+                <div id="result9"></div>
+                <div id="result10"></div>
+                <div id="result11"></div>
+                <div id="result12"></div>
+                <div id="result13"></div>
+                <div id="result14"></div>
+                <div id="result15"></div>
+                <div id="result16"></div>
+                <div id="result17"></div>
+                <div id="result18"></div>
+                <div id="result19"></div>
+                <div id="result20"></div>
+                <div id="result21"></div>
+                <div id="result22"></div>
+                <div id="result23"></div>
+                <div id="result24"></div>
+                <div id="result25"></div>
+                <div id="result26"></div>
+                <div id="result27"></div>
+                <div id="result28"></div>
+                <div id="result29"></div>
+                <div id="result30"></div>
+                <div id="result31"></div>
+                <div id="result32"></div>
+                <div id="result33"></div>
+                <div id="result34"></div>
+                <div id="result35"></div>
+                <div id="result36"></div>
+                <div id="result37"></div>
+                <div id="result38"></div>
+                <div id="result39"></div>
+                <div id="result40"></div>
+                <div id="result41"></div>
+                <div id="result42"></div>
+                <div id="result43"></div>
+                <div id="result44"></div>
+                <div id="result45"></div>
+                <div id="result46"></div>
+                <div id="result47"></div>
+                <div id="result48"></div>
+                <div id="result49"></div>
+                <div id="result50"></div>
+                <div id="result51"></div>
+                <div id="result52"></div>
+                <div id="result53"></div>
+                <div id="result54"></div>
+                <div id="result55"></div>
+                <div id="result56"></div>
+                <div id="result57"></div>
+                <div id="result58"></div>
+                <div id="result59"></div>
+                <div id="result60"></div>
+                <div id="result61"></div>
+                <div id="result62"></div>
+                <div id="result63"></div>
+                <div id="result64"></div>
+                <div id="result65"></div>
+                <div id="result66"></div>
+                <div id="result67"></div>
+                <div id="result68"></div>
+                <div id="result69"></div>
+                <div id="result70"></div>
+                <div id="result71"></div>
+                <div id="result72"></div>
+                <div id="result73"></div>
+                <div id="result74"></div>
+                <div id="result75"></div>
+                <div id="result76"></div>
+                <div id="result77"></div>
+
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
