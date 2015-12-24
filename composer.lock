@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "678701c6d9ed780a138acdca93e0501e",
-    "content-hash": "a97bfa2ab526a61d5d0261a166a1e6ba",
+    "hash": "51c5897a6e495424acde06916e28e518",
+    "content-hash": "2c18c4f39a006c9a12cb11e4ebd13dde",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -778,12 +778,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfSymfony/FOSRestBundle.git",
-                "reference": "94a152d7e748462bab42bb72f13b55a38aeedb50"
+                "reference": "9d332c5051d1302d602de5f0db0ba29c63437364"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSRestBundle/zipball/94a152d7e748462bab42bb72f13b55a38aeedb50",
-                "reference": "94a152d7e748462bab42bb72f13b55a38aeedb50",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSRestBundle/zipball/9d332c5051d1302d602de5f0db0ba29c63437364",
+                "reference": "9d332c5051d1302d602de5f0db0ba29c63437364",
                 "shasum": ""
             },
             "require": {
@@ -854,7 +854,7 @@
             "keywords": [
                 "rest"
             ],
-            "time": "2015-12-21 15:25:13"
+            "time": "2015-12-24 12:17:45"
         },
         {
             "name": "friendsofsymfony/user-bundle",
@@ -3384,7 +3384,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=5.3.9"
+        "php": ">=5.6.0"
     },
     "platform-dev": []
 }

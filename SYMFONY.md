@@ -6,17 +6,28 @@ Das Frontend (die Spiele), der Adminbereich werden von Symfony erzeugt. Das Back
 
 Im ersten Schritt der Projekt klonen:
 
-Anschliessend die Konfiguration erstellen. Hier zu die ```app/config/parameters.yml.dist``` in  ```app/config/parameters.yml``` kopieren.
+    cd /var/www
+    git clone git@github.com:adamibrom/FreakXoHBingo.git
+    cd FreakXoHBingo
 
-    cp app/config/parameters.yml.dist app/config/parameters.yml
-
-Die Datenbank und der Mail Server sollten entsprechend konfiguriert werden.
-
-Ist die Konfiguration abgeschlossen, dass die Composer Pakete installieren:
+Ist der Code von Github lokal verfügbar, das Installationsscript Ausführen um die Composer Pakete zu installieren:
 
     ./composer.sh i
 
-Die wichtisten Pakete:
+Von Symfony wird ein Dialog gestartet in dem dann die bei der [Server Installation](SERVER.md) (Datenbank User und Password) eingegebene Daten eingetragen werden.
+
+_**Hinweis:** Ist bei der Konfiguration etwas schief gelaufen, dann kann die Installation auch manuel erstellt werden. Hier zu die ```app/config/parameters.yml.dist``` in  ```app/config/parameters.yml``` kopieren und bearbeiten._
+
+    cp app/config/parameters.yml.dist app/config/parameters.yml
+    nano app/config/parameters.yml
+
+### Grundstruktur
+
+Alle Routen werden über annotations (**```@Route```** und **```@Method```**) konfiguriert. Die Route ist somit im Doc-Block der Controller-Methode definiert.
+
+### Externe Bundles
+
+Die wichtisten Pakete in einer kurzen Übersicht:
 
 * **PHPUnit** in der 5er Version zum Ausführen von Tests.
 * **[Symfony 2.7](https://symfony.com/)** als Framework zum erzeugen von Seiten.
@@ -27,14 +38,23 @@ Die wichtisten Pakete:
 
 ## Arbeiten mit Symfony
 
-Die wichtigsten Kommandos:
+Die wichtigsten Kommandos für das Arbeiten mit Symfony:
+
+Die Assets für die Live-Umgebung aufbauen:
+
+    app/console assetic:dump --env=prod
+
+Die Assets für die Entwicklungs-Umgebung aufbauen:
+
+    app/console assets:install --env=dev --symlink
+
+Den Produktions-Cache neu aufbauen:
 
     app/console cache:clear --env=prod --no-debug
 
+Den Cache für die Entwicklungs-Umgebung aufbauen:
 
-## Grundstruktur
-
-Alle Routen werden über annotations (**```@Route```** und **```@Method```**) konfiguriert. Die Route ist somit im Doc-Block der Controller-Methode definiert.
+    app/console cache:clear --env=dev
 
 ## Propel
 
