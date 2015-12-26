@@ -105,8 +105,8 @@ fos_rest:
         rules:
             fallback_format: json
             prefer_extension: false
-            priorities: [json, html, '/']
+            priorities: [ html, json, '/' ]
     view:
         view_response_listener: 'force'
         mime_types:
-            json: ['application/json; charset=UTF-8', 'application/json']
+            json: [ 'application/json; charset=UTF-8', 'application/json' ]
