@@ -16,9 +16,9 @@ $(document).ready(function () {
             size: 49,
         },
         buzzwordCard: {
-            width: 6,
-            height: 8,
-            size: 48,
+            width: 3,
+            height: 11,      
+            size: 33,
         },
 
         // Anzahl der Buzzwords +1 wegen Freifeld
@@ -76,6 +76,7 @@ $(document).ready(function () {
                 }
             }
         }, false);
+    infoAlert();
     }
 
     init();
@@ -88,6 +89,20 @@ $(document).ready(function () {
         //toggleCaptionOnOff();
     }
 
+    function infoAlert() {
+          alert("Hier erhältst Du eine druckoptimierte 7x7 Bingokarte.\n" + 
+	  "Du kannst sie nach dem Ausschlussverfahren personalisieren. Die genaue Mischung bleibt Bingo üblich dem Zufall überlassen! \n \n" +
+	  "Solltest du die Freakshow regelmäßig hören, kannst Du Deine Gewinnchancen sicher erhöhen, in dem Du unwahrscheinliche Buzzwords ausschließt. \n\n" +
+	  "1. Nicht gewünschte Buzzwords Rot toggeln.\n \n" +
+	  "2. Mit der 'm'-Taste mischen und die roten Buzzwords ausschließen.\n \n" +
+	  "3. Die 'c'-Taste toggelt Erklärungen zu den Buzzwords!\n\n" +
+	  "4. 1+2 wiederholen bis die Bingokarte Deiner Strategie entspricht. \n \n" +
+	  "5. Mit 'strg + p' die Druckfunktion des Browsers aufrufen. \n" +
+	  "-> Drucker wählen und A4 mit 1cm Rand an allen Seiten im Querformat und 'Hintergrundbilder drucken' konfigurieren. \n" +
+	  "-> Eine brauchbare WYSIWYG Druckfunktion bietet der Chromium Browser\n\n" +
+	  "6. Zum RESET für die nächste Bingokarte die 'r'-Taste benutzen und nicht neu laden!");
+    }
+    
     function createBingoCard() {
         var $row = $('<tr>');
 
@@ -210,7 +225,7 @@ $(document).ready(function () {
     function setImgOnRejected(htmlId, imgIds) {
         _.times(imgIds.length + 1, function (id) {
             if (!isNaN(imgIds[id])) {
-                var $elem = $(htmlId + (47 - id));
+                var $elem = $(htmlId + (32 - id));
                 $elem.find('img').attr('src', config.srcImg + '/' + imgIds[id] + '.svg');
                 $elem.attr('data-img-id', imgIds[id]);
                 $elem.addClass("rote_zelle");
@@ -268,6 +283,7 @@ $(document).ready(function () {
 		  resetUserdata();
 		  $("#BuzzwordsBody td").removeClass('rote_zelle');
 		  $("#BingoBody td").removeClass('rote_zelle');
+		  infoAlert();
                 }
             }
         });
@@ -371,6 +387,7 @@ $(document).ready(function () {
                 resetUserdata();
                 $("#BuzzwordsBody td").removeClass('rote_zelle');
                 $("#BingoBody td").removeClass('rote_zelle');
+		infoAlert();
             }
         });
 
@@ -468,7 +485,7 @@ $(document).ready(function () {
 
                             // simulation nde
                             // needed to wait for next ajax request
-                            timeoutExit++;
+                            //timeoutExit++;
 
                             // simulierter probabilistik erfolg -> ENTER DB ABFRAGE HERE!
                             /*

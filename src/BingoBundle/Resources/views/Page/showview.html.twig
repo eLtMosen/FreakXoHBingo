@@ -1,7 +1,7 @@
 {% extends 'BingoBundle::base.html.twig' %}
 
 {% block stylesheets %}
-    <link rel="stylesheet" href="/bundles/bingo/css/bingo.css">
+    <link rel="stylesheet" href="/bundles/bingo/css/bingoshowview.css">
 {% endblock %}
 
 {% block body %}
@@ -43,115 +43,26 @@
                 <table>
                     <tr>
                         <td id="score">
-                            <div style="width: 120px;" id="mischen"><a href="#" id="neueKarte"><img src="/bundles/bingo/img/mischen.svg"></a></div>
+                            <div style="width: 120px;" id="mischen">&nbsp</div>
                         </td>
                         <td id="reset" class="reset" style="width: 120px;">
-                            <div class="reset" style="width: 120px; margin-left: 35px; margin-left: 15px"><a href="#" id="reset"><img src="/bundles/bingo/img/reset.svg"></a></div>
+                            <div class="reset" style="width: 120px; margin-left: 35px; margin-left: 15px">&nbsp</div>
                         </td>
                         <td id="start" style="width: 120px;">
-                            <div id="counter"><a href="#" id="spielstart"><img src="/bundles/bingo/img/spiel_modus.svg"></a></div>
+                            <div id="counter">&nbsp</div>
                         </td>
                     </tr>
                 </table>
             </div>
         </div>
 
-        <div style="margin-left: 870px; margin-bottom: 15px; margin-top: 134px" overflow: visible; class="resize">
+        <div style="margin-left: 870px; margin-bottom: 0px; margin-top: 276px" overflow: visible; class="resize">
             <table id="BuzzwordsBody">
             </table>
         </div>
     </div>
     <div style="width: 110px; float: left;">
         &nbsp
-    </div>
-    <div style="float: left; margin-top: 0px">
-        <table id="bignum">
-            <tr>
-                <td id="bignum"><img src="/bundles/bingo/img/numbers/40.svg"></td>
-                <td id="fattext">4er Ecken<br><img src="/bundles/bingo/img/gewinn_4ecken.gif"></td>
-                <td id="fattext">Zen Garten<br><img src="/bundles/bingo/img/gewinn31.png"></td>
-                <td id="fattext">Kreuz<br><img src="/bundles/bingo/img/gewinn43.png"></td>
-                <td id="fattext">Briefmarke<br><img src="/bundles/bingo/img/gewinn44.png"></td>
-            </tr>
-            <tr>
-                <td id="bignum"><img src="/bundles/bingo/img/numbers/50.svg"></td>
-                <td id="fattext">Pong<br><img src="/bundles/bingo/img/gewinn_pong.gif"></td>
-                <td id="fattext">Ameisen<br><img src="/bundles/bingo/img/gewinn_ameisen.gif"></td>
-                <td id="fattext">Speed Racer<br><img src="/bundles/bingo/img/gewinn_speedracer.gif"></td>
-                <td id="fattext">BreakOut<br><img src="/bundles/bingo/img/gewinn_breakout.gif"></td>
-                <td id="fattext">Pfeil<br><img src="/bundles/bingo/img/gewinn_pfeil.gif"></td>
-                <td id="fattext">Winkel<br><img src="/bundles/bingo/img/gewinn_winkel.gif"></td>
-            </tr>
-            <tr>
-                <td id="bignum"><img src="/bundles/bingo/img/numbers/60.svg"></td>
-                <td id="fattext">6er Ecke<br><img src="/bundles/bingo/img/gewinn_6erecken.gif"></td>
-                <td id="fattext">Six Pack<br><img src="/bundles/bingo/img/gewinn18.png"></td>
-                <td id="fattext">Wuerfel 6<br><img src="/bundles/bingo/img/gewinn36.png"></td>
-                <td id="fattext">Twin Peaks<br><img src="/bundles/bingo/img/gewinn37.png"></td>
-                <td id="fattext">Slashes<br><img src="/bundles/bingo/img/gewinn38.png"></td>
-                <td id="fattext">Ungleich<br><img src="/bundles/bingo/img/gewinn40.png"></td>
-            </tr>
-            <tr>
-                <td id="bignum"><img src="/bundles/bingo/img/numbers/70.svg"></td>
-                <td id="fattext">Vertikale<br><img src="/bundles/bingo/img/gewinn_vertikale.gif"></td>
-                <td id="fattext">Horizontale<br><img src="/bundles/bingo/img/gewinn_horizontal.gif"></td>
-                <td id="fattext">Diagonale<br><img src="/bundles/bingo/img/gewinn_diagonal.gif"></td>
-
-                <td id="bignum"><img src="/bundles/bingo/img/numbers/80.svg"></td>
-                <td id="fattext">Saphir<br><img src="/bundles/bingo/img/gewinn11.png"></td>
-                <td id="fattext">Schluessel<br><img src="/bundles/bingo/img/gewinn_schluessel.gif"></td>
-            </tr>
-            <tr>
-                <td id="bignum"><img src="/bundles/bingo/img/numbers/90.svg"></td>
-                <td id="fattext">Echo Kammer<br><img src="/bundles/bingo/img/gewinn25.png"></td>
-                <td id="fattext">Knochen<br><img src="/bundles/bingo/img/gewinn24.png"></td>
-
-                <td id="bignum"><img src="/bundles/bingo/img/numbers/100.svg"></td>
-                <td id="fattext">Freakshow<br><img src="/bundles/bingo/img/gewinn4.png"></td>
-
-                <td id="bignum"><img src="/bundles/bingo/img/numbers/110.svg"></td>
-                <td id="fattext">Vogelscheuche<br><img src="/bundles/bingo/img/gewinn22.png"></td>
-            </tr>
-            <tr>
-                <td id="bignum"><img src="/bundles/bingo/img/numbers/120.svg"></td>
-                <td id="fattext">Diamant<br><img src="/bundles/bingo/img/gewinn5.png"></td>
-                <td id="fattext">Satellit<br><img src="/bundles/bingo/img/gewinn19.png"></td>
-                <td id="fattext">2x Six Pack<br><img src="/bundles/bingo/img/gewinn27.png"></td>
-                <td id="fattext">3er Ecken<br><img src="/bundles/bingo/img/gewinn_dreierecken.gif"></td>
-                <td id="fattext">Space Invaders<br><img src="/bundles/bingo/img/gewinn32.png"></td>
-                <td id="fattext">Snake<br><img src="/bundles/bingo/img/gewinn39.png"></td>
-            </tr>
-            <tr>
-                <td id="bignum"><img src="/bundles/bingo/img/numbers/130.svg"></td>
-                <td id="fattext">Sinus<br><img src="/bundles/bingo/img/gewinn_sinus.gif"></td>
-                <td id="fattext">Sternenhimmel<br><img src="/bundles/bingo/img/gewinn12.png"></td>
-                <td id="fattext">Bulls Eye<br><img src="/bundles/bingo/img/gewinn20.png"></td>
-
-                <td id="bignum"><img src="/bundles/bingo/img/numbers/140.svg"></td>
-                <td id="fattext">CCC<br><img src="/bundles/bingo/img/gewinn23.png"></td>
-                <td id="fattext">Nethack<br><img src="/bundles/bingo/img/gewinn33.png"></td>
-            </tr>
-            <tr>
-                <td id="bignum"><img src="/bundles/bingo/img/numbers/150.svg"></td>
-                <td id="fattext">Hangman<br><img src="/bundles/bingo/img/gewinn15.png"></td>
-                <td id="fattext">Schmetterling<br><img src="/bundles/bingo/img/gewinn_schmetterling.gif"></td>
-
-                <td id="bignum"><img src="/bundles/bingo/img/numbers/160.svg"></td>
-                <td id="fattext">Bier Krug<br><img src="/bundles/bingo/img/gewinn7.png"></td>
-                <td id="fattext">Bloecke<br><img src="/bundles/bingo/img/gewinn17.png"></td>
-                <td id="fattext">1/4 Dreieck<br><img src="/bundles/bingo/img/gewinn_viertel.gif"></td>
-            </tr>
-            <tr>
-                <td id="bignum"><img src="/bundles/bingo/img/numbers/240.svg"></td>
-                <td id="fattext">Apfel<br><img src="/bundles/bingo/img/gewinn9.png"></td>
-                <td id="fattext">Schach<br><img src="/bundles/bingo/img/gewinn_schach.gif"></td>
-                <td id="fattext">Tannenbaum<br><img src="/bundles/bingo/img/gewinn30.png"></td>
-
-                <td id="bignum"><img src="/bundles/bingo/img/numbers/260.svg"></td>
-                <td id="fattext">@<br><img src="/bundles/bingo/img/gewinn8.png"></td>
-                <td id="fattext">Defender<br><img src="/bundles/bingo/img/gewinn41.png"></td>
-            </tr>
-        </table>
     </div>
 
     <div style="width: 430px; margin-top: 0px; float: left" overflow: visible; class="resize">
@@ -256,7 +167,7 @@
 
 {% block javascripts %}
     {{ parent() }}
-    <script type="text/javascript" src="/bundles/bingo/js/script.js"></script>
+    <script type="text/javascript" src="/bundles/bingo/js/scriptshowview.js"></script>
     <script type="text/javascript" src="/bundles/bingo/js/winboards.js"></script>
     <script type="text/javascript" src="/bundles/bingo/js/buzzwordtext.js"></script>
 {% endblock %}

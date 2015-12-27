@@ -4,6 +4,12 @@
     src: url(/bundles/bingo/fonts/Freakshow.woff);
 }
 
+body{
+    padding:0px;
+    margin:0px;
+    border:0px;
+}
+
 table{
     padding:5px;
     border-spacing: 5px;
@@ -11,14 +17,20 @@ table{
 }
 
 td{
-    padding:0px;
     width:100px;
     height:100px;
     vertical-align:bottom;
     border:0px;
     /*	background: url(/bundles/bingo/img/bingo_background.svg); */
     background-color:#dfc084;
+    /* background-color:#cccccc; */
     border-radius: 3%;
+}
+
+#mainContainer{
+    width: 1095px;
+    overflow: hidden;
+    margin-bottom: 0px;
 }
 
 .resize{
@@ -30,7 +42,7 @@ td{
     width:440px;
     margin:0 auto;
     /*	background-color:#F63D31; */
-    font-size:14px;
+    font-size:12px;
     text-align:left;
     vertical-align:top;
     background-color:#FFFFFF;
@@ -44,29 +56,48 @@ td{
 }
 
 #bignum{
+    border:0px;
+    padding-top:12px;
+    border-spacing: 3px;
+    margin:0px;
     vertical-align:top;
-    width:100px;
-    height:100px;
     border:0px;
     text-align: right;
     background-color:#FFFFFF;
+    background-size: 75px 75px;
+}
+
+#bignum td{
+    background-size: 75px 75px;
+    background-repeat:no-repeat;
+    width:75px;
+    height:75px
+}
+
+#bignum table{
+    border:0px;
+    padding:0px;
+    border-spacing: 0px;
+    margin:0px;
+    width:562px
+    height:750px;
 }
 
 #bignum img{
     vertical-align: bottom;
-    width:100px;
-    height:100px;
+    width:75px;
+    height:75px;
     transition: all 1.5s;
 }
 
 #fattext{
     vertical-align:top;
     font-family:Freakshow;
-    font-size:18px;
-    width:100px;
-    height:130px;
+    font-size:12px;
+    height:75px;
     border:0px;
     text-align: center;
+    vertical-align: middle;
     background-color:#FFFFFF;
     vertical-align: bottom;
 }
@@ -138,7 +169,7 @@ td{
 }
 
 ul{
-    padding-left:5px;
+    padding-left:10px;
     border:0px;
 }
 
@@ -146,11 +177,13 @@ li{
     padding:5px;
     padding-bottom:0px;
     border:0px;
+    font-family: Freakshow; font-size: 16pt;
 }
 
 #BingoBody{
     width:750px;
     background-color:#d40000;
+
 }
 
 #BingoBody img{
@@ -161,28 +194,31 @@ li{
 }
 
 #BingoBody td{
+    padding:0px;
     cursor:pointer;
 }
 
 #BuzzwordsBody {
     padding:0px;
+    padding-top:-10px;
     border-spacing: 2px;
     border:0px;
-    width: 430px;
+    width: 188px;
     /*	background-color:#DDDDDD; */
 }
 
 #BuzzwordsBody td{
+    padding:0px;
     cursor:pointer;
-    height:75px;
-    width:75px;
-    border-radius: 6%;
+    height:65px;
+    width:65px;
+    border-radius: 7%;
 }
 
 #BuzzwordsBody img{
     vertical-align: bottom;
-    width:75px;
-    height:75px;
+    width:65px;
+    height:65px;
     transition: all 1.5s;
 }
 
@@ -227,15 +263,15 @@ li{
 
 #bingolist td{
     padding:0px;
-    padding-left: 25px;
+    padding-left: 5px;
     padding-right: 0px;
-    width: 435px;
-    height:100px;
+    width: 500px;
+    height:90px;
     vertical-align:middle;
     border:0px;
     /*	background: url(/bundles/bingo/img/bingo_background.svg); */
     background-color:#FFFFFF;
-    font-family: Freakshow; font-size: 22pt;
+    font-family: Freakshow; font-size: 12pt;
 }
 
 #card{
@@ -243,9 +279,12 @@ li{
     padding:0px;
     border:0px;
     border-spacing:0px;
-    -webkit-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.45);
+    float: left; 
+    overflow: hidden; 
+    margin-bottom: 0px;
+/*    -webkit-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.45);
     -moz-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.45);
-    box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.45);
+    box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.45); */
 }
 
 .gelbe_zelle {
@@ -291,12 +330,12 @@ li{
 .missing:before {
     content: "";
     position: absolute;
-    height: 75px;
-    width: 75px;
+    height: 65px;
+    width: 65px;
     transition: all 0.2s;
     opacity: 0;
     background: url(/bundles/bingo/img/kreuz.svg);
-    background-size: 75px 75px;
+    background-size: 65px 65px;
 }
 .mouseoverbingo:hover:before {
     opacity: 0.85;
@@ -357,6 +396,11 @@ li{
     -moz-animation: pulse 2s cubic-bezier(0.2, 0, 0, 1);
     -ms-animation: pulse 2s cubic-bezier(0.2, 0, 0, 1);
     animation: pulse 2s cubic-bezier(0.2, 0, 0, 1); */
+}
+
+.buzzwordTextFilled img{
+
+    padding-right: 15px;
 }
 
 .buzzwordTextEmpty{

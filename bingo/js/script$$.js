@@ -250,7 +250,7 @@ $(document).ready(function() {
 	var idx = parseInt($(this).attr('data-img-id'));
 	if (idx != '0') {
 	placeCaptionLeftOfMousecourser = false;
-	$('#buzzwordText').html('<img src="bundles/bingo/img/' + idx + '.svg" height="150px" width="150px" align="left">'+ BuzzwordText[idx]);
+	$('#buzzwordText').html('<img src="images/' + idx + '.svg" height="150px" width="150px" align="left">'+ BuzzwordText[idx]);
 	$('#buzzwordText').removeClass('buzzwordTextEmpty');
 	$('#buzzwordText').addClass('buzzwordTextFilled');
     }}}); 
@@ -266,7 +266,7 @@ $(document).ready(function() {
 	var idx = parseInt($(this).attr('data-img-id'));
 	if (!isNaN(idx)) {
 	placeCaptionLeftOfMousecourser = true;
-	$('#buzzwordText').html('<img src="bundles/bingo/img/' + idx + '.svg" height="150px" width="150px" align="right">'+ BuzzwordText[idx]);
+	$('#buzzwordText').html('<img src="images/' + idx + '.svg" height="150px" width="150px" align="right">'+ BuzzwordText[idx]);
 	$('#buzzwordText').removeClass('buzzwordTextEmpty');
 	$('#buzzwordText').addClass('buzzwordTextFilled');
     }}}); 
