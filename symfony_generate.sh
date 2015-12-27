@@ -14,23 +14,8 @@ then
 fi
 echo "DONE${reset}"
 
-read -p "${orange}Delete all Propel generated data (y/n)? ${reset}"
-if [ "$REPLY" == "y" ]
-then
-    # Delete all Propel generated data
-    # @todo find and remove all third party bundle propel generated files
-    rm -rf **/Propel/Base/**
-    rm -rf **/Propel/Map/**
-    echo "${underline}${green}All Propel generated data deleted!${reset}"
-fi
-
-read -p "${orange}Build all Propel generated data (y/n)? ${reset}"
-if [ "$REPLY" == "y" ]
-then
-    rm app/propel/sql/sqldb.map
-    app/console propel:build
-    echo "${underline}${green}All Propel generated data created!${reset}"
-fi
+# Generate Propel Base and Map Files...
+./propel.sh
 
 #read -p "${orange}Recreate base db with Propel (y/n)? ${reset}"
 #if [ "$REPLY" == "y" ]

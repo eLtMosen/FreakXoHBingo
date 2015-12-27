@@ -26,7 +26,7 @@ class ClickController extends AbstractController
      */
     public function listAction()
     {
-        $clicksData = $this->getClicksManager()->getCardClicksData();
+        $clicksData = $this->getClicksManager()->getCardClicksDataWithinSeconds();
 
         return $this->render(
             'BingoBundle:Click:list.html.twig',
@@ -45,6 +45,6 @@ class ClickController extends AbstractController
      */
     protected function getClicksManager()
     {
-        return $this->get('bingo.clicks');
+        return $this->get('bingo.clicks.manager');
     }
 }

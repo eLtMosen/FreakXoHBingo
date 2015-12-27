@@ -94,4 +94,66 @@ BingoApp.controller('BingoClicksController', function ($scope, $locale, $window,
     $scope.$on("updateList",function(){
         $scope.getClicks();
     });
+
+
+
+
+
+    $scope.$watch('order', function () {
+        $scope.setOrder();
+    });
+
+    $scope.setOrder = function () {
+        var i;
+
+        if ($scope.order === 'random') {
+            var t = [];
+            for (i = 0; i < $scope.myList.length; i++) {
+                var r = Math.floor(Math.random() * $scope.myList.length);
+                while (inArray(t,r)) {
+                    r = Math.floor(Math.random() * $scope.myList.length);
+                }
+                t.push(r);
+                $scope.myList[i].order = r;
+            }
+        }
+        else if ($scope.order === 'false') {
+            for (i = 0; i < $scope.myList.length; i++) {
+                $scope.myList[i].order = i;
+            }
+        }
+        else {
+            for (i = 0; i < $scope.myList.length; i++) {
+                $scope.myList[i].order = ($scope.myList.length - 1 - i);
+            }
+        }
+
+        calcGridPosition();
+    };
+
+    function inArray(a, value) {
+        for (var i = 0; i < a.length; i++) {
+            if (a[i] === value) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    function calcGridPosition() {
+        for (var i = 0; i < $scope.myList.length; i++) {
+            var item = $scope.myList[i];
+
+            // columns, left-to-right, top-to-bottom
+            var columns = 5;
+            item.column = item.order%columns;
+            item.row = Math.floor(item.order/columns);
+
+            // rows, top-to-bottom, left-to-right
+            // var rows = 3;
+            // item.column = Math.floor(item.order/rows);
+            // item.row = item.order%rows;
+        }
+    }
+
 });

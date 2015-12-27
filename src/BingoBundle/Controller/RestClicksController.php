@@ -12,7 +12,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use FOS\RestBundle\Controller\Annotations as Rest;
 
 use BaseBundle\Controller\AbstractRestController;
-use BingoBundle\Manager\ClicksManager;
 use Symfony\Component\HttpKernel\Kernel;
 
 /**
@@ -33,11 +32,18 @@ class RestClicksController extends AbstractRestController
     public function listAction()
     {
         $clicksManager = $this->getClicksManager();
+        $clicks = $clicksManager->getCardClicksWithinInterval();
+        $clicksData = array();
+
+        foreach ($clicks as $row => $click) {
+            $clicksData[$row] = $click->toArray();
+            $clicksData[$row]['sort_order'] = $row;
+        }
 
         return array(
             'name' => 'FreakXoHBingo',
             'version' => Kernel::VERSION,
-            'clicks' => $clicksManager->getCardClicksData()
+            'clicks' => $clicksData
         );
     }
 
@@ -48,6 +54,6 @@ class RestClicksController extends AbstractRestController
      */
     protected function getClicksManager()
     {
-        return $this->get('bingo.clicks');
+        return $this->get('bingo.clicks.manager');
     }
 }

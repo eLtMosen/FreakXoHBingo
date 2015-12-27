@@ -81,3 +81,20 @@
 .animate-enter.animate-enter-active {
     opacity: 1;
 }
+
+.click-list {
+    position: absolute;
+    width: 100%;
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.click-list li {
+    position: absolute;
+    height: 70px;
+    width: 70px;
+    background: #ddd;
+    -webkit-transition: all 2.5s ease-in-out;
+    -moz-transition: all 2.5s ease-in-out;
+    transition: all 2.5s ease-in-out;
+}

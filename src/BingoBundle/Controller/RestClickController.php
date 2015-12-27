@@ -39,7 +39,7 @@ class RestClickController extends AbstractRestController
         return array(
             'name' => 'FreakXoHBingo',
             'version' => Kernel::VERSION,
-            'clicks' => $this->getClicksManager()->getCardClicksData()
+            'clicks' => $this->getClicksManager()->getCardClicksDataWithinSeconds()
         );
     }
 
@@ -70,7 +70,7 @@ class RestClickController extends AbstractRestController
         return array(
             'name' => 'FreakXoHBingo',
             'version' => Kernel::VERSION,
-            'clicks' => $this->getClicksManager()->getCardClicksData()
+            'clicks' => $this->getClicksManager()->getCardClicksDataWithinSeconds()
         );
     }
 
@@ -81,6 +81,6 @@ class RestClickController extends AbstractRestController
      */
     protected function getClicksManager()
     {
-        return $this->get('bingo.clicks');
+        return $this->get('bingo.clicks.manager');
     }
 }

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "51c5897a6e495424acde06916e28e518",
+    "hash": "ff23046859a4a8b2006d7caa308ba9a4",
     "content-hash": "2c18c4f39a006c9a12cb11e4ebd13dde",
     "packages": [
         {
@@ -778,12 +778,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfSymfony/FOSRestBundle.git",
-                "reference": "9d332c5051d1302d602de5f0db0ba29c63437364"
+                "reference": "933a2a02caa9c9d2226859514688ead94088657b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSRestBundle/zipball/9d332c5051d1302d602de5f0db0ba29c63437364",
-                "reference": "9d332c5051d1302d602de5f0db0ba29c63437364",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSRestBundle/zipball/933a2a02caa9c9d2226859514688ead94088657b",
+                "reference": "933a2a02caa9c9d2226859514688ead94088657b",
                 "shasum": ""
             },
             "require": {
@@ -854,7 +854,7 @@
             "keywords": [
                 "rest"
             ],
-            "time": "2015-12-24 12:17:45"
+            "time": "2015-12-26 22:32:42"
         },
         {
             "name": "friendsofsymfony/user-bundle",

@@ -65,6 +65,8 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget",
+            "rm -rf src/*Bundle/Propel/Base/**",
+            "rm -rf src/*Bundle/Propel/Map/**",
             "rm app/propel/sql/sqldb.map",
             "app/console propel:model:build"
         ]
