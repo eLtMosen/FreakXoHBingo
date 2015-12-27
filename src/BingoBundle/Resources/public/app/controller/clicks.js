@@ -72,33 +72,7 @@ BingoApp.controller('BingoClicksController', function ($scope, $locale, $window,
         });
     };
 
-    /**
-     * Open the click modal to create or update a click.
-     *
-     * @param click
-     */
-    $scope.openClickModal= function (click) {
-        var modalInstance = $uibModal.open({
-            windowClass: 'modal fade in',
-            templateUrl: 'ClickModalContent.html',
-            keyboard: true,
-            controller: ClickModalInstanceCtrl,
-            resolve: {
-                click: function() {
-                    return typeof click != 'undefined' ? click : {};
-                }
-            }
-        });
-    };
-
-    $scope.$on("updateList",function(){
-        $scope.getClicks();
-    });
-
-
-
-
-
+    /*
     $scope.$watch('order', function () {
         $scope.setOrder();
     });
@@ -155,5 +129,5 @@ BingoApp.controller('BingoClicksController', function ($scope, $locale, $window,
             // item.row = item.order%rows;
         }
     }
-
+    */
 });

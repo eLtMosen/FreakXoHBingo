@@ -23,7 +23,7 @@
                 <tbody>
                 {% for click in clicks %}
                     <tr>
-                        <td>{{ click.id }}</td>
+                        <td>{{ loop.index }}</td>
                         <td>{{ click.card }}</td>
                         <td>{{ click.clicks }}</td>
                     </tr>

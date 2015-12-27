@@ -30,8 +30,11 @@
             </tfoot>
             <tbody>
             <tr ng-repeat="(row, click) in clicks">
-                <td>{[ click.id ]}</td>
-                <td>{[ click.card ]}</td>
+                <td>{[ row + 1 ]}</td>
+                <td>
+                    <img src="/bundles/bingo/img/{[ click.card ]}.svg" style="width: 45px;height: auto">
+                    {[ click.card ]}
+                </td>
                 <td>{[ click.clicks ]}</td>
             </tr>
             </tbody>

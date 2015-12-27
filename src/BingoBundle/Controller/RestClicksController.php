@@ -32,13 +32,7 @@ class RestClicksController extends AbstractRestController
     public function listAction()
     {
         $clicksManager = $this->getClicksManager();
-        $clicks = $clicksManager->getCardClicksWithinInterval();
-        $clicksData = array();
-
-        foreach ($clicks as $row => $click) {
-            $clicksData[$row] = $click->toArray();
-            $clicksData[$row]['sort_order'] = $row;
-        }
+        $clicksData = $clicksManager->getCardClicksDataWithinInterval();
 
         return array(
             'name' => 'FreakXoHBingo',
