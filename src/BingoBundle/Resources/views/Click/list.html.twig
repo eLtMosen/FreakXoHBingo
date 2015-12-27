@@ -1,0 +1,45 @@
+{% extends 'BingoBundle::base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="jumbotron">
+            <h1>{{ name }}!</h1>
+        </div>
+    </div>
+    <div class="container" ng-init="getClicks()" ng-controller="BingoClicksController" ng-cloak>
+        <!--
+        <div class="clearfix"></div>
+        <pre>clicks: {[ clicks|json ]}</pre>
+        <div class="clearfix"></div>
+        -->
+        <p class="bg-info" ng-hide="clicks.length > 0">No <strong>Clicks</strong> found!</p>
+        <table class="table table-striped table-hover" ng-show="clicks.length > 0">
+            <thead>
+            <tr>
+                <td>#</td>
+                <td>Card</td>
+                <td>Clicks</td>
+            </tr>
+            </thead>
+            <tfoot>
+            <tr>
+                <td>#</td>
+                <td>Card</td>
+                <td>Clicks</td>
+            </tr>
+            </tfoot>
+            <tbody>
+            <tr ng-repeat="(row, click) in clicks">
+                <td>{[ click.id ]}</td>
+                <td>{[ click.card ]}</td>
+                <td>{[ click.clicks ]}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="/bundles/bingo/app/controller/clicks.js"></script>
+{% endblock %}
