@@ -46,13 +46,13 @@ $(document).ready(function () {
                     bsDiv.style.left = 880 + "px";
                     bsDiv.style.top = 15 + "px";  
 		   
-      $('#buzzwordText').html('Buzzword Monitor<br><br>Hier werden die von allen Online-Spielern probabilistisch bestätigten Buzzwords angezeigt!');
+      $('#buzzwordText').html('Buzzword Monitor<br><br>Klicks von allen Online Spielern werden probabilisiert ausgewertet und bestätigten diese Buzzwords!');
       $('#buzzwordText').removeClass('buzzwordTextEmpty');
       $('#buzzwordText').addClass('buzzwordTextBuzz');    
 		    
 
     function goodbye(e) {
-        if (playMode) {
+        if (!playMode) {
             if (!e) e = window.event;
             //IE
             e.cancelBubble = true;
@@ -221,9 +221,7 @@ $(document).ready(function () {
                             }
 
                             if (buzzwordConfirmed[id_img]) {
-                                $(that).removeClass("orange_zelle");
-                                $(that).removeClass("question");
-                                $(that).removeClass("pulse-button");
+				captionOff = true;
                                 $(that).addClass("gelbe_zelle");
                                 // idx = integerwert der geklickten zelle
                                 var idx = parseInt($(that).attr('data-id'));
@@ -283,9 +281,7 @@ $(document).ready(function () {
                             }
 
                             if (buzzwordConfirmed[id_img]) {
-                                $(that).removeClass("orange_zelle");
-                                $(that).removeClass("question");
-                                $(that).removeClass("pulse-button");
+				captionOff = true;
                                 $(that).addClass("gelbe_zelle");
                                 // idx = integerwert der geklickten zelle
                                 var idx = parseInt($(that).attr('data-id'));
@@ -407,34 +403,6 @@ $(document).ready(function () {
         return true;
     }
 
-    function checkWin(bingoCard) {
-        var convertedToNum = _.reduce(bingoCard, function (result, val, idx) {
-            if (val) {
-                result.push(idx);
-            }
-            return result;
-        }, []);
-        var i = 1;
-        totalScore = 0;
-        $.each(winBoards, function (key, value) {
-            if (containsAll(value, convertedToNum)) {
-                wonBingos[i] = key;
-                $('#result' + i).html(key + ' ' + value.length * 10 + ' punkte');
-                totalScore = (totalScore + value.length * 10);
-
-                $.each(winBoards, function (key, value) {
-
-                    if (containsAll(value, convertedToNum)) {
-                        for (var j = 0; j < value.length;) {
-                            $('#cell' + value[j]).addClass("gruene_zelle");
-                            j++;
-                        }
-                    }
-                });
-                i++;
-            }
-        });
-    }
 
     /**********************************************************************************************
      * CountUp script by Praveen Lobo (http://PraveenLobo.com/techblog/javascript-countup-timer/)

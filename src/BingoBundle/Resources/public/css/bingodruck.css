@@ -93,7 +93,7 @@ td{
 #fattext{
     vertical-align:top;
     font-family:Freakshow;
-    font-size:12px;
+    font-size:13px;
     height:75px;
     border:0px;
     text-align: center;
@@ -170,16 +170,16 @@ td{
 
 ul{
     padding-left:10px;
-    margin-top:-5px;
-    margin-bottom:-5px;
+    margin-top:-2px;
+    margin-bottom:-8px;
     border:0px;
 }
 
 li{
     padding:4px;
-    padding-bottom:4px;
+    padding-bottom:6px;
     border:0px;
-    font-family: Freakshow; font-size: 17.5pt;
+    font-family: Freakshow; font-size: 17pt;
 }
 
 #BingoBody{
