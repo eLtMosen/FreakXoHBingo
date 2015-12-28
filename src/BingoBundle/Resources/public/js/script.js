@@ -415,7 +415,8 @@ $(document).ready(function () {
                         }
                     }
                 } else {
-                    var id_img = parseInt($(this).attr('data-img-id'));
+                  var id_img = parseInt($(this).attr('data-img-id'));
+		  if (!buzzwordConfirmed[id_img]) {
                     var buzzwordBusyToNum = _.reduce(buzzwordBusy, function (result, val, idx) {
                         if (val) {
                             result.push(idx);
@@ -551,6 +552,7 @@ $(document).ready(function () {
                             }
                         }());
                     }
+		  }  
                 }
             }
         });
@@ -579,8 +581,9 @@ $(document).ready(function () {
                         //console.log(userRejectedNum);
                         //console.log(userRejected);
                     }
-} else {
-                    var id_img = parseInt($(this).attr('data-img-id'));
+		} else {
+		  var id_img = parseInt($(this).attr('data-img-id'));
+		  if (!buzzwordConfirmed[id_img]) {                   
                     var buzzwordBusyToNum = _.reduce(buzzwordBusy, function (result, val, idx) {
                         if (val) {
                             result.push(idx);
@@ -723,6 +726,7 @@ $(document).ready(function () {
                             }
                         }());
                     }
+		  }  
                 }
             }
         });

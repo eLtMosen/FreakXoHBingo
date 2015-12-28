@@ -46,7 +46,7 @@ $(document).ready(function () {
     bsDiv.style.left = 880 + "px";
     bsDiv.style.top = 15 + "px";
 
-    $('#buzzwordText').html('Buzzword Monitor<br><br>Klicks von allen Online Spielern werden probabilisiert ausgewertet und bestätigten diese Buzzwords!');
+    $('#buzzwordText').html('Buzzword Monitor<br><br>Klicks von allen Online Spielern werden probabilisiert ausgewertet und geben diese Buzzwords frei!');
     $('#buzzwordText').removeClass('buzzwordTextEmpty');
     $('#buzzwordText').addClass('buzzwordTextBuzz');
 
