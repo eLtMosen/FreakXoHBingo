@@ -82,14 +82,16 @@
     opacity: 1;
 }
 
-.click-list {
+/** LIST */
+
+#click-list {
     position: absolute;
     width: 100%;
     list-style-type: none;
     padding-left: 0;
 }
 
-.click-list li {
+#click-list li {
     position: absolute;
     height: 70px;
     width: 70px;
@@ -97,4 +99,55 @@
     -webkit-transition: all 2.5s ease-in-out;
     -moz-transition: all 2.5s ease-in-out;
     transition: all 2.5s ease-in-out;
+}
+
+.bs-glyphicons {
+    margin: 0 -10px 20px;
+    overflow: hidden;
+}
+
+.bs-glyphicons-list {
+    list-style: outside none none;
+    padding-left: 0;
+}
+
+.bs-glyphicons li {
+    background-color: #f9f9f9;
+    border: 1px solid #fff;
+    float: left;
+    font-size: 10px;
+    height: 115px;
+    line-height: 1.4;
+    padding: 10px;
+    text-align: center;
+    width: 25%;
+}
+
+.bs-glyphicons .glyphicon {
+    font-size: 24px;
+    margin-bottom: 10px;
+    margin-top: 5px;
+}
+
+.bs-glyphicons .glyphicon-class {
+    display: block;
+    text-align: center;
+    word-wrap: break-word;
+}
+
+.bs-glyphicons li:hover {
+    background-color: #563d7c;
+    color: #fff;
+}
+
+@media (min-width: 768px) {
+    .bs-glyphicons {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .bs-glyphicons li {
+        font-size: 12px;
+        width: 12.5%;
+    }
 }

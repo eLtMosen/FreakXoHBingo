@@ -34,4 +34,31 @@ class PageController extends AbstractController
             )
         );
     }
+
+    /**
+     * The Click Stats Action.
+     *
+     * @Route("/clicks", name="bingo_clicks")
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function listAction()
+    {
+        return $this->render(
+            'BingoBundle:Page:clicks.html.twig',
+            array(
+                'name' => 'FreakXoHBingo',
+                'version' => Kernel::VERSION,
+            )
+        );
+    }
+
+    // -- PROTECTED ----------------------------------------------------------------------------------------------------
+
+    /**
+     * @return \BingoBundle\Manager\ClicksManager
+     */
+    protected function getClicksManager()
+    {
+        return $this->get('bingo.clicks.manager');
+    }
 }

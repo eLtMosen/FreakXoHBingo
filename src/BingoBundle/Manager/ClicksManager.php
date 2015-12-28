@@ -39,7 +39,7 @@ class ClicksManager
 
     /**
      * Methode zum Auslesen von Klicks, die mind. innerhalb eines Intervals erfolgt sind.
-     * 
+     *
      * @param int $interval
      * @return array
      */

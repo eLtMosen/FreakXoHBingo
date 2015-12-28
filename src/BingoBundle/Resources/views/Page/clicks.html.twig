@@ -1,0 +1,39 @@
+{% extends 'BingoBundle::base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="jumbotron">
+            <h1>{{ name }}!</h1>
+        </div>
+    </div>
+    <div class="container" ng-init="getClicks()" ng-controller="BingoClicksController" ng-cloak>
+        <!--
+        <div class="clearfix"></div>
+        <pre>clicks: {[ clicks|json ]}</pre>
+        <div class="clearfix"></div>
+        -->
+        <p class="bg-info" ng-hide="clicks.length > 0">No <strong>Clicks</strong> found!</p>
+
+        <div class="bs-glyphicons">
+            <ul class="bs-glyphicons-list">
+                <li ng-repeat="(row, click) in clicks">
+                    <!--
+                    <span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span>
+                    <span class="glyphicon-class">glyphicon glyphicon-asterisk</span>
+                    -->
+                    <img src="/bundles/bingo/img/{[ click.card ]}.svg" style="width: 70px;height: auto"><br>
+                    <span class="glyphicon-class">{[ click.card ]} x {[ click.clicks ]}</span>
+                </li>
+            </ul>
+        </div>
+
+        <ul id="click-list" ng-style="{height: ((myList.length * 90) + 'px')}">
+            <li ng-repeat="item in myList" ng-style="{top: ((item.row * 90) + 'px'), left: ((item.column * 90) + 'px')}">{[ $index ]} - {[ item.order ]}. {[ item.text ]}</li>
+        </ul>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="/bundles/bingo/app/controller/clicks.js"></script>
+{% endblock %}
