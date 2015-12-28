@@ -478,7 +478,29 @@ $(document).ready(function () {
                             */
 
                             // -- AJAX GET REQUEST :: BEGIN --------------------------------------------------------
-
+                             $.ajax({
+                                type: 'GET',
+                                url: host + '/rest/clicks',
+                                crossDomain: false,
+                                cache: false,
+                                contentType: 'application/json; charset=utf-8',
+                                dataType: 'json',
+                                async: true,
+                                success: function(bingoResponseData){
+                                    bingoResponseData.clicks.forEach(function(entry) {
+                                        if (entry.clicks >= 5) {
+                                            buzzwordConfirmed[entry.card] = true;
+                                        } else {
+                                            //buzzwordConfirmed[entry.card] = true;
+					    console.log('entry.clicks ' + entry.clicks);
+					    console.log('entry.card ' + entry.card);
+					    console.log(bingoResponseData);
+                                        }
+                                        
+                                    });
+                                }
+                            });	
+			     
                             $.ajax({
                                 type: 'GET',
                                 url: host + '/rest/click',
@@ -504,6 +526,7 @@ $(document).ready(function () {
                             }
 
                             if (buzzwordConfirmed[id_img]) {
+				clearTimeout(checkBuzzword);
                                 $(that).removeClass("orange_zelle");
                                 $(that).removeClass("question");
                                 $(that).removeClass("pulse-button");
@@ -621,6 +644,30 @@ $(document).ready(function () {
 
                             // -- AJAX GET REQUEST :: BEGIN --------------------------------------------------------
 
+                             $.ajax({
+                                type: 'GET',
+                                url: host + '/rest/clicks',
+                                crossDomain: false,
+                                cache: false,
+                                contentType: 'application/json; charset=utf-8',
+                                dataType: 'json',
+                                async: true,
+                                success: function(bingoResponseData){
+                                    bingoResponseData.clicks.forEach(function(entry) {
+                                        if (entry.clicks >= 5) {
+                                            buzzwordConfirmed[entry.card] = true;
+                                        } else {
+                                            //buzzwordConfirmed[entry.card] = true;
+					    console.log('entry.clicks ' + entry.clicks);
+					    console.log('entry.card ' + entry.card);
+					    console.log(bingoResponseData);
+                                        }
+                                        
+                                    });
+                                }
+                            });			    
+
+			    	
                             $.ajax({
                                 type: 'GET',
                                 url: host + '/rest/click',
@@ -633,10 +680,16 @@ $(document).ready(function () {
                                     bingoResponseData.clicks.forEach(function(entry) {
                                         if (entry.clicks >= 5) {
                                             buzzwordConfirmed[entry.card] = true;
+                                        } else {
+                                            //buzzwordConfirmed[entry.card] = true;
+					    console.log('entry.clicks ' + entry.clicks);
+					    console.log('entry.card ' + entry.card);
+					    //console.log(bingoResponseData);
                                         }
+                                        
                                     });
                                 }
-                            });
+                            });			    
 
                             // -- AJAX POST REQUEST :: END ---------------------------------------------------------
 
