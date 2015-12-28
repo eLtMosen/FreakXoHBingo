@@ -15,11 +15,10 @@ use Propel\Runtime\Propel;
 class ClicksManager
 {
     /**
-     * @return \BingoBundle\Propel\Click[]|\Propel\Runtime\Collection\ObjectCollection
+     * @return array
      */
-    public function getCardClicksDataWithinInterval()
+    public function getCardClicksData()
     {
-        /*
         $clicksQuery = new ClickQuery();
         $clicksQuery->groupBy(ClickTableMap::COL_CARD);
         $clicksQuery->orderByTimeCreate(Criteria::DESC);
@@ -34,17 +33,36 @@ class ClicksManager
             $clicksData[$row]['clicks'] = $click->get();
             $clicksData[$row]['sort_order'] = $row;
         }
-        */
 
-        //HAVING (time_create2 > (now() - INTERVAL 45 MINUTE))
-        //TIMESTAMPDIFF(YEAR, FROM_UNIXTIME(dob), NOW())
+        return $clicksData;
+    }
 
+    /**
+     * Methode zum Auslesen von Klicks, die mind. innerhalb eines Intervals erfolgt sind.
+     *
+     * @param int $interval
+     * @return array
+     */
+    public function getCardClicksDataWithinInterval($interval = 45)
+    {
         $query = "
-SELECT game_id,player_id,card,count(card) as clicks,max(time_create) as time_create
-FROM `bingo_click`
-GROUP BY card
-HAVING COUNT(card) > 5
-ORDER BY clicks DESC
+            SELECT bc.game_id,
+                   bc.player_id,
+                   bc.card,
+                   COUNT(bc.card) AS clicks,
+                   MAX(bc.time_create) AS time_create_max
+            FROM `bingo_click` bc
+            WHERE (
+                SELECT COUNT(*) AS count_within_interval
+                FROM `bingo_click` bcwi
+                WHERE bcwi.card=bc.card
+                AND (bcwi.time_create > (bcwi.time_create - INTERVAL {$interval} SECOND)
+                OR bcwi.time_create > (bcwi.time_create + INTERVAL {$interval} SECOND))
+                GROUP BY bcwi.card
+            ) > 5
+            GROUP BY bc.card
+            HAVING COUNT(bc.card) > 5
+            ORDER BY time_create_max DESC
         ";
 
         $con = Propel::getConnection();

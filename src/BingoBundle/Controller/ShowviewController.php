@@ -12,16 +12,16 @@ use BaseBundle\Controller\AbstractController;
 use Symfony\Component\HttpKernel\Kernel;
 
 /**
- * Class IndexController
+ * Class ShowviewController
  *
- * @package BingoRestBundle\Controller
+ * @package BingoBundle\Controller
  */
 class ShowviewController extends AbstractController
 {
     /**
-     * The Index Action.
+     * The Showview Action.
      *
-     * @Route("/showview/", name="bingo_showview")
+     * @Route("/showview", name="bingo_showview")
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function showviewAction()

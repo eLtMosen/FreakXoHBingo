@@ -82,14 +82,100 @@
     opacity: 1;
 }
 
-.click-list {
+/** CLICK LIST */
+
+.clicks-list {
+    margin: 0 -10px 20px;
+    overflow: hidden;
+}
+
+.clicks-list-items {
+    list-style: outside none none;
+    padding-left: 0;
+}
+
+.clicks-list li {
+    background-color: #f9f9f9;
+    border: 1px solid #fff;
+    float: left;
+    font-size: 10px;
+    height: 115px;
+    line-height: 1.4;
+    padding: 10px;
+    text-align: center;
+    width: 25%;
+    -webkit-transition: all 2.5s ease-in-out;
+    -moz-transition: all 2.5s ease-in-out;
+    transition: all 2.5s ease-in-out;
+}
+
+.clicks-list .glyphicon {
+    font-size: 24px;
+    margin-bottom: 10px;
+    margin-top: 5px;
+}
+
+.clicks-list .glyphicon-class {
+    display: block;
+    text-align: center;
+    word-wrap: break-word;
+}
+
+.clicks-list li:hover {
+    background-color: #563d7c;
+    color: #fff;
+}
+
+@media (min-width: 768px) {
+    .clicks-list {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .clicks-list li {
+        font-size: 12px;
+        width: 12.5%;
+    }
+}
+
+/* AngularJS Animation */
+
+.animate-repeat.ng-move,
+.animate-repeat.ng-enter,
+.animate-repeat.ng-leave {
+    -webkit-transition:all linear 1.2s;
+    transition:all linear 1.2s;
+}
+.animate-repeat.ng-enter-stagger,
+.animate-repeat.ng-leave-stagger,
+.animate-repeat.ng-move-stagger {
+    /* 700ms will be applied between each sucessive enter operation */
+    -webkit-transition-delay:0.7s;
+    transition-delay:0.7s;
+}
+
+.animate-repeat.ng-leave.ng-leave-active,
+.animate-repeat.ng-move,
+.animate-repeat.ng-enter {
+    opacity:0;
+}
+
+.animate-repeat.ng-leave,
+.animate-repeat.ng-move.ng-move-active,
+.animate-repeat.ng-enter.ng-enter-active {
+    opacity:1;
+}
+
+/* DRAFT: http://output.jsbin.com/eYiDIKO/4#/ */
+
+#click-list {
     position: absolute;
     width: 100%;
     list-style-type: none;
     padding-left: 0;
 }
 
-.click-list li {
+#click-list li {
     position: absolute;
     height: 70px;
     width: 70px;
