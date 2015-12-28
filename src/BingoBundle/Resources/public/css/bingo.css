@@ -339,6 +339,17 @@ li{
     background-size: 100px 100px;
 }
 
+.questionbuzz:before {
+    content: "";
+    position: absolute;
+    height: 75px;
+    width: 75px;
+    transition: background-color 0.01s;
+    opacity: 0.95;
+    background: url(/bundles/bingo/img/fragezeichen.svg);
+    background-size: 75px 75px;
+}
+
 .buzzwordTextFilled{
     position: fixed;
     padding-left: 15px;

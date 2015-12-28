@@ -231,12 +231,12 @@ li{
 
 #card{
     background-color:#d40000;
-    padding:0px;
+    margin-bottom:20px;
     border:0px;
     border-spacing:0px;
-    -webkit-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.45);
+/*    -webkit-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.45);
     -moz-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.45);
-    box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.45);
+    box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.45);*/
 }
 
 .gelbe_zelle {
@@ -284,13 +284,13 @@ li{
     border-radius: 2%;
     opacity: 0.96;
     font-family: Freakshow; font-size: 22pt;
-    max-width:430px;
+    max-width:440px;
     min-width:0px;
-    box-shadow: 0 0 0 0 rgba(255, 178, 13, 1);
-    -webkit-animation: pulse 1s 10 cubic-bezier(0.2, 0, 0, 1);
-    -moz-animation: pulse 1s 10 cubic-bezier(0.2, 0, 0, 1);
-    -ms-animation: pulse 1s 10 cubic-bezier(0.2, 0, 0, 1);
-    animation: pulse 1s 10 cubic-bezier(0.2, 0, 0, 1); 
+/*    box-shadow: 0 0 0 0 rgba(255, 178, 13, 1);
+//    -webkit-animation: pulse 1s 10 cubic-bezier(0.2, 0, 0, 1);
+//    -moz-animation: pulse 1s 10 cubic-bezier(0.2, 0, 0, 1);
+//    -ms-animation: pulse 1s 10 cubic-bezier(0.2, 0, 0, 1);
+//    animation: pulse 1s 10 cubic-bezier(0.2, 0, 0, 1); */
 }
 
 .buzzwordTextBuzz{
@@ -305,14 +305,13 @@ li{
     border-radius: 2%;
     opacity: 0.96;
     font-family: Freakshow; font-size: 26pt;
-    max-width:430px;
+    max-width:440px;
     min-width:0px;
-    transition: all 1.8s;
-    box-shadow: 0 0 0 0 rgba(255, 178, 13, 1);
+/*    box-shadow: 0 0 0 0 rgba(255, 178, 13, 1);
     -webkit-animation: pulse 1s 10 cubic-bezier(0.2, 0, 0, 1);
     -moz-animation: pulse 1s 10 cubic-bezier(0.2, 0, 0, 1);
     -ms-animation: pulse 1s 10 cubic-bezier(0.2, 0, 0, 1);
-    animation: pulse 1s 10 cubic-bezier(0.2, 0, 0, 1); 
+    animation: pulse 1s 10 cubic-bezier(0.2, 0, 0, 1); */
 }
 
 
@@ -338,10 +337,8 @@ li{
     border-radius: 2%;
     opacity: 0;
     background-color:#FFFFFF;
-    transition: background-color 1.8s;
     font-family: Freakshow; font-size: 22pt;
-    max-width:430px;
-    box-shadow: 0 0 0 0 rgba(255, 178, 13, 1);
+    max-width:440px;
 }
 
 #buzzwordText{

@@ -556,8 +556,120 @@ $(document).ready(function () {
                         //console.log(userRejectedNum);
                         //console.log(userRejected);
                     }
-                } else {
-                    $(this).toggleClass("gelbe_zelle");
+} else {
+                    var id_img = parseInt($(this).attr('data-img-id'));
+                    var buzzwordBusyToNum = _.reduce(buzzwordBusy, function (result, val, idx) {
+                        if (val) {
+                            result.push(idx);
+                        }
+                        return result;
+                    }, []);
+
+                    //console.log(buzzwordBusyToNum.length);
+
+                    if (!buzzwordBusy[id_img] && buzzwordBusyToNum.length < 6) {
+                        buzzwordBusy[id_img] = true;
+                        $(this).addClass("orange_zelle");
+                        $(this).addClass("questionbuzz");
+                        $(this).addClass("pulse-button");
+
+                        var timeoutExit = 1;
+
+                        // -- AJAX POST REQUEST :: BEGIN ---------------------------------------------------------------
+
+                        // Buzzword id_img in DB schreiben
+                        $.ajax({
+                            type: 'POST',
+                            url: host + '/rest/click',
+                            crossDomain: false,
+                            data: JSON.stringify({card: id_img}),
+                            contentType: 'application/json; charset=utf-8',
+                            dataType: 'json',
+                            async: true,
+                            success: function (bingoResponseData) {
+                                bingoResponseData.clicks.forEach(function (entry) {
+                                    if (entry.clicks >= 5) {
+                                        buzzwordConfirmed[entry.card] = true;
+                                    }
+                                });
+                            },
+                            error: function (bingoResponseData, textStatus, errorThrown) {
+                                alert("Ajax failed to fetch data")
+                            }
+                        });
+
+                        // -- AJAX POST REQUEST :: END -----------------------------------------------------------------
+
+                        // this in das timeout intervall überführen
+                        var that = this;
+
+                        // rekursives Timeout für 40 mal 3 sekunden, unterbrochen von buzzwordbestätigung per DB
+                        (function checkBuzzword() {
+                            //console.log(id_img);
+                            //console.log(timeoutExit);
+
+                            // simulation nde
+                            // needed to wait for next ajax request
+                            timeoutExit++;
+
+                            // simulierter probabilistik erfolg -> ENTER DB ABFRAGE HERE!
+                            /*
+                            if (timeoutExit >= 5) {
+                                buzzwordConfirmed[id_img] = true;
+                            }
+                            */
+
+                            // -- AJAX GET REQUEST :: BEGIN --------------------------------------------------------
+
+                            $.ajax({
+                                type: 'GET',
+                                url: host + '/rest/click',
+                                crossDomain: false,
+                                cache: false,
+                                contentType: 'application/json; charset=utf-8',
+                                dataType: 'json',
+                                async: true,
+                                success: function(bingoResponseData){
+                                    bingoResponseData.clicks.forEach(function(entry) {
+                                        if (entry.clicks >= 5) {
+                                            buzzwordConfirmed[entry.card] = true;
+                                        }
+                                    });
+                                }
+                            });
+
+                            // -- AJAX POST REQUEST :: END ---------------------------------------------------------
+
+                            if (!buzzwordConfirmed[id_img] && timeoutExit < 42) {
+                                //console.log(buzzwordConfirmed[id_img]);
+                                setTimeout(checkBuzzword, 3000);
+                            }
+
+                            if (buzzwordConfirmed[id_img]) {
+                                $(that).removeClass("orange_zelle");
+                                $(that).removeClass("questionbuzz");
+                                $(that).removeClass("pulse-button");
+                                $(that).addClass("gelbe_zelle");
+                                // idx = integerwert der geklickten zelle
+                                var idx = parseInt($(that).attr('data-id'));
+                                // geklickete Zelle in bingoCard true setzen
+                                model.bingoCard[idx] = true;
+                                checkWin(model.bingoCard);
+                                $('#score').html('<div style="width: 198px" id="scoreback">' + pad(totalScore, 6) + '</div>');
+                                buzzwordConfirmed[id_img] = true;
+                                buzzwordBusy[id_img] = false;
+                            } else {
+                                if (!buzzwordConfirmed[id_img] && timeoutExit >= 42) {
+                                    $(that).removeClass("orange_zelle");
+                                    $(that).removeClass("questionbuzz");
+                                    $(that).removeClass("pulse-button");
+                                    timeoutExit = 1;
+                                    clearTimeout(checkBuzzword);
+                                    buzzwordBusy[id_img] = false;
+                                }
+                            }
+                        }());
+                    }
                 }
             }
         });

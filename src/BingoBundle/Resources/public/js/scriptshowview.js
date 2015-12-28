@@ -41,18 +41,18 @@ $(document).ready(function () {
     var model = {
         bingoCard: _.fill(new Array(config.bingoCard.size), false)
     };
-
-    var bsDiv = document.getElementById("buzzwordText");
-    bsDiv.style.left = 880 + "px";
-    bsDiv.style.top = 15 + "px";
-
-    $('#buzzwordText').html('Buzzword Monitor<br><br>Hier werden die von allen Online-Spielern probabilistisch bestätigten Buzzwords angezeigt!');
-    $('#buzzwordText').removeClass('buzzwordTextEmpty');
-    $('#buzzwordText').addClass('buzzwordTextBuzz');
-
+    
+        var bsDiv = document.getElementById("buzzwordText");
+                    bsDiv.style.left = 880 + "px";
+                    bsDiv.style.top = 15 + "px";  
+		   
+      $('#buzzwordText').html('Buzzword Monitor<br><br>Klicks von allen Online Spielern werden probabilisiert ausgewertet und bestätigten diese Buzzwords!');
+      $('#buzzwordText').removeClass('buzzwordTextEmpty');
+      $('#buzzwordText').addClass('buzzwordTextBuzz');    
+		    
 
     function goodbye(e) {
-        if (playMode) {
+        if (!playMode) {
             if (!e) e = window.event;
             //IE
             e.cancelBubble = true;
@@ -238,6 +238,22 @@ $(document).ready(function () {
                     }
                 }());
 
+                            if (buzzwordConfirmed[id_img]) {
+				captionOff = true;
+                                $(that).addClass("gelbe_zelle");
+                                // idx = integerwert der geklickten zelle
+                                var idx = parseInt($(that).attr('data-id'));
+                                // geklickete Zelle in bingoCard true setzen
+                                model.bingoCard[idx] = true;
+                                buzzwordConfirmed[id_img] = true;
+                                buzzwordBusy[id_img] = false;
+				$('#buzzwordText').html('<img src="'+ config.srcImg + '/' + id_img + '.svg" height="225px" width="225px" align="left"> BUZZWORD FREIGEGEBEN!');
+				$('#buzzwordText').removeClass('buzzwordTextEmpty');
+				$('#buzzwordText').addClass('buzzwordTextBuzz');
+                                console.log(buzzwordConfirmed);
+                            }			  
+			}());
+		
             }
         });
     }
@@ -300,6 +316,22 @@ $(document).ready(function () {
                 }
             }());
 
+                            if (buzzwordConfirmed[id_img]) {
+				captionOff = true;
+                                $(that).addClass("gelbe_zelle");
+                                // idx = integerwert der geklickten zelle
+                                var idx = parseInt($(that).attr('data-id'));
+                                // geklickete Zelle in bingoCard true setzen
+                                model.bingoCard[idx] = true;
+                                buzzwordConfirmed[id_img] = true;
+                                buzzwordBusy[id_img] = false;
+				$('#buzzwordText').html('<img src="'+ config.srcImg + '/' + id_img + '.svg" height="225px" width="225px" align="left">BUZZWORD FREIGEGEBEN!');
+				$('#buzzwordText').removeClass('buzzwordTextEmpty');
+				$('#buzzwordText').addClass('buzzwordTextBuzz');				
+                                console.log(buzzwordConfirmed);
+                            }			  
+			}());		    
+	    
         });
     }
 
@@ -407,34 +439,6 @@ $(document).ready(function () {
         return true;
     }
 
-    function checkWin(bingoCard) {
-        var convertedToNum = _.reduce(bingoCard, function (result, val, idx) {
-            if (val) {
-                result.push(idx);
-            }
-            return result;
-        }, []);
-        var i = 1;
-        totalScore = 0;
-        $.each(winBoards, function (key, value) {
-            if (containsAll(value, convertedToNum)) {
-                wonBingos[i] = key;
-                $('#result' + i).html(key + ' ' + value.length * 10 + ' punkte');
-                totalScore = (totalScore + value.length * 10);
-
-                $.each(winBoards, function (key, value) {
-
-                    if (containsAll(value, convertedToNum)) {
-                        for (var j = 0; j < value.length;) {
-                            $('#cell' + value[j]).addClass("gruene_zelle");
-                            j++;
-                        }
-                    }
-                });
-                i++;
-            }
-        });
-    }
 
     /**********************************************************************************************
      * CountUp script by Praveen Lobo (http://PraveenLobo.com/techblog/javascript-countup-timer/)
