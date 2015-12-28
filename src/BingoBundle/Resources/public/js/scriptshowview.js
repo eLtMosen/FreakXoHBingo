@@ -41,15 +41,15 @@ $(document).ready(function () {
     var model = {
         bingoCard: _.fill(new Array(config.bingoCard.size), false)
     };
-    
-        var bsDiv = document.getElementById("buzzwordText");
-                    bsDiv.style.left = 880 + "px";
-                    bsDiv.style.top = 15 + "px";  
-		   
-      $('#buzzwordText').html('Buzzword Monitor<br><br>Hier werden die von allen Online-Spielern probabilistisch bestätigten Buzzwords angezeigt!');
-      $('#buzzwordText').removeClass('buzzwordTextEmpty');
-      $('#buzzwordText').addClass('buzzwordTextBuzz');    
-		    
+
+    var bsDiv = document.getElementById("buzzwordText");
+    bsDiv.style.left = 880 + "px";
+    bsDiv.style.top = 15 + "px";
+
+    $('#buzzwordText').html('Buzzword Monitor<br><br>Hier werden die von allen Online-Spielern probabilistisch bestätigten Buzzwords angezeigt!');
+    $('#buzzwordText').removeClass('buzzwordTextEmpty');
+    $('#buzzwordText').addClass('buzzwordTextBuzz');
+
 
     function goodbye(e) {
         if (playMode) {
@@ -68,9 +68,9 @@ $(document).ready(function () {
     window.onbeforeunload = goodbye;
 
     window.onload = function () {
-//        var bsDiv = document.getElementById("buzzwordText");
-//                    bsDiv.style.left = 880 + "px";
-//                    bsDiv.style.top = 0 + "px";
+        //var bsDiv = document.getElementById("buzzwordText");
+        //bsDiv.style.left = 880 + "px";
+        //bsDiv.style.top = 0 + "px";
     }
 
     init();
@@ -149,7 +149,7 @@ $(document).ready(function () {
         setImgOnFree('#cell24', 'frei');
         wonBingos = [];
         model.bingoCard.length = 0;
-       
+
     }
 
     function toggleCaptionOnOff() {
@@ -186,58 +186,58 @@ $(document).ready(function () {
                 var $elem = $(htmlId + id);
                 $elem.find('img').attr('src', config.srcImg + '/' + imgIds[id] + '.svg');
                 $elem.attr('data-img-id', imgIds[id]);
-		
-                        // this in das timeout intervall überführen
-                        var that = $elem;
-			var id_img = imgIds[id];
-                        // rekursives Timeout für 40 mal 3 sekunden, unterbrochen von buzzwordbestätigung per DB
-                        (function checkBuzzword() {
- 
-                            // -- AJAX GET REQUEST :: BEGIN --------------------------------------------------------
 
-                            $.ajax({
-                                type: 'GET',
-                                url: host + '/rest/click',
-                                crossDomain: false,
-                                cache: false,
-				data: JSON.stringify({card: id_img}),
-                                contentType: 'application/json; charset=utf-8',
-                                dataType: 'json',
-                                async: true,
-                                success: function(bingoResponseData){
-                                    bingoResponseData.clicks.forEach(function(entry) {
-                                        if (entry.clicks >= 5) {
-                                            buzzwordConfirmed[entry.card] = true;
-                                        }
-                                    });
+                // this in das timeout intervall überführen
+                var that = $elem;
+                var id_img = imgIds[id];
+                // rekursives Timeout für 40 mal 3 sekunden, unterbrochen von buzzwordbestätigung per DB
+                (function checkBuzzword() {
+
+                    // -- AJAX GET REQUEST :: BEGIN --------------------------------------------------------
+
+                    $.ajax({
+                        type: 'GET',
+                        url: host + '/rest/click',
+                        crossDomain: false,
+                        cache: false,
+                        data: JSON.stringify({card: id_img}),
+                        contentType: 'application/json; charset=utf-8',
+                        dataType: 'json',
+                        async: true,
+                        success: function (bingoResponseData) {
+                            bingoResponseData.clicks.forEach(function (entry) {
+                                if (entry.clicks >= 5) {
+                                    buzzwordConfirmed[entry.card] = true;
                                 }
                             });
+                        }
+                    });
 
-                            // -- AJAX POST REQUEST :: END ---------------------------------------------------------
+                    // -- AJAX POST REQUEST :: END ---------------------------------------------------------
 
-                            if (!buzzwordConfirmed[id_img]) {
-                                //console.log(buzzwordConfirmed[id_img]);
-                                setTimeout(checkBuzzword, 5000);
-                            }
+                    if (!buzzwordConfirmed[id_img]) {
+                        //console.log(buzzwordConfirmed[id_img]);
+                        setTimeout(checkBuzzword, 5000);
+                    }
 
-                            if (buzzwordConfirmed[id_img]) {
-                                $(that).removeClass("orange_zelle");
-                                $(that).removeClass("question");
-                                $(that).removeClass("pulse-button");
-                                $(that).addClass("gelbe_zelle");
-                                // idx = integerwert der geklickten zelle
-                                var idx = parseInt($(that).attr('data-id'));
-                                // geklickete Zelle in bingoCard true setzen
-                                model.bingoCard[idx] = true;
-                                buzzwordConfirmed[id_img] = true;
-                                buzzwordBusy[id_img] = false;
-				$('#buzzwordText').html('<img src="'+ config.srcImg + '/' + id_img + '.svg" height="225px" width="225px" align="left"> BUZZWORD FREIGEGEBEN!');
-				$('#buzzwordText').removeClass('buzzwordTextEmpty');
-				$('#buzzwordText').addClass('buzzwordTextBuzz');
-                                console.log(buzzwordConfirmed);
-                            }			  
-			}());
-		
+                    if (buzzwordConfirmed[id_img]) {
+                        $(that).removeClass("orange_zelle");
+                        $(that).removeClass("question");
+                        $(that).removeClass("pulse-button");
+                        $(that).addClass("gelbe_zelle");
+                        // idx = integerwert der geklickten zelle
+                        var idx = parseInt($(that).attr('data-id'));
+                        // geklickete Zelle in bingoCard true setzen
+                        model.bingoCard[idx] = true;
+                        buzzwordConfirmed[id_img] = true;
+                        buzzwordBusy[id_img] = false;
+                        $('#buzzwordText').html('<img src="' + config.srcImg + '/' + id_img + '.svg" height="225px" width="225px" align="left"> BUZZWORD FREIGEGEBEN!');
+                        $('#buzzwordText').removeClass('buzzwordTextEmpty');
+                        $('#buzzwordText').addClass('buzzwordTextBuzz');
+                        console.log(buzzwordConfirmed);
+                    }
+                }());
+
             }
         });
     }
@@ -247,59 +247,59 @@ $(document).ready(function () {
             var $elem = $(htmlId + id);
             $elem.find('img').attr('src', config.srcImg + '/' + imgIds[id] + '.svg');
             $elem.attr('data-img-id', imgIds[id]);
-	    
-		
-                        // this in das timeout intervall überführen
-                        var that = $elem;
-			var id_img = imgIds[id];
-                        // rekursives Timeout für 40 mal 3 sekunden, unterbrochen von buzzwordbestätigung per DB
-                        (function checkBuzzword() {
- 
-                            // -- AJAX GET REQUEST :: BEGIN --------------------------------------------------------
 
-                            $.ajax({
-                                type: 'GET',
-                                url: host + '/rest/click',
-                                crossDomain: false,
-                                cache: false,
-				data: JSON.stringify({card: id_img}),
-                                contentType: 'application/json; charset=utf-8',
-                                dataType: 'json',
-                                async: true,
-                                success: function(bingoResponseData){
-                                    bingoResponseData.clicks.forEach(function(entry) {
-                                        if (entry.clicks >= 5) {
-                                            buzzwordConfirmed[entry.card] = true;
-                                        }
-                                    });
-                                }
-                            });
 
-                            // -- AJAX POST REQUEST :: END ---------------------------------------------------------
+            // this in das timeout intervall überführen
+            var that = $elem;
+            var id_img = imgIds[id];
+            // rekursives Timeout für 40 mal 3 sekunden, unterbrochen von buzzwordbestätigung per DB
+            (function checkBuzzword() {
 
-                            if (!buzzwordConfirmed[id_img]) {
-                                //console.log(buzzwordConfirmed[id_img]);
-                                setTimeout(checkBuzzword, 5000);
+                // -- AJAX GET REQUEST :: BEGIN --------------------------------------------------------
+
+                $.ajax({
+                    type: 'GET',
+                    url: host + '/rest/click',
+                    crossDomain: false,
+                    cache: false,
+                    data: JSON.stringify({card: id_img}),
+                    contentType: 'application/json; charset=utf-8',
+                    dataType: 'json',
+                    async: true,
+                    success: function (bingoResponseData) {
+                        bingoResponseData.clicks.forEach(function (entry) {
+                            if (entry.clicks >= 5) {
+                                buzzwordConfirmed[entry.card] = true;
                             }
+                        });
+                    }
+                });
 
-                            if (buzzwordConfirmed[id_img]) {
-                                $(that).removeClass("orange_zelle");
-                                $(that).removeClass("question");
-                                $(that).removeClass("pulse-button");
-                                $(that).addClass("gelbe_zelle");
-                                // idx = integerwert der geklickten zelle
-                                var idx = parseInt($(that).attr('data-id'));
-                                // geklickete Zelle in bingoCard true setzen
-                                model.bingoCard[idx] = true;
-                                buzzwordConfirmed[id_img] = true;
-                                buzzwordBusy[id_img] = false;
-				$('#buzzwordText').html('<img src="'+ config.srcImg + '/' + id_img + '.svg" height="225px" width="225px" align="left">BUZZWORD FREIGEGEBEN!');
-				$('#buzzwordText').removeClass('buzzwordTextEmpty');
-				$('#buzzwordText').addClass('buzzwordTextBuzz');				
-                                console.log(buzzwordConfirmed);
-                            }			  
-			}());		    
-	    
+                // -- AJAX POST REQUEST :: END ---------------------------------------------------------
+
+                if (!buzzwordConfirmed[id_img]) {
+                    //console.log(buzzwordConfirmed[id_img]);
+                    setTimeout(checkBuzzword, 5000);
+                }
+
+                if (buzzwordConfirmed[id_img]) {
+                    $(that).removeClass("orange_zelle");
+                    $(that).removeClass("question");
+                    $(that).removeClass("pulse-button");
+                    $(that).addClass("gelbe_zelle");
+                    // idx = integerwert der geklickten zelle
+                    var idx = parseInt($(that).attr('data-id'));
+                    // geklickete Zelle in bingoCard true setzen
+                    model.bingoCard[idx] = true;
+                    buzzwordConfirmed[id_img] = true;
+                    buzzwordBusy[id_img] = false;
+                    $('#buzzwordText').html('<img src="' + config.srcImg + '/' + id_img + '.svg" height="225px" width="225px" align="left">BUZZWORD FREIGEGEBEN!');
+                    $('#buzzwordText').removeClass('buzzwordTextEmpty');
+                    $('#buzzwordText').addClass('buzzwordTextBuzz');
+                    console.log(buzzwordConfirmed);
+                }
+            }());
+
         });
     }
 
@@ -339,7 +339,7 @@ $(document).ready(function () {
     }
 
     function bindEventHandler() {
- 
+
 
         $(document).keydown(function (evt) { // c Taste an captionOff binden
             if (!playMode) {
@@ -358,7 +358,7 @@ $(document).ready(function () {
                 var idx = parseInt($(this).attr('data-img-id'));
                 if (idx != '0') {
                     placeCaptionLeftOfMousecourser = false;
-                    $('#buzzwordText').html('<img src="'+ config.srcImg + '/' + idx + '.svg" height="225px" width="225px" align="left">' + BuzzwordText[idx]);
+                    $('#buzzwordText').html('<img src="' + config.srcImg + '/' + idx + '.svg" height="225px" width="225px" align="left">' + BuzzwordText[idx]);
                     $('#buzzwordText').removeClass('buzzwordTextEmpty');
                     $('#buzzwordText').addClass('buzzwordTextFilled');
                 }
@@ -376,7 +376,7 @@ $(document).ready(function () {
             if (!captionOff && !playMode) {
                 var idx = parseInt($(this).attr('data-img-id'));
                 if (!isNaN(idx)) {
-                    $('#buzzwordText').html('<img src="'+ config.srcImg + '/' + idx + '.svg" height="225px" width="225px" align="left">' + BuzzwordText[idx]);
+                    $('#buzzwordText').html('<img src="' + config.srcImg + '/' + idx + '.svg" height="225px" width="225px" align="left">' + BuzzwordText[idx]);
                     $('#buzzwordText').removeClass('buzzwordTextEmpty');
                     $('#buzzwordText').addClass('buzzwordTextFilled');
                 }
@@ -388,7 +388,7 @@ $(document).ready(function () {
                 $('#buzzwordText').removeClass('buzzwordTextFilled');
                 $('#buzzwordText').addClass('buzzwordTextEmpty');
             }
-        });	
+        });
 
     }
 
