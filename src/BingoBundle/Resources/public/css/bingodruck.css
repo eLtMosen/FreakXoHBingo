@@ -39,14 +39,14 @@ td{
 }
 
 #textseite{
-    width:440px;
+    width:500px;
     margin:0 auto;
     /*	background-color:#F63D31; */
     font-size:12px;
     text-align:left;
     vertical-align:top;
     background-color:#FFFFFF;
-    padding-left: 25px;
+    padding-left: 35px;
 }
 
 #text{
@@ -170,14 +170,16 @@ td{
 
 ul{
     padding-left:10px;
+    margin-top:-5px;
+    margin-bottom:-5px;
     border:0px;
 }
 
 li{
-    padding:5px;
-    padding-bottom:0px;
+    padding:4px;
+    padding-bottom:4px;
     border:0px;
-    font-family: Freakshow; font-size: 16pt;
+    font-family: Freakshow; font-size: 17.5pt;
 }
 
 #BingoBody{
@@ -263,11 +265,11 @@ li{
 
 #bingolist td{
     padding:0px;
-    padding-left: 5px;
+    padding-left: 15px;
     padding-right: 0px;
+    margin-top:-15px;
     width: 500px;
-    height:90px;
-    vertical-align:middle;
+    vertical-align:top;
     border:0px;
     /*	background: url(/bundles/bingo/img/bingo_background.svg); */
     background-color:#FFFFFF;
