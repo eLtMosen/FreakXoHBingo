@@ -180,9 +180,30 @@ $(document).ready(function () {
     // -- AJAX GET CARD CLICKS :: BEGIN --------------------------------------------------------------------------------
 
     /**
-     * Methode zum Auslesen von Clicks auf die Karten.
+     * Methode zum Überprüfen on eine Karte im Klicks Response enhalten ist. Weil wenn nicht, dann soll das wieder
+     * demakiert werden :)
+     *
+     * @todo Warum auch immer, das liefert immer ein False zurück oO
+     *
+     * @param clicksData
+     * @param clickedCard
+     * @returns {boolean}
      */
-    var getCardClicks = function() {
+    var isClicked = function(clicksData, clickedCard) {
+        clicksData.forEach(function (entry) {
+            //if (entry.card == clickedCard) {
+            if (parseInt(entry.card, 10) == parseInt(clickedCard, 10)) {
+                return true;
+            }
+        });
+
+        return false;
+    };
+
+    /**
+     * Methode zum Auslesen der Klicks alles geklickten Karten.
+     */
+    var getCardClicks = function () {
         $.ajax({
             type: 'GET',
             url: host + '/rest/clicks',
@@ -195,6 +216,17 @@ $(document).ready(function () {
                 cardClicksResponseData.clicks.forEach(function (entry) {
                     buzzwordConfirmed[entry.card] = true;
                 });
+
+                // Karten, die aus dem Spiel genommen wurden und ggf. schon geklickt waren wieder rausnehmen...
+                for (var confirmedCard in buzzwordConfirmed) {
+                    var result = $.grep(cardClicksResponseData.clicks, function (e) {
+                        return e.card == confirmedCard;
+                    });
+
+                    if (result.length == 0) {
+                        buzzwordConfirmed[confirmedCard] = false;
+                    }
+                }
             }
         });
     };
@@ -249,7 +281,6 @@ $(document).ready(function () {
                         $('#buzzwordText').html('<img src="' + config.srcImg + '/' + id_img + '.svg" height="225px" width="225px" align="left"> BUZZWORD FREIGEGEBEN!');
                         $('#buzzwordText').removeClass('buzzwordTextEmpty');
                         $('#buzzwordText').addClass('buzzwordTextBuzz');
-                        console.log(buzzwordConfirmed);
                     }
 
                     if (!buzzwordConfirmed[id_img]) {
