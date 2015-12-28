@@ -41,15 +41,15 @@ $(document).ready(function () {
     var model = {
         bingoCard: _.fill(new Array(config.bingoCard.size), false)
     };
-    
-        var bsDiv = document.getElementById("buzzwordText");
-                    bsDiv.style.left = 880 + "px";
-                    bsDiv.style.top = 15 + "px";  
-		   
-      $('#buzzwordText').html('Buzzword Monitor<br><br>Klicks von allen Online Spielern werden probabilisiert ausgewertet und bestätigten diese Buzzwords!');
-      $('#buzzwordText').removeClass('buzzwordTextEmpty');
-      $('#buzzwordText').addClass('buzzwordTextBuzz');    
-		    
+
+    var bsDiv = document.getElementById("buzzwordText");
+    bsDiv.style.left = 880 + "px";
+    bsDiv.style.top = 15 + "px";
+
+    $('#buzzwordText').html('Buzzword Monitor<br><br>Klicks von allen Online Spielern werden probabilisiert ausgewertet und bestätigten diese Buzzwords!');
+    $('#buzzwordText').removeClass('buzzwordTextEmpty');
+    $('#buzzwordText').addClass('buzzwordTextBuzz');
+
 
     function goodbye(e) {
         if (!playMode) {
@@ -68,9 +68,9 @@ $(document).ready(function () {
     window.onbeforeunload = goodbye;
 
     window.onload = function () {
-//        var bsDiv = document.getElementById("buzzwordText");
-//                    bsDiv.style.left = 880 + "px";
-//                    bsDiv.style.top = 0 + "px";
+        //var bsDiv = document.getElementById("buzzwordText");
+        //bsDiv.style.left = 880 + "px";
+        //bsDiv.style.top = 0 + "px";
     }
 
     init();
@@ -126,13 +126,16 @@ $(document).ready(function () {
 
     function initBingoCard() {
         var allBingoCards = _.range(1, config.buzzwordCount);
+
         // Benutzer abgewaehlte buzzwords vom array abziehen
         var diff = allBingoCards.filter(function (card) {
             return userRejected.indexOf(card) < 0;
         });
+
         // Mische alle Bingo-Karten außer die ausgeschlossenen und Teile alle Karten in Zwei-Teile auf
         var tmp = _.chunk(_.shuffle(diff), config.bingoCard.size - 1);
         var usedBingoCards = tmp[0];
+
         if (typeof tmp[1] != 'undefined') {
             missingBingoCards = tmp[1];
         } else {
@@ -149,7 +152,6 @@ $(document).ready(function () {
         setImgOnFree('#cell24', 'frei');
         wonBingos = [];
         model.bingoCard.length = 0;
-       
     }
 
     function toggleCaptionOnOff() {
@@ -175,137 +177,138 @@ $(document).ready(function () {
         }
     }
 
+    // -- AJAX GET CARD CLICKS :: BEGIN --------------------------------------------------------------------------------
+
+    /**
+     * Methode zum Auslesen von Clicks auf die Karten.
+     */
+    var getCardClicks = function() {
+        $.ajax({
+            type: 'GET',
+            url: host + '/rest/clicks',
+            crossDomain: false,
+            cache: false,
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            async: false,
+            success: function (cardClicksResponseData) {
+                cardClicksResponseData.clicks.forEach(function (entry) {
+                    buzzwordConfirmed[entry.card] = true;
+                });
+            }
+        });
+    };
+
+    /**
+     * Wie oft soll der neueste Stand beim Server abgefragt werden?
+     *
+     * @type {number}
+     */
+    var interval = 6128;
+
+    setInterval(getCardClicks, interval);
+
+    // -- AJAX GET CARD CLICKS :: END ----------------------------------------------------------------------------------
+
+    /**
+     * setImgOn
+     *
+     * @param htmlId
+     * @param imgIds
+     */
     function setImgOn(htmlId, imgIds) {
         _.times(imgIds.length, function (id) {
-            if (id == 24) {                    // wenn id 24 erreicht, in cell48 schreiben
+            // wenn id 24 erreicht, in cell48 schreiben
+            if (id == 24) {
                 var $elem = $(htmlId + 48);
                 $elem.find('img').attr('src', config.srcImg + '/' + imgIds[id] + '.svg');
                 $elem.attr('data-img-id', imgIds[id]);
                 $elem.addClass("gelbe_zelle");
             } else {
                 var $elem = $(htmlId + id);
+
                 $elem.find('img').attr('src', config.srcImg + '/' + imgIds[id] + '.svg');
                 $elem.attr('data-img-id', imgIds[id]);
-		
-                        // this in das timeout intervall überführen
-                        var that = $elem;
-			var id_img = imgIds[id];
-                        // rekursives Timeout für 40 mal 3 sekunden, unterbrochen von buzzwordbestätigung per DB
-                        (function checkBuzzword() {
- 
-                            // -- AJAX GET REQUEST :: BEGIN --------------------------------------------------------
-	  
-			  
-                            $.ajax({
-                                type: 'GET',
-                                url: host + '/rest/click',
-                                crossDomain: false,
-                                cache: false,
-				data: JSON.stringify({card: id_img}),
-                                contentType: 'application/json; charset=utf-8',
-                                dataType: 'json',
-                                async: true,
-                                success: function(bingoResponseData){
-                                    bingoResponseData.clicks.forEach(function(entry) {
-                                        if (entry.clicks >= 5) {
-                                            buzzwordConfirmed[entry.card] = true;
-                                            clearTimeout(checkBuzzword);
-                                            
-                                        }
-                                    });
-                                }
-                            });
-			    
 
-                            // -- AJAX POST REQUEST :: END ---------------------------------------------------------
+                // this in das timeout intervall überführen
+                var that = $elem;
+                var id_img = imgIds[id];
 
+                // rekursives Timeout für 40 mal 3 sekunden, unterbrochen von buzzwordbestätigung per DB
+                (function checkBuzzword() {
+                    if (buzzwordConfirmed[id_img]) {
+                        clearTimeout(checkBuzzword);
+                        captionOff = true;
+                        $(that).addClass("gelbe_zelle");
+                        // idx = integerwert der geklickten zelle
+                        var idx = parseInt($(that).attr('data-id'));
+                        // geklickete Zelle in bingoCard true setzen
+                        model.bingoCard[idx] = true;
+                        buzzwordConfirmed[id_img] = true;
+                        buzzwordBusy[id_img] = false;
+                        $('#buzzwordText').html('<img src="' + config.srcImg + '/' + id_img + '.svg" height="225px" width="225px" align="left"> BUZZWORD FREIGEGEBEN!');
+                        $('#buzzwordText').removeClass('buzzwordTextEmpty');
+                        $('#buzzwordText').addClass('buzzwordTextBuzz');
+                        console.log(buzzwordConfirmed);
+                    }
 
-                            if (buzzwordConfirmed[id_img]) {
-				clearTimeout(checkBuzzword);
-				captionOff = true;
-                                $(that).addClass("gelbe_zelle");
-                                // idx = integerwert der geklickten zelle
-                                var idx = parseInt($(that).attr('data-id'));
-                                // geklickete Zelle in bingoCard true setzen
-                                model.bingoCard[idx] = true;
-                                buzzwordConfirmed[id_img] = true;
-                                buzzwordBusy[id_img] = false;
-				$('#buzzwordText').html('<img src="'+ config.srcImg + '/' + id_img + '.svg" height="225px" width="225px" align="left"> BUZZWORD FREIGEGEBEN!');
-				$('#buzzwordText').removeClass('buzzwordTextEmpty');
-				$('#buzzwordText').addClass('buzzwordTextBuzz');
-                                console.log(buzzwordConfirmed);
-                            }	
-                            
-                            if (!buzzwordConfirmed[id_img]) {
-                                //console.log(buzzwordConfirmed[id_img]);
-                                setTimeout(checkBuzzword, 5000);
-                            }                            
-                            
-			}());
-		
+                    if (!buzzwordConfirmed[id_img]) {
+                        //console.log(buzzwordConfirmed[id_img]);
+                        setTimeout(checkBuzzword, 5000);
+                    }
+                }());
             }
         });
     }
 
+    /**
+     * setImgOnSpare
+     *
+     * @param htmlId
+     * @param imgIds
+     */
     function setImgOnSpare(htmlId, imgIds) {
         _.times(imgIds.length, function (id) {
             var $elem = $(htmlId + id);
             $elem.find('img').attr('src', config.srcImg + '/' + imgIds[id] + '.svg');
             $elem.attr('data-img-id', imgIds[id]);
-	    
-		
-                        // this in das timeout intervall überführen
-                        var that = $elem;
-			var id_img = imgIds[id];
-                        // rekursives Timeout für 40 mal 3 sekunden, unterbrochen von buzzwordbestätigung per DB
-                        (function checkBuzzword() {
- 
-                            // -- AJAX GET REQUEST :: BEGIN --------------------------------------------------------
 
-                            $.ajax({
-                                type: 'GET',
-                                url: host + '/rest/click',
-                                crossDomain: false,
-                                cache: false,
-				data: JSON.stringify({card: id_img}),
-                                contentType: 'application/json; charset=utf-8',
-                                dataType: 'json',
-                                async: true,
-                                success: function(bingoResponseData){
-                                    bingoResponseData.clicks.forEach(function(entry) {
-                                        if (entry.clicks >= 5) {
-                                            buzzwordConfirmed[entry.card] = true;
-                                        }
-                                    });
-                                }
-                            });
+            // this in das timeout intervall überführen
+            var that = $elem;
+            var id_img = imgIds[id];
 
-                            // -- AJAX POST REQUEST :: END ---------------------------------------------------------
+            // rekursives Timeout für 40 mal 3 sekunden, unterbrochen von buzzwordbestätigung per DB
+            (function checkBuzzword() {
+                if (!buzzwordConfirmed[id_img]) {
+                    //console.log(buzzwordConfirmed[id_img]);
+                    setTimeout(checkBuzzword, 5000);
+                }
 
-                            if (!buzzwordConfirmed[id_img]) {
-                                //console.log(buzzwordConfirmed[id_img]);
-                                setTimeout(checkBuzzword, 5000);
-                            }
+                if (buzzwordConfirmed[id_img]) {
+                    captionOff = true;
+                    $(that).addClass("gelbe_zelle");
 
-                            if (buzzwordConfirmed[id_img]) {
-				captionOff = true;
-                                $(that).addClass("gelbe_zelle");
-                                // idx = integerwert der geklickten zelle
-                                var idx = parseInt($(that).attr('data-id'));
-                                // geklickete Zelle in bingoCard true setzen
-                                model.bingoCard[idx] = true;
-                                buzzwordConfirmed[id_img] = true;
-                                buzzwordBusy[id_img] = false;
-				$('#buzzwordText').html('<img src="'+ config.srcImg + '/' + id_img + '.svg" height="225px" width="225px" align="left">BUZZWORD FREIGEGEBEN!');
-				$('#buzzwordText').removeClass('buzzwordTextEmpty');
-				$('#buzzwordText').addClass('buzzwordTextBuzz');				
-                                console.log(buzzwordConfirmed);
-                            }			  
-			}());		    
-	    
+                    // idx = integerwert der geklickten zelle
+                    var idx = parseInt($(that).attr('data-id'));
+
+                    // geklickete Zelle in bingoCard true setzen
+                    model.bingoCard[idx] = true;
+                    buzzwordConfirmed[id_img] = true;
+                    buzzwordBusy[id_img] = false;
+                    $('#buzzwordText').html('<img src="' + config.srcImg + '/' + id_img + '.svg" height="225px" width="225px" align="left">BUZZWORD FREIGEGEBEN!');
+                    $('#buzzwordText').removeClass('buzzwordTextEmpty');
+                    $('#buzzwordText').addClass('buzzwordTextBuzz');
+                }
+            }());
         });
     }
 
+    /**
+     * setImgOnRejected
+     *
+     * @param htmlId
+     * @param imgIds
+     */
     function setImgOnRejected(htmlId, imgIds) {
         _.times(imgIds.length + 1, function (id) {
             if (!isNaN(imgIds[id])) {
@@ -331,7 +334,12 @@ $(document).ready(function () {
         });
     }
 
-    // Frei Feld Logo setzen
+    /**
+     * Frei Feld Logo setzen
+     *
+     * @param htmlId
+     * @param imgId
+     */
     function setImgOnFree(htmlId, imgId) {
         var $elem = $(htmlId);
         $elem.find('img').attr('src', config.srcImg + '/' + imgId + '.svg');
@@ -342,8 +350,6 @@ $(document).ready(function () {
     }
 
     function bindEventHandler() {
- 
-
         $(document).keydown(function (evt) { // c Taste an captionOff binden
             if (!playMode) {
                 if (evt.keyCode == 67) {
@@ -352,7 +358,6 @@ $(document).ready(function () {
                 }
             }
         });
-
 
         var userRejectedNum = 0;
 
@@ -391,8 +396,7 @@ $(document).ready(function () {
                 $('#buzzwordText').removeClass('buzzwordTextFilled');
                 $('#buzzwordText').addClass('buzzwordTextEmpty');
             }
-        });	
-
+        });
     }
 
     function pad(n, width, z) {
@@ -410,12 +414,12 @@ $(document).ready(function () {
         return true;
     }
 
-
     /**********************************************************************************************
      * CountUp script by Praveen Lobo (http://PraveenLobo.com/techblog/javascript-countup-timer/)
      * This notice MUST stay intact(in both JS file and SCRIPT tag) for legal use.
      * http://praveenlobo.com/blog/disclaimer/
      **********************************************************************************************/
+
     function CountUp(initDate, id) {
         this.beginDate = new Date(initDate);
         this.countainer = document.getElementById(id);
