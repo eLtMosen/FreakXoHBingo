@@ -62,7 +62,7 @@ class ClicksManager
             ) > 5
             GROUP BY bc.card
             HAVING COUNT(bc.card) > 5
-            ORDER BY clicks DESC
+            ORDER BY time_create_max DESC
         ";
 
         $con = Propel::getConnection();

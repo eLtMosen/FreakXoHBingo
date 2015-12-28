@@ -4,6 +4,7 @@
     <div class="container">
         <div class="jumbotron">
             <h1>{{ name }}!</h1>
+            <p>TOP Klicks sortiert nach Zeit - die Neusten zuerst :)</p>
         </div>
     </div>
     <div class="container" ng-init="getClicks()" ng-controller="BingoClicksController" ng-cloak>
@@ -12,24 +13,36 @@
         <pre>clicks: {[ clicks|json ]}</pre>
         <div class="clearfix"></div>
         -->
-        <p class="bg-info" ng-hide="clicks.length > 0">No <strong>Clicks</strong> found!</p>
 
-        <div class="bs-glyphicons">
-            <ul class="bs-glyphicons-list">
-                <li ng-repeat="(row, click) in clicks">
-                    <!--
-                    <span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span>
-                    <span class="glyphicon-class">glyphicon glyphicon-asterisk</span>
-                    -->
+        <p class="alert alert-info" ng-hide="clicks.length > 0">No <strong>Clicks</strong> found!</p>
+
+        <div class="clicks-list">
+            <ul class="clicks-list-items">
+                <li ng-repeat="click in clicks | orderBy: 'order'" class="animate-repeat">
                     <img src="/bundles/bingo/img/{[ click.card ]}.svg" style="width: 70px;height: auto"><br>
-                    <span class="glyphicon-class">{[ click.card ]} x {[ click.clicks ]}</span>
+                    <span class="clicks-info"><strong><!--Karte: {[ click.card ]} - -->{[ click.clicks ]}</strong> Klicks</span>
                 </li>
             </ul>
         </div>
 
+        <!--
+        <hr>
+
+        <h3>Animate Order Example</h3>
+
+        <form action="">
+            <input type="radio" value="true" name="order" ng-model="order">
+            <label for="order">reverse</label><br>
+            <input type="radio" value="false" name="order" ng-model="order">
+            <label for="order">normal</label><br>
+            <input type="radio" value="random" name="order" ng-model="order">
+            <label for="order">random (click button below to shuffle again)</label><br>
+        </form>
+
         <ul id="click-list" ng-style="{height: ((myList.length * 90) + 'px')}">
             <li ng-repeat="item in myList" ng-style="{top: ((item.row * 90) + 'px'), left: ((item.column * 90) + 'px')}">{[ $index ]} - {[ item.order ]}. {[ item.text ]}</li>
         </ul>
+        -->
     </div>
 {% endblock %}
 

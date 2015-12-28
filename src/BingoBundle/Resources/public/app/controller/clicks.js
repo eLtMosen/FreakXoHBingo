@@ -55,27 +55,71 @@ BingoApp.controller('BingoClicksController', function ($scope, $interval, $local
     $scope.clicks = [];
 
     /**
+     * Methode zum Überprüfen ob die Karte bereits geklickt wurde und somit bekannt ist.
+     *
+     * @param card
+     * @returns {boolean}
+     */
+    $scope.cardExist = function (card) {
+        for (var i = 0, len = $scope.clicks.length; i < len; i++) {
+            //if (typeof $scope.clicks[i] != 'undefined') {
+            if ($scope.clicks[i].card == card) {
+                return true;
+            }
+        }
+
+        return false;
+    };
+
+    /**
+     * Methode zum Herausfinden des Index der Karte innerhalb der Liste von Karten.
+     *
+     * @param card
+     * @returns {number}
+     */
+    $scope.getCardIndex = function (card) {
+        for (var i = 0, len = $scope.clicks.length; i < len; i++) {
+            if ($scope.clicks[i].card == card) {
+                return i;
+            }
+        }
+
+        return i + 1;
+    };
+
+    /**
      * Get Clicks Data.
+     * @todo Loading Animation nur etwas dezenter einbauen.
      */
     $scope.getClicks = function () {
-        $scope.setLoading(true);
+        //$scope.setLoading(true);
 
         clicksAjax.get('').then(function (response) {
-            $scope.setLoading(false);
+            //$scope.setLoading(false);
 
             if (typeof response.clicks != 'undefined') {
-                $scope.clicks = response.clicks;
+                //$scope.clicks = response.clicks;
+
+                for (var i = 0; i < response.clicks.length; i++) {
+                    if (!$scope.cardExist(response.clicks[i].card)) {
+                        $scope.clicks.push(response.clicks[i]);
+                    }
+
+                    $scope.clicks[$scope.getCardIndex(response.clicks[i].card)].order = i;
+                }
             }
         }, function () {
-            $scope.setLoading(false);
+            //$scope.setLoading(false);
             $scope.messageService.addMessage('danger', 'There was an error getting clicks data from request!');
         });
     };
 
     //var interval = $interval($scope.getClicks, 5000);
-    $interval($scope.getClicks, 5000);
+    $interval($scope.getClicks, 7128);
 
     // -- LIST ORDER ---------------------------------------------------------------------------------------------------
+
+    // DRAFT: http://output.jsbin.com/eYiDIKO/4#/
 
     $scope.order = 'false';
 
