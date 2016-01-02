@@ -1,0 +1,41 @@
+{% extends 'BingoBundle::base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <h1>List Clicks</h1>
+
+        {% if clicks is not empty %}
+            <table class="table table-striped table-hover">
+                <thead>
+                <tr>
+                    <td>#</td>
+                    <td>Card</td>
+                    <td>Clicks</td>
+                </tr>
+                </thead>
+                <tfoot>
+                <tr>
+                    <td>#</td>
+                    <td>Card</td>
+                    <td>Clicks</td>
+                </tr>
+                </tfoot>
+                <tbody>
+                {% for click in clicks %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td>{{ click.card }}</td>
+                        <td>{{ click.clicks }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p class="bg-info">No <strong>Clicks</strong> found!</p>
+        {% endif %}
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}

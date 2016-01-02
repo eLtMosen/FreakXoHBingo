@@ -1,4 +1,4 @@
 services:
-#    bingo.example:
-#        class: BingoBundle\Example
+    bingo.clicks.manager:
+        class: BingoBundle\Manager\ClicksManager
 #        arguments: [@service_id, "plain_value", %parameter%]

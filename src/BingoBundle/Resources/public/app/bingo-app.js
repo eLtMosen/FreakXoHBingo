@@ -1,4 +1,4 @@
-var BingoApp = angular.module('BingoApp', ['restangular', 'ui.bootstrap']).config(function ($httpProvider, $interpolateProvider) {
+var BingoApp = angular.module('BingoApp', ['ngAnimate', 'restangular', 'ui.bootstrap']).config(function ($httpProvider, $interpolateProvider) {
     $httpProvider.defaults.headers.common['Content-Type'] = "application/json; charset=UTF-8";
     $interpolateProvider.startSymbol('{[').endSymbol(']}');
 });

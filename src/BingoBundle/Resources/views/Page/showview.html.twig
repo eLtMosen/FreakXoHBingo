@@ -1,0 +1,56 @@
+{% extends 'BingoBundle::base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="/bundles/bingo/css/bingoshowview.css">
+{% endblock %}
+
+{% block body %}
+    <div style="width: 1340px; overflow: hidden; margin-bottom: 0px">
+        <div style="float: left; overflow: hidden; margin-bottom: 0px" id="card">
+            <div style="width: 110px;  float: left">
+                <table id="logoverti">
+                    <tr>
+                        <td><img src="/bundles/bingo/img/bingo_b.svg"></td>
+                    </tr>
+                    <tr>
+                        <td><img src="/bundles/bingo/img/bingo_i.svg"></td>
+                    </tr>
+                    <tr>
+                        <td><img src="/bundles/bingo/img/bingo_n.svg"></td>
+                    </tr>
+                    <tr>
+                        <td><img src="/bundles/bingo/img/bingo_g.svg"></td>
+                    </tr>
+                    <tr>
+                        <td><img src="/bundles/bingo/img/bingo_o.svg"></td>
+                    </tr>
+                    <tr>
+                        <td><img src="/bundles/bingo/img/dollar_o.svg"></td>
+                    </tr>
+                    <tr>
+                        <td><img src="/bundles/bingo/img/dollar.svg"></td>
+                    </tr>
+                </table>
+            </div>
+            <div style="width: 750px; float: left; margin-right: 0px; margin-bottom: 0px" class="resize">
+                <table id="BingoBody"></table>
+            </div>
+        </div>
+
+        <div style="width: 470px; float: left; margin-left: 8px; margin-bottom: 0px" overflow: hidden;>
+	  <div id="buzzwordText" class="buzzwordTextEmpty"></div>
+	</div>
+
+        <div style="margin-left: 870px; margin-bottom: 0px; margin-top: 276px" overflow: visible; class="resize">
+            <table id="BuzzwordsBody">
+            </table>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="/bundles/bingo/js/showview.js"></script>
+    <script type="text/javascript" src="/bundles/bingo/js/winboards.js"></script>
+    <script type="text/javascript" src="/bundles/bingo/js/buzzwordtext.js"></script>
+{% endblock %}

@@ -1,6 +1,20 @@
 {
     "name": "FreakXoHBingo",
-    "license": "proprietary",
+    "keywords": ["bingo", "freakshow"],
+    "homepage": "http://freakxohbingo.de/",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Timo Könnecke",
+            "email": "koennecke@mosushi.com",
+            "homepage": "http://mosushi.com"
+        },
+        {
+            "name": "Adam Ibrom",
+            "email": "adam@net-i.de",
+            "homepage": "http://net-i.de"
+        }
+    ],
     "type": "project",
     "autoload": {
         "psr-4": {
@@ -8,7 +22,7 @@
         }
     },
     "require": {
-        "php": ">=5.3.9",
+        "php": ">=5.6.0",
         "phpunit/phpunit": "5.*",
         "symfony/symfony": "2.7.*",
 
@@ -41,7 +55,8 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget"
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget",
+            "app/console propel:model:build"
         ],
         "post-update-cmd": [
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
@@ -49,7 +64,11 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget"
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget",
+            "rm -rf src/*Bundle/Propel/Base/**",
+            "rm -rf src/*Bundle/Propel/Map/**",
+            "rm app/propel/sql/sqldb.map",
+            "app/console propel:model:build"
         ]
     },
     "config": {

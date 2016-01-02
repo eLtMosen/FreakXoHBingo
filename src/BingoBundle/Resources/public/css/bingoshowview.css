@@ -56,7 +56,6 @@ td{
     vertical-align: bottom;
     width:100px;
     height:100px;
-    transition: all 1.5s;
 }
 
 #fattext{
@@ -85,7 +84,6 @@ td{
     vertical-align: bottom;
     width:100px;
     height:100px;
-    transition: all 1.5s;
 }
 
 #logoverti td{
@@ -110,7 +108,6 @@ td{
     vertical-align: bottom;
     width:120px;
     height:120px;
-    transition: all 1.5s;
 }
 
 #logohori table{
@@ -157,12 +154,8 @@ li{
     vertical-align: bottom;
     width:100px;
     height:100px;
-    transition: all 1.5s;
 }
 
-#BingoBody td{
-    cursor:pointer;
-}
 
 #BuzzwordsBody {
     padding:0px;
@@ -173,7 +166,6 @@ li{
 }
 
 #BuzzwordsBody td{
-    cursor:pointer;
     height:75px;
     width:75px;
     border-radius: 6%;
@@ -183,7 +175,6 @@ li{
     vertical-align: bottom;
     width:75px;
     height:75px;
-    transition: all 1.5s;
 }
 
 #scoreback{
@@ -193,7 +184,7 @@ li{
 }
 
 #start div{
-    background-image: url(/bundles/bingo/img/stern.svg);
+/*    background-image: url(/bundles/bingo/img/stern.svg); */
     background-repeat: no-repeat;
     background-size: 120px;
     width: 120px;
@@ -240,12 +231,12 @@ li{
 
 #card{
     background-color:#d40000;
-    padding:0px;
+    margin-bottom:20px;
     border:0px;
     border-spacing:0px;
-    -webkit-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.45);
+/*    -webkit-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.45);
     -moz-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.45);
-    box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.45);
+    box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.45);*/
 }
 
 .gelbe_zelle {
@@ -269,123 +260,96 @@ li{
     background: #F63D31;
 }
 
-.cell:hover:before {
-    opacity: 0.85;
-}
 
-.cell:before {
-    content: "";
-    position: absolute;
-    height: 100px;
-    width: 100px;
-    transition: all 0.2s;
-    opacity: 0;
-    background: url(/bundles/bingo/img/kreuz.svg);
-    background-size: 100px 100px;
-}
-
-.missing:hover:before {
-    opacity: 0.85;
-}
-
-.missing:before {
-    content: "";
-    position: absolute;
-    height: 75px;
-    width: 75px;
-    transition: all 0.2s;
-    opacity: 0;
-    background: url(/bundles/bingo/img/kreuz.svg);
-    background-size: 75px 75px;
-}
-.mouseoverbingo:hover:before {
-    opacity: 0.85;
-}
-
-.mouseoverbingo:before {
-    content: "";
-    position: absolute;
-    height: 100px;
-    width: 100px;
-    transition: all 0.2s;
-    opacity: 0;
-    background: url(/bundles/bingo/img/bulletholes.svg);
-    background-size: 100px 100px;
-}
-
-.mouseoverbuzz:hover:before {
-    opacity: 0.85;
-}
-
-.mouseoverbuzz:before {
-    content: "";
-    position: absolute;
-    height: 75px;
-    width: 75px;
-    transition: all 0.1s;
-    opacity: 0;
-    background: url(/bundles/bingo/img/bulletholes.svg);
-    background-size: 75px 75px;
-}
 
 .question:before {
     content: "";
     position: absolute;
     height: 100px;
     width: 100px;
-    transition: background-color 0.01s;
     opacity: 0.95;
     background: url(/bundles/bingo/img/fragezeichen.svg);
     background-size: 100px 100px;
 }
 
-.questionbuzz:before {
-    content: "";
-    position: absolute;
-    height: 75px;
-    width: 75px;
-    transition: background-color 0.01s;
-    opacity: 0.95;
-    background: url(/bundles/bingo/img/fragezeichen.svg);
-    background-size: 75px 75px;
-}
-
 .buzzwordTextFilled{
-    position: fixed;
+/*    position: fixed;
+    left: 880;
+    top: 15;*/    
     padding-left: 15px;
     padding-right: 5px;
-    padding-top: 10px;
+    padding-top: 20px;
     padding-bottom: 10px;
-    background-color:#FFFFFF;
+    background-color:#ffb20d;
     border-radius: 2%;
     opacity: 0.96;
-/*    transition: opacity 0.3s; */
-    font-family: Freakshow; font-size: 20pt;
-    max-width:350px;
+    font-family: Freakshow; font-size: 16pt;
+    max-width:440px;
     min-width:0px;
-/*    box-shadow: 0 0 0 0 rgba(255, 255, 255, 1);
-    -webkit-animation: pulse 2s cubic-bezier(0.2, 0, 0, 1);
-    -moz-animation: pulse 2s cubic-bezier(0.2, 0, 0, 1);
-    -ms-animation: pulse 2s cubic-bezier(0.2, 0, 0, 1);
-    animation: pulse 2s cubic-bezier(0.2, 0, 0, 1); */
+/*    box-shadow: 0 0 0 0 rgba(255, 178, 13, 1);
+//    -webkit-animation: pulse 1s 10 cubic-bezier(0.2, 0, 0, 1);
+//    -moz-animation: pulse 1s 10 cubic-bezier(0.2, 0, 0, 1);
+//    -ms-animation: pulse 1s 10 cubic-bezier(0.2, 0, 0, 1);
+//    animation: pulse 1s 10 cubic-bezier(0.2, 0, 0, 1); */
+}
+
+.buzzwordTextBuzz{
+/*    position: fixed;
+    left: 880;
+    top: 15;*/   
+    padding-left: 15px;
+    padding-right: 5px;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    background-color:#ffb20d;
+    border-radius: 2%;
+    opacity: 0.96;
+    font-family: Freakshow; font-size: 22pt;
+    max-width:440px;
+    min-width:0px;
+/*    box-shadow: 0 0 0 0 rgba(255, 178, 13, 1);
+    -webkit-animation: pulse 1s 10 cubic-bezier(0.2, 0, 0, 1);
+    -moz-animation: pulse 1s 10 cubic-bezier(0.2, 0, 0, 1);
+    -ms-animation: pulse 1s 10 cubic-bezier(0.2, 0, 0, 1);
+    animation: pulse 1s 10 cubic-bezier(0.2, 0, 0, 1); */
+}
+
+
+.buzzwordTextBuzz img{
+
+    padding-right: 15px;
+    width:225px;
+    height:225px;
+    
+}
+
+
+.buzzwordTextFilled img{
+
+    padding-right: 15px;
+    width:225px;
+    height:225px;
 }
 
 .buzzwordTextEmpty{
-    position: fixed;
-    padding: 15px;
+/*    position: fixed;
+    left: 880;
+    top: 15;*/
+    padding: 0px;
     padding-right: 5px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 0px;
+    padding-bottom: 0px;
     border-radius: 2%;
     opacity: 0;
     background-color:#FFFFFF;
-/*    transition: opacity 0.2s; */
-    font-family: Freakshow; font-size: 20pt;
-    max-width:350px;
+    font-family: Freakshow; font-size: 16pt;
+    max-width:440px;
 }
 
 #buzzwordText{
-    position: fixed;
+/*    position: fixed;
+    left: 880;
+    top: 0; */
     background-color:#FFFFFF;
 }
 
@@ -396,7 +360,6 @@ li{
     border: none;
     box-shadow: 0 0 0 0 rgba(255, 178, 13, 1);
     border-radius: 3%;
-    cursor: pointer;
     -webkit-animation: pulse 1.5s infinite cubic-bezier(0.1, 0, 0, 1);
     -moz-animation: pulse 1.5s infinite cubic-bezier(0.1, 0, 0, 1);
     -ms-animation: pulse 1.5s infinite cubic-bezier(0.1, 0, 0, 1);

@@ -13,8 +13,8 @@ echo "${underline}${green}DONE${reset}"
 echo "${underline}${green}Deleting all Propel generated data... ${reset}"
 # Delete all Propel generated data
 # @todo find and remove all third party bundle propel generated files
-rm -rf **/Propel/map/**
-rm -rf **/Propel/om/**
+rm -rf **/Propel/Base/**
+rm -rf **/Propel/Map/**
 #rm -rf vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Propel/map
 #rm -rf vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Propel/om
 echo "${underline}${green}DONE${reset}"
@@ -29,7 +29,7 @@ echo "${underline}${green}DONE${reset}"
 
 echo "${underline}${green}Loading fixtures... ${reset}"
 # Load fixtures
-app/console snm:base:fixtures:load --env=dev
+app/console bingo:fixtures:load --env=dev
 # this will execute:
-#php app/console propel:fixtures:load --yml --dir=app/fixtures/snm-api/loader --env=dev
+#php app/console propel:fixtures:load --yml --dir=app/fixtures/loader --env=dev
 echo "${underline}${green}DONE${reset}"
