@@ -416,7 +416,7 @@ $(document).ready(function () {
                     }
                 } else {
                   var id_img = parseInt($(this).attr('data-img-id'));
-		  if (!buzzwordConfirmed[id_img]) {
+
                     var buzzwordBusyToNum = _.reduce(buzzwordBusy, function (result, val, idx) {
                         if (val) {
                             result.push(idx);
@@ -437,6 +437,7 @@ $(document).ready(function () {
                         // -- AJAX POST REQUEST :: BEGIN ---------------------------------------------------------------
 
                         // Buzzword id_img in DB schreiben
+		  if (!buzzwordConfirmed[id_img]) {			
                         $.ajax({
                             type: 'POST',
                             url: host + '/rest/click',
@@ -456,6 +457,7 @@ $(document).ready(function () {
                                 alert("Ajax failed to fetch data")
                             }
                         });
+		  }
 
                         // -- AJAX POST REQUEST :: END -----------------------------------------------------------------
 
@@ -552,7 +554,7 @@ $(document).ready(function () {
                             }
                         }());
                     }
-		  }  
+		    
                 }
             }
         });
@@ -583,7 +585,8 @@ $(document).ready(function () {
                     }
 		} else {
 		  var id_img = parseInt($(this).attr('data-img-id'));
-		  if (!buzzwordConfirmed[id_img]) {                   
+		  
+		                  
                     var buzzwordBusyToNum = _.reduce(buzzwordBusy, function (result, val, idx) {
                         if (val) {
                             result.push(idx);
@@ -604,6 +607,7 @@ $(document).ready(function () {
                         // -- AJAX POST REQUEST :: BEGIN ---------------------------------------------------------------
 
                         // Buzzword id_img in DB schreiben
+			if (!buzzwordConfirmed[id_img]) { 
                         $.ajax({
                             type: 'POST',
                             url: host + '/rest/click',
@@ -623,6 +627,7 @@ $(document).ready(function () {
                                 alert("Ajax failed to fetch data")
                             }
                         });
+			}
 
                         // -- AJAX POST REQUEST :: END -----------------------------------------------------------------
 
@@ -726,7 +731,7 @@ $(document).ready(function () {
                             }
                         }());
                     }
-		  }  
+		    
                 }
             }
         });
