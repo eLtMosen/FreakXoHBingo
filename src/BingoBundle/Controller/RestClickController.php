@@ -12,6 +12,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use FOS\RestBundle\Controller\Annotations as Rest;
 
 use BaseBundle\Controller\AbstractRestController;
+use BingoBundle\Manager\ClicksManager;
 use BingoBundle\Propel\Click;
 use BingoBundle\Propel\ClickQuery;
 use Propel\Runtime\Propel;
@@ -38,7 +39,7 @@ class RestClickController extends AbstractRestController
         return array(
             'name' => 'FreakXoHBingo',
             'version' => Kernel::VERSION,
-            'clicks' => $this->getCardClicks()
+            'clicks' => $this->getClicksManager()->getCardClicksDataWithinSeconds()
         );
     }
 
@@ -53,7 +54,6 @@ class RestClickController extends AbstractRestController
      */
     public function createClickAction(Request $request)
     {
-
         if ($request->getMethod() == 'POST') {
             $clickRequestData = array();
 
@@ -70,33 +70,17 @@ class RestClickController extends AbstractRestController
         return array(
             'name' => 'FreakXoHBingo',
             'version' => Kernel::VERSION,
-            'clicks' => $this->getCardClicks()
+            'clicks' => $this->getClicksManager()->getCardClicksDataWithinSeconds()
         );
     }
 
     // -- PROTECTED ----------------------------------------------------------------------------------------------------
 
     /**
-     * Get Card Clicks.
-     *
-     * @param int $seconds
-     * @return array
+     * @return ClicksManager
      */
-    protected function getCardClicks($seconds = 45)
+    protected function getClicksManager()
     {
-        $query = "
-            SELECT game_id,card,count(card) as clicks
-            FROM `bingo_click`
-            WHERE time_create > (NOW() - INTERVAL {$seconds} SECOND)
-            GROUP BY card
-            ORDER BY clicks DESC
-        ";
-
-        $con = Propel::getConnection();
-        $stmt = $con->prepare($query);
-        $stmt->execute();
-        $clickResult = $stmt->fetchAll(\PDO::FETCH_ASSOC);
-
-        return $clickResult;
+        return $this->get('bingo.clicks.manager');
     }
 }

@@ -30,10 +30,16 @@ else
     done
 fi
 
-php app/console cache:clear --env="$env" --no-warmup
-php app/console cache:warmup --env="$env" --no-debug
-php app/console assets:install --env="$env"
-php app/console assetic:dump --env="$env"
+app/console cache:clear --env="$env" --no-warmup
+app/console cache:warmup --env="$env" --no-debug
+#app/console assetic:dump --env="$env"
+
+if [ "$env" == "dev" ]
+then
+    app/console assets:install --env="$env" --symlink
+else
+    app/console assets:install --env="$env"
+fi
 
 find app/cache -type d -exec chmod -v 775 {} \;
 find app/logs -type f -exec chmod -v 664 {} \;

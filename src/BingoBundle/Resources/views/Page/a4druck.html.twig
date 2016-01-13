@@ -1,0 +1,169 @@
+{% extends 'BingoBundle::base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="/bundles/bingo/css/bingodruck.css">
+{% endblock %}
+
+{% block body %}
+    <div id="buzzwordText" class="buzzwordTextEmpty"></div>
+    <div id="mainContainer">
+        <div id="card">
+            <div style="width: 110px;  float: left">
+                <table id="logoverti">
+                    <tr>
+                        <td><img src="/bundles/bingo/img/bingo_b.svg"></td>
+                    </tr>
+                    <tr>
+                        <td><img src="/bundles/bingo/img/bingo_i.svg"></td>
+                    </tr>
+                    <tr>
+                        <td><img src="/bundles/bingo/img/bingo_n.svg"></td>
+                    </tr>
+                    <tr>
+                        <td><img src="/bundles/bingo/img/bingo_g.svg"></td>
+                    </tr>
+                    <tr>
+                        <td><img src="/bundles/bingo/img/bingo_o.svg"></td>
+                    </tr>
+                    <tr>
+                        <td><img src="/bundles/bingo/img/dollar_o.svg"></td>
+                    </tr>
+                    <tr>
+                        <td><img src="/bundles/bingo/img/dollar.svg"></td>
+                    </tr>
+                </table>
+            </div>
+            <div style="width: 750px; float: left; margin-right: 0px; margin-bottom: 0px" class="resize">
+                <table id="BingoBody"></table>
+            </div>
+        </div>
+
+
+        <div style="margin-left: 875px; margin-bottom: 0px; margin-top: 0px" overflow: visible; class="resize">
+            <table id="BuzzwordsBody">
+            </table>
+        </div>
+    </div>
+
+    <div style="float: left; margin-top: 0px">
+        <table id="bignum">
+            <tr>
+                <td id="fattext"><img src="/bundles/bingo/img/numbers/40.svg"></td>
+                <td id="fattext" style="background-image:url(/bundles/bingo/img/gewinn14.png)">4er Ecken</td>
+                <td id="fattext" style="background-image:url(/bundles/bingo/img/gewinn42.png)">4er Ecken</td>
+                <td id="fattext" style="background-image:url(/bundles/bingo/img/gewinn10.png)">4er Ecken</td>
+                <td id="fattext" style="background-image:url(/bundles/bingo/img/gewinn31.png)">Zen Garten</td>
+                <td id="fattext" style="background-image:url(/bundles/bingo/img/gewinn43.png)">Kreuz</td>
+                <td id="fattext" style="background-image:url(/bundles/bingo/img/gewinn44.png)">Briefmarke</td>
+            </tr>
+            <tr>
+                <td id="fattext"><img src="/bundles/bingo/img/numbers/50.svg"></td>
+                <td id="fattext" style="background-image:url(/bundles/bingo/img/gewinn45.png)">Pong</td>
+                <td id="fattext" style="background-image:url(/bundles/bingo/img/gewinn46.png)">Ameisen</td>
+                <td id="fattext" style="background-image:url(/bundles/bingo/img/gewinn47.png)">Speed Racer</td>
+                <td id="fattext" style="background-image:url(/bundles/bingo/img/gewinn48.png)">BreakOut</td>
+                <td id="fattext" style="background-image:url(/bundles/bingo/img/gewinn34.png)">alle 4 Pfeile	</td>
+                <td id="fattext" style="background-image:url(/bundles/bingo/img/gewinn35.png)">alle 4 Winkel</td>
+            </tr>
+            <tr>
+                <td id="fattext"><img src="/bundles/bingo/img/numbers/60.svg"></td>
+                <td id="fattext" style="background-image:url(/bundles/bingo/img/gewinn26.png)">alle 6er Ecke</td>
+                <td id="fattext" style="background-image:url(/bundles/bingo/img/gewinn18.png)">Six Pack</td>
+                <td id="fattext" style="background-image:url(/bundles/bingo/img/gewinn36.png)">Wuerfel 6</td>
+                <td id="fattext" style="background-image:url(/bundles/bingo/img/gewinn37.png)">Twin Peaks</td>
+                <td id="fattext" style="background-image:url(/bundles/bingo/img/gewinn38.png)">Slashes</td>
+                <td id="fattext" style="background-image:url(/bundles/bingo/img/gewinn40.png)">Ungleich</td>
+            </tr>
+            <tr>
+                <td id="fattext"><img src="/bundles/bingo/img/numbers/70.svg"></td>
+                <td id="fattext" style="background-image:url(/bundles/bingo/img/gewinn_vertikale.gif)">alle Vertikal</td>
+                <td id="fattext" style="background-image:url(/bundles/bingo/img/gewinn_horizontal.gif)">alle Horizontal</td>
+                <td id="fattext" style="background-image:url(/bundles/bingo/img/gewinn_diagonal.gif)">beide Diagonal</td>
+
+                <td id="fattext"><img src="/bundles/bingo/img/numbers/80.svg"></td>
+                <td id="fattext" style="background-image:url(/bundles/bingo/img/gewinn11.png)">Saphir</td>
+                <td id="fattext" style="background-image:url(/bundles/bingo/img/gewinn6.png)">Schluessel</td>
+            </tr>
+            <tr>
+                <td id="fattext"><img src="/bundles/bingo/img/numbers/90.svg"></td>
+                <td id="fattext" style="background-image:url(/bundles/bingo/img/gewinn25.png)">Echo Kammer</td>
+                <td id="fattext" style="background-image:url(/bundles/bingo/img/gewinn24.png)">Knochen</td>
+
+                <td id="fattext"><img src="/bundles/bingo/img/numbers/100.svg"></td>
+                <td id="fattext" style="background-image:url(/bundles/bingo/img/gewinn4.png)">Freakshow</td>
+
+                <td id="fattext"><img src="/bundles/bingo/img/numbers/110.svg"></td>
+                <td id="fattext" style="background-image:url(/bundles/bingo/img/gewinn22.png)">Vogelscheuche</td>
+            </tr>
+            <tr>
+                <td id="fattext"><img src="/bundles/bingo/img/numbers/120.svg"></td>
+                <td id="fattext" style="background-image:url(/bundles/bingo/img/gewinn5.png)">Diamant</td>
+                <td id="fattext" style="background-image:url(/bundles/bingo/img/gewinn19.png)">Satellit</td>
+                <td id="fattext" style="background-image:url(/bundles/bingo/img/gewinn27.png)">2x Six Pack</td>
+                <td id="fattext" style="background-image:url(/bundles/bingo/img/gewinn_dreierecken.gif)"> 3er Ecken</td>
+                <td id="fattext" style="background-image:url(/bundles/bingo/img/gewinn32.png)">Space Invaders</td>
+                <td id="fattext" style="background-image:url(/bundles/bingo/img/gewinn39.png)">Snake</td>
+            </tr>
+            <tr>
+                <td id="fattext"><img src="/bundles/bingo/img/numbers/130.svg"></td>
+                <td id="fattext" style="background-image:url(/bundles/bingo/img/gewinn16.png)">Sinus</td>
+                <td id="fattext" style="background-image:url(/bundles/bingo/img/gewinn12.png)">Sternenhimmel</td>
+                <td id="fattext" style="background-image:url(/bundles/bingo/img/gewinn20.png)">Bulls Eye</td>
+
+                <td id="fattext"><img src="/bundles/bingo/img/numbers/140.svg"></td>
+                <td id="fattext" style="background-image:url(/bundles/bingo/img/gewinn23.png)">CCC</td>
+                <td id="fattext" style="background-image:url(/bundles/bingo/img/gewinn33.png)">Nethack</td>
+            </tr>
+            <tr>
+                <td id="fattext"><img src="/bundles/bingo/img/numbers/150.svg"></td>
+                <td id="fattext" style="background-image:url(/bundles/bingo/img/gewinn15.png)">Hangman</td>
+                <td id="fattext" style="background-image:url(/bundles/bingo/img/gewinn21.png)">Schmetterling</td>
+
+                <td id="fattext"><img src="/bundles/bingo/img/numbers/160.svg"></td>
+                <td id="fattext" style="background-image:url(/bundles/bingo/img/gewinn7.png)">Bier Krug</td>
+                <td id="fattext" style="background-image:url(/bundles/bingo/img/gewinn17.png)">Bloecke<br></td>
+                <td id="fattext" style="background-image:url(/bundles/bingo/img/gewinn29.png)">1/4 Dreiecke<br></td>
+            </tr>
+            <tr>
+                <td id="fattext"><img src="/bundles/bingo/img/numbers/240.svg"></td>
+                <td id="fattext" style="background-image:url(/bundles/bingo/img/gewinn9.png)">Apfel</td>
+                <td id="fattext" style="background-image:url(/bundles/bingo/img/gewinn_schach.gif)">beide Schach</td>
+                <td id="fattext" style="background-image:url(/bundles/bingo/img/gewinn30.png)">Tannenbaum</td>
+
+                <td id="fattext"><img src="/bundles/bingo/img/numbers/260.svg"></td>
+                <td id="fattext" style="background-image:url(/bundles/bingo/img/gewinn8.png)">@</td>
+                <td id="fattext" style="background-image:url(/bundles/bingo/img/gewinn41.png)">Defender</td>
+            </tr>
+        </table>
+    </div>
+    <div style="width: 500px; margin-top: 0px; float: left" overflow: visible; class="resize">
+        <table id="bingolist" style="width: 500px;">
+            <tr>
+                <td id="textseite">
+                    <div id="result1">
+                        <ul>
+                            <li>7x7 Bingokarte zur Live-Sendung der Freak Show im Sendezentrum des 32c3 am 28.12. ab 22:15</li>
+                            <li>Die Online Version mit probabilistischer Buzzword bestimmung ueber die Bingokarten alle spieler und Gewinnerkennung unter freakxohbingo.de</li>
+                            <li>Spielregeln und Anmerkungen:</li>
+                            <li>In der Live-Sendung gefallene und freigegebene Buzzwords auf dieser Karte deutlich markieren</li>
+                            <li>Das auf der Karte enstehende Muster mit den links aufgefuehrten Gewinnmustern vergleichen</li>
+                            <li>Bei erreichen eines Offline-Bingos darf gerne laut Bingo gerufen werden :D </li>
+                            <li>Das Spiel ist dann noch nicht zuende! Erreichte Bingos werden nach Punkten addiert!</li>
+                            <li>Zum Ende der Sendung kann dann ein oder mehrere Gewinner anhand vergleichbarer Punktzahlen der Online und Offline Karten bestimmt werden</li>
+                            <li>Der genaue Modus zur Gewinnerbestimmung wird sich noch finden oder im Sand des worstcases verlaufen ;)</li>
+                            <li>Insbesondere ein Streamabriss kann die syncronisierung des online und offline spiels unmoeglich machen...</li>
+                            <li>Fragen und Bugfixes zur schnellen bearbeitung gerne per twitter an @eLtMosen VIEL SPASS!</li>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="/bundles/bingo/js/print.js"></script>
+    <script type="text/javascript" src="/bundles/bingo/js/winboards.js"></script>
+    <script type="text/javascript" src="/bundles/bingo/js/buzzwordtext.js"></script>
+{% endblock %}
